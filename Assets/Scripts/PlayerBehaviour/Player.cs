@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _fallingGravityDrag;
 
-    private float _moveDirectionX;
+    private Vector2 _moveDirection;
     private Vector2 _moveVelocity;
 
     [Header("GroundCheck")]
@@ -27,8 +27,7 @@ public class Player : MonoBehaviour
 
     [Header("Facing Direction")]
     [SerializeField] private bool _isFacingRight = true;
-    [SerializeField] private float _facingDirectionValue = 1; 
-
+    [SerializeField] private float _facingDirectionValue = 1;
 
     [Header("Booleans")]
     [SerializeField] private bool _isMoving;
@@ -39,11 +38,14 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _wasInAir;
     //wallCheck bool
     [SerializeField] private bool _isDetectingWall;
+    //dash
+    [SerializeField] private bool _isAttemptingDash;
 
     [SerializeField] private bool _canDoubleJump;
 
-    //cache references
+    [Header("Cache References")]
     private Rigidbody2D _rigidbody;
+    private DashAbility _dashAbility;
 
     private enum PlayerState
     {
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _dashAbility = GetComponent<DashAbility>();
 
         _playerState = PlayerState.Grounded;
     }
@@ -65,6 +68,12 @@ public class Player : MonoBehaviour
         PlayerInputHandler.Instance.OnRegisterMoveInputNormalized += PlayerInputHandler_OnRegisterMoveInputNormalized;
         PlayerInputHandler.Instance.OnJumpButtonPressed += PlayerInputHandler_OnJumpButtonPressed;
         PlayerInputHandler.Instance.OnJumpButtonReleased += PlayerInputHandler_OnJumpButtonReleased;
+        PlayerInputHandler.Instance.OnDashButtonPressed += PlayerInputHandler_OnDashButtonPressed;
+    }
+
+    private void PlayerInputHandler_OnDashButtonPressed(object sender, EventArgs e)
+    {
+        _isAttemptingDash = true;
     }
 
     private void Update()
@@ -85,10 +94,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
-
-
     private void FixedUpdate()
     {
         switch (_playerState)
@@ -102,7 +107,6 @@ public class Player : MonoBehaviour
                 TryApplyInAirJump();
                 break;
         }
-
     }
 
     private void HandleGroundState()
@@ -125,7 +129,6 @@ public class Player : MonoBehaviour
     private void HandleInAirState()
     {
         //ENTER STATE
-
         if (!_canDoubleJump && !_hasPerformedDoubleJump)
         {
             _canDoubleJump = true;
@@ -140,7 +143,6 @@ public class Player : MonoBehaviour
 
     private void ApplyGroundMovement()
     {
-
         if (_isMoving)
         {
             ApplyGroundedVelocity();
@@ -150,13 +152,12 @@ public class Player : MonoBehaviour
         {
             DecelerateGroundedVelocity();
         }
-
     }
 
     private void ApplyGroundedVelocity()
     {
         //INFO: Rounding so that diagonal input doesn't affect horizontal velocity. If time allows, will be refactored
-        _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirectionX) * _groundMoveSpeed, 0f);
+        _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirection.x) * _groundMoveSpeed, 0f);
         _rigidbody.velocity = _moveVelocity;
     }
 
@@ -188,9 +189,8 @@ public class Player : MonoBehaviour
         //INFO: If you want to allow the player to decelerate the speed at which he's changing his position in the air while holding up or down button, just get rid of rounding
         float yValue = (_rigidbody.velocity.y <= 0) ? -_fallingGravityDrag : _rigidbody.velocity.y;
 
-        _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirectionX) * _inAirHorizontalMoveSpeed, yValue);
+        _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirection.x) * _inAirHorizontalMoveSpeed, yValue);
         _rigidbody.AddForce(_moveVelocity, ForceMode2D.Force);
-        Debug.Log("yValue: " + yValue);
     }
 
     private void TryApplyInAirJump()
@@ -210,10 +210,9 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void UpdateIsMoving()
     {
-        _isMoving = (_moveDirectionX != 0) ? true : false;
+        _isMoving = (_moveDirection.x != 0) ? true : false;
     }
 
     private void UpdateGrounded()
@@ -228,20 +227,19 @@ public class Player : MonoBehaviour
 
     private void UpdateFacingDirection()
     {
-        if (_moveDirectionX > 0 && !_isFacingRight)
+        if (_moveDirection.x > 0 && !_isFacingRight)
         {
             SwapFacingDirection();
         }
-        else if (_moveDirectionX < 0 && _isFacingRight)
+        else if (_moveDirection.x < 0 && _isFacingRight)
         {
             SwapFacingDirection();
         }
-
     }
 
     private void SwapFacingDirection()
     {
-       // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         transform.Rotate(0, 180, 0);
         _isFacingRight = !_isFacingRight;
         _facingDirectionValue *= -1;
@@ -250,7 +248,7 @@ public class Player : MonoBehaviour
     private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
     {
         //TODO: persist the same speed even if holding up arrow, while still allowing for dash direction choice
-        _moveDirectionX = e.DirectionInput.x;
+        _moveDirection = e.DirectionInput;
     }
 
     private void PlayerInputHandler_OnJumpButtonPressed(object sender, System.EventArgs e)
