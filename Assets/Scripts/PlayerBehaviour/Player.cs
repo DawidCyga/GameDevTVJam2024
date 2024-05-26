@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,19 +17,28 @@ public class Player : MonoBehaviour
     private float _moveDirectionX;
     private Vector2 _moveVelocity;
 
-    [Space]
-    //For ground check
+    [Header("GroundCheck")]
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private Vector2 _groundCheckSize;
     [SerializeField] private Transform _groundCheckTransform;
+    [Header("Wall Check")]
+    [SerializeField] private float _wallCheckDistance;
+    [SerializeField] private Transform _wallCheckTransform;
 
-    //bools
+    [Header("Facing Direction")]
+    [SerializeField] private bool _isFacingRight = true;
+    [SerializeField] private float _facingDirectionValue = 1; 
+
+
+    [Header("Booleans")]
     [SerializeField] private bool _isMoving;
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _isAttemptingJump;
     [SerializeField] private bool _isCancellingJump;
     [SerializeField] private bool _hasPerformedDoubleJump;
     [SerializeField] private bool _wasInAir;
+    //wallCheck bool
+    [SerializeField] private bool _isDetectingWall;
 
     [SerializeField] private bool _canDoubleJump;
 
@@ -61,6 +71,8 @@ public class Player : MonoBehaviour
     {
         UpdateIsMoving();
         UpdateGrounded();
+        UpdateWallCheckDetection();
+        UpdateFacingDirection();
 
         switch (_playerState)
         {
@@ -72,6 +84,8 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+
 
 
 
@@ -207,6 +221,32 @@ public class Player : MonoBehaviour
         _isGrounded = Physics2D.OverlapBox(_groundCheckTransform.position, _groundCheckSize, 0f, _whatIsGround);
     }
 
+    private void UpdateWallCheckDetection()
+    {
+        _isDetectingWall = Physics2D.Raycast(_wallCheckTransform.position, transform.right, _wallCheckDistance, _whatIsGround);
+    }
+
+    private void UpdateFacingDirection()
+    {
+        if (_moveDirectionX > 0 && !_isFacingRight)
+        {
+            SwapFacingDirection();
+        }
+        else if (_moveDirectionX < 0 && _isFacingRight)
+        {
+            SwapFacingDirection();
+        }
+
+    }
+
+    private void SwapFacingDirection()
+    {
+       // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        transform.Rotate(0, 180, 0);
+        _isFacingRight = !_isFacingRight;
+        _facingDirectionValue *= -1;
+    }
+
     private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
     {
         //TODO: persist the same speed even if holding up arrow, while still allowing for dash direction choice
@@ -227,6 +267,8 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(_groundCheckTransform.position, _groundCheckSize);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(_wallCheckTransform.position, new Vector3(_wallCheckTransform.position.x + _wallCheckDistance * _facingDirectionValue, _wallCheckTransform.position.y));
     }
 
 }
