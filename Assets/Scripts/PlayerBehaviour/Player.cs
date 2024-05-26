@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+
     [Header("Ground State Parameters")]
     [SerializeField] private float _groundMoveSpeed = 5f;
     [SerializeField] private float _groundJumpForce = 5f;
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isDetectingWall;
     //dash
     [SerializeField] private bool _isAttemptingDash;
+    [SerializeField] private bool _isPerformingDash = false;
 
     [SerializeField] private bool _canDoubleJump;
 
@@ -57,6 +60,15 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         _rigidbody = GetComponent<Rigidbody2D>();
         _dashAbility = GetComponent<DashAbility>();
 
@@ -99,12 +111,18 @@ public class Player : MonoBehaviour
         switch (_playerState)
         {
             case PlayerState.Grounded:
+                if (_isPerformingDash) { return; }
+
                 ApplyGroundMovement();
                 ApplyGroundJump();
+
                 break;
             case PlayerState.InAir:
+                if (_isPerformingDash) { return; }
+
                 ApplyInAirMovement();
                 TryApplyInAirJump();
+
                 break;
         }
     }
@@ -118,6 +136,7 @@ public class Player : MonoBehaviour
             _hasPerformedDoubleJump = false;
         }
 
+        TryUseDashAbility(_isGrounded);
 
         //ESCAPE STATE
         if (!_isGrounded)
@@ -126,6 +145,24 @@ public class Player : MonoBehaviour
             _playerState = PlayerState.InAir;
         }
     }
+
+    private void TryUseDashAbility(bool isGrounded)
+    {
+        if (_isAttemptingDash && !_isDetectingWall)
+        {
+            if (_dashAbility.TryPerformDash(_moveDirection, _rigidbody, isGrounded, FinishPerformingDash))
+            {
+                _isPerformingDash = true;
+            }
+
+            _isAttemptingDash = false;
+        }
+        else
+        {
+            _isAttemptingDash = false;
+        }
+    }
+
     private void HandleInAirState()
     {
         //ENTER STATE
@@ -133,6 +170,8 @@ public class Player : MonoBehaviour
         {
             _canDoubleJump = true;
         }
+
+        TryUseDashAbility(_isGrounded);
 
         //ESCAPE STATE
         if (_isGrounded)
@@ -227,6 +266,7 @@ public class Player : MonoBehaviour
 
     private void UpdateFacingDirection()
     {
+        if (_isPerformingDash) { return; }
         if (_moveDirection.x > 0 && !_isFacingRight)
         {
             SwapFacingDirection();
@@ -245,6 +285,11 @@ public class Player : MonoBehaviour
         _facingDirectionValue *= -1;
     }
 
+    private void FinishPerformingDash()
+    {
+        _isPerformingDash = false;
+    }
+
     private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
     {
         //TODO: persist the same speed even if holding up arrow, while still allowing for dash direction choice
@@ -260,6 +305,8 @@ public class Player : MonoBehaviour
     {
         _isCancellingJump = true;
     }
+
+    public bool IsDetectingWall() => _isDetectingWall;
 
     private void OnDrawGizmos()
     {
