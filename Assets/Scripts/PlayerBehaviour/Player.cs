@@ -127,6 +127,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        PlayerInputHandler.Instance.OnRegisterMoveInputNormalized -= PlayerInputHandler_OnRegisterMoveInputNormalized;
+        PlayerInputHandler.Instance.OnJumpButtonPressed -= PlayerInputHandler_OnJumpButtonPressed;
+        PlayerInputHandler.Instance.OnJumpButtonReleased -= PlayerInputHandler_OnJumpButtonReleased;
+        PlayerInputHandler.Instance.OnDashButtonPressed -= PlayerInputHandler_OnDashButtonPressed;
+    }
+
     private void HandleGroundState()
     {
         //ENTER STATE

@@ -504,6 +504,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &900405709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900405710}
+  m_Layer: 0
+  m_Name: PoisonousTrailParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &900405710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900405709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.495529, y: 4.9277086, z: -0.037233137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1032639350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8004063716778210519, guid: 373841f41c2142044a76e3b85ee75214, type: 3}
@@ -763,34 +794,12 @@ Transform:
   m_GameObject: {fileID: 1735170837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70706433, w: 0.70714927}
-  m_LocalPosition: {x: 3.77, y: -0.48, z: 0}
+  m_LocalPosition: {x: 3.77, y: -12.99, z: 0}
   m_LocalScale: {x: 20.0281, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.993}
---- !u!1 &2051440258 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-  m_PrefabInstance: {fileID: 2023555902082549362}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2051440264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051440258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a166952ea7be80e4fb96193f4327b99a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dashSpeed: 100
-  _timeSinceStartedDash: 0
-  _dashDuration: 0.1
-  _timeSinceLastUsedDash: 0
-  _timeBetweenDashes: 1
 --- !u!1001 &2023555902082549362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,9 +808,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1434671920863527294, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _poisonousTrailParent
+      value: 
+      objectReference: {fileID: 900405710}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.006727606
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -846,10 +859,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 2051440264}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
 --- !u!1001 &8065740155930845479
 PrefabInstance:
@@ -919,3 +929,4 @@ SceneRoots:
   - {fileID: 1735170840}
   - {fileID: 1395442768}
   - {fileID: 2023555902082549362}
+  - {fileID: 900405710}
