@@ -856,6 +856,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _dashSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _whatIsWall.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _poisonousTrailParent
+      value: 
+      objectReference: {fileID: 900405710}
+    - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _poisonousTrailElement
+      value: 
+      objectReference: {fileID: 8429969231817283632, guid: e171935321cce944083dbab5c3eccb86, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -48,7 +48,8 @@ public class Player : MonoBehaviour
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
-    private DashAbility _dashAbility;
+    // private DashAbility _dashAbility;
+    private DashAbilityVer2 _dashAbilityVer2;
 
     private enum PlayerState
     {
@@ -70,7 +71,8 @@ public class Player : MonoBehaviour
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _dashAbility = GetComponent<DashAbility>();
+        //_dashAbility = GetComponent<DashAbility>();
+        _dashAbilityVer2 = GetComponent<DashAbilityVer2>();
 
         _playerState = PlayerState.Grounded;
     }
@@ -158,7 +160,7 @@ public class Player : MonoBehaviour
     {
         if (_isAttemptingDash && !_isDetectingWall)
         {
-            if (_dashAbility.TryPerformDash(_moveDirection, _rigidbody, isGrounded, FinishPerformingDash))
+            if (_dashAbilityVer2.TryPerformDash(_moveDirection, isGrounded, FinishPerformingDash))
             {
                 _isPerformingDash = true;
             }

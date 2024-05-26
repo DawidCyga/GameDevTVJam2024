@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2824604991377171652}
-  - component: {fileID: 1434671920863527294}
+  - component: {fileID: 8912735473506751436}
   - component: {fileID: 2175525121413230804}
   - component: {fileID: 8237122310355553107}
   - component: {fileID: 8517299011496925393}
@@ -186,7 +186,7 @@ Transform:
   - {fileID: 7716719921987405710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1434671920863527294
+--- !u!114 &8912735473506751436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,17 +195,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5696077454691015555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a166952ea7be80e4fb96193f4327b99a, type: 3}
+  m_Script: {fileID: 11500000, guid: fac3929284b47854d8b19ddc128fdb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashSpeed: 100
-  _timeSinceStartedDash: 0
-  _dashDuration: 0.1
+  _dashSpeed: 0
+  _dashDistance: 5
+  _timeBetweenDashes: 0
   _timeSinceLastUsedDash: 0
-  _timeBetweenDashes: 1
-  _poisonousTrailElement: {fileID: 8429969231817283632, guid: e171935321cce944083dbab5c3eccb86, type: 3}
-  _poisonousTrailSpawnPosition: {fileID: 7716719921987405710}
   _distanceBetweenTrailElements: 1
+  _whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  _poisonousTrailElement: {fileID: 0}
+  _poisonousTrailParent: {fileID: 0}
 --- !u!114 &2175525121413230804
 MonoBehaviour:
   m_ObjectHideFlags: 0
