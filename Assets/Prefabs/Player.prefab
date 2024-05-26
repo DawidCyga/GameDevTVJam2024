@@ -52,7 +52,7 @@ MonoBehaviour:
   _groundJumpForce: 60
   _inAirHorizontalMoveSpeed: 180
   _airJumpForce: 40
-  _fallingGravityDrag: -300
+  _fallingGravityDrag: 300
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
