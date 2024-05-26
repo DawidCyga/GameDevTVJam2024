@@ -60,50 +60,44 @@ public class DashAbilityVer2 : MonoBehaviour
         Vector3 dashDelta = new Vector3(direction.x, direction.y).normalized * _dashDistance;
         Vector3 targetPosition = startPosition + dashDelta;
 
-        // Perform raycast to detect obstacles
         RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, _dashDistance, _whatIsWall);
         if (hit.collider != null)
         {
             targetPosition = hit.point;
         }
 
-        float elapsedTime = 0f;
+        float timeSinceStartedDash = 0f;
         float dashDuration = _dashDistance / _dashSpeed;
 
-        float totalDistance = Vector3.Distance(startPosition, targetPosition);
-        int numberOfElements = Mathf.FloorToInt(totalDistance / _distanceBetweenTrailElements);
-
-        for (int i = 0; i <= numberOfElements - 1; i++)
+        while (timeSinceStartedDash < dashDuration)
         {
-            Vector3 normalizedPosition = Vector3.Lerp(startPosition, targetPosition, (float)i / numberOfElements);
+            transform.position = Vector3.Lerp(startPosition, targetPosition, timeSinceStartedDash / dashDuration);
+            timeSinceStartedDash += Time.deltaTime;
+
+            yield return null;
+        }
+
+        float totalDistance = (targetPosition - startPosition).magnitude;
+        int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
+
+        for (int i = 1; i < numberOfSteps; i++)
+        {
+            float t = (float)i / numberOfSteps;
+            Vector3 normalizedPosition = Vector3.Lerp(startPosition, targetPosition, t);
             Transform poisonousTrailElementInstance = Instantiate(_poisonousTrailElement, normalizedPosition, Quaternion.identity, _poisonousTrailParent);
             _poisonousTrailElementsQueue.Enqueue(poisonousTrailElementInstance);
         }
 
-        Debug.Log("Number of elements before cleaning");
-
-        // Deleting previous trail
-        while (_poisonousTrailElementsQueue.Count > numberOfElements)
+        while (_poisonousTrailElementsQueue.Count > numberOfSteps - 1)
         {
             Transform poisonousTrailInstanceToDelete = _poisonousTrailElementsQueue.Dequeue();
             GameObject.Destroy(poisonousTrailInstanceToDelete.gameObject);
             yield return null;
         }
 
-        Debug.Log("Number of elements after cleaning");
-
-        while (elapsedTime < dashDuration)
-        {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / dashDuration);
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
-
         transform.position = targetPosition;
         _timeSinceLastUsedDash = 0;
         finishPerformingDash();
-        Debug.Log("Finished dash at position: " + targetPosition);
     }
 
     private void Update()

@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isFacingRight = true;
     [SerializeField] private float _facingDirectionValue = 1;
 
-    [Header("Booleans")]
+    [Header("Booleans - for debugging only")]
     [SerializeField] private bool _isMoving;
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _isAttemptingJump;
@@ -43,12 +43,12 @@ public class Player : MonoBehaviour
     //dash
     [SerializeField] private bool _isAttemptingDash;
     [SerializeField] private bool _isPerformingDash = false;
+    [SerializeField] private bool _hasPerformedDash;
 
     [SerializeField] private bool _canDoubleJump;
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
-    // private DashAbility _dashAbility;
     private DashAbilityVer2 _dashAbilityVer2;
 
     private enum PlayerState
@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        //_dashAbility = GetComponent<DashAbility>();
         _dashAbilityVer2 = GetComponent<DashAbilityVer2>();
 
         _playerState = PlayerState.Grounded;
@@ -146,6 +145,16 @@ public class Player : MonoBehaviour
             _hasPerformedDoubleJump = false;
         }
 
+        //resetting after dash
+        if (_hasPerformedDash && _isGrounded)
+        {
+            _hasPerformedDash = false;
+            if (_isAttemptingDash)
+            {
+                _isAttemptingDash = false;
+            }
+        }
+
         TryUseDashAbility(_isGrounded);
 
         //ESCAPE STATE
@@ -158,6 +167,8 @@ public class Player : MonoBehaviour
 
     private void TryUseDashAbility(bool isGrounded)
     {
+        if (_hasPerformedDash) { return; }
+
         if (_isAttemptingDash && !_isDetectingWall)
         {
             if (_dashAbilityVer2.TryPerformDash(_moveDirection, isGrounded, FinishPerformingDash))
@@ -298,6 +309,7 @@ public class Player : MonoBehaviour
     private void FinishPerformingDash()
     {
         _isPerformingDash = false;
+        _hasPerformedDash = true;
     }
 
     private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
