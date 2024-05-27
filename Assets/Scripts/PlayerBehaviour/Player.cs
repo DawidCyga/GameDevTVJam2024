@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [Header("Wall Check")]
     [SerializeField] private float _wallCheckDistance;
     [SerializeField] private Transform _wallCheckTransform;
+    private Vector3 _lastDetectedWallPosition;
 
     [Header("Facing Direction")]
     [SerializeField] private bool _isFacingRight = true;
@@ -165,9 +166,15 @@ public class Player : MonoBehaviour
 
     private void TryUseDashAbility(bool isGrounded)
     {
-        if (_hasPerformedDash) { return; }
+        if (_hasPerformedDash) return;
+        if (!_isAttemptingDash) return;
 
-        if (_isAttemptingDash && !_isDetectingWall)
+        bool canDash = !_isDetectingWall ||
+                       (_moveDirection.x > 0 && _lastDetectedWallPosition.x < transform.position.x) ||
+                       (_moveDirection.x < 0 && _lastDetectedWallPosition.x > transform.position.x) ||
+                       (_moveDirection.y == 1);
+
+        if (canDash)
         {
             if (_dashAbilityVer2.TryPerformDash(_moveDirection, isGrounded, FinishPerformingDash))
             {
@@ -277,7 +284,17 @@ public class Player : MonoBehaviour
 
     private void UpdateWallCheckDetection()
     {
-        _isDetectingWall = Physics2D.Raycast(_wallCheckTransform.position, transform.right, _wallCheckDistance, _whatIsGround);
+        RaycastHit2D hit = Physics2D.Raycast(_wallCheckTransform.position, transform.right, _wallCheckDistance, _whatIsGround);
+        if (hit.collider != null)
+        {
+            _isDetectingWall = true;
+            _lastDetectedWallPosition = hit.point;
+            Debug.Log(_lastDetectedWallPosition + " detected wall position");
+        }
+        else
+        {
+            _isDetectingWall = false;
+        }
     }
 
     private void UpdateFacingDirection()

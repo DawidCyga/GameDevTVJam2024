@@ -23,6 +23,13 @@ public class DashAbilityVer2 : MonoBehaviour
     [SerializeField] private Transform _poisonousTrailParent;
     [SerializeField] private Queue<Transform> _poisonousTrailElementsQueue = new Queue<Transform>();
 
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     public bool TryPerformDash(Vector2 direction, bool isGrounded, Action finishPerformingDash)
     {
         if (_canDash)
@@ -88,7 +95,7 @@ public class DashAbilityVer2 : MonoBehaviour
             yield return null;
         }
 
-        transform.position = targetPosition;
+        _rigidbody.MovePosition(targetPosition);
         _timeSinceLastUsedDash = 0;
         finishPerformingDash();
     }

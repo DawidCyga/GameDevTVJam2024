@@ -47,7 +47,6 @@ public class GameStateManager : MonoBehaviour
     private void SetupGame()
     {
         Time.timeScale = 1;
-        Debug.Log("Setting up");
     }
 
     private void DisplayPauseMenuScreen()
