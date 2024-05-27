@@ -138,7 +138,6 @@ public class Player : MonoBehaviour
 
     private void HandleGroundState()
     {
-        //ENTER STATE
         //resetting jump state
         if (_hasPerformedDoubleJump)
         {
@@ -157,7 +156,6 @@ public class Player : MonoBehaviour
 
         TryUseDashAbility(_isGrounded);
 
-        //ESCAPE STATE
         if (!_isGrounded)
         {
             _wasInAir = true;
@@ -186,7 +184,6 @@ public class Player : MonoBehaviour
 
     private void HandleInAirState()
     {
-        //ENTER STATE
         if (!_canDoubleJump && !_hasPerformedDoubleJump)
         {
             _canDoubleJump = true;
@@ -194,7 +191,6 @@ public class Player : MonoBehaviour
 
         TryUseDashAbility(_isGrounded);
 
-        //ESCAPE STATE
         if (_isGrounded)
         {
             _playerState = PlayerState.Grounded;
@@ -216,7 +212,6 @@ public class Player : MonoBehaviour
 
     private void ApplyGroundedVelocity()
     {
-        //INFO: Rounding so that diagonal input doesn't affect horizontal velocity. If time allows, will be refactored
         _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirection.x) * _groundMoveSpeed, 0f);
         _rigidbody.velocity = _moveVelocity;
     }
@@ -300,7 +295,6 @@ public class Player : MonoBehaviour
 
     private void SwapFacingDirection()
     {
-        // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         transform.Rotate(0, 180, 0);
         _isFacingRight = !_isFacingRight;
         _facingDirectionValue *= -1;
@@ -314,7 +308,6 @@ public class Player : MonoBehaviour
 
     private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
     {
-        //TODO: persist the same speed even if holding up arrow, while still allowing for dash direction choice
         _moveDirection = e.DirectionInput;
     }
 

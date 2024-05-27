@@ -18,18 +18,11 @@ public class DashAbilityVer2 : MonoBehaviour
 
     private bool _canDash;
 
-    [Header("Cache References")]
-    private Player _player;
-
     [Header("Poisonous Trail Parameters")]
     [SerializeField] private Transform _poisonousTrailElement;
     [SerializeField] private Transform _poisonousTrailParent;
     [SerializeField] private Queue<Transform> _poisonousTrailElementsQueue = new Queue<Transform>();
 
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-    }
     public bool TryPerformDash(Vector2 direction, bool isGrounded, Action finishPerformingDash)
     {
         if (_canDash)
