@@ -275,7 +275,7 @@
                 {
                     "name": "",
                     "id": "a8666bd2-ba93-4223-ba69-1dcfd12ed689",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -297,7 +297,7 @@
                 {
                     "name": "",
                     "id": "c8e4f2ee-6a5c-4b48-974a-a3d0d20b79cf",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -319,7 +319,7 @@
                 {
                     "name": "",
                     "id": "7934724b-b778-459e-9856-bf32258380dd",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
