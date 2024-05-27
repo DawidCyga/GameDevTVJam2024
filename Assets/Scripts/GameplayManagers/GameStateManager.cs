@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,12 @@ public class GameStateManager : MonoBehaviour
     public enum GameState
     {
         Playing,
-        Paused,
+        PauseMenu,
         GameOver,
         GameWin
     }
 
-    public GameState _gameState;
+    [SerializeField] public GameState _gameState;
 
     private void Awake()
     {
@@ -29,13 +30,13 @@ public class GameStateManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Playing:
-                //
+                SetupGame();
                 break;
-            case GameState.Paused:
-                //
+            case GameState.PauseMenu:
+                DisplayPauseMenuScreen();
                 break;
             case GameState.GameOver:
-                //
+                DisplayGameOverScreen();
                 break;
             case GameState.GameWin:
                 //
@@ -43,8 +44,31 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    private void SetupGame()
+    {
+        Time.timeScale = 1;
+        Debug.Log("Setting up");
+    }
+
+    private void DisplayPauseMenuScreen()
+    {
+        //
+    }
+
+    private void DisplayGameOverScreen()
+    {
+        GameOverScreen.Instance.Show();
+        PauseGame();
+    }
+
     private void PlayerHitBox_OnPlayerDeath(object sender, System.EventArgs e)
     {
         _gameState = GameState.GameOver;
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        // additional conditions based on what we're going to use in the game
     }
 }
