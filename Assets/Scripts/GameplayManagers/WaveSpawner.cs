@@ -12,25 +12,10 @@ public class WaveSet
 
     [SerializeField] private float _breakBetweenWaves;
 
-    public WaveToSpawn GetWave(int index)
-    {
-        return _waves[index];
-    }
-
-    public int GetTotalWavesNumber()
-    {
-        return _waves.Length;
-    }
-
-    public Transform[] GetSpawnPoints()
-    {
-        return _spawnPoints;
-    }
-
-    public float GetBreakBetweenWaves()
-    {
-        return _breakBetweenWaves;
-    }
+    public WaveToSpawn GetWave(int index) => _waves[index];
+    public int GetTotalWavesNumber() => _waves.Length;
+    public Transform[] GetSpawnPoints() => _spawnPoints;
+    public float GetBreakBetweenWaves() => _breakBetweenWaves;
 
 }
 
@@ -101,15 +86,8 @@ public class WaveSpawner : MonoBehaviour
         _currentWaveState = WaveState.Break;
     }
 
-    private void ResetCurrentWaveIndex()
-    {
-        _currentWaveIndex = 0;
-    }
-
-    private void ResetBreakCountdown()
-    {
-        _breakCountdown = _waveSets[_currentWaveSetIndex].GetBreakBetweenWaves();
-    }
+    private void ResetCurrentWaveIndex() => _currentWaveIndex = 0;
+    private void ResetBreakCountdown() => _breakCountdown = _waveSets[_currentWaveSetIndex].GetBreakBetweenWaves();
 
     private void Update()
     {
@@ -135,10 +113,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    private void CountdownBreakTime()
-    {
-        _breakCountdown -= Time.deltaTime;
-    }
+    private void CountdownBreakTime() => _breakCountdown -= Time.deltaTime;
 
     private void SpawnEnemies()
     {
@@ -200,36 +175,6 @@ public class WaveSpawner : MonoBehaviour
         OnAliveSpawnedEnemiesCountChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public int GetAliveSpawnedEnemiesCount()
-    {
-        return _aliveSpawnedEnemies;
-    }
-
-    public int GetTotalEnemyCountThisWave()
-    {
-        return _waveSets[_currentWaveSetIndex].GetWave(_currentWaveIndex).GetTotalEnemyCount();
-    }
-
-    public int GetClearedWavesNumber()
-    {
-        return _currentWaveIndex;
-    }
-
-    public int GetTotalWaveNumberThisSet()
-    {
-        return _waveSets[_currentWaveSetIndex].GetTotalWavesNumber();
-    }
-
-    public float GetTimeTillNextWave()
-    {
-        return _breakCountdown;
-    }
-
-    public bool HasFinishedFighting()
-    {
-        return _HasFinishedFighting;
-    }
-
     public void SetNextWaveSet()
     {
         _currentWaveSetIndex++;
@@ -247,5 +192,12 @@ public class WaveSpawner : MonoBehaviour
             Debug.Log("It's all done, you cleared all the waves");
         }
     }
+
+    public int GetAliveSpawnedEnemiesCount() => _aliveSpawnedEnemies;
+    public int GetTotalEnemyCountThisWave() => _waveSets[_currentWaveSetIndex].GetWave(_currentWaveIndex).GetTotalEnemyCount();
+    public int GetClearedWavesNumber() => _currentWaveIndex;
+    public int GetTotalWaveNumberThisSet() => _waveSets[_currentWaveSetIndex].GetTotalWavesNumber();
+    public float GetTimeTillNextWave() => _breakCountdown;
+    public bool HasFinishedFighting() => _HasFinishedFighting;
 
 }

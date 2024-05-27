@@ -37,9 +37,6 @@ public class GameOverScreen : MonoBehaviour
         });
     }
 
-    public void Show()
-    {
-        _gameOverScreenContainer.SetActive(true);
-    }
+    public void Show() => _gameOverScreenContainer.SetActive(true);
 
 }
