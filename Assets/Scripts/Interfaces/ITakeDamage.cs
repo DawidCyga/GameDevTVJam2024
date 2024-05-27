@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public interface ITakeDamage
 {
-    private Player _player;
+    void TakeDamage();
 }

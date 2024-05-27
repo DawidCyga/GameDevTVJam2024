@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8799571d4041fa7429b1c5fcbd9089c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timePlayerSafe: 0.4
+  _counterPlayerSafe: 0
+  _isUnableToKillPlayer: 0
 --- !u!212 &7803420339581150293
 SpriteRenderer:
   m_ObjectHideFlags: 0

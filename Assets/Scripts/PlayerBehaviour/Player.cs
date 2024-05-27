@@ -51,8 +51,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private DashAbilityVer2 _dashAbilityVer2;
 
-    public event EventHandler OnDeadlyCollision;
-
     private enum PlayerState
     {
         Grounded,
