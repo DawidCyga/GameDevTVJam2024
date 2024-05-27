@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5904404961248175625
 Transform:
   m_ObjectHideFlags: 0
@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f3b8b6b2459f04f82ecffdd3aaa51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentWaveState: 0
+  _waveSets: []
+  _currentWaveSetIndex: 0
+  _currentWaveIndex: 0
+  _breakCountdown: 0
+  _aliveSpawnedEnemies: 0
+  _HasFinishedFighting: 0
