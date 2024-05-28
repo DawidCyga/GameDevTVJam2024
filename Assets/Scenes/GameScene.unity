@@ -47840,6 +47840,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2175525121413230804, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _airFirstJumpForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175525121413230804, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _airDoubleJumpForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.006727606
@@ -47883,14 +47891,6 @@ PrefabInstance:
     - target: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8733880878771342468, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: bb959131523dcd54d9eeba5cce845440, type: 3}
-    - target: {fileID: 8733880878771342468, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
