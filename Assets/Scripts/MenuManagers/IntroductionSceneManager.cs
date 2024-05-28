@@ -21,16 +21,16 @@ public class IntroductionSceneManager : MonoBehaviour
 
     [Header("Cache References")]
     [SerializeField] private TextWriter _textWriter;
-    [SerializeField] private GameObject _nextPlayButtonObject;
-    [SerializeField] private Button _nextPlayButton;
+    [SerializeField] private GameObject _textInteractionButtonObject;
+    [SerializeField] private TextInteractionButton _textInteractionButton;
 
     [Header("For debugging only")]
     [SerializeField] private float _timeSinceSceneLoaded;
 
     private void Start()
     {
-        UpdateNextStartButton(_nextButtonText, DisplayAllParagraphs);
-        _nextPlayButtonObject.SetActive(false);
+        _textInteractionButton.UpdateSelf(_nextButtonText, DisplayAllParagraphs);
+        _textInteractionButtonObject.SetActive(false);
 
         _textWriter.OnAllParagraphsTyped += TextWriter_OnAllParagraphsTyped;
         _textWriter.StartTyping(_textParagraphs, false);
@@ -40,7 +40,7 @@ public class IntroductionSceneManager : MonoBehaviour
     {
         if (_timeSinceSceneLoaded > _timeToShowNextButton)
         {
-            _nextPlayButtonObject.SetActive(true);
+            _textInteractionButtonObject.SetActive(true);
         }
         else
         {
@@ -50,20 +50,11 @@ public class IntroductionSceneManager : MonoBehaviour
 
     private void TextWriter_OnAllParagraphsTyped(object sender, EventArgs e)
     {
-        UpdateNextStartButton(_startGameButtonText, StartGame);
+        _textInteractionButton.UpdateSelf(_startGameButtonText, StartGame);
     }
 
-    private void UpdateNextStartButton(string buttonText, Action buttonFunctionCallBack)
-    {
-        _nextPlayButton.GetComponentInChildren<TextMeshProUGUI>().text = buttonText;
-
-        _nextPlayButton.onClick.AddListener(() =>
-        {
-            buttonFunctionCallBack();
-        });
-    }
 
     private void StartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-    private void DisplayAllParagraphs() => _textWriter.DisplayAllParagraphs(_textParagraphs);
+    private void DisplayAllParagraphs() => _textWriter.FinishTypingAllParagraphs(_textParagraphs);
 }
