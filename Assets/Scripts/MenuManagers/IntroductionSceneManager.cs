@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class IntroductionSceneManager : MonoBehaviour
 {
+    [Header("Content to type")]
+    [TextArea(2, 4)]
+    [SerializeField] private string[] _textParagraphs;
+
     [Header("Button text depending on state")]
     [SerializeField] private string _nextButtonText;
     [SerializeField] private string _startGameButtonText;
@@ -29,7 +33,7 @@ public class IntroductionSceneManager : MonoBehaviour
         _nextPlayButtonObject.SetActive(false);
 
         _textWriter.OnAllParagraphsTyped += TextWriter_OnAllParagraphsTyped;
-        _textWriter.StartTyping();
+        _textWriter.StartTyping(_textParagraphs, false);
     }
 
     private void Update()
@@ -61,5 +65,5 @@ public class IntroductionSceneManager : MonoBehaviour
 
     private void StartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-    private void DisplayAllParagraphs() => _textWriter.DisplayAllParagraphs();
+    private void DisplayAllParagraphs() => _textWriter.DisplayAllParagraphs(_textParagraphs);
 }

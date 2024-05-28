@@ -8,14 +8,13 @@ public class TextWriter : MonoBehaviour
 {
     public static TextWriter Instance { get; private set; }
 
-    [TextArea(2, 4)]
-    [SerializeField] private string[] _textParagraphs;
-    //[SerializeField] private int _currentParagraphIndex;
 
+    [Header("Typing Configuration")]
     [SerializeField] private float _timeToTypeSingleCharacter;
     [SerializeField] private float _timeBetweenParagraphs;
     [SerializeField] private int _numberOfSpacesBetweenParagraphs;
 
+    [Header("Cache reference")]
     [SerializeField] private TextMeshProUGUI _textField;
 
     private Coroutine _activeTypeRoutine;
@@ -36,26 +35,26 @@ public class TextWriter : MonoBehaviour
         //_currentParagraphIndex = 0;
     }
 
-    public void StartTyping()
+    public void StartTyping(string[] textParagraphs, bool isDialogue)
     {
         if (_activeTypeRoutine == null)
         {
-            _activeTypeRoutine = StartCoroutine(TypeTextRoutine());
+            _activeTypeRoutine = StartCoroutine(TypeTextRoutine(textParagraphs, isDialogue));
         }
     }
 
-    private IEnumerator TypeTextRoutine()
+    private IEnumerator TypeTextRoutine(string[] textParagraphs, bool isDialogue)
     {
-        for (int i = 0; i < _textParagraphs.Length; ++i)
+        for (int i = 0; i < textParagraphs.Length; ++i)
         {
-            for (int j = 0; j < _textParagraphs[i].ToCharArray().Length; j++)
+            for (int j = 0; j < textParagraphs[i].ToCharArray().Length; j++)
             {
-                char currentlyProcessedCharacter = _textParagraphs[i].ToCharArray()[j];
+                char currentlyProcessedCharacter = textParagraphs[i].ToCharArray()[j];
                 _textField.text += currentlyProcessedCharacter;
                 yield return new WaitForSeconds(_timeToTypeSingleCharacter);
             }
 
-            if (i < _textParagraphs.Length - 1)
+            if (i < textParagraphs.Length - 1)
             {
                 AddSpacesBetweenParagraphs();
                 yield return new WaitForSeconds(_timeBetweenParagraphs);
@@ -79,7 +78,7 @@ public class TextWriter : MonoBehaviour
         }
     }
 
-    public void DisplayAllParagraphs()
+    public void DisplayAllParagraphs(string[] textParagraphs)
     {
         if (_activeTypeRoutine is not null)
         {
@@ -88,11 +87,11 @@ public class TextWriter : MonoBehaviour
         _activeTypeRoutine = null;
         ClearTextField();
 
-        for (int i = 0; i < _textParagraphs.Length; ++i)
+        for (int i = 0; i < textParagraphs.Length; ++i)
         {
-            _textField.text += _textParagraphs[i];
+            _textField.text += textParagraphs[i];
 
-            if (i < _textParagraphs.Length - 1)
+            if (i < textParagraphs.Length - 1)
             {
                 AddSpacesBetweenParagraphs();
             }
