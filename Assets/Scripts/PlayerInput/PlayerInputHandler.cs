@@ -88,7 +88,6 @@ public class PlayerInputHandler : MonoBehaviour
     private void RegisterPauseInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPauseButtonPressed?.Invoke(this, EventArgs.Empty);
-        Debug.Log("Pause pressed");
     }
 
 }
