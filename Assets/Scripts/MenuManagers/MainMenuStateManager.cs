@@ -24,7 +24,7 @@ public class MainMenuStateManager : MonoBehaviour
     [SerializeField] private Button _achievementsButton;
     [SerializeField] private Button _creditsButton;
 
-    [Header("Sub-windows Back Window")]
+    [Header("Sub-windows Back Buttons")]
     [SerializeField] private Button _backFromOptionsButton;
     [SerializeField] private Button _backFromAchievementsButton;
     [SerializeField] private Button _backFromCreditsButton;
