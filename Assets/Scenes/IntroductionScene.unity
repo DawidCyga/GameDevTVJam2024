@@ -629,6 +629,7 @@ MonoBehaviour:
   _timeToShowNextButton: 1
   _textWriter: {fileID: 1403210884}
   _textInteractionButtonObject: {fileID: 3268370084111279686}
+  _textInteractionButton: {fileID: 2318554987035819933}
   _timeSinceSceneLoaded: 0
 --- !u!1 &1551800983
 GameObject:

@@ -53,7 +53,6 @@ public class GameStateManager : MonoBehaviour
     private void PauseMenu_OnGameResumed(object sender, EventArgs e)
     {
         _gameState = GameState.Playing;
-        Debug.Log("Received: game resumed");
     }
 
     private void Update()

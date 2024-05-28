@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
 public class DialogueUI : MonoBehaviour

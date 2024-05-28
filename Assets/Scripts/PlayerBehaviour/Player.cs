@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
 
     [Header("In Air State Parameters")]
     [SerializeField] private float _inAirHorizontalMoveSpeed;
-    [SerializeField] private float _airJumpForce;
+    [SerializeField] private float _airDoubleJumpForce;
+    [SerializeField] private float _airFirstJumpForce;
 
     [SerializeField] private float _fallingGravityDrag;
 
@@ -32,12 +33,16 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isFacingRight = true;
     [SerializeField] private float _facingDirectionValue = 1;
 
+    [Header("Double Jumping")]
+    [SerializeField] private bool _hasPerformedFirstJump;
+    [SerializeField] private bool _hasPerformedDoubleJump;
+    [SerializeField] private bool _canDoubleJump;
+
     [Header("Booleans - for debugging only")]
     [SerializeField] private bool _isMoving;
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _isAttemptingJump;
     [SerializeField] private bool _isCancellingJump;
-    [SerializeField] private bool _hasPerformedDoubleJump;
     [SerializeField] private bool _wasInAir;
     //wallCheck bool
     [SerializeField] private bool _isDetectingWall;
@@ -46,7 +51,6 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isPerformingDash = false;
     [SerializeField] private bool _hasPerformedDash;
 
-    [SerializeField] private bool _canDoubleJump;
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
@@ -145,6 +149,11 @@ public class Player : MonoBehaviour
             _hasPerformedDoubleJump = false;
         }
 
+        if (_wasInAir && _hasPerformedFirstJump && _rigidbody.velocity.y < 1)
+        {
+            _hasPerformedFirstJump = false;
+        }
+
         //resetting after dash
         if (_hasPerformedDash && _isGrounded)
         {
@@ -191,7 +200,7 @@ public class Player : MonoBehaviour
 
     private void HandleInAirState()
     {
-        if (!_canDoubleJump && !_hasPerformedDoubleJump)
+        if (!_hasPerformedDoubleJump)
         {
             _canDoubleJump = true;
         }
@@ -243,6 +252,7 @@ public class Player : MonoBehaviour
             _rigidbody.AddForce(groundJumpVelocity, ForceMode2D.Impulse);
 
             _isAttemptingJump = false;
+            _hasPerformedFirstJump = true;
         }
     }
 
@@ -257,13 +267,21 @@ public class Player : MonoBehaviour
 
     private void TryApplyInAirJump()
     {
-        if (_isAttemptingJump && _canDoubleJump)
+        if (_isAttemptingJump && _canDoubleJump && _hasPerformedFirstJump)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
-            Vector2 airJumpVelocity = new Vector2(_rigidbody.velocity.x, _airJumpForce);
-            _rigidbody.AddForce(airJumpVelocity, ForceMode2D.Impulse);
+            Vector2 airDoubleJumpVelocity = new Vector2(_rigidbody.velocity.x, _airDoubleJumpForce);
+            _rigidbody.AddForce(airDoubleJumpVelocity, ForceMode2D.Impulse);
             _canDoubleJump = false;
             _hasPerformedDoubleJump = true;
+            _isAttemptingJump = false;
+        }
+        else if (_isAttemptingJump && _canDoubleJump && !_hasPerformedFirstJump)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
+            Vector2 airFirstJumpVelocity = new Vector2(_rigidbody.velocity.x, _airFirstJumpForce);
+            _rigidbody.AddForce(airFirstJumpVelocity, ForceMode2D.Impulse);
+            _hasPerformedFirstJump = true;
             _isAttemptingJump = false;
         }
         else
