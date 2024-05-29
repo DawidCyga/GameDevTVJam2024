@@ -394,6 +394,9 @@ public class Player : MonoBehaviour
         _hasPerformedDash = true;
     }
 
+    public bool IsMoving() => _isMoving;
+    public bool IsGrounded() => _isGrounded;
+
     public bool IsDetectingWall() => _isDetectingWall;
 
     private void OnDrawGizmos()
