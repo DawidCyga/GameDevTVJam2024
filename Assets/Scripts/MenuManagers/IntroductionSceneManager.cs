@@ -19,6 +19,10 @@ public class IntroductionSceneManager : MonoBehaviour
     [Space]
     [SerializeField] private float _timeToShowNextButton;
 
+    [Header("Fade transition configuration")]
+    [SerializeField] private float _fadeInDuration;
+    [SerializeField] private float _fadeOutDuration;
+
     [Header("Cache References")]
     [SerializeField] private TextWriter _textWriter;
     [SerializeField] private GameObject _textInteractionButtonObject;
@@ -33,7 +37,7 @@ public class IntroductionSceneManager : MonoBehaviour
         _textInteractionButtonObject.SetActive(false);
 
         _textWriter.OnAllParagraphsTyped += TextWriter_OnAllParagraphsTyped;
-        _textWriter.StartTyping(_textParagraphs, false);
+        FadeTransitionHandler.Instance.FadeIn(_fadeInDuration, StartTypingIntroduction);
     }
 
     private void Update()
@@ -50,9 +54,12 @@ public class IntroductionSceneManager : MonoBehaviour
 
     private void TextWriter_OnAllParagraphsTyped(object sender, EventArgs e)
     {
-        _textInteractionButton.UpdateSelf(_startGameButtonText, StartGame);
+        _textInteractionButton.UpdateSelf(_startGameButtonText, StartSceneTransitionSequence);
     }
 
+    private void StartTypingIntroduction() => _textWriter.StartTyping(_textParagraphs, false);
+
+    private void StartSceneTransitionSequence() => FadeTransitionHandler.Instance.FadeOut(_fadeOutDuration, StartGame);
 
     private void StartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 

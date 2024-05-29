@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class WaveSet
 {
+    [SerializeField] private string _waveSetName;
+
     [SerializeField] private WaveToSpawn[] _waves;
 
     [SerializeField] private Transform[] _spawnPoints;
@@ -22,6 +24,8 @@ public class WaveSet
 [Serializable]
 public class WaveToSpawn
 {
+    [SerializeField] private string _waveName;
+
     [field: SerializeField] public List<EnemyType> EnemyTypeList { get; private set; } = new List<EnemyType>();
 
     [field: SerializeField] public float TimeBetweenEnemySpawns;

@@ -46,12 +46,11 @@ public class MainMenuStateManager : MonoBehaviour
             {MainMenuState.Credits, _creditsContainer }
         };
 
-
         _mainMenuState = MainMenuState.MainMenu;
 
         _startButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
         });
         _optionsButton.onClick.AddListener(() =>
         {
@@ -78,6 +77,12 @@ public class MainMenuStateManager : MonoBehaviour
         {
             ChangeState();
         });
+    }
+
+    //To be extracted into SceneManager class if time allows
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void ChangeState()
