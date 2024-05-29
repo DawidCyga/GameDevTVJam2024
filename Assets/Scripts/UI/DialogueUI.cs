@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Pipes;
 using UnityEngine;
 
 public class DialogueUI : MonoBehaviour
@@ -12,14 +13,15 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject _dialogueUIContainer;
     [SerializeField] private DialogueManager _dialogueManager;
 
+    [SerializeField] private GameObject _portraitFirst;
+    [SerializeField] private GameObject _portraitSecond;
+
     private TextInteractionButton _textInteractionButton;
 
     private void Awake()
     {
         _textInteractionButton = GetComponentInChildren<TextInteractionButton>();
-
         _dialogueUIContainer.SetActive(false);
-
     }
     private void Start()
     {
@@ -32,12 +34,13 @@ public class DialogueUI : MonoBehaviour
     private void DialogueManager_OnStartNewDialogue(object sender, System.EventArgs e)
     {
         _dialogueUIContainer?.SetActive(true);
-
     }
 
-    private void DialogueManager_OnStartedNewParagraph(object sender, System.EventArgs e)
+    private void DialogueManager_OnStartedNewParagraph(object sender, DialogueManager.OnStartedNewParagraphEventArgs e)
     {
+        Debug.Log("Started new paragraph");
         _textInteractionButton.UpdateSelf(_forwardText, _dialogueManager.FinishTypingCurrentParagraph);
+        UpdatePortraitsDisplay(e.CurrentDialogueSpeaker);
     }
 
     private void DialogueManager_OnSingleParagraphTyped(object sender, System.EventArgs e)
@@ -48,6 +51,24 @@ public class DialogueUI : MonoBehaviour
     private void DialogueManager_OnLastParagraphTyped(object sender, System.EventArgs e)
     {
         _textInteractionButton.UpdateSelf(_finishButtonText, Hide);
+    }
+
+    private void UpdatePortraitsDisplay(int numberPortraitToDisplay)
+    {
+        switch (numberPortraitToDisplay)
+        {
+            case 1:
+                _portraitFirst.SetActive(true);
+                _portraitSecond.SetActive(false);
+                break;
+            case 2:
+                _portraitFirst.SetActive(false);
+                _portraitSecond.SetActive(true);
+                break;
+            default:
+                Debug.LogError("Invalid speaker number provided");
+                break;
+        }
     }
 
     private void Hide()

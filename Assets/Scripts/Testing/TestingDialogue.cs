@@ -8,7 +8,7 @@ public class TestingDialogue : MonoBehaviour
     public static TestingDialogue Instance {  get; private set; }
 
     public event EventHandler<OnTimeToDisplayDialogueEventArgs> OnTimeToStartDialogue;
-    public class OnTimeToDisplayDialogueEventArgs { public int DialogueIdentifier { get; set; } }
+    public class OnTimeToDisplayDialogueEventArgs { public int DialogueIndex { get; set; } }
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class TestingDialogue : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
-            OnTimeToStartDialogue?.Invoke(this, new OnTimeToDisplayDialogueEventArgs { DialogueIdentifier = 0});
+            OnTimeToStartDialogue?.Invoke(this, new OnTimeToDisplayDialogueEventArgs { DialogueIndex = 0});
         }
     }
 }
