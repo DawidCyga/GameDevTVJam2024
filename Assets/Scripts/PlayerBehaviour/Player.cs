@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             _hasPerformedDoubleJump = false;
         }
 
-        if (_wasInAir && _hasPerformedFirstJump && _rigidbody.velocity.y < 1)
+        if (_hasPerformedFirstJump && _rigidbody.velocity.y < 1)
         {
             _hasPerformedFirstJump = false;
         }
