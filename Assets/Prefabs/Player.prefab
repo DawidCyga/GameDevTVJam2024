@@ -145,7 +145,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
-  _groundCheckSize: {x: 0.98, y: 0.54}
+  _groundCheckSize: {x: 0.98, y: 0.25}
   _groundCheckTransform: {fileID: 6761339418212497266}
   _wallCheckDistance: 0.5
   _wallCheckTransform: {fileID: 3402758051426249765}
