@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -46,6 +47,10 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _wasInAir;
     //wallCheck bool
     [SerializeField] private bool _isDetectingWall;
+    //Dropping Box ability
+    [SerializeField] private bool _isAttemptingDropBox;
+    [SerializeField] private bool _hasDroppedBox;
+    [Space]
     //dash
     [SerializeField] private bool _isAttemptingDash;
     [SerializeField] private bool _isPerformingDash = false;
@@ -54,6 +59,7 @@ public class Player : MonoBehaviour
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
+    private DropBoxAbility _dropBoxAbility;
     private DashAbilityVer2 _dashAbilityVer2;
 
     private enum PlayerState
@@ -76,6 +82,7 @@ public class Player : MonoBehaviour
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
+        _dropBoxAbility = GetComponent<DropBoxAbility>();
         _dashAbilityVer2 = GetComponent<DashAbilityVer2>();
 
         _playerState = PlayerState.Grounded;
@@ -86,7 +93,36 @@ public class Player : MonoBehaviour
         PlayerInputHandler.Instance.OnRegisterMoveInputNormalized += PlayerInputHandler_OnRegisterMoveInputNormalized;
         PlayerInputHandler.Instance.OnJumpButtonPressed += PlayerInputHandler_OnJumpButtonPressed;
         PlayerInputHandler.Instance.OnJumpButtonReleased += PlayerInputHandler_OnJumpButtonReleased;
+        PlayerInputHandler.Instance.OnDropBoxButtonPressed += PlayerInputHandler_OnDropBoxButtonPressed;
+        PlayerInputHandler.Instance.OnDropBoxButtonReleased += PlayerInputHander_OnDropBoxButtonReleased;
         PlayerInputHandler.Instance.OnDashButtonPressed += PlayerInputHandler_OnDashButtonPressed;
+    }
+
+    private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
+    {
+        _moveDirection = e.DirectionInput;
+    }
+
+    private void PlayerInputHandler_OnJumpButtonPressed(object sender, System.EventArgs e)
+    {
+        _isAttemptingJump = true;
+    }
+
+    private void PlayerInputHandler_OnJumpButtonReleased(object sender, System.EventArgs e)
+    {
+        _isCancellingJump = true;
+    }
+
+    private void PlayerInputHandler_OnDropBoxButtonPressed(object sender, EventArgs e)
+    {
+        Debug.Log("Is attempting Drop Box");
+        _isAttemptingDropBox = true;
+    }
+
+    private void PlayerInputHander_OnDropBoxButtonReleased(object sender, EventArgs e)
+    {
+        Debug.Log("No longer attempting Drop Box");
+        _isAttemptingDropBox = false;
     }
 
     private void PlayerInputHandler_OnDashButtonPressed(object sender, EventArgs e)
@@ -154,7 +190,11 @@ public class Player : MonoBehaviour
             _hasPerformedFirstJump = false;
         }
 
-        //resetting after dash
+        if (_hasDroppedBox && _rigidbody.velocity.y < 1)
+        {
+            _hasDroppedBox = false;
+        }
+
         if (_hasPerformedDash && _isGrounded)
         {
             _hasPerformedDash = false;
@@ -173,10 +213,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void TryUseDropBoxAbility()
+    {
+        if (_hasDroppedBox) return;
+        if (!_isAttemptingDropBox) return;
+        if (_hasPerformedDoubleJump) return;
+        if (!_isAttemptingJump) return;
+
+        Debug.Log("Successfully dropped box");
+        _dropBoxAbility.TryDropKillingBox();
+        _hasDroppedBox = true;
+    }
+
     private void TryUseDashAbility(bool isGrounded)
     {
-        if (_hasPerformedDash) return;
-        if (!_isAttemptingDash) return;
+        if (_hasPerformedDash || !_isAttemptingDash) return;
 
         bool canDash = !_isDetectingWall ||
                        (_moveDirection.x > 0 && _lastDetectedWallPosition.x < transform.position.x) ||
@@ -205,7 +256,9 @@ public class Player : MonoBehaviour
             _canDoubleJump = true;
         }
 
+        TryUseDropBoxAbility();
         TryUseDashAbility(_isGrounded);
+
 
         if (_isGrounded)
         {
@@ -339,21 +392,6 @@ public class Player : MonoBehaviour
     {
         _isPerformingDash = false;
         _hasPerformedDash = true;
-    }
-
-    private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
-    {
-        _moveDirection = e.DirectionInput;
-    }
-
-    private void PlayerInputHandler_OnJumpButtonPressed(object sender, System.EventArgs e)
-    {
-        _isAttemptingJump = true;
-    }
-
-    private void PlayerInputHandler_OnJumpButtonReleased(object sender, System.EventArgs e)
-    {
-        _isCancellingJump = true;
     }
 
     public bool IsDetectingWall() => _isDetectingWall;

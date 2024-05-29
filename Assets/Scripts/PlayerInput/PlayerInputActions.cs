@@ -55,7 +55,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EnableDropTrap"",
+                    ""name"": ""DropBox"",
                     ""type"": ""Button"",
                     ""id"": ""0cc615b9-f5e4-4489-8019-c7ae703f16fd"",
                     ""expectedControlType"": ""Button"",
@@ -345,7 +345,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnableDropTrap"",
+                    ""action"": ""DropBox"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -356,7 +356,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnableDropTrap"",
+                    ""action"": ""DropBox"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -392,7 +392,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_EnableDropTrap = m_Player.FindAction("EnableDropTrap", throwIfNotFound: true);
+        m_Player_DropBox = m_Player.FindAction("DropBox", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
@@ -458,7 +458,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_EnableDropTrap;
+    private readonly InputAction m_Player_DropBox;
     private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
@@ -467,7 +467,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        public InputAction @EnableDropTrap => m_Wrapper.m_Player_EnableDropTrap;
+        public InputAction @DropBox => m_Wrapper.m_Player_DropBox;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -487,9 +487,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @EnableDropTrap.started += instance.OnEnableDropTrap;
-            @EnableDropTrap.performed += instance.OnEnableDropTrap;
-            @EnableDropTrap.canceled += instance.OnEnableDropTrap;
+            @DropBox.started += instance.OnDropBox;
+            @DropBox.performed += instance.OnDropBox;
+            @DropBox.canceled += instance.OnDropBox;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -506,9 +506,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @EnableDropTrap.started -= instance.OnEnableDropTrap;
-            @EnableDropTrap.performed -= instance.OnEnableDropTrap;
-            @EnableDropTrap.canceled -= instance.OnEnableDropTrap;
+            @DropBox.started -= instance.OnDropBox;
+            @DropBox.performed -= instance.OnDropBox;
+            @DropBox.canceled -= instance.OnDropBox;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -534,7 +534,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnEnableDropTrap(InputAction.CallbackContext context);
+        void OnDropBox(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -71,6 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2824604991377171652}
+  - component: {fileID: 135594492316774946}
   - component: {fileID: 8912735473506751436}
   - component: {fileID: 2175525121413230804}
   - component: {fileID: 8237122310355553107}
@@ -100,8 +101,30 @@ Transform:
   - {fileID: 3402758051426249765}
   - {fileID: 7716719921987405710}
   - {fileID: 1687828257087510755}
+  - {fileID: 9162124888312986249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135594492316774946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696077454691015555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4c7e87b4114664781f4dcfe410b89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _killingBox: {fileID: 0}
+  _killingBoxSpawnPoint: {fileID: 0}
+  _KillingBoxesParent: {fileID: 0}
+  _minDistanceFromGround: 0
+  _canDropBox: 0
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  _dropForce: 0
 --- !u!114 &8912735473506751436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +183,8 @@ MonoBehaviour:
   _isCancellingJump: 0
   _wasInAir: 0
   _isDetectingWall: 0
+  _isAttemptingDropBox: 0
+  _hasDroppedBox: 0
   _isAttemptingDash: 0
   _isPerformingDash: 0
   _hasPerformedDash: 0
@@ -409,3 +434,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f2e8d77679ed54dab01991a71ae49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9015226158943814100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9162124888312986249}
+  m_Layer: 0
+  m_Name: KillingBoxSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9162124888312986249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9015226158943814100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2824604991377171652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

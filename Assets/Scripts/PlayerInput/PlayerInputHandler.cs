@@ -14,6 +14,9 @@ public class PlayerInputHandler : MonoBehaviour
     public event EventHandler OnJumpButtonPressed;
     public event EventHandler OnJumpButtonReleased;
 
+    public event EventHandler OnDropBoxButtonPressed;
+    public event EventHandler OnDropBoxButtonReleased;
+
     public event EventHandler OnDashButtonPressed;
 
     public event EventHandler OnPauseButtonPressed;
@@ -42,6 +45,9 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInputActions.Player.Jump.performed += RegisterJumpInput;
         _playerInputActions.Player.Jump.canceled += RegisterJumpInput;
 
+        _playerInputActions.Player.DropBox.performed += RegisterDropBoxInput;
+        _playerInputActions.Player.DropBox.canceled += RegisterDropBoxInput;
+
         _playerInputActions.Player.Dash.performed += RegisterDashInput;
 
         _playerInputActions.Player.Pause.performed += RegisterPauseInput;
@@ -55,6 +61,9 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInputActions.Player.Jump.performed -= RegisterJumpInput;
         _playerInputActions.Player.Jump.canceled -= RegisterJumpInput;
 
+        _playerInputActions.Player.DropBox.performed -= RegisterDropBoxInput;
+        _playerInputActions.Player.DropBox.canceled -= RegisterDropBoxInput;
+
         _playerInputActions.Player.Dash.performed -= RegisterDashInput;
 
         _playerInputActions.Player.Pause.performed -= RegisterPauseInput;
@@ -65,7 +74,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void RegisterMoveInputNormalized(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         Vector2 moveDirectionInputNormalized = obj.ReadValue<Vector2>().normalized;
-            OnRegisterMoveInputNormalized?.Invoke(this, new OnRegisterMoveInputNormalizedEventArgs { DirectionInput = moveDirectionInputNormalized });
+        OnRegisterMoveInputNormalized?.Invoke(this, new OnRegisterMoveInputNormalizedEventArgs { DirectionInput = moveDirectionInputNormalized });
     }
 
     private void RegisterJumpInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -77,6 +86,18 @@ public class PlayerInputHandler : MonoBehaviour
         else if (obj.canceled)
         {
             OnJumpButtonReleased?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    private void RegisterDropBoxInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if (obj.performed)
+        {
+            OnDropBoxButtonPressed?.Invoke(this, EventArgs.Empty);
+        }
+        else if (obj.canceled)
+        {
+            OnDropBoxButtonReleased?.Invoke(this, EventArgs.Empty);
         }
     }
 

@@ -811,6 +811,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 242703719}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._sectionName
+      value: First Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._dialogueName
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -844,11 +852,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[1]._speakerNumber
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[2]._speakerNumber
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390797596576312639, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: m_LocalPosition.x

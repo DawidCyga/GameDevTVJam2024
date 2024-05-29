@@ -7,6 +7,7 @@ using UnityEngine;
 [Serializable]
 public class DialogueSection
 {
+    [SerializeField] private string _sectionName;
     [SerializeField] private SingleParagraph[] _textParagraphs;
 
     public string[] GetTextParagraphsContents()

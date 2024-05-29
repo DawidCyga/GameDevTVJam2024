@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EnableDropTrap",
+                    "name": "DropBox",
                     "type": "Button",
                     "id": "0cc615b9-f5e4-4489-8019-c7ae703f16fd",
                     "expectedControlType": "Button",
@@ -323,7 +323,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnableDropTrap",
+                    "action": "DropBox",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -334,7 +334,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnableDropTrap",
+                    "action": "DropBox",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

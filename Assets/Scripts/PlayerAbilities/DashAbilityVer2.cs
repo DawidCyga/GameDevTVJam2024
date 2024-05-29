@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DashAbilityVer2 : MonoBehaviour
 {
+    [Header("Dash Setup")]
     [SerializeField] private float _dashSpeed;
 
     [SerializeField] private float _dashDistance = 5;
