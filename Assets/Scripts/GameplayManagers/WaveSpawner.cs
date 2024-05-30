@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class Wave
 {
+    [SerializeField] private string _waveName;
+
     [SerializeField] private List<SpawnPoint> _spawnPointList;
     [SerializeField] private float _timeTillStartWave;
 
@@ -17,6 +19,8 @@ public class Wave
 [Serializable]
 public class SpawnPoint
 {
+    [SerializeField] private string _pointName;
+
     [SerializeField] private Transform _positionTransform;
 
     [SerializeField] private List<EnemyToSpawn> _enemyToSpawnList;
@@ -29,6 +33,8 @@ public class SpawnPoint
 [Serializable]
 public class EnemyToSpawn
 {
+    [SerializeField] private string _enemyName;
+
     [SerializeField] private Transform _enemyPrefab;
     [SerializeField] private float _timeToSpawn;
 
