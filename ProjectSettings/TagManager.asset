@@ -15,7 +15,7 @@ TagManager:
   - Ground
   - Enemy
   - PlayerIgnore
-  - 
+  - Collision
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2062350825
+    locked: 0
+  - name: Collision
+    uniqueID: 3585565801
     locked: 0
