@@ -29,5 +29,6 @@ public class TextInteractionButton : MonoBehaviour
         {
             buttonFunctionCallBack();
         });
+        
     }
 }

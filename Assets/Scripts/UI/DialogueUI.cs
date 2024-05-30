@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Pipes;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class DialogueUI : MonoBehaviour
 {
+    public static DialogueUI Instance { get; private set; }
+
     [SerializeField] private string _nextButtonText;
     [SerializeField] private string _forwardText;
     [SerializeField] private string _finishButtonText;
@@ -18,8 +21,12 @@ public class DialogueUI : MonoBehaviour
 
     private TextInteractionButton _textInteractionButton;
 
+    public event EventHandler OnHide;
+
     private void Awake()
     {
+        Instance = this;
+
         _textInteractionButton = GetComponentInChildren<TextInteractionButton>();
         _dialogueUIContainer.SetActive(false);
     }
@@ -38,7 +45,6 @@ public class DialogueUI : MonoBehaviour
 
     private void DialogueManager_OnStartedNewParagraph(object sender, DialogueManager.OnStartedNewParagraphEventArgs e)
     {
-        Debug.Log("Started new paragraph");
         _textInteractionButton.UpdateSelf(_forwardText, _dialogueManager.FinishTypingCurrentParagraph);
         UpdatePortraitsDisplay(e.CurrentDialogueSpeaker);
     }
@@ -74,6 +80,8 @@ public class DialogueUI : MonoBehaviour
     private void Hide()
     {
         _dialogueUIContainer.SetActive(false);
+
+        OnHide?.Invoke(this, EventArgs.Empty);
     }
 
 }

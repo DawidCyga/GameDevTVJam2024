@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
     private DropBoxAbility _dropBoxAbility;
-    private DashAbilityVer2 _dashAbilityVer2;
+    private DashAbility _dashAbilityVer2;
 
     private enum PlayerState
     {
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _dropBoxAbility = GetComponent<DropBoxAbility>();
-        _dashAbilityVer2 = GetComponent<DashAbilityVer2>();
+        _dashAbilityVer2 = GetComponent<DashAbility>();
 
         _playerState = PlayerState.Grounded;
     }

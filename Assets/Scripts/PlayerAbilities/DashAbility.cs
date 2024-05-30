@@ -5,54 +5,33 @@ using UnityEngine;
 
 public class DashAbility : MonoBehaviour
 {
+    [Header("Dash Setup")]
     [SerializeField] private float _dashSpeed;
-    [SerializeField] private float _dashDuration;
+
+    [SerializeField] private float _dashDistance = 5;
+
     [SerializeField] private float _timeBetweenDashes;
+    [SerializeField] private float _timeSinceLastUsedDash;
+
     [SerializeField] private float _distanceBetweenTrailElements = 1;
 
-    private bool _canDash;
-    private bool _isDashing = false;
-    private float _timeSinceLastUsedDash;
-    private float _timeSinceStartedDash;
-    private Vector2 _dashDirection;
-    private Rigidbody2D _rigidbody;
-    private Action _finishPerformingDash;
-    private Vector3 _lastTrailPosition;
+    [SerializeField] private LayerMask _whatIsWall;
 
-    [Header("Cache References")]
-    private Player _player;
+    private bool _canDash;
 
     [Header("Poisonous Trail Parameters")]
     [SerializeField] private Transform _poisonousTrailElement;
     [SerializeField] private Transform _poisonousTrailParent;
     [SerializeField] private Queue<Transform> _poisonousTrailElementsQueue = new Queue<Transform>();
 
+    private Rigidbody2D _rigidbody;
+
     private void Awake()
     {
-        _timeSinceLastUsedDash = 0;
-        _player = GetComponent<Player>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        UpdateCanDash();
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isDashing)
-        {
-            PerformDash();
-        }
-    }
-
-    private void UpdateCanDash()
-    {
-        _canDash = (_timeSinceLastUsedDash > _timeBetweenDashes);
-        _timeSinceLastUsedDash += Time.deltaTime;
-    }
-
-    public bool TryPerformDash(Vector2 direction, Rigidbody2D rigidbody, bool isGrounded, Action finishPerformingDash)
+    public bool TryPerformDash(Vector2 direction, bool isGrounded, Action finishPerformingDash)
     {
         if (_canDash)
         {
@@ -66,7 +45,7 @@ public class DashAbility : MonoBehaviour
                 return false;
             }
 
-            StartCoroutine(DashRoutine(direction, rigidbody, finishPerformingDash));
+            StartCoroutine(DashRoutine(direction, finishPerformingDash));
             return true;
         }
         else
@@ -76,52 +55,60 @@ public class DashAbility : MonoBehaviour
         }
     }
 
-    private IEnumerator DashRoutine(Vector2 direction, Rigidbody2D rigidbody, Action finishPerformingDash)
+    private IEnumerator DashRoutine(Vector2 direction, Action finishPerformingDash)
     {
-        _dashDirection = direction.normalized;
-        _rigidbody = rigidbody;
-        _finishPerformingDash = finishPerformingDash;
-        _isDashing = true;
-        _timeSinceStartedDash = 0;
-        _lastTrailPosition = transform.position;
+        Vector3 startPosition = transform.position;
+        Vector3 dashDelta = new Vector3(direction.x, direction.y).normalized * _dashDistance;
+        Vector3 targetPosition = startPosition + dashDelta;
 
-        yield return new WaitForSeconds(_dashDuration);
+        RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, _dashDistance, _whatIsWall);
+        if (hit.collider != null)
+        {
+            targetPosition = hit.point;
+        }
 
-        _isDashing = false;
-        _rigidbody.velocity = Vector2.zero;
+        float timeSinceStartedDash = 0f;
+        float dashDuration = _dashDistance / _dashSpeed;
+
+        while (timeSinceStartedDash < dashDuration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, timeSinceStartedDash / dashDuration);
+            timeSinceStartedDash += Time.deltaTime;
+
+            yield return null;
+        }
+
+        float totalDistance = (targetPosition - startPosition).magnitude;
+        int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
+
+        for (int i = 1; i < numberOfSteps; i++)
+        {
+            float t = (float)i / numberOfSteps;
+            Vector3 normalizedPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            Transform poisonousTrailElementInstance = Instantiate(_poisonousTrailElement, normalizedPosition, Quaternion.identity, _poisonousTrailParent);
+            _poisonousTrailElementsQueue.Enqueue(poisonousTrailElementInstance);
+        }
+
+        while (_poisonousTrailElementsQueue.Count > numberOfSteps - 1)
+        {
+            Transform poisonousTrailInstanceToDelete = _poisonousTrailElementsQueue.Dequeue();
+            GameObject.Destroy(poisonousTrailInstanceToDelete.gameObject);
+            yield return null;
+        }
+
+        _rigidbody.MovePosition(targetPosition);
         _timeSinceLastUsedDash = 0;
-        Debug.Log("Finished dash");
-        _finishPerformingDash();
+        finishPerformingDash();
     }
 
-    private void PerformDash()
+    private void Update()
     {
-        _timeSinceStartedDash += Time.fixedDeltaTime;
-        Vector2 dashVelocity = _dashSpeed * _dashDirection;
-        _rigidbody.velocity = dashVelocity;
-
-        // Lerp the position to ensure smooth movement
-        Vector3 newPosition = Vector3.Lerp(transform.position, transform.position + (Vector3)_dashDirection * _dashSpeed * Time.fixedDeltaTime, 0.5f);
-        transform.position = newPosition;
-
-        // Check if we need to instantiate a new trail element
-        if ((transform.position - _lastTrailPosition).magnitude >= _distanceBetweenTrailElements)
-        {
-            InstantiatePoisonousTrailElement(transform.position);
-            _lastTrailPosition = transform.position;
-        }
-
-        if (_player.IsDetectingWall())
-        {
-            Debug.Log("Broken on wall detection");
-            _isDashing = false;
-            _rigidbody.velocity = Vector2.zero;
-        }
+        UpdateCanDash();
     }
 
-    private void InstantiatePoisonousTrailElement(Vector3 position)
+    private void UpdateCanDash()
     {
-        Transform poisonousTrailElementInstance = Instantiate(_poisonousTrailElement, position, Quaternion.identity, _poisonousTrailParent);
-        _poisonousTrailElementsQueue.Enqueue(poisonousTrailElementInstance);
+        _canDash = (_timeSinceLastUsedDash > _timeBetweenDashes);
+        _timeSinceLastUsedDash += Time.deltaTime;
     }
 }

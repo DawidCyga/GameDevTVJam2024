@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private DialogueSection[] _dialogueSections;
 
+    [Header("For debugging only")]
     [SerializeField] private int _currentDialogueSectionIndex;
     [SerializeField] private int _currentDialogueParagraphIndex;
     [SerializeField] private int _currentDialogueSpeaker;
@@ -55,18 +56,13 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        TestingDialogue.Instance.OnTimeToStartDialogue += TestingDialogue_OnTimeToStartDialogue;
+        GameStateManager.Instance.OnTimeToStartDialogue += GameStateManager_OnTimeToStartDialogue;
         TextWriter.Instance.OnStartedTypingNewParagraph += TextWriter_OnStartedTypingNewParagraph;
         TextWriter.Instance.OnSingleDialogueParagraphTyped += TextWriter_OnSingleDialogueParagraphTyped;
         TextWriter.Instance.OnLastDialogueParagraphTyped += TextWriter_OnLastDialogueParagraphTyped;
     }
 
-    private void TextWriter_OnLastDialogueParagraphTyped(object sender, EventArgs e)
-    {
-        OnLastParagraphTyped?.Invoke(sender, EventArgs.Empty);
-    }
-
-    private void TestingDialogue_OnTimeToStartDialogue(object sender, TestingDialogue.OnTimeToDisplayDialogueEventArgs e)
+    private void GameStateManager_OnTimeToStartDialogue(object sender, GameStateManager.OnTimeToStartDialogueEventArgs e)
     {
         _currentDialogueSectionIndex = e.DialogueIndex;
         _currentDialogueParagraphIndex = 0;
@@ -84,6 +80,11 @@ public class DialogueManager : MonoBehaviour
     private void TextWriter_OnSingleDialogueParagraphTyped(object sender, EventArgs e)
     {
         OnSingleParagraphTyped?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void TextWriter_OnLastDialogueParagraphTyped(object sender, EventArgs e)
+    {
+        OnLastParagraphTyped?.Invoke(sender, EventArgs.Empty);
     }
 
     private void UpdateCurrentDialogueSpeaker()
