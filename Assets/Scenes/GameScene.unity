@@ -74163,6 +74163,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.68728256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95190907
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.03276062
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.09508562
+      objectReference: {fileID: 0}
     - target: {fileID: 4554333704103979733, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -114660,7 +114676,7 @@ MonoBehaviour:
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 0}
-        _timeToSpawn: 0
+        _timeToSpawn: -0.1
       - _enemyName: Enemy 2
         _enemyPrefab: {fileID: 0}
         _timeToSpawn: 0

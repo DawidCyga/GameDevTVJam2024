@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3402758051426249765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallCheckTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7716719921987405710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PoisonousTrailSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,11 +74,12 @@ GameObject:
   - component: {fileID: 135594492316774946}
   - component: {fileID: 8912735473506751436}
   - component: {fileID: 2175525121413230804}
+  - component: {fileID: 8894977874241477939}
   - component: {fileID: 8237122310355553107}
   - component: {fileID: 8517299011496925393}
   - component: {fileID: 8733880878771342468}
   - component: {fileID: 8797978274195364575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,12 +121,12 @@ MonoBehaviour:
   _killingBox: {fileID: 8462790502835068995, guid: d64739c5de7fc944a81a3badfa767c06, type: 3}
   _killingBoxSpawnPoint: {fileID: 9162124888312986249}
   _KillingBoxesParent: {fileID: 0}
-  _minDistanceFromGround: 1.3
+  _minDistanceFromGround: 1.25
   _canDropBox: 0
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
-  _dropForce: 1
+  _dropForce: 11
 --- !u!114 &8912735473506751436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,10 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac3929284b47854d8b19ddc128fdb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashSpeed: 50
-  _dashDistance: 6
+  _dashSpeed: 36
+  _dashDistance: 5.5
   _timeBetweenDashes: 0
-  _timeSinceLastUsedDash: 0
+  _timeSinceLastUsedDash: 21.519348
   _distanceBetweenTrailElements: 1
   _whatIsWall:
     serializedVersion: 2
@@ -160,12 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e093e5c569b3704990c9baf5deb5b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundMoveSpeed: 20
-  _groundJumpForce: 60
+  _groundMoveSpeed: 18
+  _groundJumpForce: 53
   _inAirHorizontalMoveSpeed: 180
-  _airDoubleJumpForce: 40
-  _airFirstJumpForce: 40
-  _fallingGravityDrag: 300
+  _airDoubleJumpForce: 45
+  _airFirstJumpForce: 53
+  _fallingGravityDrag: 275
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 128
@@ -179,10 +180,10 @@ MonoBehaviour:
   _hasPerformedDoubleJump: 0
   _canDoubleJump: 0
   _isMoving: 0
-  _isGrounded: 0
+  _isGrounded: 1
   _isAttemptingJump: 0
-  _isCancellingJump: 0
-  _wasInAir: 0
+  _isCancellingJump: 1
+  _wasInAir: 1
   _isDetectingWall: 0
   _isAttemptingDropBox: 0
   _hasDroppedBox: 0
@@ -190,6 +191,18 @@ MonoBehaviour:
   _isPerformingDash: 0
   _hasPerformedDash: 0
   _playerState: 0
+--- !u!114 &8894977874241477939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696077454691015555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908495290d37fad4696b69241ff988fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8237122310355553107
 Rigidbody2D:
   serializedVersion: 4
@@ -203,7 +216,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 13
+  m_LinearDrag: 11.7
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -344,7 +357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6761339418212497266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheckTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +390,7 @@ GameObject:
   - component: {fileID: 1687828257087510755}
   - component: {fileID: 4531861246546860686}
   - component: {fileID: 8087737828020179343}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +444,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.035520077}
+  m_Offset: {x: -0.03276062, y: -0.09508562}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -442,7 +455,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0710402}
+  m_Size: {x: 0.68728256, y: 0.95190907}
   m_EdgeRadius: 0
 --- !u!114 &8087737828020179343
 MonoBehaviour:
@@ -465,7 +478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9162124888312986249}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KillingBoxSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
