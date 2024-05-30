@@ -22,7 +22,7 @@ public class PossessedKhukha : PathfinderEnemy
         if (_isInAttackRange && CanSeePlayer())
         {
             Attack();
-            Debug.Log("I attack player");
+            //Debug.Log("I attack player");
         }
        
     }

@@ -22,8 +22,9 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
     [Header("For debugging only")]
     [SerializeField] protected bool _isInAttackRange;
     [SerializeField] private bool _isFacingRight;
+    [SerializeField] private bool _isDead;
 
-    private void Start()
+    protected virtual void Start()
     {
         _target = Player.Instance.transform;
         _isFacingRight = true;
@@ -31,9 +32,13 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
 
     public virtual void TakeDamage()
     {
-        Debug.Log("I got killed");
         //TRIGGER DEATH ANIMATION
-        Destroy(gameObject);
+        if (!_isDead)
+        {
+            WaveSpawner.Instance.DecreaseTotalEnemiesSpawnedCurrentWave();
+            Destroy(gameObject);
+            _isDead = true;
+        }
     }
     public virtual void TryStun(float stunDuration)
     {

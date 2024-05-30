@@ -19,7 +19,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] public GameState _gameState;
 
     private List<int> _clearedWavesIndexList = new List<int>();
-    private int _currentClearedWaveIndex;
+    private int _currentDialogueIndex;
 
     private bool _isGamePaused;
 
@@ -33,7 +33,7 @@ public class GameStateManager : MonoBehaviour
 
         _gameState = GameState.Playing;
 
-        _currentClearedWaveIndex = 0;
+        _currentDialogueIndex = 0;
     }
 
     private void Start()
@@ -76,11 +76,11 @@ public class GameStateManager : MonoBehaviour
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)
     {
-        _currentClearedWaveIndex = e.CurrentWaveIndex;
+        _currentDialogueIndex = e.CurrentWaveIndex;
 
-        if (_clearedWavesIndexList.Contains(_currentClearedWaveIndex))
+        if (_clearedWavesIndexList.Contains(_currentDialogueIndex))
         {
-            if (_currentClearedWaveIndex == _clearedWavesIndexList.Count - 1)
+            if (_currentDialogueIndex == _clearedWavesIndexList.Count - 1)
             {
                 // START WIN GAME
                 HandleStartDialogue();
@@ -88,25 +88,27 @@ public class GameStateManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("Game State Manager already have this state");
                 HandleStartNextWave();
             }
         }
         else
         {
+            Debug.Log("Game State Manager don't yet have this wave. Start dialogue");
             HandleStartDialogue();
-            _clearedWavesIndexList.Add(_currentClearedWaveIndex);
+            _clearedWavesIndexList.Add(_currentDialogueIndex);
         }
     }
 
     private void HandleStartDialogue()
     {
-        OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentClearedWaveIndex });
+        OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
         _gameState = GameState.Dialogue;
     }
 
     private void DialogueUI_OnHide(object sender, EventArgs e)
     {
-        if (_currentClearedWaveIndex == _clearedWavesIndexList.Count - 1)
+        if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount())
         {
             _gameState = GameState.GameWin;
             Debug.Log("Game State Manager start Game Win");

@@ -26,7 +26,7 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
     {
         //die animations
         //sound effects
-        Debug.Log("Player killed");
+        //Debug.Log("Player killed");
         //OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
 }

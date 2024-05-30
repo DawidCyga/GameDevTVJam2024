@@ -114,13 +114,11 @@ public class Player : MonoBehaviour
 
     private void PlayerInputHandler_OnDropBoxButtonPressed(object sender, EventArgs e)
     {
-        Debug.Log("Is attempting Drop Box");
         _isAttemptingDropBox = true;
     }
 
     private void PlayerInputHander_OnDropBoxButtonReleased(object sender, EventArgs e)
     {
-        Debug.Log("No longer attempting Drop Box");
         _isAttemptingDropBox = false;
     }
 
@@ -219,7 +217,6 @@ public class Player : MonoBehaviour
         if (_hasPerformedDoubleJump) return;
         if (!_isAttemptingJump) return;
 
-        Debug.Log("Successfully dropped box");
         _dropBoxAbility.TryDropKillingBox();
         _hasDroppedBox = true;
     }
@@ -359,7 +356,6 @@ public class Player : MonoBehaviour
         {
             _isDetectingWall = true;
             _lastDetectedWallPosition = hit.point;
-            Debug.Log(_lastDetectedWallPosition + " detected wall position");
         }
         else
         {

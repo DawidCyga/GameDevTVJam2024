@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
 
     public enum WaveState
     {
-        Start,
+        Dialogue,
         Break,
         Spawning,
         Fighting,
@@ -70,7 +70,10 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] private float _timeTillEndBreak;
 
+    [SerializeField] private bool _waveIndexIncreasedThisWave;
+
     private List<Coroutine> _activeSpawningRoutines = new List<Coroutine>();
+    private int _completedSpawningRoutinesNumber;
 
 
     public event EventHandler<OnWaveClearedEventArgs> OnWaveCleared;
@@ -83,25 +86,34 @@ public class WaveSpawner : MonoBehaviour
         _currentWaveIndex = 0;
         ResetCurrentWaveIndex();
         _totalEnemiesSpawnedCurrentWave = 0;
-       // ResetTimeTillEndBreak();
-        _currentWaveState = WaveState.Start;
+        _timeTillEndBreak = _waves[_currentWaveIndex].GetTimeTillStartWave();
+        _currentWaveState = WaveState.Dialogue;
+        _completedSpawningRoutinesNumber = 0;
     }
 
     private void ResetCurrentWaveIndex() => _currentWaveIndex = 0;
-    private void ResetTimeTillEndBreak() => _timeTillEndBreak = _waves[_currentWaveIndex].GetTimeTillStartWave();
+    private void ResetTimeTillEndBreak() => _timeTillEndBreak = _waves[_currentWaveIndex + 1].GetTimeTillStartWave();
 
     private void Update()
     {
         switch (_currentWaveState)
         {
-            case WaveState.Start:
-                Debug.Log("Just started level");
+            case WaveState.Dialogue:
                 break;
             case WaveState.Break:
+                if (_currentWaveIndex == _waves.Length)
+                {
+                    return;
+                }
                 CountdownBeforeEndBreak();
+                _waveIndexIncreasedThisWave = false;
+
                 if (_timeTillEndBreak <= 0)
                 {
-                    ResetTimeTillEndBreak();
+                    if (_currentWaveIndex < _waves.Length - 1)
+                    {
+                        ResetTimeTillEndBreak();
+                    }
                     _currentWaveState = WaveState.Spawning;
                 }
                 break;
@@ -122,28 +134,21 @@ public class WaveSpawner : MonoBehaviour
         Wave currentWave = _waves[_currentWaveIndex];
         List<SpawnPoint> currentSpawnPointList = currentWave.GetSpawnPointList();
 
-        ResetSpawnAtPointRoutines();
-
         if (_activeSpawningRoutines.Count == 0)
         {
-            foreach (SpawnPoint spawnPoint in currentWave.GetSpawnPointList())
+            foreach (SpawnPoint spawnPoint in currentSpawnPointList)
             {
                 Coroutine spawnRoutine = StartCoroutine(SpawnAtPointRoutine(spawnPoint));
                 _activeSpawningRoutines.Add(spawnRoutine);
             }
         }
 
-        //TO CHECK
-        //OnAliveSpawnedEnemiesCountChanged?.Invoke(this, EventArgs.Empty);
-    }
-
-    private void ResetSpawnAtPointRoutines()
-    {
-        foreach (Coroutine coroutine in _activeSpawningRoutines)
+        if (_completedSpawningRoutinesNumber == currentSpawnPointList.Count)
         {
-            StopCoroutine(coroutine);
+            Debug.Log("Changed to fighting");
+            ChangeStateToFighting();
         }
-        _activeSpawningRoutines.Clear();
+
     }
 
     private IEnumerator SpawnAtPointRoutine(SpawnPoint spawnPoint)
@@ -169,27 +174,49 @@ public class WaveSpawner : MonoBehaviour
                 yield return null;
             }
         }
+        _completedSpawningRoutinesNumber++;
 
+    }
+
+    private void ChangeStateToFighting()
+    {
+        foreach (Coroutine coroutine in _activeSpawningRoutines)
+        {
+            StopCoroutine(coroutine);
+
+        }
+        _activeSpawningRoutines.Clear();
+        _completedSpawningRoutinesNumber = 0;
         _currentWaveState = WaveState.Fighting;
-
     }
 
     private void WaitForEndOfFight()
     {
         if (_totalEnemiesSpawnedCurrentWave > 0) return;
 
-        _currentWaveIndex++;
-
-        if (_currentWaveIndex < _waves.Length)
+        if (!_waveIndexIncreasedThisWave)
         {
+            _currentWaveIndex++;
+            _waveIndexIncreasedThisWave = true;
+        }
+
+        if (_currentWaveIndex <= _waves.Length)
+        {
+            Debug.Log("On wave cleared");
             OnWaveCleared?.Invoke(this, new OnWaveClearedEventArgs { CurrentWaveIndex = _currentWaveIndex });
+            _currentWaveState = WaveState.Dialogue;
         }
         else
         {
-            // _currentWaveIndex = _waves.Length - 1;
-            Debug.Log("Something went wrong. Current Wave index is is of waves length");
+            Debug.Log("Something went wrong");
+            
         }
     }
 
     public void StartBreakBeforeNextWave() => _currentWaveState = WaveState.Break;
+
+    public void DecreaseTotalEnemiesSpawnedCurrentWave() => _totalEnemiesSpawnedCurrentWave--;
+
+    public int GetTotalWaveCount() => _waves.Length;
+
 }
