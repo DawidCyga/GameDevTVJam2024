@@ -29,7 +29,6 @@ public class PoisonousTrail : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null)
@@ -40,11 +39,9 @@ public class PoisonousTrail : MonoBehaviour
                 {
                     if (_isUnableToKillPlayer) { return; }
                 }
-
                 takeDamage.TakeDamage();
             }
         }
-
     }
 }
 

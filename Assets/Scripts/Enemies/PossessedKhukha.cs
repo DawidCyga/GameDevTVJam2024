@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,57 +6,40 @@ using UnityEngine;
 public class PossessedKhukha : PathfinderEnemy
 {
 
-
-
-
     private void Update()
     {
         _timeSinceLastUpdatedPath += Time.deltaTime;
 
         UpdateInAttackRange();
+        UpdateFaceDirection();
 
         if (NeedsPathUpdate())
         {
-            Debug.Log("Needs path update");
             _timeSinceLastUpdatedPath = 0;
             FindPathToPlayer();
         }
 
         if (_isInAttackRange && CanSeePlayer())
         {
-            // Attack();
+            Attack();
             Debug.Log("I attack player");
         }
-
-        UpdateFaceDirection();
+       
     }
 
-    protected override void UpdateInAttackRange()
-    {
-        base.UpdateInAttackRange();
-    }
+    protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
 
-    protected override bool NeedsPathUpdate()
-    {
-        return base.NeedsPathUpdate();
-    }
+    protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
 
-    protected override void FindPathToPlayer()
-    {
-        base.FindPathToPlayer();
-    }
+    protected override bool NeedsPathUpdate() =>    base.NeedsPathUpdate();
 
-    protected override bool CanSeePlayer()
-    {
-        return base.CanSeePlayer();
-    }
-
+    protected override void FindPathToPlayer() => base.FindPathToPlayer();
     
-
-    protected override void UpdateFaceDirection()
+    protected override bool CanSeePlayer() => base.CanSeePlayer();
+    
+    private void Attack()
     {
-        base.UpdateFaceDirection();
+        PlayerHitBox.Instance.TakeDamage();
     }
-
     
 }

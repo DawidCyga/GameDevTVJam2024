@@ -31,7 +31,9 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
 
     public virtual void TakeDamage()
     {
-        // START DEATH SEQUENCE
+        Debug.Log("I got killed");
+        //TRIGGER DEATH ANIMATION
+        Destroy(gameObject);
     }
     public virtual void TryStun(float stunDuration)
     {
@@ -42,13 +44,10 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
 
     protected virtual bool CanSeePlayer()
     {
-        Debug.Log("Checking");
         if (Physics2D.Raycast(transform.position, (_target.position - transform.position).normalized, _sightLength, _whatIsObstacle))
         {
-            Debug.Log("Cannot see");
             return false;
         }
-        Debug.Log("Can see");
         return true;
     }
 

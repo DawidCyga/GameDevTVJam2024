@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -216,7 +215,7 @@ public class Player : MonoBehaviour
     private void TryUseDropBoxAbility()
     {
         if (_hasDroppedBox) return;
-        if (!_isAttemptingDropBox) return;
+       // if (!_isAttemptingDropBox) return;
         if (_hasPerformedDoubleJump) return;
         if (!_isAttemptingJump) return;
 

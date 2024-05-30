@@ -26,10 +26,8 @@ public abstract class PathfinderEnemy : Enemy
     }
     private void FollowPath()
     {
-        Debug.Log("Attempting to start following path");
         if (_moveToPlayerRoutine != null)
         {
-            Debug.Log("Previous path stopped");
             StopCoroutine(_moveToPlayerRoutine);
             _moveToPlayerRoutine = null;
         }
@@ -53,7 +51,6 @@ public abstract class PathfinderEnemy : Enemy
             {
                 if (CanSeePlayer() && _isInAttackRange)
                 {
-                    Debug.Log("Yielded break");
                     yield break;
                 }
 

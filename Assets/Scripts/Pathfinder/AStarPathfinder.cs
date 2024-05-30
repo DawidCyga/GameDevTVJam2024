@@ -36,15 +36,12 @@ public class AStarPathfinder : MonoBehaviour
 
         _gridManager = new GridManager(_groundTilemap.size.x, _groundTilemap.size.y, _collisionsTilemap, _groundTilemap.origin);
 
-
         _openList = new List<PathNode>();
         _closedHashSet = new HashSet<PathNode>();
-
 
         PathNode startNode = _gridManager.GetNodeAtTilemapGridPosition(startGridPosition);
         PathNode targetNode = _gridManager.GetNodeAtTilemapGridPosition(targetGridPosition);
 
-        Debug.Log(targetNode.IsOccupied());
         while (targetNode.IsOccupied())
         {
             targetNode = _gridManager.GetNodeAtTilemapGridPosition(targetNode.GetGridPosition() + Vector2Int.down * 1);
@@ -110,8 +107,6 @@ public class AStarPathfinder : MonoBehaviour
         //If we run out of open nodes and haven't found target, it means haven't found a path
         return null;
     }
-
-
 
     private void EvaluateCurrentNodeNeighbours(PathNode currentNode, PathNode targetNode, GridManager gridManager, List<PathNode> openList, HashSet<PathNode> closedHashSet, Tilemap tilemap)
     {
