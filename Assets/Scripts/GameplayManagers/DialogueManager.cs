@@ -53,7 +53,6 @@ public class DialogueManager : MonoBehaviour
     public event EventHandler OnSingleParagraphTyped;
     public event EventHandler OnLastParagraphTyped;
 
-
     private void Start()
     {
         GameStateManager.Instance.OnTimeToStartDialogue += GameStateManager_OnTimeToStartDialogue;
@@ -64,6 +63,7 @@ public class DialogueManager : MonoBehaviour
 
     private void GameStateManager_OnTimeToStartDialogue(object sender, GameStateManager.OnTimeToStartDialogueEventArgs e)
     {
+        Debug.Log("Started dialogue");
         _currentDialogueSectionIndex = e.DialogueIndex;
         _currentDialogueParagraphIndex = 0;
         _textWriter.StartTyping(_dialogueSections[_currentDialogueSectionIndex].GetTextParagraphsContents(), true);

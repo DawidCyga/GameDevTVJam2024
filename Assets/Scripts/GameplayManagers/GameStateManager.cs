@@ -30,9 +30,6 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        _gameState = GameState.Playing;
-
         _currentDialogueIndex = 0;
     }
 
@@ -102,6 +99,7 @@ public class GameStateManager : MonoBehaviour
 
     private void HandleStartDialogue()
     {
+        Debug.Log("Send event");
         OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
         _gameState = GameState.Dialogue;
     }

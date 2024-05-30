@@ -183,7 +183,6 @@ public class WaveSpawner : MonoBehaviour
         foreach (Coroutine coroutine in _activeSpawningRoutines)
         {
             StopCoroutine(coroutine);
-
         }
         _activeSpawningRoutines.Clear();
         _completedSpawningRoutinesNumber = 0;
