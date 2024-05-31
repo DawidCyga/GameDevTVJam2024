@@ -14,6 +14,16 @@ public class TextInteractionButton : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
+    private void Start()
+    {
+        PlayerInputHandler.Instance.OnDialogueInteractionPressed += PlayerInputHandler_OnDialogueInteractionPressed;
+    }
+
+    private void PlayerInputHandler_OnDialogueInteractionPressed(object sender, EventArgs e)
+    {
+        _button.onClick.Invoke();
+    }
+
     public void UpdateSelf(string buttonText, Action buttonFunctionCallBack)
     {
         if (_button is null)

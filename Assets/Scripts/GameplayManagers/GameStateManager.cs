@@ -137,7 +137,11 @@ public class GameStateManager : MonoBehaviour
     {
         switch (_gameState)
         {
-            case GameState.Playing:
+            case GameState.Playing: 
+                if (Player.Instance.isPaused())
+                {
+                    Player.Instance.Resume();
+                }
                 if (_isGamePaused)
                 {
                     ResumeGame();
@@ -145,7 +149,10 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.Dialogue:
                 {
-                    //Decide what to pause
+                    if (!Player.Instance.isPaused())
+                    {
+                        Player.Instance.Pause();
+                    }
                 }
                 break;
             case GameState.PauseMenu:
@@ -196,4 +203,6 @@ public class GameStateManager : MonoBehaviour
         _gameState = newState;
         OnGameStateChanged?.Invoke(this, new OnGameStateChangedEventArgs { GameState = newState });
     }
+
+    public GameState GetCurrentGameState() => _gameState;
 }

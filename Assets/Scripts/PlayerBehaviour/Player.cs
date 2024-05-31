@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isAttemptingDash;
     [SerializeField] private bool _isPerformingDash = false;
     [SerializeField] private bool _hasPerformedDash;
+    //Pause
+    [SerializeField] private bool _isPaused;
 
 
     [Header("Cache References")]
@@ -67,7 +69,6 @@ public class Player : MonoBehaviour
         InAir
     }
     [SerializeField] private PlayerState _playerState;
-
 
     private void Awake()
     {
@@ -215,7 +216,7 @@ public class Player : MonoBehaviour
     private void TryUseDropBoxAbility()
     {
         if (_hasDroppedBox) return;
-       // if (!_isAttemptingDropBox) return;
+        // if (!_isAttemptingDropBox) return;
         if (_hasPerformedDoubleJump) return;
         if (!_isAttemptingJump) return;
 
@@ -393,8 +394,23 @@ public class Player : MonoBehaviour
 
     public bool IsMoving() => _isMoving;
     public bool IsGrounded() => _isGrounded;
-
     public bool IsDetectingWall() => _isDetectingWall;
+
+    public void Pause()
+    {
+        _rigidbody.gravityScale = 0;
+        this.enabled = false;
+        _isPaused = true;
+    }
+
+    public void Resume()
+    {
+        _rigidbody.gravityScale = 1;
+        this.enabled = true;
+        _isPaused = false;
+    }
+
+    public bool isPaused() => _isPaused;
 
     private void OnDrawGizmos()
     {

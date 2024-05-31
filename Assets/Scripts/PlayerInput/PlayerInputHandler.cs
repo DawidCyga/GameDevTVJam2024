@@ -21,6 +21,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public event EventHandler OnPauseButtonPressed;
 
+    public event EventHandler OnDialogueInteractionPressed;
+
     private void Awake()
     {
         if (Instance == null)
@@ -51,6 +53,8 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInputActions.Player.Dash.performed += RegisterDashInput;
 
         _playerInputActions.Player.Pause.performed += RegisterPauseInput;
+
+        _playerInputActions.Player.DialogueInteraction.performed += RegisterDialogueInteraction;
     }
 
     private void OnDisable()
@@ -67,6 +71,8 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInputActions.Player.Dash.performed -= RegisterDashInput;
 
         _playerInputActions.Player.Pause.performed -= RegisterPauseInput;
+
+        _playerInputActions.Player.DialogueInteraction.performed -= RegisterDialogueInteraction;
 
         _playerInputActions.Player.Disable();
     }
@@ -109,6 +115,11 @@ public class PlayerInputHandler : MonoBehaviour
     private void RegisterPauseInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPauseButtonPressed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void RegisterDialogueInteraction(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnDialogueInteractionPressed?.Invoke(this, EventArgs.Empty);
     }
 
 }

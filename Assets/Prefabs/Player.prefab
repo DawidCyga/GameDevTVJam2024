@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 135594492316774946}
   - component: {fileID: 8912735473506751436}
   - component: {fileID: 2175525121413230804}
-  - component: {fileID: 4198897427791401852}
   - component: {fileID: 8894977874241477939}
   - component: {fileID: 8237122310355553107}
   - component: {fileID: 8517299011496925393}
@@ -206,19 +205,8 @@ MonoBehaviour:
   _isAttemptingDash: 0
   _isPerformingDash: 0
   _hasPerformedDash: 0
+  _isPaused: 0
   _playerState: 0
---- !u!114 &4198897427791401852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5696077454691015555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908495290d37fad4696b69241ff988fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8894977874241477939
 MonoBehaviour:
   m_ObjectHideFlags: 0
