@@ -230,13 +230,17 @@ MonoBehaviour:
     m_Bits: 64
   _isInAttackRange: 0
   _isDead: 0
+  _state: 0
   _playerEvadeSpeed: 4
   _followPathSpeed: 5
+  _maxSpawnedHandsNumber: 5
+  _timeBetweenSpawningHands: 5
   _distanceToWallBehind: 0.8
   _whatIsWall:
     serializedVersion: 2
     m_Bits: 128
-  _state: 0
+  _currentSpawnedHandsNumber: 0
+  _timeSinceLastSpawnedHand: 0
 --- !u!114 &981016211520535855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434f0b1cd505d92428a707cea6116bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 0}
-  _spawnPoint: {fileID: 0}
+  _objectToSpawn: {fileID: 4153876664265934810, guid: d3db56c726c2daa4aa5a367e3c1c906b, type: 3}
+  _spawnPoint: {fileID: 48725204818017923}
   _spawnObjectParent: {fileID: 0}
 --- !u!114 &197063365396551343
 MonoBehaviour:

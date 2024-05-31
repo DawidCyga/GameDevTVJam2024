@@ -27,6 +27,8 @@ public class GameStateManager : MonoBehaviour
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
 
+    public event EventHandler<OnGameStateChangedEventArgs> OnGameStateChanged;
+    public class OnGameStateChangedEventArgs { public GameState GameState { get; set; } }
 
     private void Awake()
     {
@@ -47,7 +49,7 @@ public class GameStateManager : MonoBehaviour
 
     private void PlayerHitBox_OnPlayerDeath(object sender, EventArgs e)
     {
-        _gameState = GameState.GameOver;
+        ChangeState(GameState.GameOver);
     }
 
     private void PlayerInputHandler_OnPauseButtonPressed(object sender, EventArgs e)
@@ -59,7 +61,7 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.PauseMenu:
                 PauseMenu.Instance.Hide();
-                _gameState = GameState.Playing;
+                ChangeState(GameState.Playing);
                 break;
             default:
                 Debug.Log("CANNOT USE PAUSE AT THIS STATE");
@@ -69,7 +71,7 @@ public class GameStateManager : MonoBehaviour
 
     private void PauseMenu_OnGameResumed(object sender, EventArgs e)
     {
-        _gameState = GameState.Playing;
+        ChangeState(GameState.Playing);
     }
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)
@@ -102,14 +104,14 @@ public class GameStateManager : MonoBehaviour
     {
         Debug.Log("Send event");
         OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
-        _gameState = GameState.Dialogue;
+        ChangeState(GameState.Dialogue);
     }
 
     private void DialogueUI_OnHide(object sender, EventArgs e)
     {
         if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount())
         {
-            _gameState = GameState.GameWin;
+            ChangeState(GameState.GameWin);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("Game Win");
         }
@@ -119,7 +121,7 @@ public class GameStateManager : MonoBehaviour
     private void HandleStartNextWave()
     {
         WaveSpawner.Instance.StartBreakBeforeNextWave();
-        _gameState = GameState.Playing;
+        ChangeState(GameState.Playing);
     }
 
     private void Update()
@@ -178,5 +180,11 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = 0f;
         _isGamePaused = true;
         // additional conditions based on what we're going to use in the game
+    }
+
+    private void ChangeState(GameState newState)
+    {
+        _gameState = newState;
+        OnGameStateChanged?.Invoke(this, new OnGameStateChangedEventArgs { GameState = newState });
     }
 }
