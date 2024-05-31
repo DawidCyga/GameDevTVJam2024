@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -109,7 +110,8 @@ public class GameStateManager : MonoBehaviour
         if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount())
         {
             _gameState = GameState.GameWin;
-            Debug.Log("Game State Manager start Game Win");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Debug.Log("Game Win");
         }
         HandleStartNextWave();
     }
