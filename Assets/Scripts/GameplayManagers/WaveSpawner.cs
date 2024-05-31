@@ -70,12 +70,15 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] private float _timeTillEndBreak;
 
+    [SerializeField] private int _totalEnemyCountCurrentWave;
+
     [SerializeField] private bool _waveIndexIncreasedThisWave;
 
     private List<Coroutine> _activeSpawningRoutines = new List<Coroutine>();
     private int _completedSpawningRoutinesNumber;
 
-
+    public event EventHandler OnStartedNewWave;
+    public event EventHandler OnTotalEnemyCountThisWaveDecreased;
     public event EventHandler<OnWaveClearedEventArgs> OnWaveCleared;
     public class OnWaveClearedEventArgs { public int CurrentWaveIndex { get; set; } }
 
@@ -105,6 +108,9 @@ public class WaveSpawner : MonoBehaviour
                 {
                     return;
                 }
+
+                OnStartedNewWave?.Invoke(this, EventArgs.Empty);
+
                 CountdownBeforeEndBreak();
                 _waveIndexIncreasedThisWave = false;
 
@@ -208,14 +214,30 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             Debug.Log("Something went wrong");
-            
+
         }
     }
 
     public void StartBreakBeforeNextWave() => _currentWaveState = WaveState.Break;
 
-    public void DecreaseTotalEnemiesSpawnedCurrentWave() => _totalEnemiesSpawnedCurrentWave--;
+    public void DecreaseTotalEnemiesSpawnedCurrentWave()
+    {
+        _totalEnemiesSpawnedCurrentWave--;
+        OnTotalEnemyCountThisWaveDecreased?.Invoke(this, EventArgs.Empty);
+    }
 
     public int GetTotalWaveCount() => _waves.Length;
+
+    public int GetTotalEnemyCountCurrentWave()
+    {
+        int totalEnemyCountCurrentWave = 0;
+        SpawnPoint[] spawnPoints = _waves[_currentWaveIndex].GetSpawnPointList().ToArray();
+
+        foreach (SpawnPoint spawnPoint in spawnPoints)
+        {
+            totalEnemyCountCurrentWave += spawnPoint.GetEnemiesCount();
+        }
+        return totalEnemyCountCurrentWave;
+    }
 
 }
