@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public event EventHandler OnGameResumed;
 
     [SerializeField] private Button _resumeButton;
+    [SerializeField] private Button _restartButton;
     [SerializeField] private Button _mainMenuButton;
 
     [SerializeField] private GameObject _pauseMenuScreenContainer;
@@ -32,6 +33,12 @@ public class PauseMenu : MonoBehaviour
         _resumeButton.onClick.AddListener(() =>
         {
             ResumeGame();
+        });
+
+        _restartButton.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
 
         _mainMenuButton.onClick.AddListener(() =>
