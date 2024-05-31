@@ -28,7 +28,7 @@ public class DialogueUI : MonoBehaviour
         Instance = this;
 
         _textInteractionButton = GetComponentInChildren<TextInteractionButton>();
-        _dialogueUIContainer.SetActive(false);
+        //_dialogueUIContainer.SetActive(false);
     }
     private void Start()
     {

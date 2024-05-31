@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
@@ -12,17 +13,43 @@ public class GameTimer : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void Start()
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
-    }
+        if (arg0.buildIndex == 0 || arg0.buildIndex == 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        if (GameStateManager.Instance != null)
+        {
+            GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
+        }
+        else
+        {
+            _isTimeCounting = false;
+        }
+    }
     private void OnDestroy()
     {
-        GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
+        if (GameStateManager.Instance != null)
+        {
+            GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
+        }
+        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
     }
 
     private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
@@ -37,7 +64,6 @@ public class GameTimer : MonoBehaviour
             _timeSinceStartedPlaying += Time.deltaTime;
         }
     }
-
     public float GetTimeSinceStartedPlaying() => _timeSinceStartedPlaying;
 
 }

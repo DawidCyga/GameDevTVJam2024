@@ -15,7 +15,11 @@ public class GameTimerUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        string timeToDisplay = GameTimer.Instance.GetTimeSinceStartedPlaying().ToString("00:00");
+        float totalSeconds = GameTimer.Instance.GetTimeSinceStartedPlaying();
+        int minutes = Mathf.FloorToInt(totalSeconds / 60);
+        int seconds = Mathf.FloorToInt(totalSeconds % 60);
+
+        string timeToDisplay = string.Format("{0:00}:{1:00}", minutes, seconds);
         _gameTimerText.text = timeToDisplay;
     }
 }
