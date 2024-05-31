@@ -43,6 +43,7 @@ public class PauseMenu : MonoBehaviour
 
         _mainMenuButton.onClick.AddListener(() =>
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(0);
         });
     }

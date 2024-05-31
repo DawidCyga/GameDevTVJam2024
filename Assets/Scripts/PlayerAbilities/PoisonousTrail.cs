@@ -6,26 +6,41 @@ using UnityEngine;
 public class PoisonousTrail : MonoBehaviour
 {
     [SerializeField] private float _timePlayerSafe;
+    [SerializeField] private float _timeToSelfDestruct;
 
     [Header("For debugging only")]
     [SerializeField] private float _counterPlayerSafe;
-    [SerializeField] private bool _isUnableToKillPlayer;
+    [SerializeField] private bool _canKillPlayer;
+    [SerializeField] private float _timeSinceSpawned;
 
     private void Awake()
     {
-        _isUnableToKillPlayer = true;
+        _canKillPlayer = false;
         _counterPlayerSafe = _timePlayerSafe;
+        _timeSinceSpawned = 0;
     }
 
     private void Update()
     {
-        if (_counterPlayerSafe > 0 && _isUnableToKillPlayer)
+        if (_counterPlayerSafe > 0 && !_canKillPlayer)
         {
             _counterPlayerSafe -= Time.deltaTime;
         }
         else
         {
-            _isUnableToKillPlayer = false;
+            _canKillPlayer = true;
+        }
+
+        _timeSinceSpawned += Time.deltaTime;
+
+        TrySelfDestruct();
+    }
+
+    private void TrySelfDestruct()
+    {
+        if (_timeSinceSpawned > _timeToSelfDestruct)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -37,7 +52,7 @@ public class PoisonousTrail : MonoBehaviour
             {
                 if (collision.TryGetComponent(out PlayerHitBox hitbox))
                 {
-                    if (_isUnableToKillPlayer) { return; }
+                    if (_canKillPlayer) { return; }
                 }
                 takeDamage.TakeDamage();
             }

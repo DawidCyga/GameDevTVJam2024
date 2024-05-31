@@ -92,7 +92,10 @@ public class DashAbility : MonoBehaviour
         while (_poisonousTrailElementsQueue.Count > numberOfSteps - 1)
         {
             Transform poisonousTrailInstanceToDelete = _poisonousTrailElementsQueue.Dequeue();
-            GameObject.Destroy(poisonousTrailInstanceToDelete.gameObject);
+            if (poisonousTrailInstanceToDelete != null )
+            {
+                GameObject.Destroy(poisonousTrailInstanceToDelete.gameObject);
+            }
             yield return null;
         }
 

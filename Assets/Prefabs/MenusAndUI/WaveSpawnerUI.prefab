@@ -260,6 +260,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67bc73d9b351e54b9085d0c3bce0d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waveSpawnerUIText: {fileID: 6907089043875630798}
+  _waveSpawnerUIContainer: {fileID: 4080628747755033990}
+  _enemiesLeftThisWave: 0
+  _totalEnemiesThisWave: 0
 --- !u!1 &8380933698724906177
 GameObject:
   m_ObjectHideFlags: 0
