@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 1066506832}
   - component: {fileID: 1066506831}
   m_Layer: 0
-  m_Name: AchievementsBttnText
+  m_Name: BestiaryButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Achievements
+  m_text: Bestiary
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 1676273819}
   - component: {fileID: 1676273818}
   m_Layer: 0
-  m_Name: AchievementsHeaderText
+  m_Name: BestiaryHeaderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Achievements
+  m_text: Bestiary
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 1970359505}
   - component: {fileID: 1970359504}
   m_Layer: 0
-  m_Name: AchievementsButton
+  m_Name: BestiaryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
