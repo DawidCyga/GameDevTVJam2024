@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
@@ -21,13 +22,11 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
 
     [Header("For debugging only")]
     [SerializeField] protected bool _isInAttackRange;
-    [SerializeField] private bool _isFacingRight;
     [SerializeField] private bool _isDead;
 
     protected virtual void Start()
     {
         _target = Player.Instance.transform;
-        _isFacingRight = true;
     }
 
     public virtual void TakeDamage()
@@ -74,20 +73,17 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
 
     protected virtual void UpdateFaceDirection()
     {
-        if (_target.position.x > transform.position.x && !_isFacingRight)
-        {
-            SwapFaceDirection();
-        }
-        else if (_target.position.x < transform.position.x && _isFacingRight)
-        {
-            SwapFaceDirection();
-        }
-    }
 
-    private void SwapFaceDirection()
-    {
-        _isFacingRight = !_isFacingRight;
-        transform.Rotate(0, 180, 0);
+        float targetHorizontalDirection = Mathf.Sign(_target.position.x - transform.position.x);
+
+        if (targetHorizontalDirection < 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
     }
 
     private void OnDrawGizmos()

@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPath : MonoBehaviour
+public class PathFollower : MonoBehaviour
 {
     [SerializeField] private Transform[] _path;
 
     [Header("Following Behaviour")]
     [SerializeField] private bool _shouldStartFromBeginning;
     [SerializeField] private bool _shouldReverseAtFinish;
+    [SerializeField] private bool _shouldUpdateHorizontalFacingDirection;
 
     [Header("Automatic follow configuration")]
     [SerializeField] private bool _isFollowingAutomatically;
@@ -38,6 +40,11 @@ public class FollowPath : MonoBehaviour
         if (_shouldStartFromBeginning)
         {
             _targetPathIndex = 0;
+        }
+
+        if (_shouldUpdateHorizontalFacingDirection)
+        {
+            UpdateHorizontalFacingDirection();
         }
 
         Vector3 currentPosition = transform.position;
@@ -76,4 +83,19 @@ public class FollowPath : MonoBehaviour
         transform.position = Vector3.MoveTowards(currentPosition, targetPosition, moveDelta * Time.deltaTime);
     
     }
+
+    private void UpdateHorizontalFacingDirection()
+    {
+        float targetHorizontalDirection = Mathf.Sign(_path[_targetPathIndex].position.x - transform.position.x);
+
+        if (targetHorizontalDirection < 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
+
 }

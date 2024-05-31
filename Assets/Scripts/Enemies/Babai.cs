@@ -6,7 +6,11 @@ using UnityEngine;
 public class Babai : Enemy
 {
     [Header("Babai Specific configuration")]
+    [SerializeField] private float _playerEvadeSpeed;
     [SerializeField] private float _followPathSpeed;
+
+    [SerializeField] private float _distanceToWallBehind;
+    [SerializeField] private LayerMask _whatIsWall;
 
     private enum State
     {
@@ -16,11 +20,13 @@ public class Babai : Enemy
 
     [SerializeField] private State _state;
 
-    private FollowPath _followPath;
+    private PathFollower _pathFollower;
+    private TargetEvader _targetEvader;
 
     private void Awake()
     {
-        _followPath = GetComponent<FollowPath>();
+        _pathFollower = GetComponent<PathFollower>();
+        _targetEvader = GetComponent<TargetEvader>();
     }
 
     protected override void Start()
@@ -40,17 +46,19 @@ public class Babai : Enemy
                 break;
             case State.Defence:
 
+                TryEvadePlayer();
 
+                UpdateFaceDirection();
                 TrySwitchToOffence();
                 break;
         }
 
-        UpdateFaceDirection();
+        
     }
 
     private void FollowPath()
     {
-        _followPath.Follow(_followPathSpeed);
+        _pathFollower.Follow(_followPathSpeed);
     }
 
     private void TrySwitchToDefence()
@@ -60,6 +68,17 @@ public class Babai : Enemy
             _state = State.Defence;
         }
     }
+
+    private void TryEvadePlayer()
+    {
+        if (!IsDetectingWallBehind())
+        {
+            _targetEvader.MoveAwayHorizontally(_target.position, _playerEvadeSpeed);
+        }
+    }
+
+    private bool IsDetectingWallBehind() => Physics2D.Raycast(transform.position, -transform.right, _distanceToWallBehind, _whatIsWall);
+
     private void TrySwitchToOffence()
     {
         if (!CanSeePlayer())
@@ -68,23 +87,14 @@ public class Babai : Enemy
         }
     }
 
-    public override void TakeDamage()
+    protected override bool CanSeePlayer() => base.CanSeePlayer();
+
+    protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
+
+    private void OnDrawGizmos()
     {
-        base.TakeDamage();
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x - _distanceToWallBehind, transform.position.y));
     }
 
-    protected override bool CanSeePlayer()
-    {
-        return base.CanSeePlayer();
-    }
-
-    protected override void UpdateInAttackRange()
-    {
-        base.UpdateInAttackRange();
-    }
-
-    protected override void UpdateFaceDirection()
-    {
-        base.UpdateFaceDirection();
-    }
 }
