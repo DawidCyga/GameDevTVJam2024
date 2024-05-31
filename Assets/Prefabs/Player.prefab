@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4c7e87b4114664781f4dcfe410b89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _killingBox: {fileID: 8462790502835068995, guid: d64739c5de7fc944a81a3badfa767c06, type: 3}
-  _killingBoxSpawnPoint: {fileID: 9162124888312986249}
-  _KillingBoxesParent: {fileID: 0}
+  _slowingMine: {fileID: 8462790502835068995, guid: d64739c5de7fc944a81a3badfa767c06, type: 3}
+  _slowingMineSpawnPoint: {fileID: 9162124888312986249}
+  _slowingMinesParent: {fileID: 0}
   _minDistanceFromGround: 1.25
   _canDropBox: 0
   _whatIsGround:
@@ -485,6 +485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f2e8d77679ed54dab01991a71ae49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxInvincibilityTime: 1
+  _isInvincible: 0
+  _timeSinceTurnedInvincible: 0
 --- !u!1 &9015226158943814100
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9162124888312986249}
   m_Layer: 6
-  m_Name: KillingBoxSpawnPoint
+  m_Name: SlowingMineSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

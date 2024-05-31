@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9179537138636314734}
   - component: {fileID: 7833711066605421489}
   - component: {fileID: 392142616948005871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PossessedKhukha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _isInAttackRange: 0
-  _isFacingRight: 0
+  _isDead: 0
   _timeSinceLastUpdatedPath: 0
   _timeBetweenPathUpdates: 0
 --- !u!212 &7833711066605421489
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4482629403143470897}
   - component: {fileID: 2410375657235354345}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}

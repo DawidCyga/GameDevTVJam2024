@@ -173,7 +173,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _isInAttackRange: 0
-  _isFacingRight: 0
   _isDead: 0
   _timeSinceLastUpdatedPath: 0
   _timeBetweenPathUpdates: 0

@@ -17,6 +17,7 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
 
     public float TimeTillEndSlowDown { get; set; }
     public bool IsSlowedDown { get; set; }
+    private float _slowDownMultiplier;
 
     protected virtual void FindPathToPlayer()
     {
@@ -78,12 +79,15 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
         return gridPosition;
     }
 
-    public void TrySlowDown(float slowdownDuration, float slowdownMultiplier)
+    public void TrySlowDown(float slowdownDuration, float slowDownMultiplier)
     {
         if (!IsSlowedDown)
         {
             IsSlowedDown = true;
             TimeTillEndSlowDown = slowdownDuration;
+            _slowDownMultiplier = slowDownMultiplier;
+            _moveSpeed *= _slowDownMultiplier;
+            Debug.Log("I'm slowed down" + gameObject.name);
         }
     }
 
@@ -96,6 +100,8 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
         if (TimeTillEndSlowDown < 0)
         {
             IsSlowedDown = false;
+            _moveSpeed /= _slowDownMultiplier;
+            Debug.Log("I'm no longer slowed");
         }
     }
 }

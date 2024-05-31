@@ -1541,7 +1541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7656645694504614135, guid: ebdecd63cb6cbe04db85d1b38b1a583f, type: 3}
       propertyPath: m_Name
-      value: KillingBoxesParent
+      value: SlowingMineParent
       objectReference: {fileID: 0}
     - target: {fileID: 8341583267482169884, guid: ebdecd63cb6cbe04db85d1b38b1a583f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27559,7 +27559,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 135594492316774946, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: _KillingBoxesParent
+      propertyPath: _slowingMinesParent
       value: 
       objectReference: {fileID: 1258966936}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
@@ -27602,25 +27602,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087737828020179343, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: _maxInvincibilityTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8495559771790973787, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517299011496925393, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _poisonousTrailParent

@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
-    private DropBoxAbility _dropBoxAbility;
+    private DropMineAbility _dropMineAbility;
     private DashAbility _dashAbilityVer2;
     private PlayerHitBox _playerHitBox;
 
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _dropBoxAbility = GetComponent<DropBoxAbility>();
+        _dropMineAbility = GetComponent<DropMineAbility>();
         _dashAbilityVer2 = GetComponent<DashAbility>();
         _playerHitBox = GetComponentInChildren<PlayerHitBox>();
 
@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
         if (_hasPerformedDoubleJump) return;
         if (!_isAttemptingJump) return;
 
-        _dropBoxAbility.TryDropKillingBox();
+        _dropMineAbility.TryDropSlowingMine();
         _hasDroppedBox = true;
     }
 
