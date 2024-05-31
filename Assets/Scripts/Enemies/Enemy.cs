@@ -49,11 +49,20 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
 
     protected virtual bool CanSeePlayer()
     {
-        if (Physics2D.Raycast(transform.position, (_target.position - transform.position).normalized, _sightLength, _whatIsObstacle))
+        Vector3 direction = (_target.position - transform.position).normalized;
+        float distanceToTarget = Vector3.Distance(transform.position, _target.position);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToTarget, _whatIsObstacle);
+
+        if (hit.collider is null)
         {
-            return false;
+            RaycastHit2D hitPlayer = Physics2D.Raycast(transform.position, direction, _sightLength, _whatIsPlayer);
+            if (hitPlayer.collider is not null)
+            {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     protected virtual void UpdateInAttackRange()
