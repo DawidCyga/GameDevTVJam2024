@@ -52,7 +52,7 @@ public class PoisonousTrail : MonoBehaviour
             {
                 if (collision.TryGetComponent(out PlayerHitBox hitbox))
                 {
-                    if (_canKillPlayer) { return; }
+                    if (!_canKillPlayer) { return; }
                 }
                 takeDamage.TakeDamage();
             }

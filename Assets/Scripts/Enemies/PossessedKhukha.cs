@@ -12,6 +12,7 @@ public class PossessedKhukha : PathfinderEnemy
 
         UpdateInAttackRange();
         UpdateFaceDirection();
+        UpdateSlowDown();
 
         if (NeedsPathUpdate())
         {
@@ -39,7 +40,14 @@ public class PossessedKhukha : PathfinderEnemy
     
     private void Attack()
     {
-        PlayerHitBox.Instance.TakeDamage();
+        if (PlayerHitBox.Instance is not null)
+        {
+            PlayerHitBox.Instance.TakeDamage();            
+        }
     }
-    
+
+    public override void UpdateSlowDown()
+    {
+        base.UpdateSlowDown();
+    }
 }

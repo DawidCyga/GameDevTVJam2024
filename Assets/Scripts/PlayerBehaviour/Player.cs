@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private DropBoxAbility _dropBoxAbility;
     private DashAbility _dashAbilityVer2;
+    private PlayerHitBox _playerHitBox;
 
     private enum PlayerState
     {
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _dropBoxAbility = GetComponent<DropBoxAbility>();
         _dashAbilityVer2 = GetComponent<DashAbility>();
+        _playerHitBox = GetComponentInChildren<PlayerHitBox>();
 
         _playerState = PlayerState.Grounded;
     }
@@ -238,6 +240,7 @@ public class Player : MonoBehaviour
             if (_dashAbilityVer2.TryPerformDash(_moveDirection, isGrounded, FinishPerformingDash))
             {
                 _isPerformingDash = true;
+                _playerHitBox.SetInvincible();
             }
 
             _isAttemptingDash = false;

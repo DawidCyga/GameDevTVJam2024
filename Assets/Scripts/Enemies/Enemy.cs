@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
+public abstract class Enemy : MonoBehaviour, ITakeDamage
 {
 
     [Header("General Configuration")]
@@ -14,9 +14,6 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
     [Header("Layer Masks")]
     [SerializeField] protected LayerMask _whatIsObstacle;
     [SerializeField] protected LayerMask _whatIsPlayer;
-
-    public float TimeTillEndStun { get; protected set; }
-    public bool IsStunned { get; protected set; } = false;
 
     protected Transform _target;
 
@@ -39,12 +36,7 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
             _isDead = true;
         }
     }
-    public virtual void TryStun(float stunDuration)
-    {
-        if (IsStunned) { return; }
-        TimeTillEndStun = stunDuration;
-        IsStunned = true;
-    }
+
 
     protected virtual bool CanSeePlayer()
     {
@@ -96,4 +88,5 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
             Gizmos.DrawLine(transform.position, transform.position + (_target.position - transform.position).normalized * _sightLength);
         }
     }
+
 }

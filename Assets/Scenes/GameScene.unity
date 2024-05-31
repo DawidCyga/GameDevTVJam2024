@@ -27602,9 +27602,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087737828020179343, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _maxInvincibilityTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495559771790973787, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517299011496925393, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _poisonousTrailParent
@@ -68062,6 +68078,10 @@ PrefabInstance:
     - target: {fileID: 3797127818688329246, guid: d01fe949822495642ad95d9e781da036, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129623861564965478, guid: d01fe949822495642ad95d9e781da036, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 156.84375
       objectReference: {fileID: 0}
     - target: {fileID: 8795002748145852566, guid: d01fe949822495642ad95d9e781da036, type: 3}
       propertyPath: m_Name
