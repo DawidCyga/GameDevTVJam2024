@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class Babai : Enemy
 {
-    [Header("Babai Specific configuration")]
-    [SerializeField] private float _playerEvadeSpeed;
-    [SerializeField] private float _followPathSpeed;
-
-    [SerializeField] private float _distanceToWallBehind;
-    [SerializeField] private LayerMask _whatIsWall;
-
     private enum State
     {
         Offence,
@@ -20,13 +13,35 @@ public class Babai : Enemy
 
     [SerializeField] private State _state;
 
+    [Header("Babai Specific Configuration")]
+    [SerializeField] private float _playerEvadeSpeed;
+    [SerializeField] private float _followPathSpeed;
+
+    [Header("Babai Hands Spawning Configuration")]
+    [SerializeField] private float _maxSpawnedHandsNumber;
+    [SerializeField] private float _timeBetweenSpawningHands;
+
+    [Header("Babai Wall Detection Configuration")]
+    [SerializeField] private float _distanceToWallBehind;
+    [SerializeField] private LayerMask _whatIsWall;
+
+    [Header("For debugging only")]
+    [SerializeField] private float _currentSpawnedHandsNumber;
+    [SerializeField] private float _timeSinceLastSpawnedHand;
+
     private PathFollower _pathFollower;
+    private HandsSpawner _handsSpawner;
     private TargetEvader _targetEvader;
+
+    public event EventHandler OnDeath;
 
     private void Awake()
     {
         _pathFollower = GetComponent<PathFollower>();
+        _handsSpawner = GetComponent<HandsSpawner>();
         _targetEvader = GetComponent<TargetEvader>();
+
+        _currentSpawnedHandsNumber = 0;
     }
 
     protected override void Start()
@@ -41,6 +56,7 @@ public class Babai : Enemy
             case State.Offence:
 
                 FollowPath();
+                TrySpawnHands();
 
                 TrySwitchToDefence();
                 break;
@@ -52,13 +68,23 @@ public class Babai : Enemy
                 TrySwitchToOffence();
                 break;
         }
-
-        
     }
 
     private void FollowPath()
     {
         _pathFollower.Follow(_followPathSpeed);
+    }
+
+    private void TrySpawnHands()
+    {
+        if (_timeSinceLastSpawnedHand > _timeBetweenSpawningHands && _currentSpawnedHandsNumber < _maxSpawnedHandsNumber)
+        {
+            _handsSpawner.Spawn();
+            _currentSpawnedHandsNumber++;
+            _timeSinceLastSpawnedHand = 0;
+        }
+
+        _timeSinceLastSpawnedHand += Time.deltaTime;
     }
 
     private void TrySwitchToDefence()
@@ -97,4 +123,9 @@ public class Babai : Enemy
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x - _distanceToWallBehind, transform.position.y));
     }
 
+    public override void TakeDamage()
+    {
+        OnDeath?.Invoke(this, EventArgs.Empty);
+        base.TakeDamage();
+    }
 }

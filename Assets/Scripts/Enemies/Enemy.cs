@@ -34,7 +34,7 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage, ICanBeStunned
         //TRIGGER DEATH ANIMATION
         if (!_isDead)
         {
-            WaveSpawner.Instance.DecreaseTotalEnemiesSpawnedCurrentWave();
+           // WaveSpawner.Instance.DecreaseTotalEnemiesSpawnedCurrentWave();
             Destroy(gameObject);
             _isDead = true;
         }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4845100101223195516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48725204818017923}
+  m_Layer: 8
+  m_Name: HandSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48725204818017923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845100101223195516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6596285862562995762}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5706811490142480584
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +126,7 @@ GameObject:
   - component: {fileID: 6596285862562995762}
   - component: {fileID: 2750075082332650600}
   - component: {fileID: 768973207792513127}
+  - component: {fileID: 981016211520535855}
   - component: {fileID: 197063365396551343}
   - component: {fileID: 6550795942059881249}
   - component: {fileID: 2002853728058739639}
@@ -120,6 +152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6706943984206222128}
+  - {fileID: 48725204818017923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2750075082332650600
@@ -188,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 3
   _attackRange: 0.97
-  _sightLength: 9
+  _sightLength: 35
   _whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128
@@ -196,11 +229,29 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _isInAttackRange: 0
-  _isFacingRight: 0
   _isDead: 0
   _playerEvadeSpeed: 4
   _followPathSpeed: 5
+  _distanceToWallBehind: 0.8
+  _whatIsWall:
+    serializedVersion: 2
+    m_Bits: 128
   _state: 0
+--- !u!114 &981016211520535855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6025234196982900103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434f0b1cd505d92428a707cea6116bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToSpawn: {fileID: 0}
+  _spawnPoint: {fileID: 0}
+  _spawnObjectParent: {fileID: 0}
 --- !u!114 &197063365396551343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +269,7 @@ MonoBehaviour:
   - {fileID: 0}
   _shouldStartFromBeginning: 0
   _shouldReverseAtFinish: 0
+  _shouldUpdateHorizontalFacingDirection: 1
   _isFollowingAutomatically: 0
   _automaticFollowSpeed: 0
   _targetPathIndex: 0
