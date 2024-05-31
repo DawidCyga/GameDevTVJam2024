@@ -5,17 +5,23 @@ using UnityEngine;
 
 public class Babai : Enemy
 {
+    [Header("Babai Specific configuration")]
+    [SerializeField] private float _followPathSpeed;
+
     private enum State
     {
         Offence,
         Defence
     }
 
-    private State _state;
+    [SerializeField] private State _state;
 
-    [Header("For debugging only")]
-    [SerializeField] private bool _isInDefence;
-    [SerializeField] private bool _isInOffence;
+    private FollowPath _followPath;
+
+    private void Awake()
+    {
+        _followPath = GetComponent<FollowPath>();
+    }
 
     protected override void Start()
     {
@@ -27,11 +33,13 @@ public class Babai : Enemy
         switch (_state)
         {
             case State.Offence:
-                
+
+                FollowPath();
+
                 TrySwitchToDefence();
                 break;
             case State.Defence:
-                
+
 
                 TrySwitchToOffence();
                 break;
@@ -40,14 +48,16 @@ public class Babai : Enemy
         UpdateFaceDirection();
     }
 
+    private void FollowPath()
+    {
+        _followPath.Follow(_followPathSpeed);
+    }
+
     private void TrySwitchToDefence()
     {
         if (CanSeePlayer())
         {
             _state = State.Defence;
-            _isInDefence = true;
-            _isInOffence = false;
-            Debug.Log("Switched to defence");
         }
     }
     private void TrySwitchToOffence()
@@ -55,9 +65,6 @@ public class Babai : Enemy
         if (!CanSeePlayer())
         {
             _state = State.Offence;
-            _isInOffence = true;
-            _isInDefence = false;
-            Debug.Log("Switched to offence");
         }
     }
 
