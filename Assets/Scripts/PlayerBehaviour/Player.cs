@@ -97,6 +97,16 @@ public class Player : MonoBehaviour
         PlayerInputHandler.Instance.OnDashButtonPressed += PlayerInputHandler_OnDashButtonPressed;
     }
 
+    private void OnDestroy()
+    {
+        PlayerInputHandler.Instance.OnRegisterMoveInputNormalized -= PlayerInputHandler_OnRegisterMoveInputNormalized;
+        PlayerInputHandler.Instance.OnJumpButtonPressed -= PlayerInputHandler_OnJumpButtonPressed;
+        PlayerInputHandler.Instance.OnJumpButtonReleased -= PlayerInputHandler_OnJumpButtonReleased;
+        PlayerInputHandler.Instance.OnDropBoxButtonPressed -= PlayerInputHandler_OnDropBoxButtonPressed;
+        PlayerInputHandler.Instance.OnDropBoxButtonReleased -= PlayerInputHander_OnDropBoxButtonReleased;
+        PlayerInputHandler.Instance.OnDashButtonPressed -= PlayerInputHandler_OnDashButtonPressed;
+    }
+
     private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
     {
         _moveDirection = e.DirectionInput;
@@ -164,14 +174,6 @@ public class Player : MonoBehaviour
 
                 break;
         }
-    }
-
-    private void OnDestroy()
-    {
-        PlayerInputHandler.Instance.OnRegisterMoveInputNormalized -= PlayerInputHandler_OnRegisterMoveInputNormalized;
-        PlayerInputHandler.Instance.OnJumpButtonPressed -= PlayerInputHandler_OnJumpButtonPressed;
-        PlayerInputHandler.Instance.OnJumpButtonReleased -= PlayerInputHandler_OnJumpButtonReleased;
-        PlayerInputHandler.Instance.OnDashButtonPressed -= PlayerInputHandler_OnDashButtonPressed;
     }
 
     private void HandleGroundState()

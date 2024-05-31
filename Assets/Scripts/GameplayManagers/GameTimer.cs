@@ -20,6 +20,11 @@ public class GameTimer : MonoBehaviour
         GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
     }
 
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
+    }
+
     private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
     {
         _isTimeCounting = (e.GameState == GameStateManager.GameState.Playing) ? true : false;

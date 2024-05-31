@@ -61,6 +61,14 @@ public class DialogueManager : MonoBehaviour
         TextWriter.Instance.OnLastDialogueParagraphTyped += TextWriter_OnLastDialogueParagraphTyped;
     }
 
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnTimeToStartDialogue -= GameStateManager_OnTimeToStartDialogue;
+        TextWriter.Instance.OnStartedTypingNewParagraph -= TextWriter_OnStartedTypingNewParagraph;
+        TextWriter.Instance.OnSingleDialogueParagraphTyped -= TextWriter_OnSingleDialogueParagraphTyped;
+        TextWriter.Instance.OnLastDialogueParagraphTyped -= TextWriter_OnLastDialogueParagraphTyped;
+    }
+
     private void GameStateManager_OnTimeToStartDialogue(object sender, GameStateManager.OnTimeToStartDialogueEventArgs e)
     {
         Debug.Log("Started dialogue");

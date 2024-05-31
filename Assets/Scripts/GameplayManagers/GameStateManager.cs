@@ -47,6 +47,15 @@ public class GameStateManager : MonoBehaviour
         HandleStartDialogue();
     }
 
+    private void OnDestroy()
+    {
+        PlayerHitBox.Instance.OnPlayerDeath -= PlayerHitBox_OnPlayerDeath;
+        PlayerInputHandler.Instance.OnPauseButtonPressed -= PlayerInputHandler_OnPauseButtonPressed;
+        PauseMenu.Instance.OnGameResumed -= PauseMenu_OnGameResumed;
+        WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
+        DialogueUI.Instance.OnHide -= DialogueUI_OnHide;
+    }
+
     private void PlayerHitBox_OnPlayerDeath(object sender, EventArgs e)
     {
         ChangeState(GameState.GameOver);

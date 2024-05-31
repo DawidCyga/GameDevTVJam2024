@@ -40,6 +40,11 @@ public class IntroductionSceneManager : MonoBehaviour
         FadeTransitionHandler.Instance.FadeIn(_fadeInDuration, StartTypingIntroduction);
     }
 
+    private void OnDestroy()
+    {
+        _textWriter.OnAllParagraphsTyped -= TextWriter_OnAllParagraphsTyped;
+    }
+
     private void Update()
     {
         if (_timeSinceSceneLoaded > _timeToShowNextButton)

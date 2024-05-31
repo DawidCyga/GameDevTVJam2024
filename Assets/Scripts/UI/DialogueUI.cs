@@ -38,6 +38,14 @@ public class DialogueUI : MonoBehaviour
         _dialogueManager.OnLastParagraphTyped += DialogueManager_OnLastParagraphTyped;
     }
 
+    private void OnDestroy()
+    {
+        _dialogueManager.OnStartNewDialogue -= DialogueManager_OnStartNewDialogue;
+        _dialogueManager.OnStartedNewParagraph -= DialogueManager_OnStartedNewParagraph;
+        _dialogueManager.OnSingleParagraphTyped -= DialogueManager_OnSingleParagraphTyped;
+        _dialogueManager.OnLastParagraphTyped -= DialogueManager_OnLastParagraphTyped;
+    }
+
     private void DialogueManager_OnStartNewDialogue(object sender, System.EventArgs e)
     {
         _dialogueUIContainer?.SetActive(true);

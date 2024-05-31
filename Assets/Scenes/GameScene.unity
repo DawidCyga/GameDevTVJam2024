@@ -47393,12 +47393,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1510865060}
-  - {fileID: 1981854094}
   - {fileID: 104950415}
   - {fileID: 2019470441}
   - {fileID: 589443194}
   - {fileID: 1564263191}
+  - {fileID: 1981854094}
+  - {fileID: 1510865060}
   m_Father: {fileID: 229083512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -115408,6 +115408,10 @@ PrefabInstance:
     - target: {fileID: 2733008914603253265, guid: 925076192d295b4469c3936ba31a374b, type: 3}
       propertyPath: m_Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439125173750724121, guid: 925076192d295b4469c3936ba31a374b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7007901373476764756, guid: 925076192d295b4469c3936ba31a374b, type: 3}
       propertyPath: m_Pivot.x

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 
 public class BabaiHitsCounter : MonoBehaviour
@@ -26,6 +27,11 @@ public class BabaiHitsCounter : MonoBehaviour
     private void Start()
     {
         WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
+    }
+
+    private void OnDestroy()
+    {
+        WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
     }
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)

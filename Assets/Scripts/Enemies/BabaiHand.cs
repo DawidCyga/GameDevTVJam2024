@@ -17,10 +17,16 @@ public class BabaiHand : MonoBehaviour
 
 
     private Transform _target;
+    private Babai _babai;
 
     private void Start()
     {
         _target = Player.Instance.transform;
+    }
+
+    private void OnDestroy()
+    {
+        _babai.OnDeath += BabaiSummoner_OnDeath;
     }
 
     private void Update()
@@ -32,8 +38,8 @@ public class BabaiHand : MonoBehaviour
 
     public void AssignBabai(Transform babaiTransform)
     {
-        Babai babai = babaiTransform.GetComponent<Babai>();
-        babai.OnDeath += BabaiSummoner_OnDeath;
+        _babai = babaiTransform.GetComponent<Babai>();
+        _babai.OnDeath += BabaiSummoner_OnDeath;
     }
 
     private void BabaiSummoner_OnDeath(object sender, EventArgs e)
