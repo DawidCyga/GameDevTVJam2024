@@ -6,9 +6,16 @@ using UnityEngine;
 public class PossessedKhukha : PathfinderEnemy
 {
 
+    [Header("Khukha Specific Configuration")]
+    [SerializeField] private float _timeBetweenAttacks;
+
+    [Header("Khukha: For debugging only")]
+    [SerializeField] private float _timeSinceLastAttacked;
+
     private void Update()
     {
         _timeSinceLastUpdatedPath += Time.deltaTime;
+        _timeSinceLastAttacked += Time.deltaTime;
 
         UpdateInAttackRange();
         UpdateFaceDirection();
@@ -22,8 +29,7 @@ public class PossessedKhukha : PathfinderEnemy
 
         if (_isInAttackRange && CanSeePlayer())
         {
-            Attack();
-            //Debug.Log("I attack player");
+            TryAttack();
         }
        
     }
@@ -37,12 +43,22 @@ public class PossessedKhukha : PathfinderEnemy
     protected override void FindPathToPlayer() => base.FindPathToPlayer();
     
     protected override bool CanSeePlayer() => base.CanSeePlayer();
-    
+
+    private void TryAttack()
+    {
+        if (_timeSinceLastAttacked > _timeBetweenAttacks)
+        {
+            Attack();
+            _timeSinceLastAttacked = 0;
+        }
+    }
+
     private void Attack()
     {
-        if (PlayerHitBox.Instance is not null)
+        if (HitsCounter.Instance is not null)
         {
-            PlayerHitBox.Instance.TakeDamage();            
+            HitsCounter.Instance.Hit(HitsCounter.HitType.Khukha);
+            Debug.Log("I hit player");
         }
     }
 

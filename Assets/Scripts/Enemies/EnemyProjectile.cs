@@ -32,7 +32,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision != null && collision.TryGetComponent(out HitsCounter hitCounter))
         {
-            hitCounter.Hit(HitsCounter.HitType.Khukha);
+            hitCounter.Hit(HitsCounter.HitType.RangedKhukha);
         }
         Destroy(gameObject);
     }

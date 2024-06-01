@@ -7,38 +7,43 @@ using UnityEngine;
 
 public class HitsCounter : MonoBehaviour
 {
+    public static HitsCounter Instance { get; private set; }
+
     public enum HitType
     {
         Babai,
+        RangedKhukha,
         Khukha
     }
 
-    public static HitsCounter Instance { get; private set; }
+    [SerializeField] private int _maxHealth;
 
-    [SerializeField] private int _maximumBabaiHits;
-    [SerializeField] private int _maximumKhukhaHits;
+    [Header("Damage Configuration")]
+    [SerializeField] private int _babaiDamage;
+    [SerializeField] private int _rangedKhukhaDamage;
+    [SerializeField] private int _khukhaDamage;
 
     [Header("For debugging only")]
-    [SerializeField] private int _currentBabaiHits;
-    [SerializeField] private int _currentKhukhaHits;
+    [SerializeField] private int _currentHealth;
 
-    public event EventHandler<OnBabaiHitsChangedEventArgs> OnBabaiHitsChanged;
-    public class OnBabaiHitsChangedEventArgs { public int CurrentBabaiHits { get; set; } }
+    private Dictionary<HitType, int> _hitTypeDamageDictionary = new Dictionary<HitType, int>();
 
-    public event EventHandler<OnKhukhaHitsChangedEventArgs> OnKhukhaHitsChanged;
-    public class OnKhukhaHitsChangedEventArgs { public int CurrentKhukhaHits { get; set; } }
-
+    public event EventHandler OnHealthDecreased;
+    public event EventHandler OnHealthRestored;
+    
     private void Awake()
     {
         Instance = this;
 
-        _currentBabaiHits = 0;
-        _currentKhukhaHits = 0;
+        _hitTypeDamageDictionary[HitType.Babai] = _babaiDamage;
+        _hitTypeDamageDictionary[HitType.RangedKhukha] = _rangedKhukhaDamage;
+        _hitTypeDamageDictionary[HitType.Khukha] = _khukhaDamage;
     }
 
     private void Start()
     {
         WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
+        RestoreLife();
     }
 
     private void OnDestroy()
@@ -48,33 +53,25 @@ public class HitsCounter : MonoBehaviour
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)
     {
-        ResetHits();
+        RestoreLife();
     }
-    private void ResetHits()
+    private void RestoreLife()
     {
-        _currentBabaiHits = 0;
-        _currentKhukhaHits = 0;
-        OnBabaiHitsChanged?.Invoke(this, new OnBabaiHitsChangedEventArgs { CurrentBabaiHits = _currentBabaiHits });
-        OnKhukhaHitsChanged?.Invoke(this, new OnKhukhaHitsChangedEventArgs { CurrentKhukhaHits = _currentKhukhaHits });
+        _currentHealth = _maxHealth;
+        OnHealthRestored?.Invoke(this, EventArgs.Empty);
     }
 
     public void Hit(HitType hitType)
     {
-        if (hitType == HitType.Babai)
-        {
-            _currentBabaiHits++;
-            OnBabaiHitsChanged?.Invoke(this, new OnBabaiHitsChangedEventArgs { CurrentBabaiHits = _currentBabaiHits });
-        }
-        else if (hitType == HitType.Khukha)
-        {
-            _currentKhukhaHits++;
-            OnKhukhaHitsChanged?.Invoke(this, new OnKhukhaHitsChangedEventArgs { CurrentKhukhaHits = _currentKhukhaHits });
-        }
+        _currentHealth -= _hitTypeDamageDictionary[hitType];
+        OnHealthDecreased?.Invoke(this, EventArgs.Empty);
 
-        if (_currentBabaiHits > _maximumBabaiHits || _currentKhukhaHits > _maximumKhukhaHits)
+        if (_currentHealth <= 0)
         {
-            Debug.Log("Killed from counter");
             PlayerHitBox.Instance.TakeDamage();
-        }       
+        }
     }
+
+    public int GetMaxHealth() => _maxHealth;
+    public int GetCurrentHealth() => _currentHealth;
 }
