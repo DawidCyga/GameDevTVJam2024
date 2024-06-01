@@ -79582,7 +79582,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -87691,10 +87691,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -2108850599, guid: 52fe37ab0dc84384fb75c9ccbd6b1d0f, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -2108850599, guid: 52fe37ab0dc84384fb75c9ccbd6b1d0f, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -887132087, guid: 52fe37ab0dc84384fb75c9ccbd6b1d0f, type: 3}
   m_TileMatrixArray:
@@ -88117,11 +88117,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8495559771790973787, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _poisonousTrailParent
       value: 
       objectReference: {fileID: 2061174656}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

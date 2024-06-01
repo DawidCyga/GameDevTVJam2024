@@ -71,15 +71,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2824604991377171652}
+  - component: {fileID: 764173230220482672}
+  - component: {fileID: 3239007565499974069}
   - component: {fileID: 135594492316774946}
   - component: {fileID: 8912735473506751436}
-  - component: {fileID: 2175525121413230804}
   - component: {fileID: 8894977874241477939}
   - component: {fileID: 8237122310355553107}
   - component: {fileID: 8517299011496925393}
   - component: {fileID: 8733880878771342468}
   - component: {fileID: 8797978274195364575}
-  - component: {fileID: 3239007565499974069}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -107,6 +107,65 @@ Transform:
   - {fileID: 9162124888312986249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &764173230220482672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696077454691015555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d516382e6e2bbb14a998ce7f59bada60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximumBabaiHits: 2
+  _maximumKhukhaHits: 2
+  _currentBabaiHits: 0
+  _currentKhukhaHits: 0
+--- !u!114 &3239007565499974069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696077454691015555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e093e5c569b3704990c9baf5deb5b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundMoveSpeed: 18
+  _groundJumpForce: 48
+  _inAirHorizontalMoveSpeed: 130
+  _airDoubleJumpForce: 45
+  _airFirstJumpForce: 53
+  _fallingGravityDrag: 280
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  _groundCheckSize: {x: 0.98, y: 0.25}
+  _groundCheckTransform: {fileID: 6761339418212497266}
+  _wallCheckDistance: 0.5
+  _wallCheckTransform: {fileID: 3402758051426249765}
+  _isFacingRight: 0
+  _facingDirectionValue: 1
+  _hasPerformedFirstJump: 1
+  _hasPerformedDoubleJump: 0
+  _canDoubleJump: 1
+  _isMoving: 0
+  _isGrounded: 0
+  _isAttemptingJump: 0
+  _isCancellingJump: 1
+  _wasInAir: 1
+  _isDetectingWall: 0
+  _isAttemptingDropBox: 0
+  _hasDroppedBox: 0
+  _isAttemptingDash: 0
+  _isPerformingDash: 0
+  _hasPerformedDash: 0
+  _isPaused: 0
+  _playerState: 1
 --- !u!114 &135594492316774946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,49 +209,6 @@ MonoBehaviour:
     m_Bits: 128
   _poisonousTrailElement: {fileID: 8429969231817283632, guid: e171935321cce944083dbab5c3eccb86, type: 3}
   _poisonousTrailParent: {fileID: 0}
---- !u!114 &2175525121413230804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5696077454691015555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e093e5c569b3704990c9baf5deb5b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundMoveSpeed: 18
-  _groundJumpForce: 48
-  _inAirHorizontalMoveSpeed: 150
-  _airDoubleJumpForce: 45
-  _airFirstJumpForce: 53
-  _fallingGravityDrag: 275
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
-  _groundCheckSize: {x: 0.98, y: 0.25}
-  _groundCheckTransform: {fileID: 6761339418212497266}
-  _wallCheckDistance: 0.5
-  _wallCheckTransform: {fileID: 3402758051426249765}
-  _isFacingRight: 1
-  _facingDirectionValue: 1
-  _hasPerformedFirstJump: 0
-  _hasPerformedDoubleJump: 0
-  _canDoubleJump: 1
-  _isMoving: 0
-  _isGrounded: 1
-  _isAttemptingJump: 0
-  _isCancellingJump: 1
-  _wasInAir: 0
-  _isDetectingWall: 0
-  _isAttemptingDropBox: 0
-  _hasDroppedBox: 0
-  _isAttemptingDash: 0
-  _isPerformingDash: 0
-  _hasPerformedDash: 0
-  _isPaused: 0
-  _playerState: 0
 --- !u!114 &8894977874241477939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,49 +366,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3239007565499974069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5696077454691015555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e093e5c569b3704990c9baf5deb5b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundMoveSpeed: 18
-  _groundJumpForce: 48
-  _inAirHorizontalMoveSpeed: 130
-  _airDoubleJumpForce: 45
-  _airFirstJumpForce: 53
-  _fallingGravityDrag: 280
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
-  _groundCheckSize: {x: 0.98, y: 0.25}
-  _groundCheckTransform: {fileID: 6761339418212497266}
-  _wallCheckDistance: 0.5
-  _wallCheckTransform: {fileID: 3402758051426249765}
-  _isFacingRight: 0
-  _facingDirectionValue: -1
-  _hasPerformedFirstJump: 1
-  _hasPerformedDoubleJump: 0
-  _canDoubleJump: 1
-  _isMoving: 0
-  _isGrounded: 0
-  _isAttemptingJump: 0
-  _isCancellingJump: 1
-  _wasInAir: 1
-  _isDetectingWall: 0
-  _isAttemptingDropBox: 0
-  _hasDroppedBox: 0
-  _isAttemptingDash: 0
-  _isPerformingDash: 0
-  _hasPerformedDash: 0
-  _isPaused: 0
-  _playerState: 1
 --- !u!1 &8310549778369615765
 GameObject:
   m_ObjectHideFlags: 0
