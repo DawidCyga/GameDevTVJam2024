@@ -28,14 +28,18 @@ public class GameOverScreen : MonoBehaviour
 
         _playAgainButton.onClick.AddListener(() =>
         {
+            UnfreezeTime();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
 
         _mainMenuButton.onClick.AddListener(() =>
         {
+            UnfreezeTime();
             SceneManager.LoadScene(0);
         });
     }
+
+    private void UnfreezeTime() => Time.timeScale = 1;
 
     public void Show() => _gameOverScreenContainer.SetActive(true);
 

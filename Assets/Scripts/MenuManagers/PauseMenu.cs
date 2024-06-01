@@ -37,13 +37,13 @@ public class PauseMenu : MonoBehaviour
 
         _restartButton.onClick.AddListener(() =>
         {
-            Time.timeScale = 1;
+            UnfreezeTime();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
 
         _mainMenuButton.onClick.AddListener(() =>
         {
-            Time.timeScale = 1;
+            UnfreezeTime();
             SceneManager.LoadScene(0);
         });
     }
@@ -53,6 +53,8 @@ public class PauseMenu : MonoBehaviour
         OnGameResumed?.Invoke(this, EventArgs.Empty);
         Hide();
     }
+
+    private void UnfreezeTime() => Time.timeScale = 1;
 
     public void Hide()
     {

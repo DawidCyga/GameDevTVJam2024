@@ -140,7 +140,7 @@ public class GameStateManager : MonoBehaviour
             case GameState.Playing: 
                 if (Player.Instance.isPaused())
                 {
-                    Player.Instance.Resume();
+                    ChangePlayerPaused(false);
                 }
                 if (_isGamePaused)
                 {
@@ -151,7 +151,7 @@ public class GameStateManager : MonoBehaviour
                 {
                     if (!Player.Instance.isPaused())
                     {
-                        Player.Instance.Pause();
+                        ChangePlayerPaused(true);
                     }
                 }
                 break;
@@ -163,6 +163,10 @@ public class GameStateManager : MonoBehaviour
                 DisplayPauseMenuScreen();
                 break;
             case GameState.GameOver:
+                if (!Player.Instance.isPaused())
+                {
+                    ChangePlayerPaused(true);
+                }
                 if (!_isGamePaused)
                 {
                     PauseGame();
@@ -170,7 +174,6 @@ public class GameStateManager : MonoBehaviour
                 DisplayGameOverScreen();
                 break;
             case GameState.GameWin:
-                //
                 break;
         }
     }
@@ -202,6 +205,18 @@ public class GameStateManager : MonoBehaviour
     {
         _gameState = newState;
         OnGameStateChanged?.Invoke(this, new OnGameStateChangedEventArgs { GameState = newState });
+    }
+
+    private void ChangePlayerPaused(bool state)
+    {
+        if (state == true)
+        {
+            Player.Instance.Pause();
+        }
+        else
+        {
+            Player.Instance.Resume();
+        }
     }
 
     public GameState GetCurrentGameState() => _gameState;
