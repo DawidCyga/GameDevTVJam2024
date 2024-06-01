@@ -25,7 +25,6 @@ public class GameStateManager : MonoBehaviour
     private int _currentDialogueIndex;
 
     private bool _isGamePaused;
-    private bool _hasAlreadyPlayed;
 
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
@@ -47,8 +46,6 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        _currentDialogueIndex = 0;
     }
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -63,13 +60,8 @@ public class GameStateManager : MonoBehaviour
             ChangeState(GameState.Playing);
             _currentDialogueIndex = 0;
             SubscribeEvents();
-            HandleStartDialogue();
+            TryStartDialogue();
         }
-    }
-
-    private void Start()
-    {
-        HandleStartDialogue();
     }
 
     private void OnDisable()
@@ -144,7 +136,7 @@ public class GameStateManager : MonoBehaviour
     {
         if (_clearedWavesIndexList.Contains(_currentDialogueIndex))
         {
-            if (_currentDialogueIndex == _clearedWavesIndexList.Count - 1)
+            if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount() - 1)
             {
                 // START WIN GAME
                 HandleStartDialogue();
@@ -173,15 +165,8 @@ public class GameStateManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayInSeconds);
 
-        if (_clearedWavesIndexList.Count == 0)
-        {
-            _clearedWavesIndexList.Add(0);
-        }
-        
-        
-            OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
-            _hasAlreadyPlayed = true;
-        
+        OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
+
         ChangeState(GameState.Dialogue);
     }
 
@@ -207,7 +192,7 @@ public class GameStateManager : MonoBehaviour
     {
         switch (_gameState)
         {
-            case GameState.Playing: 
+            case GameState.Playing:
                 if (Player.Instance.isPaused())
                 {
                     ChangePlayerPaused(false);

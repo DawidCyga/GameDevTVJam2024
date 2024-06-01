@@ -208,8 +208,8 @@ public class WaveSpawner : MonoBehaviour
         if (_currentWaveIndex <= _waves.Length)
         {
             Debug.Log("On wave cleared");
-            OnWaveCleared?.Invoke(this, new OnWaveClearedEventArgs { CurrentWaveIndex = _currentWaveIndex });
             _currentWaveState = WaveState.Dialogue;
+            OnWaveCleared?.Invoke(this, new OnWaveClearedEventArgs { CurrentWaveIndex = _currentWaveIndex });
         }
         else
         {
