@@ -228,6 +228,8 @@ public class WaveSpawner : MonoBehaviour
 
     public int GetTotalWaveCount() => _waves.Length;
 
+    public int GetCurrentWaveIndex() => _currentWaveIndex;
+
     public int GetTotalEnemyCountCurrentWave()
     {
         int totalEnemyCountCurrentWave = 0;

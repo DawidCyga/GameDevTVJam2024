@@ -9,16 +9,16 @@ public class BabaiHitsCounterUI : MonoBehaviour
 
     private void Start()
     {
-        BabaiHitsCounter.Instance.OnBabaiHitsChanged += BabaiHitsCounter_OnBabaiHitsChanged;
+        HitsCounter.Instance.OnBabaiHitsChanged += BabaiHitsCounter_OnBabaiHitsChanged;
     }
 
     private void OnDestroy()
     {
-        BabaiHitsCounter.Instance.OnBabaiHitsChanged -= BabaiHitsCounter_OnBabaiHitsChanged;
+        HitsCounter.Instance.OnBabaiHitsChanged -= BabaiHitsCounter_OnBabaiHitsChanged;
 
     }
 
-    private void BabaiHitsCounter_OnBabaiHitsChanged(object sender, BabaiHitsCounter.OnBabaiHitsChangedEventArgs e)
+    private void BabaiHitsCounter_OnBabaiHitsChanged(object sender, HitsCounter.OnBabaiHitsChangedEventArgs e)
     {
         _counterText.text = e.CurrentBabaiHits.ToString();
     }

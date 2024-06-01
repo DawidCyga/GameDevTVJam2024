@@ -65,9 +65,9 @@ public class BabaiHand : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_timeSinceLastAttack < _timeBetweenAttacks) { return; }
-        if (collision != null && collision.TryGetComponent(out BabaiHitsCounter hitCounter))
+        if (collision != null && collision.TryGetComponent(out HitsCounter hitCounter))
         {
-            hitCounter.Hit();
+            hitCounter.Hit(HitsCounter.HitType.Babai);
             _timeSinceLastAttack = 0;
         }
     }

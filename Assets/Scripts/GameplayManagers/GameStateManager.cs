@@ -19,10 +19,13 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] public GameState _gameState;
 
-    private List<int> _clearedWavesIndexList = new List<int>();
+    private int _persistentLevelIndex;
+
+    [SerializeField] private List<int> _clearedWavesIndexList = new List<int>();
     private int _currentDialogueIndex;
 
     private bool _isGamePaused;
+    private bool _hasAlreadyPlayed;
 
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
@@ -32,28 +35,75 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            _persistentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         _currentDialogueIndex = 0;
+    }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+
+        if (arg0.buildIndex != _persistentLevelIndex)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            ChangeState(GameState.Playing);
+            _currentDialogueIndex = 0;
+            SubscribeEvents();
+            HandleStartDialogue();
+        }
     }
 
     private void Start()
     {
-        PlayerHitBox.Instance.OnPlayerDeath += PlayerHitBox_OnPlayerDeath;
-        PlayerInputHandler.Instance.OnPauseButtonPressed += PlayerInputHandler_OnPauseButtonPressed;
-        PauseMenu.Instance.OnGameResumed += PauseMenu_OnGameResumed;
-        WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
-        DialogueUI.Instance.OnHide += DialogueUI_OnHide;
-
         HandleStartDialogue();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        PlayerHitBox.Instance.OnPlayerDeath -= PlayerHitBox_OnPlayerDeath;
-        PlayerInputHandler.Instance.OnPauseButtonPressed -= PlayerInputHandler_OnPauseButtonPressed;
-        PauseMenu.Instance.OnGameResumed -= PauseMenu_OnGameResumed;
-        WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
-        DialogueUI.Instance.OnHide -= DialogueUI_OnHide;
+        UnsubscribeEvents();
+    }
+
+    private void SubscribeEvents()
+    {
+        if (PlayerHitBox.Instance != null)
+            PlayerHitBox.Instance.OnPlayerDeath += PlayerHitBox_OnPlayerDeath;
+        if (PlayerInputHandler.Instance != null)
+            PlayerInputHandler.Instance.OnPauseButtonPressed += PlayerInputHandler_OnPauseButtonPressed;
+        if (PauseMenu.Instance != null)
+            PauseMenu.Instance.OnGameResumed += PauseMenu_OnGameResumed;
+        if (WaveSpawner.Instance != null)
+            WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
+        if (DialogueUI.Instance != null)
+            DialogueUI.Instance.OnHide += DialogueUI_OnHide;
+    }
+    private void UnsubscribeEvents()
+    {
+        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
+
+        if (PlayerHitBox.Instance != null)
+            PlayerHitBox.Instance.OnPlayerDeath -= PlayerHitBox_OnPlayerDeath;
+        if (PlayerInputHandler.Instance != null)
+            PlayerInputHandler.Instance.OnPauseButtonPressed -= PlayerInputHandler_OnPauseButtonPressed;
+        if (PauseMenu.Instance != null)
+            PauseMenu.Instance.OnGameResumed -= PauseMenu_OnGameResumed;
+        if (WaveSpawner.Instance != null)
+            WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
+        if (DialogueUI.Instance != null)
+            DialogueUI.Instance.OnHide -= DialogueUI_OnHide;
     }
 
     private void PlayerHitBox_OnPlayerDeath(object sender, EventArgs e)
@@ -87,6 +137,11 @@ public class GameStateManager : MonoBehaviour
     {
         _currentDialogueIndex = e.CurrentWaveIndex;
 
+        TryStartDialogue();
+    }
+
+    private void TryStartDialogue()
+    {
         if (_clearedWavesIndexList.Contains(_currentDialogueIndex))
         {
             if (_currentDialogueIndex == _clearedWavesIndexList.Count - 1)
@@ -111,8 +166,22 @@ public class GameStateManager : MonoBehaviour
 
     private void HandleStartDialogue()
     {
-        Debug.Log("Send event");
-        OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
+        StartCoroutine(StartDialogueRoutine());
+    }
+
+    private IEnumerator StartDialogueRoutine(float delayInSeconds = 0.1f)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+
+        if (_clearedWavesIndexList.Count == 0)
+        {
+            _clearedWavesIndexList.Add(0);
+        }
+        
+        
+            OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
+            _hasAlreadyPlayed = true;
+        
         ChangeState(GameState.Dialogue);
     }
 
@@ -125,6 +194,7 @@ public class GameStateManager : MonoBehaviour
             Debug.Log("Game Win");
         }
         HandleStartNextWave();
+        Debug.Log("ON HIDE");
     }
 
     private void HandleStartNextWave()
