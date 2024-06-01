@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4929176378453581744}
   - component: {fileID: 8470743678079835330}
   - component: {fileID: 3519545480481907458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BabaiHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
   _moveSpeed: 1
   _timeBetweenAttacks: 4
   _timeSinceLastAttack: 0
+  _isDead: 0
 --- !u!212 &8470743678079835330
 SpriteRenderer:
   m_ObjectHideFlags: 0

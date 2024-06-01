@@ -9,6 +9,8 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
 
     public event EventHandler OnPlayerDeath;
 
+    [SerializeField] private float _maxInvincibilityTime;
+
     private void Awake()
     {
         if (Instance == null)
@@ -26,7 +28,7 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
     {
         //die animations
         //sound effects
-        //Debug.Log("Player killed");
-        //OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+       // Debug.Log("Player killed");
+        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -45,11 +45,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogueSections:
-  - _textParagraphs:
-    - First Paragraph, Dialogue 0
-    - Second Paragraph, Dialogue 0
-    - Last Paragraph, Dialogue 0
-  - _textParagraphs:
-    - First Paragraph, Dialogue 1
-    - Second Paragraph, Dialogue 2
+  - _sectionName: Opening Dialogue
+    _textParagraphs:
+    - _text: Hello Friend
+      _speakerNumber: 1
+    - _text: Hello to you
+      _speakerNumber: 2
+    - _text: Can I start playing?
+      _speakerNumber: 1
+    - _text: Yes, press start when you're ready
+      _speakerNumber: 2
+  - _sectionName: Dialogue After First Wave Cleared
+    _textParagraphs:
+    - _text: Is first wave cleared?
+      _speakerNumber: 1
+    - _text: Yes, first wave is cleared
+      _speakerNumber: 2
+    - _text: So, can you continue to the second wave?
+      _speakerNumber: 1
+    - _text: Yes, you can
+      _speakerNumber: 2
+    - _text: Press start, when you're ready
+      _speakerNumber: 2
+  - _sectionName: Dialogue After Second Wave Cleared
+    _textParagraphs:
+    - _text: Is second wave cleared?
+      _speakerNumber: 1
+    - _text: Yes, second wave is cleared
+      _speakerNumber: 2
+    - _text: So, can you continue to the third wave?
+      _speakerNumber: 1
+    - _text: Yes, you can
+      _speakerNumber: 2
+    - _text: Press start, when you're ready
+      _speakerNumber: 2
+  - _sectionName: Dialogue After All waves cleared
+    _textParagraphs:
+    - _text: Is that it?
+      _speakerNumber: 1
+    - _text: Yes mate, well done, you did it. That's the end
+      _speakerNumber: 1
+  _currentDialogueSectionIndex: 0
+  _currentDialogueParagraphIndex: 0
+  _currentDialogueSpeaker: 0
   _textWriter: {fileID: 0}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
+
+    [Header("Path Setup Configuration")]
     [SerializeField] private Transform[] _path;
 
     [Header("Following Behaviour")]
@@ -22,12 +24,25 @@ public class PathFollower : MonoBehaviour
 
     private void Start()
     {
+        AssignWaypoints();
+
         _isMovingForward = true;
 
         if (_isFollowingAutomatically)
         {
             FollowAutomatically();
         }
+    }
+
+    private void AssignWaypoints()
+    {
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("BabaiWaypoint");
+        _path = new Transform[waypoints.Length];
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            _path[i] = waypoints[i].transform;
+        }
+        Array.Sort(_path, (a, b) => string.Compare(a.name, b.name, StringComparison.Ordinal));
     }
 
     private void FollowAutomatically()

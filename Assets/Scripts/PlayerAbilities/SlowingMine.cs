@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class KillingBox : MonoBehaviour
+public class SlowingMine : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] private float _totalLifetime;
 
-    [Header("Stun Configuration")]
-    [SerializeField] private float _stunDuration;
-    [SerializeField] private float _stunExplosionArea;
+    [Header("SlowDown Configuration")]
+    [SerializeField] private float _slowDownDuration;
+    [SerializeField] private float _slowDownMultiplier;
+    [SerializeField] private float _explosionArea;
     [SerializeField] private LayerMask _whatCanBeStunned;
 
 
@@ -20,6 +21,7 @@ public class KillingBox : MonoBehaviour
     [SerializeField] private float _lifetimeLeft;
     [SerializeField] private bool _hasFallen;
     [SerializeField] private bool _canExplode;
+    [SerializeField] private bool _hasExploded;
 
     private Rigidbody2D _rigidbody;
 
@@ -38,9 +40,8 @@ public class KillingBox : MonoBehaviour
 
     private void Update()
     {
-       
 
-        if (_hasFallen)
+        if (_hasFallen && !_hasExploded)
         {
             _canExplode = true;
             SelfDestructAfterLifetime();
@@ -48,8 +49,8 @@ public class KillingBox : MonoBehaviour
 
         if (_canExplode)
         {
+            // Have animations, at the end use animation event to call Explode
             Explode();
-            //_canExplode = false;
         }
     }
 
@@ -67,12 +68,17 @@ public class KillingBox : MonoBehaviour
     private void Explode()
     {
         // animation plays
-        Collider2D[] HitColliders = Physics2D.OverlapCircleAll(transform.position, _stunExplosionArea, _whatCanBeStunned);
+        Collider2D[] HitColliders = Physics2D.OverlapCircleAll(transform.position, _explosionArea, _whatCanBeStunned);
 
         foreach (Collider2D collider in HitColliders)
         {
-            // Need enemies first in order to call method on them for receiving stun.
+            if (collider.TryGetComponent(out ICanBeSlowedDown canBeSlowedDown))
+            {
+                canBeSlowedDown.TrySlowDown(_slowDownDuration, _slowDownMultiplier);
+            }
         }
+        _canExplode = false;
+        _hasExploded = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -93,6 +99,6 @@ public class KillingBox : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _stunExplosionArea);
+        Gizmos.DrawWireSphere(transform.position, _explosionArea);
     }
 }

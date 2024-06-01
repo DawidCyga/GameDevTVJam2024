@@ -60,8 +60,10 @@ public class Player : MonoBehaviour
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
-    private DropBoxAbility _dropBoxAbility;
+    private DropMineAbility _dropMineAbility;
     private DashAbility _dashAbilityVer2;
+    private HitsCounter _hitsCounter;
+    private PlayerHitBox _playerHitBox;
 
     private enum PlayerState
     {
@@ -82,8 +84,11 @@ public class Player : MonoBehaviour
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _dropBoxAbility = GetComponent<DropBoxAbility>();
+        _dropMineAbility = GetComponent<DropMineAbility>();
         _dashAbilityVer2 = GetComponent<DashAbility>();
+        _hitsCounter = GetComponent<HitsCounter>();
+        _playerHitBox = GetComponentInChildren<PlayerHitBox>();
+
 
         _playerState = PlayerState.Grounded;
     }
@@ -135,7 +140,10 @@ public class Player : MonoBehaviour
 
     private void PlayerInputHandler_OnDashButtonPressed(object sender, EventArgs e)
     {
-        _isAttemptingDash = true;
+        if (!_isPerformingDash)
+        {
+            _isAttemptingDash = true;
+        }
     }
 
     private void Update()
@@ -220,7 +228,7 @@ public class Player : MonoBehaviour
         if (_hasPerformedDoubleJump) return;
         if (!_isAttemptingJump) return;
 
-        _dropBoxAbility.TryDropKillingBox();
+        _dropMineAbility.TryDropSlowingMine();
         _hasDroppedBox = true;
     }
 
@@ -238,6 +246,7 @@ public class Player : MonoBehaviour
             if (_dashAbilityVer2.TryPerformDash(_moveDirection, isGrounded, FinishPerformingDash))
             {
                 _isPerformingDash = true;
+                _hitsCounter.SetInvincible();
             }
 
             _isAttemptingDash = false;

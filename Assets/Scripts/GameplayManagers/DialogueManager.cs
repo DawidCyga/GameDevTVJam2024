@@ -55,7 +55,14 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        GameStateManager.Instance.OnTimeToStartDialogue += GameStateManager_OnTimeToStartDialogue;
+        if (TutorialGameManager.Instance is not null)
+        {
+            TutorialGameManager.Instance.OnTimeToStartDialogue += TutorialGameManager_OnTimeToStartDialogue;
+        }
+        if (GameStateManager.Instance is not null)
+        {
+            GameStateManager.Instance.OnTimeToStartDialogue += GameStateManager_OnTimeToStartDialogue;
+        }
         TextWriter.Instance.OnStartedTypingNewParagraph += TextWriter_OnStartedTypingNewParagraph;
         TextWriter.Instance.OnSingleDialogueParagraphTyped += TextWriter_OnSingleDialogueParagraphTyped;
         TextWriter.Instance.OnLastDialogueParagraphTyped += TextWriter_OnLastDialogueParagraphTyped;
@@ -63,19 +70,27 @@ public class DialogueManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameStateManager.Instance.OnTimeToStartDialogue -= GameStateManager_OnTimeToStartDialogue;
+        if (TutorialGameManager.Instance is not null)
+        {
+            TutorialGameManager.Instance.OnTimeToStartDialogue -= TutorialGameManager_OnTimeToStartDialogue;
+        }
+        if (GameStateManager.Instance is not null)
+        {
+            GameStateManager.Instance.OnTimeToStartDialogue -= GameStateManager_OnTimeToStartDialogue;
+        }
         TextWriter.Instance.OnStartedTypingNewParagraph -= TextWriter_OnStartedTypingNewParagraph;
         TextWriter.Instance.OnSingleDialogueParagraphTyped -= TextWriter_OnSingleDialogueParagraphTyped;
         TextWriter.Instance.OnLastDialogueParagraphTyped -= TextWriter_OnLastDialogueParagraphTyped;
     }
 
+    private void TutorialGameManager_OnTimeToStartDialogue(object sender, TutorialGameManager.OnTimeToStartDialogueEventArgs e)
+    {
+        StartDialogue(e.DialogueIndex);
+    }
+
     private void GameStateManager_OnTimeToStartDialogue(object sender, GameStateManager.OnTimeToStartDialogueEventArgs e)
     {
-        Debug.Log("Started dialogue");
-        _currentDialogueSectionIndex = e.DialogueIndex;
-        _currentDialogueParagraphIndex = 0;
-        _textWriter.StartTyping(_dialogueSections[_currentDialogueSectionIndex].GetTextParagraphsContents(), true);
-        OnStartNewDialogue?.Invoke(this, EventArgs.Empty);
+        StartDialogue(e.DialogueIndex);
     }
 
     private void TextWriter_OnStartedTypingNewParagraph(object sender, EventArgs e)
@@ -93,6 +108,15 @@ public class DialogueManager : MonoBehaviour
     private void TextWriter_OnLastDialogueParagraphTyped(object sender, EventArgs e)
     {
         OnLastParagraphTyped?.Invoke(sender, EventArgs.Empty);
+    }
+
+    private void StartDialogue(int dialogueIndex)
+    {
+        Debug.Log("Started dialogue");
+        _currentDialogueSectionIndex = dialogueIndex;
+        _currentDialogueParagraphIndex = 0;
+        _textWriter.StartTyping(_dialogueSections[_currentDialogueSectionIndex].GetTextParagraphsContents(), true);
+        OnStartNewDialogue?.Invoke(this, EventArgs.Empty);
     }
 
     private void UpdateCurrentDialogueSpeaker()

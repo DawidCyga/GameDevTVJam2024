@@ -19,15 +19,13 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject _portraitFirst;
     [SerializeField] private GameObject _portraitSecond;
 
-    private TextInteractionButton _textInteractionButton;
+    [SerializeField] private TextInteractionButton _textInteractionButton;
 
     public event EventHandler OnHide;
 
     private void Awake()
     {
         Instance = this;
-
-        _textInteractionButton = GetComponentInChildren<TextInteractionButton>();
         //_dialogueUIContainer.SetActive(false);
     }
     private void Start()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2231986454488515427}
   - component: {fileID: 1485613170865688847}
   m_Layer: 9
-  m_Name: KillingBox
+  m_Name: SlowingMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,14 +100,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totalLifetime: 3
-  _stunDuration: 4
-  _stunExplosionArea: 3
+  _slowDownDuration: 10
+  _slowDownMultiplier: 0.2
+  _explosionArea: 4.59
   _whatCanBeStunned:
     serializedVersion: 2
     m_Bits: 256
   _lifetimeLeft: 0
   _hasFallen: 0
   _canExplode: 0
+  _hasExploded: 0
 --- !u!50 &2231986454488515427
 Rigidbody2D:
   serializedVersion: 4

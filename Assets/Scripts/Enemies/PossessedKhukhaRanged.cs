@@ -59,6 +59,7 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     private void TryShoot()
     {
         UpdateFirePointPosition();
+        UpdateSlowDown();
 
         if (_timeSinceLastShot > _timeBetweenShots)
         {
@@ -88,5 +89,10 @@ public class PossessedKhukhaRanged : PathfinderEnemy
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         _firePointPivot.rotation = Quaternion.Euler(0, 0, targetAngle);
+    }
+
+    public override void UpdateSlowDown()
+    {
+        base.UpdateSlowDown();
     }
 }

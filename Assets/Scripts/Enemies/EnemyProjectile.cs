@@ -30,9 +30,9 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out PlayerHitBox playerHitBox))
+        if (collision != null && collision.TryGetComponent(out HitsCounter hitCounter))
         {
-            playerHitBox.TakeDamage();
+            hitCounter.Hit(HitsCounter.HitType.RangedKhukha);
         }
         Destroy(gameObject);
     }
