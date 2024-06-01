@@ -1291,194 +1291,6 @@ PrefabInstance:
       propertyPath: _textWriter
       value: 
       objectReference: {fileID: 1402227511}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._sectionName
-      value: Opening Dialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._sectionName
-      value: Dialogue After First Wave Cleared
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._sectionName
-      value: Dialogue After Second Wave Cleared
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._sectionName
-      value: Dialogue After All waves cleared
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[0]._text
-      value: Hello Friend
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[1]._text
-      value: Hello to you
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[2]._text
-      value: Can I start playing?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[3]._text
-      value: Yes, press start when you're ready
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[0]._text
-      value: Is first wave cleared?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[1]._text
-      value: Yes, first wave is cleared
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[2]._text
-      value: So, can you continue to the second wave?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[3]._text
-      value: Yes, you can
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[4]._text
-      value: Press start, when you're ready
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[0]._text
-      value: Is second wave cleared?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[1]._text
-      value: Yes, second wave is cleared
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[2]._text
-      value: So, can you continue to the third wave?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[3]._text
-      value: Yes, you can
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[4]._text
-      value: Press start, when you're ready
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[0]._text
-      value: Is that it?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[1]._text
-      value: Yes mate, well done, you did it. That's the end
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[2]._text
-      value: So, can you continue to the third wave?
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[3]._text
-      value: Yes, you can
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[4]._text
-      value: Press start, when you're ready
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[0]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[1]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[2]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[3]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[0]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[1]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[2]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[3]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[4]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[0]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[1]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[2]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[3]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[4]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[0]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[1]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[2]._speakerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[3]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[4]._speakerNumber
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6390797596576312639, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1517.9271
@@ -1522,10 +1334,6 @@ PrefabInstance:
     - target: {fileID: 8254148252602550592, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: m_Name
       value: DialogueManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8254148252602550592, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31350,6 +31158,38 @@ PrefabInstance:
     - target: {fileID: 1633213258193395752, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388180688857638218, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388180688857638218, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3adba66c98c21d42a3054b40cd57208, type: 3}
+    - target: {fileID: 4388180688857638218, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388180688857638218, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388180688857638218, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388180688857638218, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619379092456772398, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619379092456772398, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7137347380695047216, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
       propertyPath: _forwardText

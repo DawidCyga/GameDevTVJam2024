@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4614355290193536535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -448,11 +448,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72014809098c26145bfa8923c6eac658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextButtonText: 
-  _forwardText: 
-  _finishButtonText: 
+  _nextButtonText: Next
+  _forwardText: Forward
+  _finishButtonText: Start
   _dialogueUIContainer: {fileID: 1633213258193395752}
   _dialogueManager: {fileID: 0}
+  _portraitFirst: {fileID: 6464704640716524688}
+  _portraitSecond: {fileID: 7807174997381517374}
+  _textInteractionButton: {fileID: 2667675702519570793}
 --- !u!1001 &8816790267755963680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,6 +553,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d3eaf362d17f54e83d6140dfc14592, type: 3}
+--- !u!114 &2667675702519570793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6872199340969526345, guid: a0d3eaf362d17f54e83d6140dfc14592, type: 3}
+  m_PrefabInstance: {fileID: 8816790267755963680}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aed9d21ada6e584c81f6bb0498ac72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2702610054458113470 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6906852286667479198, guid: a0d3eaf362d17f54e83d6140dfc14592, type: 3}
