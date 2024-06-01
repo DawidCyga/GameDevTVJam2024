@@ -19,6 +19,12 @@ public class HealthUI : MonoBehaviour
         HitsCounter.Instance.OnHealthRestored += HitsCounter_OnHealthRestored;
     }
 
+    private void OnDestroy()
+    {
+        HitsCounter.Instance.OnHealthDecreased -= HitsCounter_OnHealthDecreased;
+        HitsCounter.Instance.OnHealthRestored -= HitsCounter_OnHealthRestored;
+    }
+
     private void InstantiateHealthIcons()
     {
         int iconNumber = HitsCounter.Instance.GetMaxHealth();

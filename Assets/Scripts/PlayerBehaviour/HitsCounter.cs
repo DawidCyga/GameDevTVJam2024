@@ -9,11 +9,6 @@ public class HitsCounter : MonoBehaviour
 {
     public static HitsCounter Instance { get; private set; }
 
-    [SerializeField] private float _maxInvincibilityTime;
-
-    [SerializeField] private float _timeSinceTurnedInvincible;
-    [SerializeField] private bool _isInvincible;
-
     public enum HitType
     {
         Babai,
@@ -22,6 +17,7 @@ public class HitsCounter : MonoBehaviour
     }
 
     [SerializeField] private int _maxHealth;
+    [SerializeField] private float _maxInvincibilityTime;
 
     [Header("Damage Configuration")]
     [SerializeField] private int _babaiDamage;
@@ -30,12 +26,14 @@ public class HitsCounter : MonoBehaviour
 
     [Header("For debugging only")]
     [SerializeField] private int _currentHealth;
+    [SerializeField] private float _timeSinceTurnedInvincible;
+    [SerializeField] private bool _isInvincible;
 
     private Dictionary<HitType, int> _hitTypeDamageDictionary = new Dictionary<HitType, int>();
 
     public event EventHandler OnHealthDecreased;
     public event EventHandler OnHealthRestored;
-    
+
     private void Awake()
     {
         Instance = this;
@@ -47,7 +45,10 @@ public class HitsCounter : MonoBehaviour
 
     private void Start()
     {
-        WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
+        if (WaveSpawner.Instance is not null)
+        {
+            WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
+        }
         RestoreLife();
     }
 
@@ -65,7 +66,10 @@ public class HitsCounter : MonoBehaviour
 
     private void OnDestroy()
     {
-        WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
+        if (WaveSpawner.Instance is not null)
+        {
+            WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
+        }
     }
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)
