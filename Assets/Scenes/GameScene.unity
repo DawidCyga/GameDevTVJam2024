@@ -1237,14 +1237,22 @@ PrefabInstance:
       objectReference: {fileID: 1402227511}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._sectionName
       value: Dialogue After All waves cleared
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._sectionName
+      value: Dialogue After All waves cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
@@ -1256,11 +1264,27 @@ PrefabInstance:
       value: Yes, not it really is!
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[0]._text
+      value: Is that it?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[1]._text
+      value: Yes, mate, you really saved the freaking forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[0]._speakerNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[1]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[0]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[1]._speakerNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390797596576312639, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
@@ -27543,7 +27567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _maxInvincibilityTime
-      value: 1
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_LocalPosition.x
