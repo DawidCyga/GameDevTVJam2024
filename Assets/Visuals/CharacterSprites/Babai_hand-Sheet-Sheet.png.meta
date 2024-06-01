@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c4411ec84e21fac48b3014b46e056280
+guid: db312a650f9078744b5e2facf6a3f1ea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,12 +136,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Projectile-Sheet_0
+      name: Babai_hand-Sheet-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6
+        width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,19 +150,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a1fccbfbdbdae74b80ab5a51b9c8a9c
-      internalID: 226966248
+      spriteID: 340e2576660bce845b7f5d1b89d62aab
+      internalID: 1740381376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectile-Sheet_1
+      name: Babai_hand-Sheet-Sheet_1
       rect:
         serializedVersion: 2
-        x: 6
+        x: 16
         y: 0
-        width: 6
+        width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -171,19 +171,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c1eeae89ce483c429d76de6c1352e14
-      internalID: -416717657
+      spriteID: 0b2e59f4a5301b349956d63152930182
+      internalID: -575006374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectile-Sheet_2
+      name: Babai_hand-Sheet-Sheet_2
       rect:
         serializedVersion: 2
-        x: 12
+        x: 32
         y: 0
-        width: 6
+        width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -192,8 +192,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef09348b4e6f7342af3f74399282e50
-      internalID: -287520942
+      spriteID: 17c627447169e5c438cd565935efa243
+      internalID: -30524930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Babai_hand-Sheet-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765464c58a7c5f240a6773f1a8bde6bc
+      internalID: 1321597153
       vertices: []
       indices: 
       edges: []
@@ -209,9 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Projectile-Sheet_0: 226966248
-      Projectile-Sheet_1: -416717657
-      Projectile-Sheet_2: -287520942
+      Babai_hand-Sheet-Sheet_0: 1740381376
+      Babai_hand-Sheet-Sheet_1: -575006374
+      Babai_hand-Sheet-Sheet_2: -30524930
+      Babai_hand-Sheet-Sheet_3: 1321597153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c4411ec84e21fac48b3014b46e056280
+guid: f6762f748d3cc5346ab99b63fe470927
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Projectile-Sheet_0
+      name: Lykhos_Mouth_Flying-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a1fccbfbdbdae74b80ab5a51b9c8a9c
-      internalID: 226966248
+      spriteID: 7fc89581494b4574a88856b28714a255
+      internalID: 1773961917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectile-Sheet_1
+      name: Lykhos_Mouth_Flying-Sheet_1
       rect:
         serializedVersion: 2
-        x: 6
+        x: 16
         y: 0
-        width: 6
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c1eeae89ce483c429d76de6c1352e14
-      internalID: -416717657
+      spriteID: ba7e1564f9da7e4478e4a39cab040ccb
+      internalID: 2068981553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectile-Sheet_2
+      name: Lykhos_Mouth_Flying-Sheet_2
       rect:
         serializedVersion: 2
-        x: 12
+        x: 32
         y: 0
-        width: 6
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +192,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef09348b4e6f7342af3f74399282e50
-      internalID: -287520942
+      spriteID: 60c317aad31bdf34281db08ff1a817c0
+      internalID: -776323250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lykhos_Mouth_Flying-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbf87d28aaf864147a1fffe0596f080e
+      internalID: 47161760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lykhos_Mouth_Flying-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c4999174fe181a4389e4ed97704214b
+      internalID: 1742205331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lykhos_Mouth_Flying-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a8394430943224b8c632bd39db6c22
+      internalID: -1827202361
       vertices: []
       indices: 
       edges: []
@@ -209,9 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Projectile-Sheet_0: 226966248
-      Projectile-Sheet_1: -416717657
-      Projectile-Sheet_2: -287520942
+      Lykhos_Mouth_Flying-Sheet_0: 1773961917
+      Lykhos_Mouth_Flying-Sheet_1: 2068981553
+      Lykhos_Mouth_Flying-Sheet_2: -776323250
+      Lykhos_Mouth_Flying-Sheet_3: 47161760
+      Lykhos_Mouth_Flying-Sheet_4: 1742205331
+      Lykhos_Mouth_Flying-Sheet_5: -1827202361
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

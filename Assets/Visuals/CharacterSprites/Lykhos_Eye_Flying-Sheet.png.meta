@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c4411ec84e21fac48b3014b46e056280
+guid: 7c7142e4a14d03a4b90c0c5242659eff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Projectile-Sheet_0
+      name: Lykhos_Eye_Flying-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a1fccbfbdbdae74b80ab5a51b9c8a9c
-      internalID: 226966248
+      spriteID: 16e066429443c8a4fa24bf32667464c2
+      internalID: -1012948775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectile-Sheet_1
+      name: Lykhos_Eye_Flying-Sheet_1
       rect:
         serializedVersion: 2
-        x: 6
+        x: 16
         y: 0
-        width: 6
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c1eeae89ce483c429d76de6c1352e14
-      internalID: -416717657
+      spriteID: f4ff309613b35a646a5e5fc5f73d795f
+      internalID: 1411999427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectile-Sheet_2
+      name: Lykhos_Eye_Flying-Sheet_2
       rect:
         serializedVersion: 2
-        x: 12
+        x: 32
         y: 0
-        width: 6
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +192,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef09348b4e6f7342af3f74399282e50
-      internalID: -287520942
+      spriteID: 6dbee83d89b6d2d439199185809dc6af
+      internalID: -239026703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lykhos_Eye_Flying-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8df6a9bf7317a364780e2dd60b7c0258
+      internalID: 212516356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lykhos_Eye_Flying-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e2675a632141f4583e958be049c25d
+      internalID: 1661064622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lykhos_Eye_Flying-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac40359bf05d39429883deaaaa493e6
+      internalID: 421099766
       vertices: []
       indices: 
       edges: []
@@ -209,9 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Projectile-Sheet_0: 226966248
-      Projectile-Sheet_1: -416717657
-      Projectile-Sheet_2: -287520942
+      Lykhos_Eye_Flying-Sheet_0: -1012948775
+      Lykhos_Eye_Flying-Sheet_1: 1411999427
+      Lykhos_Eye_Flying-Sheet_2: -239026703
+      Lykhos_Eye_Flying-Sheet_3: 212516356
+      Lykhos_Eye_Flying-Sheet_4: 1661064622
+      Lykhos_Eye_Flying-Sheet_5: 421099766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
