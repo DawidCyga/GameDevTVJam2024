@@ -59,7 +59,7 @@ MonoBehaviour:
   _isInAttackRange: 0
   _isDead: 0
   _timeSinceLastUpdatedPath: 0
-  _timeBetweenPathUpdates: 0
+  _timeBetweenPathUpdates: 0.5
   _timeBetweenAttacks: 1
   _timeSinceLastAttacked: 0
 --- !u!212 &7833711066605421489

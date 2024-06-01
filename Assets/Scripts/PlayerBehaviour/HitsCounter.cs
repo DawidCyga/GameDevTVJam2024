@@ -9,6 +9,11 @@ public class HitsCounter : MonoBehaviour
 {
     public static HitsCounter Instance { get; private set; }
 
+    [SerializeField] private float _maxInvincibilityTime;
+
+    [SerializeField] private float _timeSinceTurnedInvincible;
+    [SerializeField] private bool _isInvincible;
+
     public enum HitType
     {
         Babai,
@@ -46,6 +51,18 @@ public class HitsCounter : MonoBehaviour
         RestoreLife();
     }
 
+    private void Update()
+    {
+        if (_isInvincible)
+        {
+            _timeSinceTurnedInvincible += Time.deltaTime;
+            if (_timeSinceTurnedInvincible > _maxInvincibilityTime)
+            {
+                _isInvincible = false;
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
@@ -63,6 +80,7 @@ public class HitsCounter : MonoBehaviour
 
     public void Hit(HitType hitType)
     {
+        if (_isInvincible) { return; }
         _currentHealth -= _hitTypeDamageDictionary[hitType];
         OnHealthDecreased?.Invoke(this, EventArgs.Empty);
 
@@ -70,6 +88,12 @@ public class HitsCounter : MonoBehaviour
         {
             PlayerHitBox.Instance.TakeDamage();
         }
+    }
+
+    public void SetInvincible()
+    {
+        _isInvincible = true;
+        _timeSinceTurnedInvincible = 0;
     }
 
     public int GetMaxHealth() => _maxHealth;
