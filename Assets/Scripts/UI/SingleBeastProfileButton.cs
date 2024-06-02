@@ -8,6 +8,7 @@ public class SingleBeastProfileButton : MonoBehaviour
 
     [Header("Profile Setup")]
     [SerializeField] private string _beastName;
+    [TextArea(3,9)]
     [SerializeField] private string _beastDescription;
     [SerializeField] private Sprite _beastImage;
 
