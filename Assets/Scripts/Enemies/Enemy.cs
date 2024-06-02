@@ -56,11 +56,28 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         return false;
     }
 
+    protected virtual bool CanSeeEntity(Transform entity)
+    {
+        Vector3 direction = (entity.position - transform.position).normalized;
+        float distanceToTarget = Vector3.Distance(transform.position, _target.position);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToTarget, _whatIsObstacle);
+
+        if (hit.collider is null)
+        {
+            RaycastHit2D hitPlayer = Physics2D.Raycast(transform.position, direction, _sightLength, _whatIsPlayer);
+            if (hitPlayer.collider is not null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected virtual void UpdateInAttackRange()
     {
         Collider2D hitCollider = Physics2D.OverlapCircle(transform.position, _attackRange, _whatIsPlayer);
         _isInAttackRange = (hitCollider != null) ? true : false;
-
     }
 
     protected virtual void UpdateFaceDirection()

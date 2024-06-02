@@ -13,7 +13,9 @@ public class HitsCounter : MonoBehaviour
     {
         Babai,
         RangedKhukha,
-        Khukha
+        Khukha,
+        RangedFireKhukha,
+        FireKhukha
     }
 
     [SerializeField] private int _maxHealth;
@@ -23,6 +25,8 @@ public class HitsCounter : MonoBehaviour
     [SerializeField] private int _babaiDamage;
     [SerializeField] private int _rangedKhukhaDamage;
     [SerializeField] private int _khukhaDamage;
+    [SerializeField] private int _rangedFireKhukhaDamage;
+    [SerializeField] private int _firekhukhaDamage;
 
     [Header("For debugging only")]
     [SerializeField] private int _currentHealth;
@@ -41,6 +45,8 @@ public class HitsCounter : MonoBehaviour
         _hitTypeDamageDictionary[HitType.Babai] = _babaiDamage;
         _hitTypeDamageDictionary[HitType.RangedKhukha] = _rangedKhukhaDamage;
         _hitTypeDamageDictionary[HitType.Khukha] = _khukhaDamage;
+        _hitTypeDamageDictionary[HitType.RangedFireKhukha] = _rangedFireKhukhaDamage;
+        _hitTypeDamageDictionary[HitType.FireKhukha] = _firekhukhaDamage;
     }
 
     private void Start()

@@ -28,6 +28,17 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
 
         FollowPath();
     }
+
+    protected virtual void FindPathToEntity(Transform entityTransform)
+    {
+        Vector2Int startPosition = GetGridPositionFromWorldPosition(transform.position);
+        Vector2Int targetPosition = GetGridPositionFromWorldPosition(entityTransform.position);
+
+        _pathToTarget = AStarPathfinder.Instance.BuildPath(startPosition, targetPosition);
+
+        FollowPath();
+    }
+
     private void FollowPath()
     {
         if (_moveToPlayerRoutine != null)
