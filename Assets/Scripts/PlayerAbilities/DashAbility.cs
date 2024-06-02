@@ -61,26 +61,39 @@ public class DashAbility : MonoBehaviour
         Vector3 dashDelta = new Vector3(direction.x, direction.y).normalized * _dashDistance;
         Vector3 targetPosition = startPosition + dashDelta;
 
-        RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, _dashDistance, _whatIsWall);
-        if (hit.collider != null)
+        Vector3[] wallCheckRayOrigins = {
+        startPosition,
+        startPosition + new Vector3(-0.5f, 0.5f, 0),
+        startPosition + new Vector3(0.5f, 0.5f, 0),
+        startPosition + new Vector3(-0.5f, -0.5f, 0),
+        startPosition + new Vector3(0.5f, -0.5f, 0)
+        };
+
+        float minDistance = _dashDistance;
+
+        foreach (Vector3 origin in wallCheckRayOrigins)
         {
-            targetPosition = hit.point;
+            RaycastHit2D hit = Physics2D.Raycast(origin, direction, _dashDistance, _whatIsWall);
+            if (hit.collider != null && hit.distance < minDistance)
+            {
+                minDistance = hit.distance;
+            }
         }
 
+        targetPosition = startPosition + (Vector3)(direction.normalized * minDistance);
+
         float timeSinceStartedDash = 0f;
-        float dashDuration = _dashDistance / _dashSpeed;
+        float dashDuration = minDistance / _dashSpeed;
 
         while (timeSinceStartedDash < dashDuration)
         {
             transform.position = Vector3.Lerp(startPosition, targetPosition, timeSinceStartedDash / dashDuration);
             timeSinceStartedDash += Time.deltaTime;
-
             yield return null;
         }
 
         float totalDistance = (targetPosition - startPosition).magnitude;
         int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
-
         for (int i = 1; i < numberOfSteps; i++)
         {
             float t = (float)i / numberOfSteps;
@@ -92,7 +105,7 @@ public class DashAbility : MonoBehaviour
         while (_poisonousTrailElementsQueue.Count > numberOfSteps - 1)
         {
             Transform poisonousTrailInstanceToDelete = _poisonousTrailElementsQueue.Dequeue();
-            if (poisonousTrailInstanceToDelete != null )
+            if (poisonousTrailInstanceToDelete != null)
             {
                 GameObject.Destroy(poisonousTrailInstanceToDelete.gameObject);
             }
