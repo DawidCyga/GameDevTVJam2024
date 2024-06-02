@@ -1238,14 +1238,22 @@ PrefabInstance:
       objectReference: {fileID: 1402227511}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._sectionName
       value: Dialogue After All waves cleared
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._sectionName
+      value: Dialogue After All waves cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
@@ -1257,11 +1265,27 @@ PrefabInstance:
       value: Yes, not it really is!
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[0]._text
+      value: Is that it?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[1]._text
+      value: Yes, mate, you really saved the freaking forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[0]._speakerNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[1]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[0]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[1]._speakerNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390797596576312639, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
@@ -27798,7 +27822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _maxInvincibilityTime
-      value: 1
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _rangedFireKhukhaDamage
@@ -28020,6 +28044,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2058295262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -43.187008
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.6403913
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665501560051206007, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
+      propertyPath: m_Name
+      value: RangedKhukhaProjectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
 --- !u!1001 &2061174655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91711,5 +91792,9 @@ SceneRoots:
   - {fileID: 1227578892020521479}
   - {fileID: 5173974802186392150}
   - {fileID: 434188956}
+<<<<<<< HEAD
   - {fileID: 1262860480}
   - {fileID: 1295812958}
+=======
+  - {fileID: 2058295262}
+>>>>>>> 77c5027cdeb783ec3953a34e5d7647fecc425827
