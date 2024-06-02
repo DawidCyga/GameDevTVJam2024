@@ -33,6 +33,10 @@ public class DifficultyManager : MonoBehaviour
         {
             HitsCounter.Instance.SetMaxHealth(GetMaxHealthValue());
         }
+        if (DifficultyUI.Instance is not null)
+        {
+            DifficultyUI.Instance.DisplayDifficulty(_currentlySelectedDifficulty.ToString());
+        }
     }
     private int GetMaxHealthValue()
     {
@@ -48,6 +52,8 @@ public class DifficultyManager : MonoBehaviour
                 return 0;
         }
     }
+
+    
 
     public void Select(SelectedDifficulty selection)
     {
