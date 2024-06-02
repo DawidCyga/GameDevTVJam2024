@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AStarPathfinder : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class AStarPathfinder : MonoBehaviour
     [SerializeField] private Tilemap _groundTilemap;
     [SerializeField] private Tilemap _collisionsTilemap;
 
-    [SerializeField] private List<PathNode> _openList;
+    [SerializeField] private Heap<PathNode> _openSet;
     [SerializeField] private HashSet<PathNode> _closedHashSet;
 
     GridManager _gridManager;
@@ -20,6 +21,8 @@ public class AStarPathfinder : MonoBehaviour
         Instance = this;
     }
 
+    
+
     public void ClearReserved(Vector2Int position)
     {
         PathNode node = _gridManager.GetNodeAtTilemapGridPosition(position);
@@ -28,15 +31,14 @@ public class AStarPathfinder : MonoBehaviour
 
     public Stack<Vector3> BuildPath(Vector2Int startGridPosition, Vector2Int targetGridPosition)
     {
-        if (_gridManager != null)
-        {
-            _gridManager.Reset(_collisionsTilemap);
-
-        }
+        //if (_gridManager != null)
+        //{
+        //    _gridManager.Reset(_collisionsTilemap);
+        //}
 
         _gridManager = new GridManager(_groundTilemap.size.x, _groundTilemap.size.y, _collisionsTilemap, _groundTilemap.origin);
 
-        _openList = new List<PathNode>();
+        _openSet = new Heap<PathNode>(_groundTilemap.size.x * _groundTilemap.size.y);
         _closedHashSet = new HashSet<PathNode>();
 
         PathNode startNode = _gridManager.GetNodeAtTilemapGridPosition(startGridPosition);
@@ -48,14 +50,13 @@ public class AStarPathfinder : MonoBehaviour
         }
         targetNode.SetOccupied(true);
 
-        PathNode endPathNode = FindShortestPath(startNode, targetNode, _gridManager, _openList, _closedHashSet, _groundTilemap);
+        PathNode endPathNode = FindShortestPath(startNode, targetNode, _gridManager, _openSet, _closedHashSet, _groundTilemap);
 
         if (endPathNode != null)
         {
             //this will convert grid positions in the found path to world positions, so we get back from it steps in world positions
             return CreatePathStack(endPathNode, _groundTilemap);
         }
-        //if we didn't find a path
         return null;
     }
 
@@ -83,15 +84,14 @@ public class AStarPathfinder : MonoBehaviour
         return movementPathStack;
     }
 
-    private PathNode FindShortestPath(PathNode startNode, PathNode targetNode, GridManager gridManager, List<PathNode> openList, HashSet<PathNode> closedHashSet, Tilemap tilemap)
+    private PathNode FindShortestPath(PathNode startNode, PathNode targetNode, GridManager gridManager, Heap<PathNode> openSet, HashSet<PathNode> closedHashSet, Tilemap tilemap)
     {
-        _openList.Add(startNode);
+        _openSet.Add(startNode);
 
-        while (_openList.Count > 0)
+        while (_openSet.Count > 0)
         {
-            openList.Sort();
-            PathNode currentNode = _openList[0];
-            openList.RemoveAt(0);
+            PathNode currentNode = _openSet.RemoveFirst();
+
             if (currentNode == targetNode)
             {
                 return currentNode;
@@ -101,14 +101,14 @@ public class AStarPathfinder : MonoBehaviour
             closedHashSet.Add(currentNode);
 
             //evaluate FCost for each neighbour of the curernt node
-            EvaluateCurrentNodeNeighbours(currentNode, targetNode, gridManager, _openList, _closedHashSet, _groundTilemap);
+            EvaluateCurrentNodeNeighbours(currentNode, targetNode, gridManager, _openSet, _closedHashSet, _groundTilemap);
         }
 
         //If we run out of open nodes and haven't found target, it means haven't found a path
         return null;
     }
 
-    private void EvaluateCurrentNodeNeighbours(PathNode currentNode, PathNode targetNode, GridManager gridManager, List<PathNode> openList, HashSet<PathNode> closedHashSet, Tilemap tilemap)
+    private void EvaluateCurrentNodeNeighbours(PathNode currentNode, PathNode targetNode, GridManager gridManager, Heap<PathNode> openSet, HashSet<PathNode> closedHashSet, Tilemap tilemap)
     {
         Vector2Int currentNodeGridPosition = currentNode.GetGridPosition();
         PathNode validNeighbourNode;
@@ -129,7 +129,7 @@ public class AStarPathfinder : MonoBehaviour
 
                     newCostToNeighbour = currentNode.GetGCost() + GetDistance(currentNode, validNeighbourNode);
 
-                    bool isValidNeighbourNodeInOpenList = _openList.Contains(validNeighbourNode);
+                    bool isValidNeighbourNodeInOpenList = _openSet.Contains(validNeighbourNode);
 
                     if (newCostToNeighbour < validNeighbourNode.GetGCost() || !isValidNeighbourNodeInOpenList)
                     {
@@ -137,9 +137,14 @@ public class AStarPathfinder : MonoBehaviour
                         validNeighbourNode.SetHCost(GetDistance(validNeighbourNode, targetNode));
                         validNeighbourNode.SetParentNode(currentNode);
 
+
                         if (!isValidNeighbourNodeInOpenList)
                         {
-                            openList.Add(validNeighbourNode);
+                            openSet.Add(validNeighbourNode);
+                        }
+                        else
+                        {
+                            openSet.UpdateItem(validNeighbourNode);
                         }
                     }
                 }

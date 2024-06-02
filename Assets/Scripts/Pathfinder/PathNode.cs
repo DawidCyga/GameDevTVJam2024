@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 [Serializable]
-public class PathNode : IComparable<PathNode>
+public class PathNode : IHeapItem<PathNode>
 {
     private Vector2Int _gridPosition;
 
@@ -12,8 +13,13 @@ public class PathNode : IComparable<PathNode>
 
     private int _gCost;
     private int _hCost;
+    public int FCost { get { return _gCost + _hCost; } }
+
 
     private PathNode _parentNode;
+
+    private int _heapIndex;
+    public int HeapIndex { get => _heapIndex; set => _heapIndex = value; }
 
     public void Reset(bool state)
     {
@@ -23,11 +29,6 @@ public class PathNode : IComparable<PathNode>
     {
         _gridPosition = position;
         _isWalkable = isWalkable;
-    }
-
-    public int GetFCost()
-    {
-        return _gCost + _hCost;
     }
 
     public bool GetIsWalkable()
@@ -40,16 +41,6 @@ public class PathNode : IComparable<PathNode>
         _isWalkable = state;
     }
 
-    public int CompareTo(PathNode other)
-    {
-        int result = GetFCost().CompareTo(other.GetFCost());
-
-        if (result == 0)
-        {
-            result = _hCost.CompareTo(other._hCost);
-        }
-        return result;
-    }
 
     public Vector2Int GetGridPosition()
     {
@@ -94,5 +85,18 @@ public class PathNode : IComparable<PathNode>
     public void SetOccupied(bool state)
     {
         _isReserved = state;
+    }
+
+    public int CompareTo(PathNode nodeToCompare)
+    {
+        int compare = FCost.CompareTo(nodeToCompare.FCost);
+
+        if (compare == 0)
+        {
+            compare = _hCost.CompareTo(nodeToCompare._hCost);
+        }
+        // negative, because in our case higher priority is lower cost, and by default integers when compared return higher priority for
+        // higher numbers
+        return -compare;
     }
 }

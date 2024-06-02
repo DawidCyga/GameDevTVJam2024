@@ -115,7 +115,6 @@ public class GameStateManager : MonoBehaviour
                 ChangeState(GameState.Playing);
                 break;
             default:
-                Debug.Log("CANNOT USE PAUSE AT THIS STATE");
                 break;
         }
     }
@@ -140,17 +139,14 @@ public class GameStateManager : MonoBehaviour
             {
                 // START WIN GAME
                 HandleStartDialogue();
-                Debug.Log("Game State Manager starts last dialogue");
             }
             else
             {
-                Debug.Log("Game State Manager already have this state");
                 HandleStartNextWave();
             }
         }
         else
         {
-            Debug.Log("Game State Manager don't yet have this wave. Start dialogue");
             HandleStartDialogue();
             _clearedWavesIndexList.Add(_currentDialogueIndex);
         }
@@ -179,7 +175,6 @@ public class GameStateManager : MonoBehaviour
             Debug.Log("Game Win");
         }
         HandleStartNextWave();
-        Debug.Log("ON HIDE");
     }
 
     private void HandleStartNextWave()
@@ -253,7 +248,6 @@ public class GameStateManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         _isGamePaused = true;
-        // additional conditions based on what we're going to use in the game
     }
 
     private void ChangeState(GameState newState)
