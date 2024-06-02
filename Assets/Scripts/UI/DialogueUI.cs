@@ -26,7 +26,7 @@ public class DialogueUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        //_dialogueUIContainer.SetActive(false);
+        _dialogueUIContainer.SetActive(false);
     }
     private void Start()
     {
