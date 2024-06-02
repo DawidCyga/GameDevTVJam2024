@@ -471,8 +471,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
+  m_sharedMaterial: {fileID: 4207482880075945909, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -496,8 +496,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -667,9 +667,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textParagraphs:
-  - First text paragraph
-  - Second text paragraph
-  - Third text paragraph
+  - 'Failure is only the opportunity to begin again. '
+  - Only this time, more wisely.
+  - '- Uncle Iroh'
   _nextButtonText: Next
   _startGameButtonText: Start
   _timeToShowNextButton: 5
@@ -956,7 +956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &3833870994281121317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1093,6 +1093,14 @@ PrefabInstance:
       propertyPath: _textField
       value: 
       objectReference: {fileID: 689709324}
+    - target: {fileID: 4878257204949068916, guid: d72910431746a904aae75448d0bef27a, type: 3}
+      propertyPath: _timeBetweenParagraphs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878257204949068916, guid: d72910431746a904aae75448d0bef27a, type: 3}
+      propertyPath: _timeToTypeSingleCharacter
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5152279138870201546, guid: d72910431746a904aae75448d0bef27a, type: 3}
       propertyPath: m_Name
       value: TextWriter
