@@ -42,14 +42,9 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isMoving;
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _isAttemptingJump;
-    [SerializeField] private bool _isCancellingJump;
     [SerializeField] private bool _wasInAir;
     //wallCheck bool
     [SerializeField] private bool _isDetectingWall;
-    //Dropping Box ability
-    [SerializeField] private bool _isAttemptingDropBox;
-    [SerializeField] private bool _hasDroppedBox;
-    [Space]
     //dash
     [SerializeField] private bool _isAttemptingDash;
     [SerializeField] private bool _isPerformingDash = false;
@@ -84,7 +79,6 @@ public class Player : MonoBehaviour
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _dropMineAbility = GetComponent<DropMineAbility>();
         _dashAbilityVer2 = GetComponent<DashAbility>();
         _hitsCounter = GetComponent<HitsCounter>();
         _playerHitBox = GetComponentInChildren<PlayerHitBox>();
@@ -97,9 +91,6 @@ public class Player : MonoBehaviour
     {
         PlayerInputHandler.Instance.OnRegisterMoveInputNormalized += PlayerInputHandler_OnRegisterMoveInputNormalized;
         PlayerInputHandler.Instance.OnJumpButtonPressed += PlayerInputHandler_OnJumpButtonPressed;
-        PlayerInputHandler.Instance.OnJumpButtonReleased += PlayerInputHandler_OnJumpButtonReleased;
-        PlayerInputHandler.Instance.OnDropBoxButtonPressed += PlayerInputHandler_OnDropBoxButtonPressed;
-        PlayerInputHandler.Instance.OnDropBoxButtonReleased += PlayerInputHander_OnDropBoxButtonReleased;
         PlayerInputHandler.Instance.OnDashButtonPressed += PlayerInputHandler_OnDashButtonPressed;
     }
 
@@ -107,9 +98,6 @@ public class Player : MonoBehaviour
     {
         PlayerInputHandler.Instance.OnRegisterMoveInputNormalized -= PlayerInputHandler_OnRegisterMoveInputNormalized;
         PlayerInputHandler.Instance.OnJumpButtonPressed -= PlayerInputHandler_OnJumpButtonPressed;
-        PlayerInputHandler.Instance.OnJumpButtonReleased -= PlayerInputHandler_OnJumpButtonReleased;
-        PlayerInputHandler.Instance.OnDropBoxButtonPressed -= PlayerInputHandler_OnDropBoxButtonPressed;
-        PlayerInputHandler.Instance.OnDropBoxButtonReleased -= PlayerInputHander_OnDropBoxButtonReleased;
         PlayerInputHandler.Instance.OnDashButtonPressed -= PlayerInputHandler_OnDashButtonPressed;
     }
 
@@ -121,21 +109,6 @@ public class Player : MonoBehaviour
     private void PlayerInputHandler_OnJumpButtonPressed(object sender, System.EventArgs e)
     {
         _isAttemptingJump = true;
-    }
-
-    private void PlayerInputHandler_OnJumpButtonReleased(object sender, System.EventArgs e)
-    {
-        _isCancellingJump = true;
-    }
-
-    private void PlayerInputHandler_OnDropBoxButtonPressed(object sender, EventArgs e)
-    {
-        _isAttemptingDropBox = true;
-    }
-
-    private void PlayerInputHander_OnDropBoxButtonReleased(object sender, EventArgs e)
-    {
-        _isAttemptingDropBox = false;
     }
 
     private void PlayerInputHandler_OnDashButtonPressed(object sender, EventArgs e)
@@ -198,11 +171,6 @@ public class Player : MonoBehaviour
             _hasPerformedFirstJump = false;
         }
 
-        if (_hasDroppedBox && _rigidbody.velocity.y < 1)
-        {
-            _hasDroppedBox = false;
-        }
-
         if (_hasPerformedDash && _isGrounded)
         {
             _hasPerformedDash = false;
@@ -219,17 +187,6 @@ public class Player : MonoBehaviour
             _wasInAir = true;
             _playerState = PlayerState.InAir;
         }
-    }
-
-    private void TryUseDropBoxAbility()
-    {
-        if (_hasDroppedBox) return;
-        // if (!_isAttemptingDropBox) return;
-        if (_hasPerformedDoubleJump) return;
-        if (!_isAttemptingJump) return;
-
-        _dropMineAbility.TryDropSlowingMine();
-        _hasDroppedBox = true;
     }
 
     private void TryUseDashAbility(bool isGrounded)
@@ -264,9 +221,7 @@ public class Player : MonoBehaviour
             _canDoubleJump = true;
         }
 
-        TryUseDropBoxAbility();
         TryUseDashAbility(_isGrounded);
-
 
         if (_isGrounded)
         {

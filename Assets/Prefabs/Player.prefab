@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 2824604991377171652}
   - component: {fileID: 764173230220482672}
   - component: {fileID: 3239007565499974069}
-  - component: {fileID: 135594492316774946}
   - component: {fileID: 8912735473506751436}
   - component: {fileID: 8894977874241477939}
   - component: {fileID: 8237122310355553107}
@@ -119,10 +118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d516382e6e2bbb14a998ce7f59bada60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumBabaiHits: 2
-  _maximumKhukhaHits: 2
-  _currentBabaiHits: 0
-  _currentKhukhaHits: 0
+  _maxHealth: 0
+  _maxInvincibilityTime: 0
+  _babaiDamage: 0
+  _rangedKhukhaDamage: 0
+  _khukhaDamage: 0
+  _rangedFireKhukhaDamage: 0
+  _firekhukhaDamage: 0
+  _currentHealth: 0
+  _timeSinceTurnedInvincible: 0
+  _isInvincible: 0
 --- !u!114 &3239007565499974069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,37 +161,13 @@ MonoBehaviour:
   _isMoving: 0
   _isGrounded: 0
   _isAttemptingJump: 0
-  _isCancellingJump: 1
   _wasInAir: 1
   _isDetectingWall: 0
-  _isAttemptingDropBox: 0
-  _hasDroppedBox: 0
   _isAttemptingDash: 0
   _isPerformingDash: 0
   _hasPerformedDash: 0
   _isPaused: 0
   _playerState: 1
---- !u!114 &135594492316774946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5696077454691015555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4c7e87b4114664781f4dcfe410b89f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slowingMine: {fileID: 8462790502835068995, guid: d64739c5de7fc944a81a3badfa767c06, type: 3}
-  _slowingMineSpawnPoint: {fileID: 9162124888312986249}
-  _slowingMinesParent: {fileID: 0}
-  _minDistanceFromGround: 1.25
-  _canDropBox: 0
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
-  _dropForce: 11
 --- !u!114 &8912735473506751436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,8 +469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxInvincibilityTime: 1
-  _isInvincible: 0
-  _timeSinceTurnedInvincible: 0
 --- !u!1 &9015226158943814100
 GameObject:
   m_ObjectHideFlags: 0
