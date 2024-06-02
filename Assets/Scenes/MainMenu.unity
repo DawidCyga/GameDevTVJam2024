@@ -1258,7 +1258,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "----------\n-----------\nDawid Zagu\u0142a - programming"
+  m_text: "----------\n-----------\nDawid Zagu\u0142a - programming\nMichael Medrano
+    - programming assist"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
   m_sharedMaterial: {fileID: 4207482880075945909, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
