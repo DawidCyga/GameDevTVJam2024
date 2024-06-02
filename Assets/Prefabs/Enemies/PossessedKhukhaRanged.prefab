@@ -82,6 +82,7 @@ MonoBehaviour:
   _moveSpeed: 1
   _attackRange: 15
   _sightLength: 15
+  _enemyType: 4
   _whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128

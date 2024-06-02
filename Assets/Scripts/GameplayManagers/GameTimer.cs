@@ -38,7 +38,7 @@ public class GameTimer : MonoBehaviour
             _isTimeCounting = false;
         }
 
-        if (GameStateManager.Instance != null)
+        if (GameStateManager.Instance is not null)
         {
             GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
         }

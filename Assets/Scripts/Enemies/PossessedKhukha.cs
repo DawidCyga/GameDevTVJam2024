@@ -57,7 +57,7 @@ public class PossessedKhukha : PathfinderEnemy
     {
         if (HitsCounter.Instance is not null)
         {
-            HitsCounter.Instance.Hit(HitsCounter.HitType.Khukha);
+            HitsCounter.Instance.Hit(Enemy.EnemyType.Khukha);
             Debug.Log("I hit player");
         }
     }

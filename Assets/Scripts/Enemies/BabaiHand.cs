@@ -73,7 +73,7 @@ public class BabaiHand : MonoBehaviour
         if (_timeSinceLastAttack < _timeBetweenAttacks) { return; }
         if (collision != null && collision.TryGetComponent(out HitsCounter hitCounter))
         {
-            hitCounter.Hit(HitsCounter.HitType.Babai);
+            hitCounter.Hit(Enemy.EnemyType.BabaiHand);
             _timeSinceLastAttack = 0;
         }
     }

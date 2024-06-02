@@ -11,6 +11,7 @@ public class SingleBeastProfileButton : MonoBehaviour
     [TextArea(3,9)]
     [SerializeField] private string _beastDescription;
     [SerializeField] private Sprite _beastImage;
+    [SerializeField] private Enemy.EnemyType _enemyType;
 
     [Header("Cache References")]
     [SerializeField] private Button _button;
@@ -25,9 +26,10 @@ public class SingleBeastProfileButton : MonoBehaviour
 
         _button.onClick.AddListener(() =>
         {
+            int killCount = BeastKillCounter.Instance.GetCount(_enemyType);
             _bestiaryContainer.SetActive(false);
             _beastProfileDisplayContainer.SetActive(true);
-            _beastProfileUI.SetupProfile(_beastName, _beastDescription, _beastImage);
+           _beastProfileUI.SetupProfile(_beastName, killCount, _beastDescription, _beastImage);
         });
     }
 }

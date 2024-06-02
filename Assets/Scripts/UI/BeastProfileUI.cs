@@ -13,6 +13,7 @@ public class BeastProfileUI : MonoBehaviour
 
     [Header("For debugging only")]
     [SerializeField] private TextMeshProUGUI _beastName;
+    [SerializeField] private TextMeshProUGUI _killCount;
     [SerializeField] private TextMeshProUGUI _beastDescription;
     [SerializeField] private Image _beastImage;
 
@@ -23,11 +24,15 @@ public class BeastProfileUI : MonoBehaviour
             gameObject.SetActive(false);
             _bestiaryContainer.SetActive(true);
         });
+
+
+
     }
 
-    public void SetupProfile(string name, string description, Sprite image)
+    public void SetupProfile(string name, int killCount, string description, Sprite image)
     {
         _beastName.text = name;
+        _killCount.text = "Killed: " + killCount;
         _beastDescription.text = description;
         _beastImage.sprite = image;
     }

@@ -9,15 +9,6 @@ public class HitsCounter : MonoBehaviour
 {
     public static HitsCounter Instance { get; private set; }
 
-    public enum HitType
-    {
-        Babai,
-        RangedKhukha,
-        Khukha,
-        RangedFireKhukha,
-        FireKhukha
-    }
-
     [SerializeField] private int _maxHealth;
     [SerializeField] private float _maxInvincibilityTime;
 
@@ -33,7 +24,7 @@ public class HitsCounter : MonoBehaviour
     [SerializeField] private float _timeSinceTurnedInvincible;
     [SerializeField] private bool _isInvincible;
 
-    private Dictionary<HitType, int> _hitTypeDamageDictionary = new Dictionary<HitType, int>();
+    private Dictionary<Enemy.EnemyType, int> _hitTypeDamageDictionary = new Dictionary<Enemy.EnemyType, int>();
 
     public event EventHandler OnHealthDecreased;
     public event EventHandler OnHealthRestored;
@@ -42,11 +33,11 @@ public class HitsCounter : MonoBehaviour
     {
         Instance = this;
 
-        _hitTypeDamageDictionary[HitType.Babai] = _babaiDamage;
-        _hitTypeDamageDictionary[HitType.RangedKhukha] = _rangedKhukhaDamage;
-        _hitTypeDamageDictionary[HitType.Khukha] = _khukhaDamage;
-        _hitTypeDamageDictionary[HitType.RangedFireKhukha] = _rangedFireKhukhaDamage;
-        _hitTypeDamageDictionary[HitType.FireKhukha] = _firekhukhaDamage;
+        _hitTypeDamageDictionary[Enemy.EnemyType.BabaiHand] = _babaiDamage;
+        _hitTypeDamageDictionary[Enemy.EnemyType.RangedKhukha] = _rangedKhukhaDamage;
+        _hitTypeDamageDictionary[Enemy.EnemyType.Khukha] = _khukhaDamage;
+        _hitTypeDamageDictionary[Enemy.EnemyType.RangedFireKhukha] = _rangedFireKhukhaDamage;
+        _hitTypeDamageDictionary[Enemy.EnemyType.FireKhukha] = _firekhukhaDamage;
     }
 
     private void Start()
@@ -88,7 +79,7 @@ public class HitsCounter : MonoBehaviour
         OnHealthRestored?.Invoke(this, EventArgs.Empty);
     }
 
-    public void Hit(HitType hitType)
+    public void Hit(Enemy.EnemyType hitType)
     {
         if (_isInvincible) { return; }
         _currentHealth -= _hitTypeDamageDictionary[hitType];

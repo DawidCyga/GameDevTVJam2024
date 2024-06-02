@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,11 +6,21 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, ITakeDamage
 {
+    public enum EnemyType
+    {
+        Babai,
+        BabaiHand,
+        RangedKhukha,
+        Khukha,
+        RangedFireKhukha,
+        FireKhukha
+    }
 
     [Header("General Configuration")]
     [SerializeField] protected float _moveSpeed;
     [SerializeField] protected float _attackRange;
     [SerializeField] protected float _sightLength;
+    [SerializeField] protected EnemyType _enemyType;
 
     [Header("Layer Masks")]
     [SerializeField] protected LayerMask _whatIsObstacle;
@@ -20,6 +31,8 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
     [Header("For debugging only")]
     [SerializeField] protected bool _isInAttackRange;
     [SerializeField] private bool _isDead;
+
+    public static event EventHandler OnAnyEnemyDeath;
 
     protected virtual void Start()
     {
@@ -32,6 +45,7 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         if (!_isDead)
         {
             WaveSpawner.Instance.DecreaseTotalEnemiesSpawnedCurrentWave();
+            OnAnyEnemyDeath?.Invoke(this, EventArgs.Empty);
             Destroy(gameObject);
             _isDead = true;
         }
@@ -94,6 +108,8 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
+
+    public EnemyType GetEnemyType() => _enemyType;
 
     private void OnDrawGizmos()
     {
