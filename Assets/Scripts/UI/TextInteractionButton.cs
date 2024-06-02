@@ -19,6 +19,11 @@ public class TextInteractionButton : MonoBehaviour
         PlayerInputHandler.Instance.OnDialogueInteractionPressed += PlayerInputHandler_OnDialogueInteractionPressed;
     }
 
+    private void OnDestroy()
+    {
+        PlayerInputHandler.Instance.OnDialogueInteractionPressed -= PlayerInputHandler_OnDialogueInteractionPressed;
+    }
+
     private void PlayerInputHandler_OnDialogueInteractionPressed(object sender, EventArgs e)
     {
         _button.onClick.Invoke();

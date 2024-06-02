@@ -49,6 +49,10 @@ public class FadeTransitionHandler : MonoBehaviour
 
     public void FadeOut(float duration, Action onFinishedCallBack = null)
     {
+        if (PlayerInputHandler.Instance is not null)
+        {
+            PlayerInputHandler.Instance.gameObject.SetActive(false);
+        }
         StartCoroutine(FadeRoutine(0, 1, duration, onFinishedCallBack));
     }
 

@@ -576,6 +576,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42c0a8292685c748a4084a2ba846e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1519185175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519185177}
+  - component: {fileID: 1519185176}
+  m_Layer: 0
+  m_Name: PlayerInputHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1519185176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519185175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707079f491e11694abd1de57c84c29bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1519185177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519185175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1354.5337, y: 727.83295, z: 7.971849}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1540882768
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,11 +713,11 @@ MonoBehaviour:
   _textParagraphs:
   - 'Failure is only the opportunity to begin again. '
   - Only this time, more wisely.
-  - '- Uncle Iroh'
-  _nextButtonText: Next
-  _startGameButtonText: Start
-  _timeToShowNextButton: 5
-  _fadeInDuration: 3
+  - '                                                          - Uncle Iroh'
+  _nextButtonText: 
+  _startGameButtonText: Continue
+  _timeToShowNextButton: 2.2
+  _fadeInDuration: 2
   _fadeOutDuration: 2
   _textWriter: {fileID: 1403210884}
   _textInteractionButtonObject: {fileID: 3268370084111279686}
@@ -985,9 +1029,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Default
+  m_text: Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1051,7 +1095,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!224 &5251185850034926481
@@ -1070,7 +1114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 332, y: -324}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6784930742119845068
@@ -1099,7 +1143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4878257204949068916, guid: d72910431746a904aae75448d0bef27a, type: 3}
       propertyPath: _timeToTypeSingleCharacter
-      value: 0.01
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 5152279138870201546, guid: d72910431746a904aae75448d0bef27a, type: 3}
       propertyPath: m_Name
@@ -1175,7 +1219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3268370084111279686}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1206,3 +1250,4 @@ SceneRoots:
   - {fileID: 32193102}
   - {fileID: 468454856}
   - {fileID: 7517832750410929205}
+  - {fileID: 1519185177}
