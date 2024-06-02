@@ -49,7 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 1
   _timeBetweenAttacks: 4
+  _timeBeforeCanAttack: 1
   _timeSinceLastAttack: 0
+  _timeSinceSpawned: 0
   _isDead: 0
 --- !u!212 &8470743678079835330
 SpriteRenderer:

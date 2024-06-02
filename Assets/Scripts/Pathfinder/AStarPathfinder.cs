@@ -66,15 +66,8 @@ public class AStarPathfinder : MonoBehaviour
 
         PathNode nextNode = targetNode;
 
-        //Get mid point of square
-        Vector3 cellMidSquare = tilemap.cellSize * .5f;
-        cellMidSquare.z = 0;
-
         while (nextNode != null)
-        {
-            //Convert grid position to world position
-            Grid grid = tilemap.GetComponentInParent<Grid>();         
-
+        {       
             Vector3 worldPosition = tilemap.GetCellCenterWorld(new Vector3Int(nextNode.GetGridPosition().x, nextNode.GetGridPosition().y, 0));
             movementPathStack.Push(worldPosition);
 
@@ -104,7 +97,6 @@ public class AStarPathfinder : MonoBehaviour
             EvaluateCurrentNodeNeighbours(currentNode, targetNode, gridManager, _openSet, _closedHashSet, _groundTilemap);
         }
 
-        //If we run out of open nodes and haven't found target, it means haven't found a path
         return null;
     }
 

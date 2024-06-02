@@ -6,9 +6,11 @@ public class BabaiHand : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _timeBetweenAttacks;
+    [SerializeField] private float _timeBeforeCanAttack;
 
     [Header("For debugging only")]
     [SerializeField] private float _timeSinceLastAttack;
+    [SerializeField] private float _timeSinceSpawned;
     [SerializeField] private bool _isDead;
 
 
@@ -27,9 +29,13 @@ public class BabaiHand : MonoBehaviour
 
     private void Update()
     {
-        TryAttackPlayer();
+        if (_timeSinceSpawned > _timeBeforeCanAttack)
+        {
+            TryAttackPlayer();
+        }
 
         _timeSinceLastAttack += Time.deltaTime;
+        _timeSinceSpawned += Time.deltaTime;
     }
 
     public void AssignBabai(Transform babaiTransform)
