@@ -715,7 +715,7 @@ MonoBehaviour:
   - Only this time, more wisely.
   - '                                                          - Uncle Iroh'
   _nextButtonText: 
-  _startGameButtonText: Continue
+  _startGameButtonText: Press Space to continue
   _timeToShowNextButton: 2.2
   _fadeInDuration: 2
   _fadeOutDuration: 2
