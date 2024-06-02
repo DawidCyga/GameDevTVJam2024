@@ -9,8 +9,9 @@ public class MainMenuStateManager : MonoBehaviour
     private enum MainMenuState
     {
         MainMenu,
+        Difficulty,
         Options,
-        Achievements,
+        Bestiary,
         Credits
     }
 
@@ -20,19 +21,21 @@ public class MainMenuStateManager : MonoBehaviour
 
     [Header("Main Window Buttons")]
     [SerializeField] private Button _startButton;
- //   [SerializeField] private Button _optionsButton;
+    //   [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _bestiaryButton;
     [SerializeField] private Button _creditsButton;
 
     [Header("Sub-windows Back Buttons")]
+    [SerializeField] private Button _backFromDifficultyButton;
     [SerializeField] private Button _backFromOptionsButton;
     [SerializeField] private Button _backFromBestiaryButton;
     [SerializeField] private Button _backFromCreditsButton;
 
     [Header("Windows")]
     [SerializeField] private GameObject _mainMenuContainer;
- //   [SerializeField] private GameObject _optionsContainer;
-    [SerializeField] private GameObject _achievementsContainer;
+    [SerializeField] private GameObject _difficultyContainer;
+    //   [SerializeField] private GameObject _optionsContainer;
+    [SerializeField] private GameObject _bestiaryContainer;
     [SerializeField] private GameObject _creditsContainer;
 
     private void Awake()
@@ -41,8 +44,9 @@ public class MainMenuStateManager : MonoBehaviour
 
         {
             {MainMenuState.MainMenu, _mainMenuContainer },
+            {MainMenuState.Difficulty, _difficultyContainer },
 //            {MainMenuState.Options, _optionsContainer },
-            {MainMenuState.Achievements, _achievementsContainer },
+            {MainMenuState.Bestiary, _bestiaryContainer },
             {MainMenuState.Credits, _creditsContainer }
         };
 
@@ -50,7 +54,8 @@ public class MainMenuStateManager : MonoBehaviour
 
         _startButton.onClick.AddListener(() =>
         {
-            FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
+            ChangeState(MainMenuState.Difficulty);
+            //FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
         });
         //_optionsButton.onClick.AddListener(() =>
         //{
@@ -58,13 +63,16 @@ public class MainMenuStateManager : MonoBehaviour
         //});
         _bestiaryButton.onClick.AddListener(() =>
         {
-            ChangeState(MainMenuState.Achievements);
+            ChangeState(MainMenuState.Bestiary);
         });
         _creditsButton.onClick.AddListener(() =>
         {
             ChangeState(MainMenuState.Credits);
         });
-
+        _backFromDifficultyButton.onClick.AddListener(() =>
+        {
+            ChangeState();
+        });
         //_backFromOptionsButton.onClick.AddListener(() =>
         //{
         //    ChangeState();
@@ -77,12 +85,6 @@ public class MainMenuStateManager : MonoBehaviour
         {
             ChangeState();
         });
-    }
-
-    //To be extracted into SceneManager class if time allows
-    private void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void ChangeState()

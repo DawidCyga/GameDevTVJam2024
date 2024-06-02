@@ -54,16 +54,12 @@ public class Babai : Enemy
         switch (_state)
         {
             case State.Offence:
-
                 FollowPath();
                 TrySpawnHands();
-
                 TrySwitchToDefence();
                 break;
             case State.Defence:
-
                 TryEvadePlayer();
-
                 UpdateFaceDirection();
                 TrySwitchToOffence();
                 break;

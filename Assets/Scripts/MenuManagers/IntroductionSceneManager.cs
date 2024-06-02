@@ -61,7 +61,6 @@ public class IntroductionSceneManager : MonoBehaviour
     {
         _textInteractionButton.UpdateSelf(_startGameButtonText, StartSceneTransitionSequence);
     }
-
     private void StartTypingIntroduction() => _textWriter.StartTyping(_textParagraphs, false);
 
     private void StartSceneTransitionSequence() => FadeTransitionHandler.Instance.FadeOut(_fadeOutDuration, StartGame);

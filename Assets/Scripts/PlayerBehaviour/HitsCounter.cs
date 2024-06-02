@@ -99,5 +99,6 @@ public class HitsCounter : MonoBehaviour
     }
 
     public int GetMaxHealth() => _maxHealth;
+    public void SetMaxHealth(int value) => _maxHealth = value;
     public int GetCurrentHealth() => _currentHealth;
 }
