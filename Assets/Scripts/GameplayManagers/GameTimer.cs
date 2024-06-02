@@ -33,15 +33,16 @@ public class GameTimer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if (arg0.buildIndex != 3)
+        {
+            _isTimeCounting = false;
+        }
 
         if (GameStateManager.Instance != null)
         {
             GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
         }
-        else
-        {
-            _isTimeCounting = false;
-        }
+
     }
     private void OnDestroy()
     {
