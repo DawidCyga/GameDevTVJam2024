@@ -20,18 +20,18 @@ public class MainMenuStateManager : MonoBehaviour
 
     [Header("Main Window Buttons")]
     [SerializeField] private Button _startButton;
-    [SerializeField] private Button _optionsButton;
-    [SerializeField] private Button _achievementsButton;
+ //   [SerializeField] private Button _optionsButton;
+    [SerializeField] private Button _bestiaryButton;
     [SerializeField] private Button _creditsButton;
 
     [Header("Sub-windows Back Buttons")]
     [SerializeField] private Button _backFromOptionsButton;
-    [SerializeField] private Button _backFromAchievementsButton;
+    [SerializeField] private Button _backFromBestiaryButton;
     [SerializeField] private Button _backFromCreditsButton;
 
     [Header("Windows")]
     [SerializeField] private GameObject _mainMenuContainer;
-    [SerializeField] private GameObject _optionsContainer;
+ //   [SerializeField] private GameObject _optionsContainer;
     [SerializeField] private GameObject _achievementsContainer;
     [SerializeField] private GameObject _creditsContainer;
 
@@ -41,7 +41,7 @@ public class MainMenuStateManager : MonoBehaviour
 
         {
             {MainMenuState.MainMenu, _mainMenuContainer },
-            {MainMenuState.Options, _optionsContainer },
+//            {MainMenuState.Options, _optionsContainer },
             {MainMenuState.Achievements, _achievementsContainer },
             {MainMenuState.Credits, _creditsContainer }
         };
@@ -52,11 +52,11 @@ public class MainMenuStateManager : MonoBehaviour
         {
             FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
         });
-        _optionsButton.onClick.AddListener(() =>
-        {
-            ChangeState(MainMenuState.Options);
-        });
-        _achievementsButton.onClick.AddListener(() =>
+        //_optionsButton.onClick.AddListener(() =>
+        //{
+        //    ChangeState(MainMenuState.Options);
+        //});
+        _bestiaryButton.onClick.AddListener(() =>
         {
             ChangeState(MainMenuState.Achievements);
         });
@@ -65,11 +65,11 @@ public class MainMenuStateManager : MonoBehaviour
             ChangeState(MainMenuState.Credits);
         });
 
-        _backFromOptionsButton.onClick.AddListener(() =>
-        {
-            ChangeState();
-        });
-        _backFromAchievementsButton.onClick.AddListener(() =>
+        //_backFromOptionsButton.onClick.AddListener(() =>
+        //{
+        //    ChangeState();
+        //});
+        _backFromBestiaryButton.onClick.AddListener(() =>
         {
             ChangeState();
         });
