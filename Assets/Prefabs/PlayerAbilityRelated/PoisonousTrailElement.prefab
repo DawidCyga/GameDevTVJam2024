@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8799571d4041fa7429b1c5fcbd9089c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timePlayerSafe: 2222
-  _timeToSelfDestruct: 3
+  _timePlayerSafe: 1.5
+  _timeToSelfDestruct: 3.5
   _counterPlayerSafe: 0
   _canKillPlayer: 0
   _timeSinceSpawned: 0
