@@ -25,7 +25,7 @@ public class Babai : Enemy
     [SerializeField] private float _distanceToWallBehind;
     [SerializeField] private LayerMask _whatIsWall;
 
-    [Header("For debugging only")]
+    [Header("Babai: For debugging only")]
     [SerializeField] private float _currentSpawnedHandsNumber;
     [SerializeField] private float _timeSinceLastSpawnedHand;
 
