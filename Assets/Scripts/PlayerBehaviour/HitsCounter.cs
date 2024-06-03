@@ -83,7 +83,6 @@ public class HitsCounter : MonoBehaviour
     {
         if (_isInvincible) { return; }
         _currentHealth -= _hitTypeDamageDictionary[hitType];
-        Debug.Log("I got hit by: " + hitType);
         OnHealthDecreased?.Invoke(this, EventArgs.Empty);
 
         if (_currentHealth <= 0)

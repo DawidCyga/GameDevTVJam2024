@@ -27556,7 +27556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _maxInvincibilityTime
-      value: 1
+      value: 11111
       objectReference: {fileID: 0}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90626,6 +90626,7 @@ MonoBehaviour:
   _timeTillEndBreak: 0
   _totalEnemyCountCurrentWave: 0
   _waveIndexIncreasedThisWave: 0
+  _hasStartedNewWave: 0
 --- !u!1001 &3369386413754657372
 PrefabInstance:
   m_ObjectHideFlags: 0

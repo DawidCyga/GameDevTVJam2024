@@ -66,7 +66,6 @@ public class PossessedKhukha : PathfinderEnemy
         {
             HitsCounter.Instance.Hit(Enemy.EnemyType.Khukha);
             _animator.SetTrigger(_animAttackHash);
-            Debug.Log("I hit player");
         }
     }
 

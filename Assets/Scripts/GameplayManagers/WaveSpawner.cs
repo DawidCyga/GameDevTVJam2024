@@ -56,7 +56,6 @@ public class WaveSpawner : MonoBehaviour
 
     public WaveState _currentWaveState;
 
-
     [SerializeField] private Wave[] _waves;
 
     [SerializeField] private Transform _spawnedEnemiesParentTransform;
@@ -73,6 +72,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private int _totalEnemyCountCurrentWave;
 
     [SerializeField] private bool _waveIndexIncreasedThisWave;
+    [SerializeField] private bool _hasStartedNewWave;
 
     private List<Coroutine> _activeSpawningRoutines = new List<Coroutine>();
     private int _completedSpawningRoutinesNumber;
@@ -81,6 +81,7 @@ public class WaveSpawner : MonoBehaviour
     public event EventHandler OnTotalEnemyCountThisWaveDecreased;
     public event EventHandler<OnWaveClearedEventArgs> OnWaveCleared;
     public class OnWaveClearedEventArgs { public int CurrentWaveIndex { get; set; } }
+
 
     private void Awake()
     {
@@ -109,7 +110,11 @@ public class WaveSpawner : MonoBehaviour
                     return;
                 }
 
-                OnStartedNewWave?.Invoke(this, EventArgs.Empty);
+                if (!_hasStartedNewWave)
+                {
+                    OnStartedNewWave?.Invoke(this, EventArgs.Empty);
+                    _hasStartedNewWave = true;
+                }
 
                 CountdownBeforeEndBreak();
                 _waveIndexIncreasedThisWave = false;
@@ -120,6 +125,7 @@ public class WaveSpawner : MonoBehaviour
                     {
                         ResetTimeTillEndBreak();
                     }
+                    Debug.Log("I exit break");
                     _currentWaveState = WaveState.Spawning;
                 }
                 break;
@@ -203,6 +209,7 @@ public class WaveSpawner : MonoBehaviour
         {
             _currentWaveIndex++;
             _waveIndexIncreasedThisWave = true;
+            _hasStartedNewWave = false;
         }
 
         if (_currentWaveIndex <= _waves.Length)

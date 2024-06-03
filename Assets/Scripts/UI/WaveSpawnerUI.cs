@@ -35,6 +35,7 @@ public class WaveSpawnerUI : MonoBehaviour
     {
         WaveSpawner.Instance.OnStartedNewWave -= WaveSpawner_OnStartedNewWave;
         WaveSpawner.Instance.OnTotalEnemyCountThisWaveDecreased -= WaveSpawner_OnTotalEnemyCountThisWaveDecreased;
+        WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
     }
 
     private void WaveSpawner_OnStartedNewWave(object sender, System.EventArgs e)
@@ -45,6 +46,7 @@ public class WaveSpawnerUI : MonoBehaviour
         UpdateWaveUI(_currentWave.ToString());
         UpdateEnemiesUI(_enemiesLeftThisWave.ToString(), _totalEnemiesThisWave.ToString());
         UpdateUIVisibility(true);
+        Debug.Log("UI on started new wave");
     }
 
   
@@ -53,6 +55,7 @@ public class WaveSpawnerUI : MonoBehaviour
     {
         _enemiesLeftThisWave--;
         UpdateEnemiesUI(_enemiesLeftThisWave.ToString(), _totalEnemiesThisWave.ToString());
+        Debug.Log("On total enemy count decreased");
     }
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)

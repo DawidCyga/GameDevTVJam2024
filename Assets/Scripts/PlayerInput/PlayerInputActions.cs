@@ -393,7 +393,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""486c112f-fad6-4868-901f-a0700ef2f91c"",
+                    ""id"": ""435387bb-b1c8-4a6d-a993-ce609ec4468f"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -404,7 +404,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f69120f4-2e0c-430d-84bf-8eb58a1d34a7"",
+                    ""id"": ""81633c87-2f18-45b3-9475-6f8d81e559f5"",
                     ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",

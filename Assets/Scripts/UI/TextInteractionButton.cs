@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TextInteractionButton : MonoBehaviour
@@ -26,7 +27,17 @@ public class TextInteractionButton : MonoBehaviour
 
     private void PlayerInputHandler_OnDialogueInteractionPressed(object sender, EventArgs e)
     {
-        _button.onClick.Invoke();
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue)
+            {
+                _button.onClick.Invoke();
+            }
+        }
+        else
+        {
+            _button.onClick.Invoke();
+        }
     }
 
     public void UpdateSelf(string buttonText, Action buttonFunctionCallBack)
