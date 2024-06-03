@@ -26,11 +26,25 @@ public class BeastProfileUI : MonoBehaviour
         });
     }
 
-    public void SetupProfile(string name, int killCount, string description, Sprite image)
+    public void SetupProfile(string name, int killCount, string description, Sprite image, bool hasKillCount)
     {
+        UpdateKillCountVisibility(hasKillCount);
         _beastName.text = name;
         _killCount.text = "Killed: " + killCount;
         _beastDescription.text = description;
         _beastImage.sprite = image;
     }
+
+    private void UpdateKillCountVisibility(bool hasKillCount)
+    {
+        if (hasKillCount)
+        {
+            _killCount.gameObject.SetActive(true);
+        }
+        else
+        {
+            _killCount.gameObject.SetActive(false);
+        }
+    }
+
 }

@@ -27,9 +27,10 @@ public class SingleBeastProfileButton : MonoBehaviour
         _button.onClick.AddListener(() =>
         {
             int killCount = BeastKillCounter.Instance.GetCount(_enemyType);
+            bool hasKillCount = (_enemyType == Enemy.EnemyType.Story) ? false : true;
             _bestiaryContainer.SetActive(false);
             _beastProfileDisplayContainer.SetActive(true);
-           _beastProfileUI.SetupProfile(_beastName, killCount, _beastDescription, _beastImage);
+           _beastProfileUI.SetupProfile(_beastName, killCount, _beastDescription, _beastImage, hasKillCount);
         });
     }
 }

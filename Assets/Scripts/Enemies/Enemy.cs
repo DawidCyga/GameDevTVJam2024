@@ -13,7 +13,8 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         RangedKhukha,
         Khukha,
         RangedFireKhukha,
-        FireKhukha
+        FireKhukha,
+        Story
     }
 
     [Header("General Configuration")]

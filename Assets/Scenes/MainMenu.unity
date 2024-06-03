@@ -4649,16 +4649,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6185421060574791479, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185421060574791479, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6185421060574791479, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6185421060574791479, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9157306658393014276, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
       propertyPath: m_Pivot.x
@@ -5140,6 +5144,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2361176818356461685, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
+      propertyPath: _enemyType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361176818356461685, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
       value: 
       objectReference: {fileID: 21300000, guid: ba14c8c873be67a458b9e0e4c3cca156, type: 3}
@@ -5272,6 +5280,10 @@ PrefabInstance:
       value: 0.99215686
       objectReference: {fileID: 0}
     - target: {fileID: 4625169940885288528, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
+      propertyPath: _enemyType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625169940885288528, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
       value: 
       objectReference: {fileID: 21300000, guid: bb8662919dbc68f488c3fa560de4fe39, type: 3}
@@ -5366,6 +5378,10 @@ PrefabInstance:
     - target: {fileID: 6026567765821605637, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -655.5783
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823097872234959487, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
+      propertyPath: _enemyType
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6823097872234959487, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
