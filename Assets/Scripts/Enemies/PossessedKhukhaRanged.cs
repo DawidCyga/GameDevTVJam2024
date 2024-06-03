@@ -19,6 +19,13 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     [SerializeField] private float _timeSinceLastShot;
     [SerializeField] private bool _isShooting;
 
+    private Animator _animator;
+    private int _animAttackHash = Animator.StringToHash("Attack");
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -64,6 +71,7 @@ public class PossessedKhukhaRanged : PathfinderEnemy
         if (_timeSinceLastShot > _timeBetweenShots)
         {
             Shoot();
+            _animator.SetTrigger(_animAttackHash);
             _timeSinceLastShot = 0;
         }
     }
