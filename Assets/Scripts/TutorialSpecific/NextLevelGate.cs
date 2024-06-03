@@ -16,6 +16,5 @@ public class NextLevelGate : MonoBehaviour
             Debug.Log("Triggered");
         }
     }
-
     private void LoadNextLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 }

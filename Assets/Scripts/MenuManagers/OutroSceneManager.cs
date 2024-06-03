@@ -22,7 +22,5 @@ public class OutroSceneManager : MonoBehaviour
     {
         FadeTransitionHandler.Instance.FadeIn(_fadeInDuration, StartTypingIntroduction);
     }
-
     private void StartTypingIntroduction() => _textWriter.StartTyping(_textParagraphs, false);
-
 }

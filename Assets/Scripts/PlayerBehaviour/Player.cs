@@ -160,7 +160,6 @@ public class Player : MonoBehaviour
 
     private void HandleGroundState()
     {
-        //resetting jump state
         if (_hasPerformedDoubleJump)
         {
             _hasPerformedDoubleJump = false;
@@ -250,7 +249,6 @@ public class Player : MonoBehaviour
 
     private void DecelerateGroundedVelocity()
     {
-        //INFO: Can be modified if we decide to allow for gradual deceleration instead of instant one
         if (_moveVelocity != Vector2.zero && !_wasInAir)
         {
             _rigidbody.velocity = new Vector2(0f, _rigidbody.velocity.y);
@@ -274,9 +272,7 @@ public class Player : MonoBehaviour
 
     private void ApplyInAirMovement()
     {
-        //INFO: If you want to allow the player to decelerate the speed at which he's changing his position in the air while holding up or down button, just get rid of rounding
         float yValue = (_rigidbody.velocity.y <= 0) ? -_fallingGravityDrag : _rigidbody.velocity.y;
-
         _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirection.x) * _inAirHorizontalMoveSpeed, yValue);
         _rigidbody.AddForce(_moveVelocity, ForceMode2D.Force);
     }

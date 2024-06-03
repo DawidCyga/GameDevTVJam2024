@@ -159,9 +159,7 @@ public class TextWriter : MonoBehaviour
     }
 
     private void ClearTextField() => _textField.text = string.Empty;
-
     public void SetShouldFinishTypingCurrentParagraph(bool state) => _shouldFinishTypingCurrentParagraph = state;  
-
     public void SetCanType(bool state) => _canType = state;
 
 }

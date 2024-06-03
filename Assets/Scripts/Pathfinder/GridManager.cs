@@ -60,7 +60,6 @@ public class GridManager
         {
             return _pathNodes[localX, localY];
         }
-        Debug.LogError("Position out of bounds: " + gridPosition);
         return null;
     }
 }

@@ -40,7 +40,5 @@ public class GameOverScreen : MonoBehaviour
     }
 
     private void UnfreezeTime() => Time.timeScale = 1;
-
     public void Show() => _gameOverScreenContainer.SetActive(true);
-
 }

@@ -33,14 +33,10 @@ public class SlowingMine : MonoBehaviour
         _lifetimeLeft = _totalLifetime;
     }
 
-    public void Drop(float dropForce)
-    {
-        _rigidbody.AddForce(Vector2.down * dropForce, ForceMode2D.Impulse);
-    }
+    public void Drop(float dropForce) => _rigidbody.AddForce(Vector2.down * dropForce, ForceMode2D.Impulse);
 
     private void Update()
     {
-
         if (_hasFallen && !_hasExploded)
         {
             _canExplode = true;
@@ -49,7 +45,6 @@ public class SlowingMine : MonoBehaviour
 
         if (_canExplode)
         {
-            // Have animations, at the end use animation event to call Explode
             Explode();
         }
     }
@@ -60,14 +55,12 @@ public class SlowingMine : MonoBehaviour
 
         if (_lifetimeLeft < 0)
         {
-            //TODO: Start self destruct sequence
             Destroy(gameObject);
         }
     }
 
     private void Explode()
     {
-        // animation plays
         Collider2D[] HitColliders = Physics2D.OverlapCircleAll(transform.position, _explosionArea, _whatCanBeStunned);
 
         foreach (Collider2D collider in HitColliders)

@@ -59,5 +59,4 @@ public class HealthUI : MonoBehaviour
             image.color = Color.white;
         }
     }
-
 }

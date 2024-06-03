@@ -27,15 +27,9 @@ public class DropMineAbility : MonoBehaviour
         killingBox.Drop(_dropForce);
     }
 
-    private void Update()
-    {
-        UpdateCanDropBox();
-    }
+    private void Update() => UpdateCanDropBox();
 
-    private void UpdateCanDropBox()
-    {
-        _canDropBox = !Physics2D.Raycast(_slowingMineSpawnPoint.position, Vector2.down, _minDistanceFromGround, _whatIsGround);
-    }
+    private void UpdateCanDropBox() => _canDropBox = !Physics2D.Raycast(_slowingMineSpawnPoint.position, Vector2.down, _minDistanceFromGround, _whatIsGround);
 
     private void OnDrawGizmos()
     {

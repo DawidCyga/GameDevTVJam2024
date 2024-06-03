@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Heap<T> where T : IHeapItem<T>
 {
@@ -32,13 +33,9 @@ public class Heap<T> where T : IHeapItem<T>
         SortDown(items[0]);
 
         return itemToRemove;
-
     }
 
-    public void UpdateItem(T item)
-    {
-        SortUp(item);
-    }
+    public void UpdateItem(T item) => SortUp(item);
 
     public int Count
     {
@@ -47,11 +44,7 @@ public class Heap<T> where T : IHeapItem<T>
             return currentItemCount;
         }
     }
-
-    public bool Contains(T item)
-    {
-        return Equals(items[item.HeapIndex], item);
-    }
+    public bool Contains(T item) => Equals(items[item.HeapIndex], item);
 
     private void SortDown(T item)
     {
@@ -92,14 +85,12 @@ public class Heap<T> where T : IHeapItem<T>
 
     private void SortUp(T item)
     {
-
         while (item.HeapIndex > 0)
         {
             int parentIndex = (item.HeapIndex - 1) / 2;
             if (item.CompareTo(items[parentIndex]) > 0)
             {
                 Swap(item, items[parentIndex]);
-                //parentIndex = (item.HeapIndex - 1) / 2;
             }
             else
             {

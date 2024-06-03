@@ -98,5 +98,4 @@ public class TreeScript : MonoBehaviour
             healthBarImage.color = Color.red;
         }
     }
-
 }

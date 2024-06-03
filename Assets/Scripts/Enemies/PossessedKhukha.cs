@@ -42,14 +42,11 @@ public class PossessedKhukha : PathfinderEnemy
     }
 
     protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-
     protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-
     protected override bool NeedsPathUpdate() =>    base.NeedsPathUpdate();
-
     protected override void FindPathToPlayer() => base.FindPathToPlayer();
-    
     protected override bool CanSeePlayer() => base.CanSeePlayer();
+    public override void UpdateSlowDown() => base.UpdateSlowDown();
 
     private void TryAttack()
     {
@@ -69,8 +66,4 @@ public class PossessedKhukha : PathfinderEnemy
         }
     }
 
-    public override void UpdateSlowDown()
-    {
-        base.UpdateSlowDown();
-    }
 }

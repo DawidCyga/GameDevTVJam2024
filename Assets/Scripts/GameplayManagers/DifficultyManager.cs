@@ -53,11 +53,6 @@ public class DifficultyManager : MonoBehaviour
         }
     }
 
-    
-
-    public void Select(SelectedDifficulty selection)
-    {
-        _currentlySelectedDifficulty = selection;
-    }
+    public void Select(SelectedDifficulty selection) => _currentlySelectedDifficulty = selection;
 
 }

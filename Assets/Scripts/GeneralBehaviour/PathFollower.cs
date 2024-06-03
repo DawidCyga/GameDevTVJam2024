@@ -112,5 +112,4 @@ public class PathFollower : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-
 }

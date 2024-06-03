@@ -55,16 +55,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     private void UnfreezeTime() => Time.timeScale = 1;
-
-    public void Hide()
-    {
-        _pauseMenuScreenContainer.SetActive(false);
-    }
-
-    public void Show()
-    {
-        _pauseMenuScreenContainer.SetActive(true);
-    }
-
-   
+    public void Hide() => _pauseMenuScreenContainer.SetActive(false);
+    public void Show() => _pauseMenuScreenContainer.SetActive(true);  
 }

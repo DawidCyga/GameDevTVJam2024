@@ -89,5 +89,4 @@ public class DialogueUI : MonoBehaviour
 
         OnHide?.Invoke(this, EventArgs.Empty);
     }
-
 }

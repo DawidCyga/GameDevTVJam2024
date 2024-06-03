@@ -20,5 +20,4 @@ public class TutorialDialogueTrigger : MonoBehaviour
     }
 
     private void TriggerNextDialogue() => TutorialGameManager.Instance.StartDialogue(_currentDialogueIndex);
-
 }

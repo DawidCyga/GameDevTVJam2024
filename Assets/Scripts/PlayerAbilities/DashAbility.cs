@@ -26,10 +26,7 @@ public class DashAbility : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
 
     public bool TryPerformDash(Vector2 direction, bool isGrounded, Action finishPerformingDash)
     {
@@ -117,10 +114,7 @@ public class DashAbility : MonoBehaviour
         finishPerformingDash();
     }
 
-    private void Update()
-    {
-        UpdateCanDash();
-    }
+    private void Update() => UpdateCanDash();
 
     private void UpdateCanDash()
     {

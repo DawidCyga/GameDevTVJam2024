@@ -15,7 +15,6 @@ public class Wave
     public float GetTimeTillStartWave() => _timeTillStartWave;
 }
 
-
 [Serializable]
 public class SpawnPoint
 {
@@ -60,7 +59,6 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] private Transform _spawnedEnemiesParentTransform;
 
-
     [Header("For debugging only")]
 
     [SerializeField] private int _currentWaveIndex;
@@ -81,7 +79,6 @@ public class WaveSpawner : MonoBehaviour
     public event EventHandler OnTotalEnemyCountThisWaveDecreased;
     public event EventHandler<OnWaveClearedEventArgs> OnWaveCleared;
     public class OnWaveClearedEventArgs { public int CurrentWaveIndex { get; set; } }
-
 
     private void Awake()
     {
@@ -125,7 +122,6 @@ public class WaveSpawner : MonoBehaviour
                     {
                         ResetTimeTillEndBreak();
                     }
-                    Debug.Log("I exit break");
                     _currentWaveState = WaveState.Spawning;
                 }
                 break;
@@ -157,7 +153,6 @@ public class WaveSpawner : MonoBehaviour
 
         if (_completedSpawningRoutinesNumber == currentSpawnPointList.Count)
         {
-            Debug.Log("Changed to fighting");
             ChangeStateToFighting();
         }
 
@@ -214,14 +209,8 @@ public class WaveSpawner : MonoBehaviour
 
         if (_currentWaveIndex <= _waves.Length)
         {
-            Debug.Log("On wave cleared");
             _currentWaveState = WaveState.Dialogue;
             OnWaveCleared?.Invoke(this, new OnWaveClearedEventArgs { CurrentWaveIndex = _currentWaveIndex });
-        }
-        else
-        {
-            Debug.Log("Something went wrong");
-
         }
     }
 
@@ -248,5 +237,4 @@ public class WaveSpawner : MonoBehaviour
         }
         return totalEnemyCountCurrentWave;
     }
-
 }

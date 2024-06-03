@@ -8,15 +8,9 @@ public class EnemyProjectile : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
 
-    public void Launch(Vector3 direction, float fireForce)
-    {
-        _rigidbody.AddForce(direction * fireForce, ForceMode2D.Impulse);
-    }
+    public void Launch(Vector3 direction, float fireForce) => _rigidbody.AddForce(direction * fireForce, ForceMode2D.Impulse);
 
     private void Update()
     {

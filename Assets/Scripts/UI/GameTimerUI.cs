@@ -8,10 +8,7 @@ public class GameTimerUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _gameTimerText;
 
-    private void Update()
-    {
-        UpdateUI();
-    }
+    private void Update() => UpdateUI();
 
     private void UpdateUI()
     {

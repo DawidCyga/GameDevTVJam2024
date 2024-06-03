@@ -44,10 +44,7 @@ public class Babai : Enemy
         _currentSpawnedHandsNumber = 0;
     }
 
-    protected override void Start()
-    {
-        base.Start();
-    }
+    protected override void Start() => base.Start();
 
     private void Update()
     {
@@ -66,11 +63,7 @@ public class Babai : Enemy
         }
     }
 
-    private void FollowPath()
-    {
-        _pathFollower.Follow(_followPathSpeed);
-    }
-
+    private void FollowPath() => _pathFollower.Follow(_followPathSpeed);
     private void TrySpawnHands()
     {
         if (_timeSinceLastSpawnedHand > _timeBetweenSpawningHands && _currentSpawnedHandsNumber < _maxSpawnedHandsNumber)

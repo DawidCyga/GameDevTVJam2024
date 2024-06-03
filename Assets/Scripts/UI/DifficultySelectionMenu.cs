@@ -29,18 +29,10 @@ public class DifficultySelectionMenu : MonoBehaviour
         });
 
     }
-    private void SaveDifficulty(DifficultyManager.SelectedDifficulty difficulty)
-    {
-        DifficultyManager.Instance.Select(difficulty);
+    private void SaveDifficulty(DifficultyManager.SelectedDifficulty difficulty) => DifficultyManager.Instance.Select(difficulty);
 
-    }
-    private void StartGame()
-    {
-        FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
-    }
+    private void StartGame() => FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
 
-    private void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    private void LoadNextScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
 }

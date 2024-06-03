@@ -98,7 +98,6 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
             TimeTillEndSlowDown = slowdownDuration;
             _slowDownMultiplier = slowDownMultiplier;
             _moveSpeed *= _slowDownMultiplier;
-            Debug.Log("I'm slowed down" + gameObject.name);
         }
     }
 
@@ -112,7 +111,6 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
         {
             IsSlowedDown = false;
             _moveSpeed /= _slowDownMultiplier;
-            Debug.Log("I'm no longer slowed");
         }
     }
 }

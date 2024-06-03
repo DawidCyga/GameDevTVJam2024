@@ -9,7 +9,6 @@ public class BeastKillCounter : MonoBehaviour
     public static BeastKillCounter Instance { get; private set; }
 
     [Header("For debugging only")]
-
     [SerializeField] private int _babaiCount;
     [SerializeField] private int _khukhaCount;
     [SerializeField] private int _rangedKhukha;

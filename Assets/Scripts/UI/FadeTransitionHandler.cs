@@ -37,15 +37,9 @@ public class FadeTransitionHandler : MonoBehaviour
         }
     }
 
-    private void FadeInAutomatically()
-    {
-        FadeIn(_defaultFadeInTime);
-    }
+    private void FadeInAutomatically() => FadeIn(_defaultFadeInTime);
 
-    public void FadeIn(float duration, Action onFinishCallback = null)
-    {
-        StartCoroutine(FadeRoutine(1, 0, duration, onFinishCallback));
-    }
+    public void FadeIn(float duration, Action onFinishCallback = null) => StartCoroutine(FadeRoutine(1, 0, duration, onFinishCallback));
 
     public void FadeOut(float duration, Action onFinishedCallBack = null)
     {

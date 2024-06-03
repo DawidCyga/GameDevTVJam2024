@@ -23,7 +23,6 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
 
     }
 
-
     public void TakeDamage()
     {
         OnPlayerDying?.Invoke(this, EventArgs.Empty);
@@ -31,8 +30,5 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
         //sound effects
     }
 
-    public void Die()
-    {
-        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-    }
+    public void Die() => OnPlayerDeath?.Invoke(this, EventArgs.Empty);
 }

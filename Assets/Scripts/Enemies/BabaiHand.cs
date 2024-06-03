@@ -17,15 +17,9 @@ public class BabaiHand : MonoBehaviour
     private Transform _target;
     private Babai _babai;
 
-    private void Start()
-    {
-        _target = Player.Instance.transform;
-    }
+    private void Start() => _target = Player.Instance.transform;
 
-    private void OnDestroy()
-    {
-        _babai.OnDeath += BabaiSummoner_OnDeath;
-    }
+    private void OnDestroy() => _babai.OnDeath -= BabaiSummoner_OnDeath;
 
     private void Update()
     {
@@ -46,7 +40,6 @@ public class BabaiHand : MonoBehaviour
 
     private void BabaiSummoner_OnDeath(object sender, EventArgs e)
     {
-        // ANIMATION?
         if (!_isDead)
         {
             Destroy(gameObject);
@@ -77,6 +70,4 @@ public class BabaiHand : MonoBehaviour
             _timeSinceLastAttack = 0;
         }
     }
-
-
 }

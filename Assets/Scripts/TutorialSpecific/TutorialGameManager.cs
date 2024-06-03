@@ -101,10 +101,7 @@ public class TutorialGameManager : MonoBehaviour
         _isGamePaused = false;
     }
 
-    private void DisplayPauseMenuScreen()
-    {
-        PauseMenu.Instance.Show();
-    }
+    private void DisplayPauseMenuScreen() => PauseMenu.Instance.Show();
 
     private void PauseGame()
     {
@@ -112,10 +109,7 @@ public class TutorialGameManager : MonoBehaviour
         _isGamePaused = true;
     }
 
-    private void ChangeState(GameState newState)
-    {
-        _gameState = newState;
-    }
+    private void ChangeState(GameState newState) => _gameState = newState;
 
     public void StartDialogue(int dialogueIndex)
     {

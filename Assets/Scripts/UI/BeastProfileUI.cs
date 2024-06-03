@@ -24,9 +24,6 @@ public class BeastProfileUI : MonoBehaviour
             gameObject.SetActive(false);
             _bestiaryContainer.SetActive(true);
         });
-
-
-
     }
 
     public void SetupProfile(string name, int killCount, string description, Sprite image)

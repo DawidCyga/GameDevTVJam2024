@@ -42,7 +42,6 @@ public class GameTimer : MonoBehaviour
         {
             GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
         }
-
     }
     private void OnDestroy()
     {

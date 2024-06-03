@@ -13,7 +13,6 @@ public class PossessedFireKhukha : PathfinderEnemy
     [Header("Fire Khukha: For debugging only")]
     [SerializeField] private float _timeSinceLastAttacked;
 
-
     private void Update()
     {
         _timeSinceLastUpdatedPath += Time.deltaTime;
@@ -30,7 +29,6 @@ public class PossessedFireKhukha : PathfinderEnemy
             if (!aggroPlayer() && FindNearestTree()!= null)
             {
                 FindPathToEntity(FindNearestTree());
-                
             }
             else
             {
@@ -46,14 +44,12 @@ public class PossessedFireKhukha : PathfinderEnemy
     }
 
     protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-
     protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-
     protected override bool NeedsPathUpdate() =>    base.NeedsPathUpdate();
-
     protected override void FindPathToPlayer() => base.FindPathToPlayer();
-
     protected override bool CanSeePlayer() => base.CanSeePlayer();
+    public override void UpdateSlowDown() => base.UpdateSlowDown();
+
 
     private void TryAttack()
     {
@@ -72,12 +68,7 @@ public class PossessedFireKhukha : PathfinderEnemy
             Debug.Log("I hit player");
         }
     }
-
-    public override void UpdateSlowDown()
-    {
-        base.UpdateSlowDown();
-    }
-
+      
     private bool aggroPlayer()
     {
         float distanceFromPlayer = Vector3.Distance(_target.position, transform.position);

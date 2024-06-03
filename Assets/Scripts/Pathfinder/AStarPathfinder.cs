@@ -21,8 +21,6 @@ public class AStarPathfinder : MonoBehaviour
         Instance = this;
     }
 
-    
-
     public void ClearReserved(Vector2Int position)
     {
         PathNode node = _gridManager.GetNodeAtTilemapGridPosition(position);
@@ -31,11 +29,6 @@ public class AStarPathfinder : MonoBehaviour
 
     public Stack<Vector3> BuildPath(Vector2Int startGridPosition, Vector2Int targetGridPosition)
     {
-        //if (_gridManager != null)
-        //{
-        //    _gridManager.Reset(_collisionsTilemap);
-        //}
-
         _gridManager = new GridManager(_groundTilemap.size.x, _groundTilemap.size.y, _collisionsTilemap, _groundTilemap.origin);
 
         _openSet = new Heap<PathNode>(_groundTilemap.size.x * _groundTilemap.size.y);
@@ -54,7 +47,6 @@ public class AStarPathfinder : MonoBehaviour
 
         if (endPathNode != null)
         {
-            //this will convert grid positions in the found path to world positions, so we get back from it steps in world positions
             return CreatePathStack(endPathNode, _groundTilemap);
         }
         return null;
@@ -90,10 +82,7 @@ public class AStarPathfinder : MonoBehaviour
                 return currentNode;
             }
 
-            //If we haven't found the path
             closedHashSet.Add(currentNode);
-
-            //evaluate FCost for each neighbour of the curernt node
             EvaluateCurrentNodeNeighbours(currentNode, targetNode, gridManager, _openSet, _closedHashSet, _groundTilemap);
         }
 
@@ -104,7 +93,6 @@ public class AStarPathfinder : MonoBehaviour
     {
         Vector2Int currentNodeGridPosition = currentNode.GetGridPosition();
         PathNode validNeighbourNode;
-        //Loop through all directions
         for (int i = -1; i <= 1; i++)
         {
             for (int j = -1; j <= 1; j++)
@@ -156,7 +144,6 @@ public class AStarPathfinder : MonoBehaviour
         return 14 * distanceX + 10 * (distanceY - distanceX);
     }
 
-    //Will return null if neighbour is not valid
     private PathNode GetValidNodeNeighbour(int neighbourNodeXPosition, int neighbourNodeYPosition, GridManager gridConstructor, HashSet<PathNode> closedHashSet, Tilemap tilemap)
     {
         if (neighbourNodeXPosition >= tilemap.size.x || neighbourNodeXPosition < tilemap.origin.x || neighbourNodeYPosition >= tilemap.size.y || neighbourNodeYPosition < tilemap.origin.y)
@@ -165,7 +152,6 @@ public class AStarPathfinder : MonoBehaviour
         }
         PathNode neighbourNode = gridConstructor.GetNodeAtTilemapGridPosition(new Vector2Int(neighbourNodeXPosition, neighbourNodeYPosition));
 
-        //Skip it, as it has already been evaluated
         if (closedHashSet.Contains(neighbourNode) || !neighbourNode.GetIsWalkable())
         {
             return null;

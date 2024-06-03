@@ -9,7 +9,6 @@ public class DialogueSection
 {
     [SerializeField] private string _sectionName;
     [SerializeField] private SingleParagraph[] _textParagraphs;
-
     public string[] GetTextParagraphsContents()
     {
         string[] content = new string[_textParagraphs.Length];
@@ -112,18 +111,13 @@ public class DialogueManager : MonoBehaviour
 
     private void StartDialogue(int dialogueIndex)
     {
-        Debug.Log("Started dialogue");
         _currentDialogueSectionIndex = dialogueIndex;
         _currentDialogueParagraphIndex = 0;
         _textWriter.StartTyping(_dialogueSections[_currentDialogueSectionIndex].GetTextParagraphsContents(), true);
         OnStartNewDialogue?.Invoke(this, EventArgs.Empty);
     }
 
-    private void UpdateCurrentDialogueSpeaker()
-    {
-        _currentDialogueSpeaker = _dialogueSections[_currentDialogueSectionIndex].GetTextParagraph(_currentDialogueParagraphIndex).GetSpeakerNumber();
-    }
-
+    private void UpdateCurrentDialogueSpeaker() => _currentDialogueSpeaker = _dialogueSections[_currentDialogueSectionIndex].GetTextParagraph(_currentDialogueParagraphIndex).GetSpeakerNumber();
     public void FinishTypingCurrentParagraph() => TextWriter.Instance.SetShouldFinishTypingCurrentParagraph(true);
     public void StartTypingNextParagraph() => TextWriter.Instance.SetCanType(true);
 }

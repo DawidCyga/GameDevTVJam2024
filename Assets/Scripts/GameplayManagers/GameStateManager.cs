@@ -19,8 +19,6 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] public GameState _gameState;
 
-    private int _persistentLevelIndex;
-
     [SerializeField] private List<int> _clearedWavesIndexList = new List<int>();
     private int _currentDialogueIndex;
 
@@ -38,8 +36,6 @@ public class GameStateManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            _persistentLevelIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         }
         else
@@ -64,10 +60,7 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        UnsubscribeEvents();
-    }
+    private void OnDisable() => UnsubscribeEvents();
 
     private void SubscribeEvents()
     {
@@ -160,10 +153,7 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void HandleStartDialogue()
-    {
-        StartCoroutine(StartDialogueRoutine());
-    }
+    private void HandleStartDialogue() => StartCoroutine(StartDialogueRoutine());
 
     private IEnumerator StartDialogueRoutine(float delayInSeconds = 0.1f)
     {
@@ -181,7 +171,6 @@ public class GameStateManager : MonoBehaviour
             ChangeState(GameState.GameWin);
             _clearedWavesIndexList.Clear();
             StartCoroutine(LoadNextSceneRoutine());
-            Debug.Log("Game Win");
         }
         HandleStartNextWave();
     }
@@ -190,7 +179,6 @@ public class GameStateManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayInSeconds);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Debug.Log("Scene loaded");
     }
 
     private void HandleStartNextWave()
@@ -251,15 +239,9 @@ public class GameStateManager : MonoBehaviour
         _isGamePaused = false;
     }
 
-    private void DisplayPauseMenuScreen()
-    {
-        PauseMenu.Instance.Show();
-    }
+    private void DisplayPauseMenuScreen() => PauseMenu.Instance.Show();
 
-    private void DisplayGameOverScreen()
-    {
-        GameOverScreen.Instance.Show();
-    }
+    private void DisplayGameOverScreen() => GameOverScreen.Instance.Show();
 
     private void PauseGame()
     {

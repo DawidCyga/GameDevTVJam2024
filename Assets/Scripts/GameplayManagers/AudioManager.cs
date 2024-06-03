@@ -33,9 +33,6 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+    private void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
 
-    private void PlaySound(AudioName name)
-    {
-        _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
-    }
 }

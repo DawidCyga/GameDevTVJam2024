@@ -41,7 +41,6 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
 
     public virtual void TakeDamage()
     {
-        //TRIGGER DEATH ANIMATION
         if (!_isDead)
         {
             WaveSpawner.Instance.DecreaseTotalEnemiesSpawnedCurrentWave();
@@ -121,5 +120,4 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
             Gizmos.DrawLine(transform.position, transform.position + (_target.position - transform.position).normalized * _sightLength);
         }
     }
-
 }

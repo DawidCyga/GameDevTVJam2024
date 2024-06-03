@@ -49,8 +49,6 @@ public class WaveSpawnerUI : MonoBehaviour
         Debug.Log("UI on started new wave");
     }
 
-  
-
     private void WaveSpawner_OnTotalEnemyCountThisWaveDecreased(object sender, System.EventArgs e)
     {
         _enemiesLeftThisWave--;
@@ -63,9 +61,6 @@ public class WaveSpawnerUI : MonoBehaviour
         UpdateUIVisibility(false);
     }
     private void UpdateWaveUI(string currentWave) => _waveUIText.text = $"{currentWave} / {_totalWaveCount}";
-
     private void UpdateEnemiesUI(string firstValue, string secondValue) => _enemiesUIText.text = $"{firstValue} / {secondValue}";
-
     private void UpdateUIVisibility(bool state) => _waveSpawnerUIContainer.SetActive(state);
-
 }

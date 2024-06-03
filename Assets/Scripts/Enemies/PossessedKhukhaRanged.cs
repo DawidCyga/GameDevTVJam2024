@@ -54,14 +54,11 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     }
 
     protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-
     protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-
     protected override bool NeedsPathUpdate() => base.NeedsPathUpdate();
-
     protected override void FindPathToPlayer() => base.FindPathToPlayer();
-
     protected override bool CanSeePlayer() => base.CanSeePlayer();
+    public override void UpdateSlowDown() => base.UpdateSlowDown();
 
     private void TryShoot()
     {
@@ -97,10 +94,5 @@ public class PossessedKhukhaRanged : PathfinderEnemy
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         _firePointPivot.rotation = Quaternion.Euler(0, 0, targetAngle);
-    }
-
-    public override void UpdateSlowDown()
-    {
-        base.UpdateSlowDown();
     }
 }

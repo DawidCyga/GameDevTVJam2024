@@ -45,7 +45,6 @@ public class MainMenuStateManager : MonoBehaviour
         {
             {MainMenuState.MainMenu, _mainMenuContainer },
             {MainMenuState.Difficulty, _difficultyContainer },
-//            {MainMenuState.Options, _optionsContainer },
             {MainMenuState.Bestiary, _bestiaryContainer },
             {MainMenuState.Credits, _creditsContainer }
         };
@@ -55,12 +54,8 @@ public class MainMenuStateManager : MonoBehaviour
         _startButton.onClick.AddListener(() =>
         {
             ChangeState(MainMenuState.Difficulty);
-            //FadeTransitionHandler.Instance.FadeOut(2, LoadNextScene);
         });
-        //_optionsButton.onClick.AddListener(() =>
-        //{
-        //    ChangeState(MainMenuState.Options);
-        //});
+
         _bestiaryButton.onClick.AddListener(() =>
         {
             ChangeState(MainMenuState.Bestiary);
@@ -73,10 +68,6 @@ public class MainMenuStateManager : MonoBehaviour
         {
             ChangeState();
         });
-        //_backFromOptionsButton.onClick.AddListener(() =>
-        //{
-        //    ChangeState();
-        //});
         _backFromBestiaryButton.onClick.AddListener(() =>
         {
             ChangeState();
@@ -87,10 +78,7 @@ public class MainMenuStateManager : MonoBehaviour
         });
     }
 
-    private void ChangeState()
-    {
-        ChangeState(MainMenuState.MainMenu);
-    }
+    private void ChangeState() => ChangeState(MainMenuState.MainMenu);
     private void ChangeState(MainMenuState state)
     {
         _mainMenuStateTransformDictionary[_mainMenuState].SetActive(false);
