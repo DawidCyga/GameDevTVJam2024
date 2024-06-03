@@ -1229,36 +1229,166 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._sectionName
+      value: Dialogue After First Wave Cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[2]._sectionName
+      value: Dialogue After Second wave cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[3]._sectionName
+      value: Dialogue After 3 waves cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._sectionName
-      value: Dialogue After All waves cleared
+      value: Dialogue After 4 waves cleared
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[5]._sectionName
+      value: Dialogue After Last wave cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[6]._sectionName
       value: Dialogue After All waves cleared
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.size
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[0]._text
-      value: Is that it?
+      propertyPath: _dialogueSections.Array.data[6]._textParagraphs.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
-      propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[1]._text
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[0]._text
+      value: Hmmm, where are you, Lykho?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[1]._text
+      value: Oh, my old friend comes to save the day this time too?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[2]._text
+      value: "Why could you possibly want to destroy our beloved forest? Again\u2026\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[3]._text
+      value: "Oh, and you surely wouldn\u2019t want that! With your lovely days in
+        your lovely Forest, drinking nectar and playing with your friends!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[4]._text
+      value: "Everyone is just so happy. It\u2019s time to change that."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[5]._text
+      value: Oh, I see. Too little grief for you here?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[6]._text
+      value: 'It will be enough grief here soon. Just wait to meet your little friends. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[0]._text
+      value: "Khukhas! They are different now, grief does not suit them well. I must
+        be careful not to bump into them or I\u2019ll be possessed too!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[1]._text
+      value: Yes, second wave is cleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[2]._text
+      value: So, can you continue to the third wave?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[3]._text
+      value: Press start, when you're ready
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[0]._text
+      value: "*If you misbehave, he\u2019ll come and play*"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[1]._text
+      value: "Oh, you brought your friend too! Babai was it? I remember him with
+        his invincible flying hands. I\u2019ll remember not to bump into them on
+        the way to their master. No Babai - no hands!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[0]._text
+      value: "So many Khukhas possessed with grief! They\u2019ll be free just as
+        they are reborn. It's a good thing nobody dies, as long as Forest lives!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[3]._textParagraphs.Array.data[1]._text
       value: Yes, not it really is!
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[0]._text
+      value: "Till the last tree in the Forest \u2013 I will stand!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[1]._text
+      value: Yes, mate, you really saved the freaking forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[0]._text
-      value: Is that it?
+      value: Until the Forest is alive, so are we!
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[1]._text
+      value: To win, Lykho will have to burn this Forest down. And this will never
+        happen!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[6]._textParagraphs.Array.data[0]._text
+      value: Is that it?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[6]._textParagraphs.Array.data[1]._text
       value: Yes, mate, you really saved the freaking forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[4]._speakerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[5]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[6]._speakerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[0]._speakerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[1]._speakerNumber
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[4]._textParagraphs.Array.data[0]._speakerNumber
@@ -1274,6 +1404,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[5]._textParagraphs.Array.data[1]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[6]._textParagraphs.Array.data[0]._speakerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[6]._textParagraphs.Array.data[1]._speakerNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6390797596576312639, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
@@ -27561,12 +27699,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _firekhukhaDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _rangedKhukhaDamage
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _maxInvincibilityTime
-      value: 11111
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: _rangedFireKhukhaDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90460,32 +90606,44 @@ MonoBehaviour:
       _enemyToSpawnList:
       - _enemyName: 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 6
+        _timeToSpawn: 2.1
       - _enemyName: 2
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 4
+        _timeToSpawn: 2.2
       - _enemyName: 3
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 5
+        _timeToSpawn: 1.5
     - _pointName: Spawnpoint 2
-      _positionTransform: {fileID: 393451723}
-      _enemyToSpawnList:
-      - _enemyName: 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-      - _enemyName: 2
-        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-        _timeToSpawn: 3
-    - _pointName: Spawnpoint 3
       _positionTransform: {fileID: 1227578892020521483}
       _enemyToSpawnList:
       - _enemyName: 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 1
+        _timeToSpawn: 1.9
       - _enemyName: 2
-        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-        _timeToSpawn: 2
-    _timeTillStartWave: 2
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 2.5
+      - _enemyName: 3
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.8
+    - _pointName: Spawnpoint 3
+      _positionTransform: {fileID: 1227578892020521481}
+      _enemyToSpawnList:
+      - _enemyName: 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.9
+      - _enemyName: 2
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1
+    - _pointName: Spawnpoint 3
+      _positionTransform: {fileID: 1227578892020521480}
+      _enemyToSpawnList:
+      - _enemyName: 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.8
+      - _enemyName: 2
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 2.8
+    _timeTillStartWave: 1.5
   - _waveName: Second Wave
     _spawnPointList:
     - _pointName: Spawn Point 1
@@ -90493,47 +90651,62 @@ MonoBehaviour:
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 1
+        _timeToSpawn: 0.8
       - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 1.85
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 3.4
     - _pointName: Spawn Point 2
       _positionTransform: {fileID: 393451723}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
+        _timeToSpawn: 0.9
       - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 1.8
     - _pointName: Spawn Point 3
       _positionTransform: {fileID: 1227578892020521483}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 2.5
+      - _enemyName: Enemy 2
         _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-        _timeToSpawn: 3
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
+        _timeToSpawn: 2.4
     - _pointName: Spawn Point 4
-      _positionTransform: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-      _enemyToSpawnList:
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
-    - _pointName: Spawn Point 5
-      _positionTransform: {fileID: 1227578892020521481}
+      _positionTransform: {fileID: 1227578892020521482}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
         _timeToSpawn: 4
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 1
-    _timeTillStartWave: 4
+        _timeToSpawn: 1.5
+    - _pointName: Spawn Point 5
+      _positionTransform: {fileID: 1227578892020521481}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.3
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 1.5
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 2.8
+    - _pointName: Spawn Point 6
+      _positionTransform: {fileID: 1227578892020521480}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.2
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 1.6
+    _timeTillStartWave: 1
   - _waveName: Third Wave
     _spawnPointList:
     - _pointName: Spawn Point 1
@@ -90541,100 +90714,187 @@ MonoBehaviour:
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
+        _timeToSpawn: 0.6
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
+        _timeToSpawn: 1.2
       - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
-    - _pointName: Spawn Point 1
-      _positionTransform: {fileID: 393451723}
-      _enemyToSpawnList:
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
         _timeToSpawn: 2
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-        _timeToSpawn: 2
-    - _pointName: Spawn Point 1
+    - _pointName: Spawn Point 3
       _positionTransform: {fileID: 1227578892020521483}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-        _timeToSpawn: 3
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.3
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-    - _pointName: Spawn Point 1
+        _timeToSpawn: 1.4
+    - _pointName: Spawn Point 4
       _positionTransform: {fileID: 1227578892020521482}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 4
-    - _pointName: Spawn Point 1
-      _positionTransform: {fileID: 1227578892020521481}
-      _enemyToSpawnList:
+        _timeToSpawn: 1.1
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
-    - _pointName: Spawn Point 1
+        _timeToSpawn: 1.5
+    - _pointName: Spawn Point 6
       _positionTransform: {fileID: 1227578892020521480}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-    _timeTillStartWave: 4
-  - _waveName: Final Wave
-    _spawnPointList:
-    - _pointName: Spawn Point 1
-      _positionTransform: {fileID: 1227578892020521480}
-      _enemyToSpawnList:
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
-        _timeToSpawn: 3
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
-        _timeToSpawn: 12
-    - _pointName: Spawn Point 1
-      _positionTransform: {fileID: 393451723}
-      _enemyToSpawnList:
+        _timeToSpawn: 0.8
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
+        _timeToSpawn: 0.9
       - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
-        _timeToSpawn: 2
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 2
-    _timeTillStartWave: 4
-  - _waveName: Final Wave
+        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
+        _timeToSpawn: 1.5
+    _timeTillStartWave: 3
+  - _waveName: Fourth Wave
     _spawnPointList:
     - _pointName: Spawn Point 1
       _positionTransform: {fileID: 1249575988}
       _enemyToSpawnList:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
-        _timeToSpawn: 3
-    _timeTillStartWave: 4
+        _timeToSpawn: 0.6
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.2
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
+        _timeToSpawn: 0.7
+    - _pointName: Spawn Point 2
+      _positionTransform: {fileID: 393451723}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.7
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.3
+    - _pointName: Spawn Point 3
+      _positionTransform: {fileID: 1227578892020521483}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.8
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.4
+    - _pointName: Spawn Point 4
+      _positionTransform: {fileID: 1227578892020521482}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.9
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.5
+    - _pointName: Spawn Point 5
+      _positionTransform: {fileID: 1227578892020521481}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.6
+    - _pointName: Spawn Point 6
+      _positionTransform: {fileID: 1227578892020521480}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
+        _timeToSpawn: 1.1
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.7
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.8
+    _timeTillStartWave: 2
+  - _waveName: Fifth Wave
+    _spawnPointList:
+    - _pointName: Spawn Point 1
+      _positionTransform: {fileID: 1249575988}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 0.6
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.2
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
+        _timeToSpawn: 0.7
+    - _pointName: Spawn Point 2
+      _positionTransform: {fileID: 393451723}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.7
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.3
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.3
+    - _pointName: Spawn Point 3
+      _positionTransform: {fileID: 1227578892020521483}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 0.8
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.4
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.4
+    - _pointName: Spawn Point 4
+      _positionTransform: {fileID: 1227578892020521482}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 0.9
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.5
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 0.8
+    - _pointName: Spawn Point 5
+      _positionTransform: {fileID: 1227578892020521481}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 1.6
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+        _timeToSpawn: 1.6
+    - _pointName: Spawn Point 6
+      _positionTransform: {fileID: 1227578892020521480}
+      _enemyToSpawnList:
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
+        _timeToSpawn: 1.1
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.7
+      - _enemyName: Enemy 1
+        _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+        _timeToSpawn: 1.8
+    _timeTillStartWave: 3
   _spawnedEnemiesParentTransform: {fileID: 7776853138756651327}
   _currentWaveIndex: 0
   _totalEnemiesSpawnedCurrentWave: 0
   _timeTillEndBreak: 0
-  _totalEnemyCountCurrentWave: 0
+  _totalEnemyCountCurrentWave: 4
   _waveIndexIncreasedThisWave: 0
   _hasStartedNewWave: 0
 --- !u!1001 &3369386413754657372
