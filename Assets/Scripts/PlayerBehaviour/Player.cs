@@ -398,12 +398,12 @@ public class Player : MonoBehaviour
 
     public bool isPaused() => _isPaused;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(_groundCheckTransform.position, _groundCheckSize);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(_wallCheckTransform.position, new Vector3(_wallCheckTransform.position.x + _wallCheckDistance * _facingDirectionValue, _wallCheckTransform.position.y));
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireCube(_groundCheckTransform.position, _groundCheckSize);
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawLine(_wallCheckTransform.position, new Vector3(_wallCheckTransform.position.x + _wallCheckDistance * _facingDirectionValue, _wallCheckTransform.position.y));
+    //}
 
 }

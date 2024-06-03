@@ -98,16 +98,16 @@ public class PossessedFireKhukha : PathfinderEnemy
         return nearestTree;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _aggroDistance);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _attackRange);
-        Gizmos.color = Color.green;
-        if (_target != null)
-        {
-            Gizmos.DrawLine(transform.position, transform.position + (_target.position - transform.position).normalized * _sightLength);
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(transform.position, _aggroDistance);
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, _attackRange);
+    //    Gizmos.color = Color.green;
+    //    if (_target != null)
+    //    {
+    //        Gizmos.DrawLine(transform.position, transform.position + (_target.position - transform.position).normalized * _sightLength);
+    //    }
+    //}
 }

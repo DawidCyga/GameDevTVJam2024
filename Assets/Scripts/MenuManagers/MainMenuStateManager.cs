@@ -25,6 +25,7 @@ public class MainMenuStateManager : MonoBehaviour
     //   [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _bestiaryButton;
     [SerializeField] private Button _creditsButton;
+    [SerializeField] private Button _quitButton;
 
     [Header("Sub-windows Back Buttons")]
     [SerializeField] private Button _backFromDifficultyButton;
@@ -84,6 +85,10 @@ public class MainMenuStateManager : MonoBehaviour
         {
             ChangeState();
             UpdateEventSystemCurrent();
+        });
+        _quitButton.onClick.AddListener(() =>
+        {
+            Application.Quit();
         });
     }
 

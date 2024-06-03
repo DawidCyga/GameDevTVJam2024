@@ -26,13 +26,11 @@ public class PlayerAnimationHandler : MonoBehaviour
     private void PlayerHitBox_OnPlayerDying(object sender, EventArgs e)
     {
         _animator.SetBool(_isDeadAnimHash, true);
-        Debug.Log("Player animator, I received he's dying");
     }
 
     public void TriggerDeath()
     {
         PlayerHitBox.Instance.Die();
-        Debug.Log("I trigger his death");
     }
 
     private void Update()
