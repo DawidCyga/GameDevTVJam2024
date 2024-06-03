@@ -18,6 +18,14 @@ public class TreeScript : MonoBehaviour
     private Slider healthBarSlider;
     public Image healthBarImage;
 
+    private Animator _animator;
+    private int _ignitedAnimHash = Animator.StringToHash("IsIgnited");
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +54,7 @@ public class TreeScript : MonoBehaviour
             Debug.Log("extinguished");
             _isIgnited = false;
         }
+        _animator.SetBool(_ignitedAnimHash, _isIgnited);
     }
 
     private void TreeState()
@@ -57,6 +66,7 @@ public class TreeScript : MonoBehaviour
                 takeDamage();
                 _prevTime = Time.fixedTime;
             }
+            
         }
     }
 
