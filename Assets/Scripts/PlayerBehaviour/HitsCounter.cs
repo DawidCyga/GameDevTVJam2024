@@ -23,6 +23,7 @@ public class HitsCounter : MonoBehaviour
     [SerializeField] private int _currentHealth;
     [SerializeField] private float _timeSinceTurnedInvincible;
     [SerializeField] private bool _isInvincible;
+    [SerializeField] private bool _isKilled;
 
     private Dictionary<Enemy.EnemyType, int> _hitTypeDamageDictionary = new Dictionary<Enemy.EnemyType, int>();
 
@@ -87,7 +88,13 @@ public class HitsCounter : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
-            PlayerHitBox.Instance.TakeDamage();
+            if (!_isKilled)
+            {
+                PlayerHitBox.Instance.TakeDamage();
+                Debug.Log("Hit Counter: I take damage");
+                _isKilled = true;
+            }
+          
         }
     }
 

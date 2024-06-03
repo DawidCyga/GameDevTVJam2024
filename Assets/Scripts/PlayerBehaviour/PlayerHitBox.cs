@@ -27,7 +27,12 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
     {
         OnPlayerDying?.Invoke(this, EventArgs.Empty);
         Player.Instance.enabled = false;
+        Debug.Log("Player hit box: I take damage");
     }
 
-    public void Die() => OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+    public void Die()
+    {
+        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        Debug.Log("Player hit box, I die - triggered from animation");
+    }
 }
