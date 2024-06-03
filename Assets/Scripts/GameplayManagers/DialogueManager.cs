@@ -36,6 +36,8 @@ public class SingleParagraph
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance { get; private set; }
+
     [SerializeField] private DialogueSection[] _dialogueSections;
 
     [Header("For debugging only")]
@@ -51,6 +53,12 @@ public class DialogueManager : MonoBehaviour
     public class OnStartedNewParagraphEventArgs { public int CurrentDialogueSpeaker { get; set; } }
     public event EventHandler OnSingleParagraphTyped;
     public event EventHandler OnLastParagraphTyped;
+
+    private void Awake()
+    {
+            Instance = this;
+       
+    }
 
     private void Start()
     {
@@ -120,4 +128,6 @@ public class DialogueManager : MonoBehaviour
     private void UpdateCurrentDialogueSpeaker() => _currentDialogueSpeaker = _dialogueSections[_currentDialogueSectionIndex].GetTextParagraph(_currentDialogueParagraphIndex).GetSpeakerNumber();
     public void FinishTypingCurrentParagraph() => TextWriter.Instance.SetShouldFinishTypingCurrentParagraph(true);
     public void StartTypingNextParagraph() => TextWriter.Instance.SetCanType(true);
+
+    public int GetCurrentDialogueParagraphIndex() => _currentDialogueParagraphIndex;
 }

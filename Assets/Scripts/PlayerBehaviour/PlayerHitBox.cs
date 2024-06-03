@@ -27,7 +27,6 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
     {
         OnPlayerDying?.Invoke(this, EventArgs.Empty);
         Player.Instance.enabled = false;
-        //sound effects
     }
 
     public void Die() => OnPlayerDeath?.Invoke(this, EventArgs.Empty);

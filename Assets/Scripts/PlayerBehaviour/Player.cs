@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
     private HitsCounter _hitsCounter;
     private PlayerHitBox _playerHitBox;
 
+    public event EventHandler OnStartedJump;
+    public event EventHandler OnStartedDash;
+
     private enum PlayerState
     {
         Grounded,
@@ -125,6 +128,8 @@ public class Player : MonoBehaviour
         UpdateGrounded();
         UpdateWallCheckDetection();
         UpdateFacingDirection();
+        UpdateWalkSFX();
+
 
         switch (_playerState)
         {
@@ -202,6 +207,7 @@ public class Player : MonoBehaviour
             if (_dashAbilityVer2.TryPerformDash(_moveDirection, isGrounded, FinishPerformingDash))
             {
                 _isPerformingDash = true;
+                OnStartedDash?.Invoke(this, EventArgs.Empty);
                 _hitsCounter.SetInvincible();
             }
 
@@ -267,6 +273,8 @@ public class Player : MonoBehaviour
 
             _isAttemptingJump = false;
             _hasPerformedFirstJump = true;
+
+            OnStartedJump?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -287,6 +295,7 @@ public class Player : MonoBehaviour
             _canDoubleJump = false;
             _hasPerformedDoubleJump = true;
             _isAttemptingJump = false;
+            OnStartedJump?.Invoke(this, EventArgs.Empty);
         }
         else if (_isAttemptingJump && _canDoubleJump && !_hasPerformedFirstJump)
         {
@@ -295,6 +304,7 @@ public class Player : MonoBehaviour
             _rigidbody.AddForce(airFirstJumpVelocity, ForceMode2D.Impulse);
             _hasPerformedFirstJump = true;
             _isAttemptingJump = false;
+            OnStartedJump?.Invoke(this, EventArgs.Empty);
         }
         else
         {
@@ -344,6 +354,19 @@ public class Player : MonoBehaviour
         transform.Rotate(0, 180, 0);
         _isFacingRight = !_isFacingRight;
         _facingDirectionValue *= -1;
+    }
+
+    private void UpdateWalkSFX()
+    {
+        if (_isMoving && _isGrounded)
+        {
+            if (!StepsAudioManager.Instance.IsPlayingWalkSound())
+                StepsAudioManager.Instance.PlayWalkSound();
+        }
+        else
+        {
+            StepsAudioManager.Instance.StopWalkSound();
+        }
     }
 
     private void FinishPerformingDash()
