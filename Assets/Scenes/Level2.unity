@@ -48190,6 +48190,7 @@ MonoBehaviour:
   _timeTillEndBreak: 0
   _totalEnemyCountCurrentWave: 0
   _waveIndexIncreasedThisWave: 0
+  _hasStartedNewWave: 0
 --- !u!1001 &3369386413754657372
 PrefabInstance:
   m_ObjectHideFlags: 0

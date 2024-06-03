@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class TreeScript : MonoBehaviour
 
     private Animator _animator;
     private int _ignitedAnimHash = Animator.StringToHash("IsIgnited");
+
+    public static event EventHandler OnAnyTreeBurned;
 
     private void Awake()
     {
@@ -73,6 +76,11 @@ public class TreeScript : MonoBehaviour
     private void takeDamage()
     {
         _currentHealth -= _burnDamage;
+        if (_currentHealth < 0)
+        {
+            OnAnyTreeBurned?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Tree burned");
+        }
     }
 
     private void updateHealthBar()

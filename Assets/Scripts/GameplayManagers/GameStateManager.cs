@@ -51,16 +51,16 @@ public class GameStateManager : MonoBehaviour
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
 
-        if (arg0.buildIndex != _persistentLevelIndex)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if (arg0.buildIndex == 3 || arg0.buildIndex == 4)
         {
             ChangeState(GameState.Playing);
             _currentDialogueIndex = 0;
             SubscribeEvents();
             TryStartDialogue();
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -81,7 +81,9 @@ public class GameStateManager : MonoBehaviour
             WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
         if (DialogueUI.Instance != null)
             DialogueUI.Instance.OnHide += DialogueUI_OnHide;
+        TreeScript.OnAnyTreeBurned += TreeScript_OnAnyTreeBurned;
     }
+
     private void UnsubscribeEvents()
     {
         SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
@@ -96,6 +98,7 @@ public class GameStateManager : MonoBehaviour
             WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
         if (DialogueUI.Instance != null)
             DialogueUI.Instance.OnHide -= DialogueUI_OnHide;
+        TreeScript.OnAnyTreeBurned -= TreeScript_OnAnyTreeBurned;
     }
 
     private void PlayerHitBox_OnPlayerDeath(object sender, EventArgs e)
@@ -129,6 +132,11 @@ public class GameStateManager : MonoBehaviour
         _currentDialogueIndex = e.CurrentWaveIndex;
 
         TryStartDialogue();
+    }
+
+    private void TreeScript_OnAnyTreeBurned(object sender, EventArgs e)
+    {
+        _gameState = GameState.GameOver;
     }
 
     private void TryStartDialogue()
@@ -171,10 +179,18 @@ public class GameStateManager : MonoBehaviour
         if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount())
         {
             ChangeState(GameState.GameWin);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            _clearedWavesIndexList.Clear();
+            StartCoroutine(LoadNextSceneRoutine());
             Debug.Log("Game Win");
         }
         HandleStartNextWave();
+    }
+
+    private IEnumerator LoadNextSceneRoutine(float delayInSeconds = 0.3f)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log("Scene loaded");
     }
 
     private void HandleStartNextWave()
@@ -224,6 +240,7 @@ public class GameStateManager : MonoBehaviour
                 DisplayGameOverScreen();
                 break;
             case GameState.GameWin:
+                Debug.Log("I'm winning");
                 break;
         }
     }
