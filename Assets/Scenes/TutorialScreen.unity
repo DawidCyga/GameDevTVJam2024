@@ -89481,8 +89481,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2142718919}
+      insertIndex: 3
+      addedObject: {fileID: 2142718920}
   m_SourcePrefab: {fileID: 100100000, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
 --- !u!1 &1888834971 stripped
 GameObject:
@@ -146507,7 +146507,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2824604991377171652, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
   m_PrefabInstance: {fileID: 1888834970}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2142718919
+--- !u!114 &2142718920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146523,10 +146523,10 @@ MonoBehaviour:
   _maxInvincibilityTime: 1
   _babaiDamage: 1
   _rangedKhukhaDamage: 1
-  _khukhaDamage: 2
-  _rangedFireKhukhaDamage: 0
-  _firekhukhaDamage: 0
-  _poisonousTrail: 0
+  _khukhaDamage: 1
+  _rangedFireKhukhaDamage: 1
+  _firekhukhaDamage: 1
+  _poisonousTrail: 1
   _currentHealth: 0
   _timeSinceTurnedInvincible: 0
   _isInvincible: 0

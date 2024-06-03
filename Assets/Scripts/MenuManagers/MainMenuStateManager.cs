@@ -86,10 +86,10 @@ public class MainMenuStateManager : MonoBehaviour
             ChangeState();
             UpdateEventSystemCurrent();
         });
-        _quitButton.onClick.AddListener(() =>
-        {
-            Application.Quit();
-        });
+        //_quitButton.onClick.AddListener(() =>
+        //{
+        //    Application.Quit();
+        //});
     }
 
     private void Start()
