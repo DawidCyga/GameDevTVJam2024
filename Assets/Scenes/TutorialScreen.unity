@@ -146197,6 +146197,7 @@ MonoBehaviour:
   _currentHealth: 0
   _timeSinceTurnedInvincible: 0
   _isInvincible: 0
+  _isKilled: 0
 --- !u!1001 &4826207497667923
 PrefabInstance:
   m_ObjectHideFlags: 0

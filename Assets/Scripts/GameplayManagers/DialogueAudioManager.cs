@@ -27,15 +27,15 @@ public class DialogueAudioManager : MonoBehaviour
     {
         int currentDialogueParagraphIndex = DialogueManager.Instance.GetCurrentDialogueParagraphIndex();
 
-        if (e.CurrentDialogueSpeaker == 1 && e.CurrentDialogueSpeaker != _previousSpeaker && (currentDialogueParagraphIndex == 0 || currentDialogueParagraphIndex == 1))
+        if (e.CurrentDialogueSpeaker == 1 /* && e.CurrentDialogueSpeaker != _previousSpeaker /*&& (currentDialogueParagraphIndex == 0 || currentDialogueParagraphIndex == 1)*/)
         {
-            _previousSpeaker = e.CurrentDialogueSpeaker;
+           // _previousSpeaker = e.CurrentDialogueSpeaker;
             _audioSource.Stop();
             _audioSource.PlayOneShot(_speaker1Audio);
         }
-        else if (e.CurrentDialogueSpeaker == 2 && e.CurrentDialogueSpeaker != _previousSpeaker && (currentDialogueParagraphIndex == 0 || currentDialogueParagraphIndex == 1))
+        else if (e.CurrentDialogueSpeaker == 2 /* && e.CurrentDialogueSpeaker != _previousSpeaker && (currentDialogueParagraphIndex == 0 || currentDialogueParagraphIndex == 1)*/)
         {
-            _previousSpeaker = e.CurrentDialogueSpeaker;
+           // _previousSpeaker = e.CurrentDialogueSpeaker;
             _audioSource.Stop();
             _audioSource.PlayOneShot(_speaker2Audio);
         }
