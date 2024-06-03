@@ -7,6 +7,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 {
     private int _runningAnimHash = Animator.StringToHash("isMoving");
     private int _jumpingAnimHash = Animator.StringToHash("isJumping");
+    private int _dieAnimHash = Animator.StringToHash("die");
 
     private Player _player;
     private Animator _animator;
@@ -16,6 +17,18 @@ public class PlayerAnimationHandler : MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
     }
+
+    private void Start()
+    {
+        PlayerHitBox.Instance.OnPlayerDying += PlayerHitBox_OnPlayerDying;
+    }
+
+    private void PlayerHitBox_OnPlayerDying(object sender, EventArgs e)
+    {
+        _animator.SetTrigger(_dieAnimHash);
+    }
+
+    public void TriggerDeath() => PlayerHitBox.Instance.Die();
 
     private void Update()
     {

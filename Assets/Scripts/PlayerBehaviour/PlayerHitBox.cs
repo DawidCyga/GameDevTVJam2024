@@ -7,9 +7,8 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
 {
     public static PlayerHitBox Instance { get; private set; }
 
+    public event EventHandler OnPlayerDying;
     public event EventHandler OnPlayerDeath;
-
-    [SerializeField] private float _maxInvincibilityTime;
 
     private void Awake()
     {
@@ -21,14 +20,19 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
         {
             Destroy(gameObject);
         }
+
     }
 
 
     public void TakeDamage()
     {
-        //die animations
+        OnPlayerDying?.Invoke(this, EventArgs.Empty);
+        Player.Instance.enabled = false;
         //sound effects
-       // Debug.Log("Player killed");
+    }
+
+    public void Die()
+    {
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
 }
