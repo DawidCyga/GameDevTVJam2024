@@ -14,7 +14,8 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         Khukha,
         RangedFireKhukha,
         FireKhukha,
-        Story
+        Story,
+        PoisonousTrail
     }
 
     [Header("General Configuration")]
