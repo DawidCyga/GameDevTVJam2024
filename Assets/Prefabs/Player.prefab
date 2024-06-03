@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundMoveSpeed: 18
   _groundJumpForce: 48
-  _inAirHorizontalMoveSpeed: 130
+  _inAirHorizontalMoveSpeed: 120
   _airDoubleJumpForce: 45
   _airFirstJumpForce: 53
   _fallingGravityDrag: 280
@@ -468,7 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f2e8d77679ed54dab01991a71ae49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxInvincibilityTime: 1
 --- !u!1 &9015226158943814100
 GameObject:
   m_ObjectHideFlags: 0

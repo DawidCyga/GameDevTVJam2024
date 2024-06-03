@@ -220,9 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac09dce72c93d14fb0682a130018e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
-  _attackRange: 0.97
-  _sightLength: 35
+  _moveSpeed: 2
+  _attackRange: 0.75
+  _sightLength: 17
+  _enemyType: 0
   _whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128
@@ -232,10 +233,10 @@ MonoBehaviour:
   _isInAttackRange: 0
   _isDead: 0
   _state: 0
-  _playerEvadeSpeed: 4
+  _playerEvadeSpeed: 3
   _followPathSpeed: 5
   _maxSpawnedHandsNumber: 5
-  _timeBetweenSpawningHands: 5
+  _timeBetweenSpawningHands: 2.5
   _distanceToWallBehind: 0.8
   _whatIsWall:
     serializedVersion: 2

@@ -79,10 +79,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb538c62847b8149851a7b7768a0721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1
-  _attackRange: 15
-  _sightLength: 15
-  _enemyType: 4
+  _moveSpeed: 1.2
+  _attackRange: 22
+  _sightLength: 19
+  _enemyType: 2
   _whatIsObstacle:
     serializedVersion: 2
     m_Bits: 128
@@ -97,8 +97,8 @@ MonoBehaviour:
   _firePointPivot: {fileID: 1721193012762678628}
   _projectilePrefab: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
   _projectilesParent: {fileID: 0}
-  _timeBetweenShots: 1
-  _fireForce: 2
+  _timeBetweenShots: 2
+  _fireForce: 0.7
   _timeSinceLastShot: 0
   _isShooting: 0
 --- !u!212 &2425569431380659597
