@@ -53,8 +53,16 @@ public class PoisonousTrail : MonoBehaviour
                 if (collision.TryGetComponent(out PlayerHitBox hitbox))
                 {
                     if (!_canKillPlayer) { return; }
+                    if (HitsCounter.Instance is not null)
+                    { 
+                        Debug.Log("I poison you");
+                        HitsCounter.Instance.Hit(Enemy.EnemyType.PoisonousTrail);
+                    }
                 }
-                takeDamage.TakeDamage();
+                else
+                {
+                    takeDamage.TakeDamage();
+                }
             }
         }
     }
