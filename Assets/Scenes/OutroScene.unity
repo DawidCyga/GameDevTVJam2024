@@ -434,7 +434,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Many things that seem threatening in the dark become welcoming when we
+    shine light on them.
+
+
+    Thanks for playing <3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
   m_sharedMaterial: {fileID: 4207482880075945909, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
@@ -443,7 +447,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4291947261
   m_fontColor: {r: 0.99215686, g: 0.91764706, b: 0.81960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -461,8 +465,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -752,7 +756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 397}
+  m_AnchoredPosition: {x: 0, y: 361}
   m_SizeDelta: {x: 1721.1392, y: 366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551800985
@@ -1020,8 +1024,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291947261
-  m_fontColor: {r: 0.99215686, g: 0.91764706, b: 0.81960785, a: 1}
+    rgba: 4280492308
+  m_fontColor: {r: 0.078431375, g: 0.12941177, b: 0.13725491, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1038,8 +1042,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1235,6 +1239,7 @@ GameObject:
   - component: {fileID: 1892033852}
   - component: {fileID: 1892033851}
   - component: {fileID: 1892033854}
+  - component: {fileID: 1892033855}
   m_Layer: 0
   m_Name: PlayAgainButton
   m_TagString: Untagged
@@ -1281,7 +1286,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1356,6 +1361,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9803eb8616d1864e89de1242ffe31e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1892033855
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892033849}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 893ac47e62d0677489bcb1f3ffc7305a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &226941197290128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: -79, y: -31}
   m_SizeDelta: {x: 1833.8999, y: 186.599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3213674765563022633
@@ -1558,7 +1584,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1720,8 +1746,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291947261
-  m_fontColor: {r: 0.99215686, g: 0.91764706, b: 0.81960785, a: 1}
+    rgba: 4280492308
+  m_fontColor: {r: 0.078431375, g: 0.12941177, b: 0.13725491, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1738,8 +1764,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1793,6 +1819,7 @@ GameObject:
   - component: {fileID: 1941583243160725884}
   - component: {fileID: 5256711195297854854}
   - component: {fileID: 6896606146823925016}
+  - component: {fileID: 6896606146823925017}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -1812,6 +1839,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9803eb8616d1864e89de1242ffe31e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6896606146823925017
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896606146823925015}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 893ac47e62d0677489bcb1f3ffc7305a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7517832750410929205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1931,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5716131128540329347, guid: 7219414e69fd809489bbb8b0605d697a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -208
       objectReference: {fileID: 0}
     - target: {fileID: 5716131128540329347, guid: 7219414e69fd809489bbb8b0605d697a, type: 3}
       propertyPath: m_AnchoredPosition.y

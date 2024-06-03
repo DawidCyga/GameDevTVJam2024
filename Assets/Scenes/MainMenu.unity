@@ -2788,6 +2788,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9803eb8616d1864e89de1242ffe31e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1392859738
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392859732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 893ac47e62d0677489bcb1f3ffc7305a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1453359930 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 849170229352471112, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
@@ -5151,8 +5172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -18, y: -328}
-  m_SizeDelta: {x: 878.1158, y: 169.8699}
+  m_AnchoredPosition: {x: -10, y: -363}
+  m_SizeDelta: {x: 1515.3281, y: 169.8699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &7043244464023662932
 PrefabInstance:
@@ -5162,6 +5183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5972774906099924197}
     m_Modifications:
+    - target: {fileID: 2524511880624524654, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2638076984977227673, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
       propertyPath: m_Name
       value: BeastProfileDisplayContainer
@@ -5305,6 +5330,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 961158713611594377, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1392859737}
+    - targetCorrespondingSourceObject: {fileID: 961158713611594377, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1392859738}
   m_SourcePrefab: {fileID: 100100000, guid: 1c5c33b18e6a63a469debc8e393979e4, type: 3}
 --- !u!1 &7230458852818284988
 GameObject:
@@ -5423,15 +5451,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Forest Keeper
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
-  m_sharedMaterial: {fileID: 4207482880075945909, guid: e979e7208ac0327448dfcc86707a0e0e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea6ea30f66d8da84ea18360157ebba95, type: 2}
+  m_sharedMaterial: {fileID: -8974183563484054782, guid: ea6ea30f66d8da84ea18360157ebba95, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284129948
-  m_fontColor: {r: 0.6117647, g: 0.63529414, b: 0.3529412, a: 1}
+    rgba: 4291476686
+  m_fontColor: {r: 0.8078432, g: 0.7372549, b: 0.79215693, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5448,13 +5476,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 145
-  m_fontSizeBase: 145
+  m_fontSize: 125
+  m_fontSizeBase: 125
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
