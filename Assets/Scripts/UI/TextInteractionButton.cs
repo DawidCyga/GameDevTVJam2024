@@ -27,7 +27,7 @@ public class TextInteractionButton : MonoBehaviour
 
     private void PlayerInputHandler_OnDialogueInteractionPressed(object sender, EventArgs e)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue)
             {

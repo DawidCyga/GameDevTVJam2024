@@ -49,7 +49,7 @@ public class MusicManager : MonoBehaviour
         {
             PlaySound(AudioName.Menu);
         }
-        else if (arg0.buildIndex == 2 || arg0.buildIndex == 4)
+        else if (arg0.buildIndex == 2 || arg0.buildIndex == 5)
         {
             PlaySound(AudioName.Tutorial);
         }
