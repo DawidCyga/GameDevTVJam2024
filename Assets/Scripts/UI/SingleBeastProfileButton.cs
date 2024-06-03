@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SingleBeastProfileButton : MonoBehaviour
@@ -17,6 +19,7 @@ public class SingleBeastProfileButton : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private GameObject _bestiaryContainer;
     [SerializeField] private GameObject _beastProfileDisplayContainer;
+    [SerializeField] private GameObject _backFromProfileButton;
 
     private BeastProfileUI _beastProfileUI;
 
@@ -31,6 +34,7 @@ public class SingleBeastProfileButton : MonoBehaviour
             _bestiaryContainer.SetActive(false);
             _beastProfileDisplayContainer.SetActive(true);
            _beastProfileUI.SetupProfile(_beastName, killCount, _beastDescription, _beastImage, hasKillCount);
+            EventSystem.current.SetSelectedGameObject(_backFromProfileButton);
         });
     }
 }

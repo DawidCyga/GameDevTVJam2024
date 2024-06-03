@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BeastProfileUI : MonoBehaviour
@@ -10,6 +11,7 @@ public class BeastProfileUI : MonoBehaviour
 
     [Header("Cache References")]
     [SerializeField] private GameObject _bestiaryContainer;
+    [SerializeField] private Button _backFromBestiaryButton;
 
     [Header("For debugging only")]
     [SerializeField] private TextMeshProUGUI _beastName;
@@ -23,6 +25,7 @@ public class BeastProfileUI : MonoBehaviour
         {
             gameObject.SetActive(false);
             _bestiaryContainer.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(_backFromBestiaryButton.gameObject);
         });
     }
 
