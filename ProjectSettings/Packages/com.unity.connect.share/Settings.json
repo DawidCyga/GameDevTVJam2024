@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/Dawid/Desktop/FinalWeb2;C:/Users/Dawid/Documents/unityStage1/GameDevTVJam2024/WebGL Builds;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/Dawid/Desktop/ForestKeeper;C:/Users/Dawid/Desktop/testgl;C:/Users/Dawid/Desktop/ForestKeeperWEB8;C:/Users/Dawid/Desktop/ForestKeeperWEB7;C:/Users/Dawid/Desktop/ForestKeeperWEB6;C:/Users/Dawid/Desktop/ForestKeeperWEB5;C:/Users/Dawid/Desktop/ForestKeeperWEB4;C:/Users/Dawid/Desktop/ForestKeeperWEB3;C:/Users/Dawid/Desktop/ForestKeeperWEB2;C:/Users/Dawid/Desktop/ForestKeeperWEB\"}"
             }
         ]
     }

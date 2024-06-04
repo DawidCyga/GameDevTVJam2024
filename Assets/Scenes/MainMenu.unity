@@ -1985,7 +1985,7 @@ GameObject:
   - component: {fileID: 1009829355}
   - component: {fileID: 1009829354}
   m_Layer: 0
-  m_Name: CreditsBttnText
+  m_Name: QuitBttnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4446,12 +4446,12 @@ GameObject:
   - component: {fileID: 2044072334}
   - component: {fileID: 2044072333}
   m_Layer: 0
-  m_Name: CreditsButton (1)
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2044072332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4467,9 +4467,9 @@ RectTransform:
   - {fileID: 1009829353}
   m_Father: {fileID: 1856682490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -566.96}
   m_SizeDelta: {x: 564.0435, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044072333

@@ -92,6 +92,10 @@ public class DialogueManager : MonoBehaviour
 
     private void TutorialGameManager_OnTimeToStartDialogue(object sender, TutorialGameManager.OnTimeToStartDialogueEventArgs e)
     {
+        if(Player.Instance is not null)
+        {
+            Player.Instance.Pause();
+        }
         StartDialogue(e.DialogueIndex);
     }
 
@@ -115,6 +119,10 @@ public class DialogueManager : MonoBehaviour
     private void TextWriter_OnLastDialogueParagraphTyped(object sender, EventArgs e)
     {
         OnLastParagraphTyped?.Invoke(sender, EventArgs.Empty);
+        if (Player.Instance is not null)
+        {
+            Player.Instance.Resume();
+        }
     }
 
     private void StartDialogue(int dialogueIndex)

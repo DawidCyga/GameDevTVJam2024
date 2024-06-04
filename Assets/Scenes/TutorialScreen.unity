@@ -89862,6 +89862,46 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.89411765
       objectReference: {fileID: 0}
+    - target: {fileID: 1716291189213673231, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716291189213673231, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716291189213673231, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716291189213673231, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716291189213673231, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1215.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716291189213673231, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 275.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619379092456772398, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619379092456772398, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619379092456772398, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619379092456772398, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7137347380695047216, guid: 5ac856c78836afa44a8a98983d49df25, type: 3}
       propertyPath: _dialogueManager
       value: 
@@ -146526,7 +146566,7 @@ MonoBehaviour:
   _khukhaDamage: 1
   _rangedFireKhukhaDamage: 1
   _firekhukhaDamage: 1
-  _poisonousTrail: 1
+  _poisonousTrail: 0
   _currentHealth: 0
   _timeSinceTurnedInvincible: 0
   _isInvincible: 0

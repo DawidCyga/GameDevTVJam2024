@@ -385,6 +385,7 @@ public class Player : MonoBehaviour
     public void Pause()
     {
         _rigidbody.gravityScale = 0;
+        _isMoving = false;
         this.enabled = false;
         _isPaused = true;
     }
@@ -395,6 +396,7 @@ public class Player : MonoBehaviour
         this.enabled = true;
         _isPaused = false;
     }
+
 
     public bool isPaused() => _isPaused;
 
