@@ -391,11 +391,19 @@ public class Player : MonoBehaviour
     public void Pause()
     {
         _rigidbody.gravityScale = 0;
+
         _isMoving = false;
         this.enabled = false;
         _isPaused = true;
-        Debug.Log("Paused called on player. IsPaused: " + _isPaused);
+    }
 
+    public void GoToNextScene()
+    {
+        _moveDirection.x = 1;
+
+       // _isMoving = false;
+        this.enabled = false;
+        _isPaused = true;
     }
 
     public void Resume()

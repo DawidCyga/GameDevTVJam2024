@@ -11,7 +11,7 @@ public class NextLevelGate : MonoBehaviour
     {
         if ( collision.TryGetComponent(out Player player))
         {
-            player.Pause();
+            player.GoToNextScene();
             FadeTransitionHandler.Instance.FadeOut(_fadeOutDuration, LoadNextLevel);
         }
     }
