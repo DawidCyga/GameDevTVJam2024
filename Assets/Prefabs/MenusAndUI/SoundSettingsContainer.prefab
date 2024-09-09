@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4863503744818776485}
   - component: {fileID: 4943745803843740153}
+  - component: {fileID: 9121605898326930736}
   m_Layer: 0
   m_Name: SoundVolumeSlider
   m_TagString: Untagged
@@ -133,7 +134,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -168,7 +169,7 @@ MonoBehaviour:
       - m_Target: {fileID: 245474957902493103}
         m_TargetAssemblyTypeName: AudioSettingsMenu, Assembly-CSharp
         m_MethodName: UpdateSoundVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -177,6 +178,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9121605898326930736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360858622866454217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf6c72c6d05a36409ea6ebd7ecdfb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _header: {fileID: 6120169195809696722}
+  _fillImage: {fileID: 4846484701461776620}
 --- !u!1 &621955670886341211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9056532298114192154}
   - component: {fileID: 2247993596822047438}
+  - component: {fileID: 2269069758458816336}
   m_Layer: 0
   m_Name: MasterVolumeSlider
   m_TagString: Untagged
@@ -1060,7 +1076,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1095,7 +1111,7 @@ MonoBehaviour:
       - m_Target: {fileID: 245474957902493103}
         m_TargetAssemblyTypeName: AudioSettingsMenu, Assembly-CSharp
         m_MethodName: UpdateMasterVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1104,6 +1120,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2269069758458816336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540662157654133535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf6c72c6d05a36409ea6ebd7ecdfb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _header: {fileID: 4049215994578724254}
+  _fillImage: {fileID: 6470294935505147503}
 --- !u!1 &4826790238496820324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694385458568080393}
   - component: {fileID: 6308513025103905046}
+  - component: {fileID: 5572070729542828398}
   m_Layer: 0
   m_Name: MusicVolumeSlider
   m_TagString: Untagged
@@ -1407,7 +1438,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1442,7 +1473,7 @@ MonoBehaviour:
       - m_Target: {fileID: 245474957902493103}
         m_TargetAssemblyTypeName: AudioSettingsMenu, Assembly-CSharp
         m_MethodName: UpdateMusicVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1451,6 +1482,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5572070729542828398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662125385286638352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf6c72c6d05a36409ea6ebd7ecdfb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _header: {fileID: 7243747210683126524}
+  _fillImage: {fileID: 2680299696062432427}
 --- !u!1 &6818718691522368088
 GameObject:
   m_ObjectHideFlags: 0
