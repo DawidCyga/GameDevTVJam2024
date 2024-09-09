@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PathFollower : MonoBehaviour
 {
-
+    
     [Header("Path Setup Configuration")]
     [SerializeField] private Transform[] _path;
 

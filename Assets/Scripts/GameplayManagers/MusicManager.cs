@@ -14,7 +14,6 @@ public class MusicManager : MonoBehaviour
         MainGame
     }
 
-
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
 
     private Dictionary<AudioName, AudioClip> _enumNameAudioClipDictionary = new Dictionary<AudioName, AudioClip>();
@@ -47,7 +46,7 @@ public class MusicManager : MonoBehaviour
     {
         if (arg0.buildIndex == 0)
         {
-            PlaySound(AudioName.Menu);
+            PlayMusicTrack(AudioName.Menu);
         }
         else if (arg0.buildIndex == 1)
         {
@@ -55,17 +54,18 @@ public class MusicManager : MonoBehaviour
         }
         else if (arg0.buildIndex == 2 || arg0.buildIndex == 5)
         {
-            PlaySound(AudioName.Tutorial);
+            PlayMusicTrack(AudioName.Tutorial);
         }
-        else if (arg0.buildIndex == 3)
+        else if (arg0.buildIndex == 3 || arg0.buildIndex == 4)
         {
-            PlaySound(AudioName.MainGame);
+            PlayMusicTrack(AudioName.MainGame);
         }
     }
 
-    private void PlaySound(AudioName name)
+    private void PlayMusicTrack(AudioName name)
     {
-        _audioSource.Stop();
-        _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
+        AudioClip audioClip = _enumNameAudioClipDictionary[name];
+        _audioSource.clip = audioClip;
+        _audioSource.Play();
     }
 }

@@ -44,7 +44,7 @@ public class StepsAudioManager : MonoBehaviour
     {
         if (!_isPlayingWalkSound && _audioSource != null)
         {
-            int index = Random.Range((int)AudioName.Step1, (int)AudioName.Step1 + 4); // Assume these are the first four indices
+            int index = Random.Range((int)AudioName.Step1, (int)AudioName.Step1 + 4);
             _audioSource.clip = _enumNameAudioClipDictionary[(AudioName)index];
             _audioSource.Play();
             _isPlayingWalkSound = true;

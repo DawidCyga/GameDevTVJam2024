@@ -111,6 +111,8 @@ public class TutorialGameManager : MonoBehaviour
 
     private void ChangeState(GameState newState) => _gameState = newState;
 
+    public GameState GetCurrentState() => _gameState;
+
     public void StartDialogue(int dialogueIndex)
     {
         _currentDialogueIndex = dialogueIndex;

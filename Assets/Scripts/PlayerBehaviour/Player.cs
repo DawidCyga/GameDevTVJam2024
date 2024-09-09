@@ -358,8 +358,14 @@ public class Player : MonoBehaviour
 
     private void UpdateWalkSFX()
     {
-        if (StepsAudioManager.Instance is not null)
+        if (StepsAudioManager.Instance != null)
         {
+            if (TutorialGameManager.Instance != null
+               && TutorialGameManager.Instance.GetCurrentState() != TutorialGameManager.GameState.Playing) return;
+
+            if (GameStateManager.Instance != null
+               && GameStateManager.Instance.GetCurrentGameState() != GameStateManager.GameState.Playing) return;
+
             if (_isMoving && _isGrounded)
             {
                 if (!StepsAudioManager.Instance.IsPlayingWalkSound())
