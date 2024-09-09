@@ -32,11 +32,11 @@ public class MainMenuStateManager : MonoBehaviour
     [SerializeField] private Button _backFromOptionsButton;
     [SerializeField] private Button _backFromBestiaryButton;
     [SerializeField] private Button _backFromCreditsButton;
+    [SerializeField] private Button _normalDifficultyButton;
 
     [Header("Windows")]
     [SerializeField] private GameObject _mainMenuContainer;
     [SerializeField] private GameObject _difficultyContainer;
-    //   [SerializeField] private GameObject _optionsContainer;
     [SerializeField] private GameObject _bestiaryContainer;
     [SerializeField] private GameObject _creditsContainer;
 
@@ -60,7 +60,7 @@ public class MainMenuStateManager : MonoBehaviour
         _startButton.onClick.AddListener(() =>
         {
             ChangeState(MainMenuState.Difficulty);
-            UpdateEventSystemCurrent(_backFromDifficultyButton.gameObject);
+            UpdateEventSystemCurrent(_normalDifficultyButton.gameObject);
         });
 
         _bestiaryButton.onClick.AddListener(() =>
@@ -108,20 +108,8 @@ public class MainMenuStateManager : MonoBehaviour
         SetCurrentState(newState);
         _mainMenuStateTransformDictionary[_mainMenuState].SetActive(true);
     }
-
     private void SetCurrentState(MainMenuState newState) => _mainMenuState = newState;
     private void UpdateEventSystemCurrent() => UpdateEventSystemCurrent(_startButton.gameObject);
     private void UpdateEventSystemCurrent(GameObject selected) => EventSystem.current.SetSelectedGameObject(selected);
-
-    //private void ClearButtons()
-    //{
-    //    _startButton.onClick.RemoveAllListeners();
-    //    _bestiaryButton.onClick.RemoveAllListeners();
-    //    _creditsButton.onClick.RemoveAllListeners();
-    //    // _quitButton.onClick.RemoveAllListeners();
-    //    _backFromDifficultyButton.onClick.RemoveAllListeners();
-    //    _backFromBestiaryButton.onClick.RemoveAllListeners();
-    //    _backFromCreditsButton.onClick.RemoveAllListeners();
-    //}
 
 }
