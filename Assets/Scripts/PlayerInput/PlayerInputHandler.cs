@@ -73,12 +73,20 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void RegisterMoveInputNormalized(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (IsInPausedState() || IsInDialogueState())
+        {
+            OnRegisterMoveInputNormalized?.Invoke(this, new OnRegisterMoveInputNormalizedEventArgs { DirectionInput = Vector2.zero });
+            return;
+        }
+
         Vector2 moveDirectionInputNormalized = obj.ReadValue<Vector2>().normalized;
         OnRegisterMoveInputNormalized?.Invoke(this, new OnRegisterMoveInputNormalizedEventArgs { DirectionInput = moveDirectionInputNormalized });
     }
 
     private void RegisterJumpInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (IsInPausedState() || IsInDialogueState()) { return; }
+
         if (obj.performed)
         {
             OnJumpButtonPressed?.Invoke(this, EventArgs.Empty);
@@ -91,6 +99,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void RegisterDashInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (IsInPausedState() || IsInDialogueState()) { return; }
+
         OnDashButtonPressed?.Invoke(this, EventArgs.Empty);
     }
 
@@ -101,7 +111,27 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void RegisterDialogueInteraction(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (IsInPausedState()) { return; }
+
         OnDialogueInteractionPressed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private bool IsInPausedState()
+    {
+        return ((TutorialGameManager.Instance != null
+            && TutorialGameManager.Instance.GetCurrentState() == TutorialGameManager.GameState.PauseMenu)
+            ||
+            (GameStateManager.Instance != null
+            && GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.PauseMenu));
+    }
+
+    private bool IsInDialogueState()
+    {
+        return ((TutorialGameManager.Instance != null
+            && TutorialGameManager.Instance.GetCurrentState() == TutorialGameManager.GameState.Dialogue)
+            ||
+            (GameStateManager.Instance != null
+            && GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue));
     }
 
 }

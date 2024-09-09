@@ -13,7 +13,6 @@ public class NextLevelGate : MonoBehaviour
         {
             player.Pause();
             FadeTransitionHandler.Instance.FadeOut(_fadeOutDuration, LoadNextLevel);
-            Debug.Log("Triggered");
         }
     }
     private void LoadNextLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

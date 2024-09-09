@@ -394,6 +394,8 @@ public class Player : MonoBehaviour
         _isMoving = false;
         this.enabled = false;
         _isPaused = true;
+        Debug.Log("Paused called on player. IsPaused: " + _isPaused);
+
     }
 
     public void Resume()

@@ -93,10 +93,8 @@ public class HitsCounter : MonoBehaviour
             if (!_isKilled)
             {
                 PlayerHitBox.Instance.TakeDamage();
-                Debug.Log("Hit Counter: I take damage");
                 _isKilled = true;
             }
-          
         }
     }
 

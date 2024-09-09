@@ -19,7 +19,6 @@ public class AudioSettingsMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Called changing values");
         _masterVolumeSlider.value = VolumeSettingsHolder.Instance.MasterVolume;
         _soundVolumeSlider.value = VolumeSettingsHolder.Instance.SFXVolume;
         _musicVolumeSlider.value = VolumeSettingsHolder.Instance.MusicVolume;

@@ -900,6 +900,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466099748}
   m_CullTransparentMesh: 1
+--- !u!1 &539495223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8046806985696147740, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
+  m_PrefabInstance: {fileID: 762762850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582705830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7710620215899658296, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
@@ -1359,7 +1364,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8228966809409763540, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
   m_PrefabInstance: {fileID: 762762850}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 539495223}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -5055,13 +5060,17 @@ PrefabInstance:
       value: 0.5254902
       objectReference: {fileID: 0}
     - target: {fileID: 605877033899077115, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
+      propertyPath: _enemyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605877033899077115, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
       value: 
       objectReference: {fileID: 21300000, guid: ee9ab15c4ac827f409bf5c8bdc043a6d, type: 3}
     - target: {fileID: 605877033899077115, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 605877033899077115, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 
@@ -5152,7 +5161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2361176818356461685, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _enemyType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2361176818356461685, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
@@ -5161,7 +5170,7 @@ PrefabInstance:
     - target: {fileID: 2361176818356461685, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 2361176818356461685, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 
@@ -5231,13 +5240,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3850247797440922495, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
+      propertyPath: _enemyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850247797440922495, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
       value: 
       objectReference: {fileID: 21300000, guid: bb29b0eeda5d4d04e8793ac2eb203789, type: 3}
     - target: {fileID: 3850247797440922495, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 3850247797440922495, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 
@@ -5320,7 +5333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4625169940885288528, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _enemyType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4625169940885288528, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
@@ -5329,7 +5342,7 @@ PrefabInstance:
     - target: {fileID: 4625169940885288528, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 4625169940885288528, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 
@@ -5399,13 +5412,17 @@ PrefabInstance:
       value: 0.5254902
       objectReference: {fileID: 0}
     - target: {fileID: 5292025154598812408, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
+      propertyPath: _enemyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292025154598812408, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
       value: 
       objectReference: {fileID: 21300000, guid: c54d5ad42fc6a20459390f61cd2d3ef0, type: 3}
     - target: {fileID: 5292025154598812408, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 5292025154598812408, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 
@@ -5500,7 +5517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6823097872234959487, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _enemyType
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6823097872234959487, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastImage
@@ -5509,7 +5526,7 @@ PrefabInstance:
     - target: {fileID: 6823097872234959487, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 6823097872234959487, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 
@@ -5657,7 +5674,7 @@ PrefabInstance:
     - target: {fileID: 7877002135100509095, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _backFromProfileButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539495223}
     - target: {fileID: 7877002135100509095, guid: bd835c92c31ecf742a8ce95c32c56322, type: 3}
       propertyPath: _beastProfileDisplayContainer
       value: 

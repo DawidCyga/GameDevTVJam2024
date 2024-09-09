@@ -23,6 +23,8 @@ public class TutorialGameManager : MonoBehaviour
 
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameResumed;
 
     private void Awake()
     {
@@ -41,7 +43,8 @@ public class TutorialGameManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Playing:
-                _gameState = GameState.PauseMenu;
+
+                ChangeState(GameState.PauseMenu);
                 break;
             case GameState.PauseMenu:
                 PauseMenu.Instance.Hide();
@@ -98,6 +101,9 @@ public class TutorialGameManager : MonoBehaviour
     private void ResumeGame()
     {
         Time.timeScale = 1;
+
+        Player.Instance.Resume();
+
         _isGamePaused = false;
     }
 
@@ -106,6 +112,9 @@ public class TutorialGameManager : MonoBehaviour
     private void PauseGame()
     {
         Time.timeScale = 0f;
+
+        Player.Instance.Pause();
+
         _isGamePaused = true;
     }
 

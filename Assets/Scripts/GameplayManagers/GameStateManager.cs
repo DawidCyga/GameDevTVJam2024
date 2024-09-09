@@ -212,6 +212,10 @@ public class GameStateManager : MonoBehaviour
             case GameState.PauseMenu:
                 if (!_isGamePaused)
                 {
+                    if (!Player.Instance.isPaused())
+                    {
+                        ChangePlayerPaused(true);
+                    }
                     PauseGame();
                 }
                 DisplayPauseMenuScreen();
