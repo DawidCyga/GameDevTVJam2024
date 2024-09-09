@@ -25,6 +25,7 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        SetDifficultyModifiers();
     }
 
     private void Update()
@@ -59,6 +60,15 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     protected override void FindPathToPlayer() => base.FindPathToPlayer();
     protected override bool CanSeePlayer() => base.CanSeePlayer();
     public override void UpdateSlowDown() => base.UpdateSlowDown();
+
+    protected override void SetDifficultyModifiers()
+    {
+        base.SetDifficultyModifiers();
+        if (DifficultyManager.Instance != null)
+        {
+            _timeBetweenShots = _timeBetweenShots * DifficultyManager.Instance.GetFireRateModifier();
+        }
+    }
 
     private void TryShoot()
     {

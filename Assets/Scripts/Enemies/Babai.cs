@@ -37,6 +37,8 @@ public class Babai : Enemy
 
     private void Awake()
     {
+        SetDifficultyModifiers();
+
         _pathFollower = GetComponent<PathFollower>();
         _handsSpawner = GetComponent<HandsSpawner>();
         _targetEvader = GetComponent<TargetEvader>();
@@ -44,7 +46,10 @@ public class Babai : Enemy
         _currentSpawnedHandsNumber = 0;
     }
 
-    protected override void Start() => base.Start();
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     private void Update()
     {

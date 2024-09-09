@@ -17,6 +17,7 @@ public class PossessedKhukha : PathfinderEnemy
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        SetDifficultyModifiers();
     }
 
     private void Update()
@@ -27,6 +28,7 @@ public class PossessedKhukha : PathfinderEnemy
         UpdateInAttackRange();
         UpdateFaceDirection();
         UpdateSlowDown();
+
 
         if (NeedsPathUpdate())
         {

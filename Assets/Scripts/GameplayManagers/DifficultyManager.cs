@@ -14,6 +14,22 @@ public class DifficultyManager : MonoBehaviour
         Hard
     }
 
+    [Header("Health Amount")]
+    [SerializeField] private int _easyHealthAmount;
+    [SerializeField] private int _normalHealthAmount;
+    [SerializeField] private int _hardHealthAmount;
+
+    [Header("Monsters Movement Speed Modifier")]
+    [SerializeField] private float _easyMovementModifier;
+    [SerializeField] private float _normalMovementModifier;
+    [SerializeField] private float _hardMovementModifier;
+
+    [Header("Monsters Fire Rate Modifier")]
+    [SerializeField] private float _easyFireRateModifier;
+    [SerializeField] private float _normalFireRateModifier;
+    [SerializeField] private float _hardFireRateModifier;
+
+
     [Header("For debugging only")]
     [SerializeField] private SelectedDifficulty _currentlySelectedDifficulty;
 
@@ -24,6 +40,11 @@ public class DifficultyManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        }
+        else
+        {
+            //??
+            Destroy(gameObject);
         }
     }
 
@@ -43,11 +64,41 @@ public class DifficultyManager : MonoBehaviour
         switch (_currentlySelectedDifficulty)
         {
             case SelectedDifficulty.Easy:
-                return 5;
+                return _easyHealthAmount;
             case SelectedDifficulty.Normal:
-                return 3;
+                return _normalHealthAmount;
             case SelectedDifficulty.Hard:
-                return 1;
+                return _hardHealthAmount;
+            default:
+                return 0;
+        }
+    }
+
+    public float GetMoveSpeedModifier()
+    {
+        switch (_currentlySelectedDifficulty)
+        {
+            case SelectedDifficulty.Easy:
+                return _easyMovementModifier;
+            case SelectedDifficulty.Normal:
+                return _normalMovementModifier;
+            case SelectedDifficulty.Hard:
+                return _hardMovementModifier;
+            default:
+                return 0;
+        }
+    }
+
+    public float GetFireRateModifier()
+    {
+        switch (_currentlySelectedDifficulty)
+        {
+            case SelectedDifficulty.Easy:
+                return _easyFireRateModifier;
+            case SelectedDifficulty.Normal:
+                return _normalFireRateModifier;
+            case SelectedDifficulty.Hard:
+                return _hardFireRateModifier;
             default:
                 return 0;
         }

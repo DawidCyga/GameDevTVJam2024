@@ -110,6 +110,15 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         }
     }
 
+    // testing difficulty system
+    protected virtual void SetDifficultyModifiers()     
+    {
+        if (DifficultyManager.Instance != null)
+        {
+            _moveSpeed = _moveSpeed * DifficultyManager.Instance.GetMoveSpeedModifier();
+        }
+    }
+
     public EnemyType GetEnemyType() => _enemyType;
 
     //private void OnDrawGizmos()
