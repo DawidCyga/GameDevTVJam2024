@@ -51,8 +51,12 @@ public class MainMenuStateManager : MonoBehaviour
             {MainMenuState.Credits, _creditsContainer }
         };
 
-        _mainMenuState = MainMenuState.MainMenu;
+        SetCurrentState(MainMenuState.MainMenu);
+        BindButtons();
+    }
 
+    private void BindButtons()
+    {
         _startButton.onClick.AddListener(() =>
         {
             ChangeState(MainMenuState.Difficulty);
@@ -63,7 +67,7 @@ public class MainMenuStateManager : MonoBehaviour
         {
             ChangeState(MainMenuState.Bestiary);
             UpdateEventSystemCurrent(_backFromBestiaryButton.gameObject);
-            
+
         });
         _creditsButton.onClick.AddListener(() =>
         {
@@ -98,13 +102,26 @@ public class MainMenuStateManager : MonoBehaviour
     }
 
     private void ChangeState() => ChangeState(MainMenuState.MainMenu);
-    private void ChangeState(MainMenuState state)
+    private void ChangeState(MainMenuState newState)
     {
         _mainMenuStateTransformDictionary[_mainMenuState].SetActive(false);
-        _mainMenuState = state;
+        SetCurrentState(newState);
         _mainMenuStateTransformDictionary[_mainMenuState].SetActive(true);
     }
+
+    private void SetCurrentState(MainMenuState newState) => _mainMenuState = newState;
     private void UpdateEventSystemCurrent() => UpdateEventSystemCurrent(_startButton.gameObject);
     private void UpdateEventSystemCurrent(GameObject selected) => EventSystem.current.SetSelectedGameObject(selected);
+
+    //private void ClearButtons()
+    //{
+    //    _startButton.onClick.RemoveAllListeners();
+    //    _bestiaryButton.onClick.RemoveAllListeners();
+    //    _creditsButton.onClick.RemoveAllListeners();
+    //    // _quitButton.onClick.RemoveAllListeners();
+    //    _backFromDifficultyButton.onClick.RemoveAllListeners();
+    //    _backFromBestiaryButton.onClick.RemoveAllListeners();
+    //    _backFromCreditsButton.onClick.RemoveAllListeners();
+    //}
 
 }
