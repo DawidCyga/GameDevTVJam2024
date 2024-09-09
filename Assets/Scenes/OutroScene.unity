@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 1853997092}
   - component: {fileID: 1853997091}
   m_Layer: 0
-  m_Name: PlayAgainBttnText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2099,7 +2099,7 @@ GameObject:
   - component: {fileID: 2835721516047679201}
   - component: {fileID: 6465659750936602110}
   m_Layer: 0
-  m_Name: MainMenuBttnText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

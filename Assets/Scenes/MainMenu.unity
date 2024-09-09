@@ -4012,6 +4012,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Credits
       objectReference: {fileID: 0}
+    - target: {fileID: 3025856564870707121, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4282201372
+      objectReference: {fileID: 0}
     - target: {fileID: 8046806985696147740, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
       propertyPath: m_Name
       value: CreditsButton
@@ -4126,8 +4130,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3025856564870707121, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.06657166
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025856564870707121, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025856564870707121, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.59392834
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025856564870707121, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4284129948
+      value: 4281903777
       objectReference: {fileID: 0}
     - target: {fileID: 8046806985696147740, guid: 4dd6a725d3c1cbd479eeaf8036ef0d29, type: 3}
       propertyPath: m_Name
