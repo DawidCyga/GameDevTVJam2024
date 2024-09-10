@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class TutorialGameManager : MonoBehaviour
 {

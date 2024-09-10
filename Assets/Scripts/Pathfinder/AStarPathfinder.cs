@@ -56,14 +56,39 @@ public class AStarPathfinder : MonoBehaviour
     {
         Stack<Vector3> movementPathStack = new Stack<Vector3>();
 
-        PathNode nextNode = targetNode;
+        PathNode currentNode = targetNode;
+        PathNode previousNode = null;
+        PathNode nextNode = null;
 
-        while (nextNode != null)
-        {       
-            Vector3 worldPosition = tilemap.GetCellCenterWorld(new Vector3Int(nextNode.GetGridPosition().x, nextNode.GetGridPosition().y, 0));
-            movementPathStack.Push(worldPosition);
+        while (currentNode != null)
+        {
+            if (previousNode != null && nextNode != null)
+            {
+                Vector2 currentDirection = new Vector2(
+                    previousNode.GetGridPosition().x - currentNode.GetGridPosition().x,
+                    previousNode.GetGridPosition().y - currentNode.GetGridPosition().y
+                ).normalized;
 
-            nextNode = nextNode.GetParentNode();
+                Vector2 previousDirection = new Vector2(
+                    currentNode.GetGridPosition().x - nextNode.GetGridPosition().x,
+                    currentNode.GetGridPosition().y - nextNode.GetGridPosition().y
+                ).normalized;
+
+                if (currentDirection != previousDirection)
+                {
+                    Vector3 worldPosition = tilemap.GetCellCenterWorld(new Vector3Int(currentNode.GetGridPosition().x, currentNode.GetGridPosition().y, 0));
+                    movementPathStack.Push(worldPosition);
+                }
+            }
+            else if (previousNode == null || currentNode.GetParentNode() == null)
+            {
+                Vector3 worldPosition = tilemap.GetCellCenterWorld(new Vector3Int(currentNode.GetGridPosition().x, currentNode.GetGridPosition().y, 0));
+                movementPathStack.Push(worldPosition);
+            }
+
+            nextNode = previousNode;
+            previousNode = currentNode;
+            currentNode = currentNode.GetParentNode();
         }
 
         return movementPathStack;
