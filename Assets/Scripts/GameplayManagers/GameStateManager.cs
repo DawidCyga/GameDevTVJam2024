@@ -239,6 +239,8 @@ public class GameStateManager : MonoBehaviour
 
     private void ResumeGame()
     {
+        CursorVisibilityHandler.SwitchCursorEnabled(false);
+
         Time.timeScale = 1;
         _isGamePaused = false;
     }
@@ -249,6 +251,8 @@ public class GameStateManager : MonoBehaviour
 
     private void PauseGame()
     {
+        CursorVisibilityHandler.SwitchCursorEnabled(true);
+
         Time.timeScale = 0f;
         _isGamePaused = true;
     }

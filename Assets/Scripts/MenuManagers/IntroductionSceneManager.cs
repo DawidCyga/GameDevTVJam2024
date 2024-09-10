@@ -33,6 +33,8 @@ public class IntroductionSceneManager : MonoBehaviour
 
     private void Start()
     {
+        CursorVisibilityHandler.SwitchCursorEnabled(false);
+
         _textInteractionButton.UpdateSelf(_nextButtonText, DisplayAllParagraphs);
         _textInteractionButtonObject.SetActive(false);
 

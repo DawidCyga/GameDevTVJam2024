@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -22,7 +23,6 @@ public class MainMenuStateManager : MonoBehaviour
 
     [Header("Main Window Buttons")]
     [SerializeField] private Button _startButton;
-    //   [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _bestiaryButton;
     [SerializeField] private Button _creditsButton;
     [SerializeField] private Button _quitButton;
@@ -98,6 +98,7 @@ public class MainMenuStateManager : MonoBehaviour
 
     private void Start()
     {
+        CursorVisibilityHandler.SwitchCursorEnabled(true);
         UpdateEventSystemCurrent(_startButton.gameObject);
     }
 

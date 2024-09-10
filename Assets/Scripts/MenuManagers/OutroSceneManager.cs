@@ -20,6 +20,8 @@ public class OutroSceneManager : MonoBehaviour
 
     private void Start()
     {
+        CursorVisibilityHandler.SwitchCursorEnabled(true);
+
         FadeTransitionHandler.Instance.FadeIn(_fadeInDuration, StartTypingIntroduction);
     }
     private void StartTypingIntroduction() => _textWriter.StartTyping(_textParagraphs, false);

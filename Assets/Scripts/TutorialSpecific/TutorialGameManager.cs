@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -97,10 +98,13 @@ public class TutorialGameManager : MonoBehaviour
                 break;
         }
     }
-    
+
     private void ResumeGame()
     {
+
         Time.timeScale = 1;
+
+        CursorVisibilityHandler.SwitchCursorEnabled(true);
 
         Player.Instance.Resume();
 
@@ -111,6 +115,8 @@ public class TutorialGameManager : MonoBehaviour
 
     private void PauseGame()
     {
+        CursorVisibilityHandler.SwitchCursorEnabled(false);
+
         Time.timeScale = 0f;
 
         Player.Instance.Pause();
@@ -128,4 +134,5 @@ public class TutorialGameManager : MonoBehaviour
         ChangeState(GameState.Dialogue);
         OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
     }
+
 }
