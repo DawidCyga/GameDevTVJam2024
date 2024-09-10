@@ -79,7 +79,7 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
     protected virtual bool NeedsPathUpdate()
     {
         float currentPlayerDistance = Vector3.Distance(transform.position, _target.position);
-        bool needsUpdate = _timeSinceLastUpdatedPath > _timeBetweenPathUpdates || currentPlayerDistance > _previousPlayerDistance * 1.1f;
+        bool needsUpdate = _timeSinceLastUpdatedPath > _timeBetweenPathUpdates; // || currentPlayerDistance > _previousPlayerDistance * 1.1f;
         _previousPlayerDistance = currentPlayerDistance;
         return needsUpdate;
     }
