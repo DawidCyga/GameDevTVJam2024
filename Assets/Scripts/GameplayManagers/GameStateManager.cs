@@ -274,6 +274,5 @@ public class GameStateManager : MonoBehaviour
             Player.Instance.Resume();
         }
     }
-
     public GameState GetCurrentGameState() => _gameState;
 }
