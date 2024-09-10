@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DashAbility : MonoBehaviour
 {
@@ -18,15 +19,35 @@ public class DashAbility : MonoBehaviour
     [SerializeField] private LayerMask _whatIsWall;
 
     private bool _canDash;
+    private bool _shouldUsePoison;
 
-    [Header("Poisonous Trail Parameters")]
+    [Header("Trail Parameters")]
     [SerializeField] private Transform _poisonousTrailElement;
-    [SerializeField] private Transform _poisonousTrailParent;
-    [SerializeField] private Queue<Transform> _poisonousTrailElementsQueue = new Queue<Transform>();
+    [SerializeField] private Transform _regularTrailElement;
+    [Space]
+    [SerializeField] private Transform _trailParent;
+    [SerializeField] private Queue<Transform> _trailElementsQueue = new Queue<Transform>();
+
+    [Header("For debugging only: state handling")]
+
+
 
     private Rigidbody2D _rigidbody;
 
-    private void Awake() => _rigidbody = GetComponent<Rigidbody2D>();
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+
+        CheckIfShoudUsePoison();
+    }
+
+    private void CheckIfShoudUsePoison()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            _shouldUsePoison = true;
+        }
+    }
 
     public bool TryPerformDash(Vector2 direction, bool isGrounded, Action finishPerformingDash)
     {
@@ -91,17 +112,27 @@ public class DashAbility : MonoBehaviour
 
         float totalDistance = (targetPosition - startPosition).magnitude;
         int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
+
+        Transform trailElementToSpawn = _regularTrailElement;
+
+        if (_shouldUsePoison && PoisonOrbsCollector.Instance.GetAvailableUses() > 0)
+        {
+            trailElementToSpawn = _poisonousTrailElement;
+            PoisonOrbsCollector.Instance.DecreaseOrbs();
+            Debug.Log("Used poison");
+        }
+
         for (int i = 1; i < numberOfSteps; i++)
         {
             float t = (float)i / numberOfSteps;
             Vector3 normalizedPosition = Vector3.Lerp(startPosition, targetPosition, t);
-            Transform poisonousTrailElementInstance = Instantiate(_poisonousTrailElement, normalizedPosition, Quaternion.identity, _poisonousTrailParent);
-            _poisonousTrailElementsQueue.Enqueue(poisonousTrailElementInstance);
+
+            InstantiateTrailElement(trailElementToSpawn, normalizedPosition);
         }
 
-        while (_poisonousTrailElementsQueue.Count > numberOfSteps - 1)
+        while (_trailElementsQueue.Count > numberOfSteps - 1)
         {
-            Transform poisonousTrailInstanceToDelete = _poisonousTrailElementsQueue.Dequeue();
+            Transform poisonousTrailInstanceToDelete = _trailElementsQueue.Dequeue();
             if (poisonousTrailInstanceToDelete != null)
             {
                 GameObject.Destroy(poisonousTrailInstanceToDelete.gameObject);
@@ -112,6 +143,13 @@ public class DashAbility : MonoBehaviour
         _rigidbody.MovePosition(targetPosition);
         _timeSinceLastUsedDash = 0;
         finishPerformingDash();
+    }
+
+    private void InstantiateTrailElement(Transform trailElement, Vector3 normalizedPosition)
+    {
+        Transform trailElementInstance = Instantiate(trailElement, normalizedPosition, Quaternion.identity, _trailParent);
+
+        _trailElementsQueue.Enqueue(trailElementInstance);
     }
 
     private void Update() => UpdateCanDash();

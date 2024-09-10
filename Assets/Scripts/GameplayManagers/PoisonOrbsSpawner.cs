@@ -13,6 +13,7 @@ public class PoisonOrbsSpawner : MonoBehaviour
     [SerializeField] private int _maxNumberSpawnedAllowed;
     [SerializeField] private float _minTimeBetweenSpawns;
     [SerializeField] private float _maxTimeBetweenSpawns;
+    [SerializeField] private int _numberOrbsSpawnedAtStart;
 
     [Header("SpawnPoints")]
     [SerializeField] private Transform[] _spawnPoints;
@@ -27,6 +28,7 @@ public class PoisonOrbsSpawner : MonoBehaviour
     private void Awake()
     {
         InitializeSpawnPointsDictionary();
+        SpawnFirstOrbsAtLevelStart();
     }
 
     private void InitializeSpawnPointsDictionary()
@@ -34,6 +36,14 @@ public class PoisonOrbsSpawner : MonoBehaviour
         foreach (Transform transform in _spawnPoints)
         {
             _spawnPointStateDictionary[transform] = false;
+        }
+    }
+
+    private void SpawnFirstOrbsAtLevelStart()
+    {
+        for (int i = 0; i < _numberOrbsSpawnedAtStart; i++)
+        {
+            TrySpawnOrb();
         }
     }
 
@@ -78,11 +88,11 @@ public class PoisonOrbsSpawner : MonoBehaviour
             }
         }
 
-        if (availableSpawnPoints.Count == 0)
-        {
-            Debug.Log("No available spawn points to spawn an orb.");
-            return;
-        }
+        //if (availableSpawnPoints.Count == 0)
+        //{
+        //    Debug.Log("No available spawn points to spawn an orb.");
+        //    return;
+        //}
 
         int randomIndex = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
         Transform selectedSpawnPoint = availableSpawnPoints[randomIndex];
@@ -112,7 +122,6 @@ public class PoisonOrbsSpawner : MonoBehaviour
     }
 
     private bool HasReachedMaxOrbsAtTime() => _currentlySpawnedNumber >= _maxNumberSpawnedAllowed;
-
     private bool IsTimeToSpawnNextOrb() => _timeSinceLastSpawnedOrb >= _currentTimeBetweenSpawns;
 
 }

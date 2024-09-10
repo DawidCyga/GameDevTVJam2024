@@ -125,9 +125,11 @@ MonoBehaviour:
   _khukhaDamage: 0
   _rangedFireKhukhaDamage: 0
   _firekhukhaDamage: 0
+  _poisonousTrail: 0
   _currentHealth: 0
   _timeSinceTurnedInvincible: 0
   _isInvincible: 0
+  _isKilled: 0
 --- !u!114 &3239007565499974069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _poisonousTrailElement: {fileID: 8429969231817283632, guid: e171935321cce944083dbab5c3eccb86, type: 3}
-  _poisonousTrailParent: {fileID: 0}
+  _regularTrailElement: {fileID: 8410027873997696806, guid: 2c159573683601542a4a3cc698433b6e, type: 3}
+  _trailParent: {fileID: 0}
 --- !u!114 &8894977874241477939
 MonoBehaviour:
   m_ObjectHideFlags: 0
