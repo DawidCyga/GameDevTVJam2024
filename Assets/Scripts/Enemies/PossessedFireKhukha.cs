@@ -12,10 +12,49 @@ public class PossessedFireKhukha : PathfinderEnemy
 
     [Header("Fire Khukha: For debugging only")]
     [SerializeField] private float _timeSinceLastAttacked;
+
+    [Header("Optimization Parameters")]
+    [SerializeField] private float _tryAttackRefreshRate;
+
+    private Coroutine _updateCanAttackCoroutine;
+
+
     private void Awake()
     {
         SetDifficultyModifiers();
     }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        _updateCanAttackCoroutine = StartCoroutine(UpdateCanAttackRoutine());
+    }
+
+    private void OnDisable()
+    {
+        if (_updateCanAttackCoroutine != null)
+        {
+            StopCoroutine(_updateCanAttackCoroutine);
+            _updateCanAttackCoroutine = null;
+        }
+    }
+
+    private IEnumerator UpdateCanAttackRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_tryAttackRefreshRate);
+
+            if (_isInAttackRange && CanSeePlayer())
+            {
+                TryAttack();
+                Debug.Log("can attack");
+            }
+
+            Debug.Log("Is updating can attack");
+        }
+    }
+
     private void Update()
     {
         _timeSinceLastUpdatedPath += Time.deltaTime;
@@ -39,10 +78,10 @@ public class PossessedFireKhukha : PathfinderEnemy
             }
         }
 
-        if (_isInAttackRange && CanSeePlayer())
-        {
-            TryAttack();
-        }
+        //if (_isInAttackRange && CanSeePlayer())
+        //{
+        //    TryAttack();
+        //}
     }
 
     protected override void UpdateInAttackRange() => base.UpdateInAttackRange();

@@ -22,10 +22,48 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     private Animator _animator;
     private int _animAttackHash = Animator.StringToHash("Attack");
 
+    [Header("Optimization Parameters")]
+    [SerializeField] private float _tryAttackRefreshRate;
+
+    private Coroutine _updateCanAttackCoroutine;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         SetDifficultyModifiers();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+       _updateCanAttackCoroutine = StartCoroutine(UpdateCanAttackRoutine());
+    }
+
+    private void OnDisable()
+    {
+        if (_updateCanAttackCoroutine != null)
+        {
+            StopCoroutine(_updateCanAttackCoroutine);
+            _updateCanAttackCoroutine = null;
+        }
+    }
+
+    private IEnumerator UpdateCanAttackRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_tryAttackRefreshRate);
+
+            if (_isInAttackRange && CanSeePlayer())
+            {
+                TryShoot();
+                _isShooting = true;
+            }
+            else
+            {
+                _isShooting = false;
+            }
+        }
     }
 
     private void Update()
@@ -42,15 +80,15 @@ public class PossessedKhukhaRanged : PathfinderEnemy
             FindPathToPlayer();
         }
 
-        if (_isInAttackRange && CanSeePlayer())
-        {
-            TryShoot();
-            _isShooting = true;
-        }
-        else
-        {
-            _isShooting = false;
-        }
+        //if (_isInAttackRange && CanSeePlayer())
+        //{
+        //    TryShoot();
+        //    _isShooting = true;
+        //}
+        //else
+        //{
+        //    _isShooting = false;
+        //}
 
     }
 

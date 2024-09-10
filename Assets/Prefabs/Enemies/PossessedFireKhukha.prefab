@@ -161,6 +161,7 @@ MonoBehaviour:
   _aggroDistance: 6.05
   _timeBetweenAttacks: 1
   _timeSinceLastAttacked: 0
+  _tryAttackRefreshRate: 0.2
 --- !u!95 &7845835025533938489
 Animator:
   serializedVersion: 5

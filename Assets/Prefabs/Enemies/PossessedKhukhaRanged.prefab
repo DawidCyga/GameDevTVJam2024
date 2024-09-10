@@ -92,7 +92,7 @@ MonoBehaviour:
   _isInAttackRange: 0
   _isDead: 0
   _timeSinceLastUpdatedPath: 0
-  _timeBetweenPathUpdates: 1
+  _timeBetweenPathUpdates: 1.2
   _firePoint: {fileID: 78858809398503540}
   _firePointPivot: {fileID: 1721193012762678628}
   _projectilePrefab: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
@@ -101,6 +101,7 @@ MonoBehaviour:
   _fireForce: 0.7
   _timeSinceLastShot: 0
   _isShooting: 0
+  _tryAttackRefreshRate: 0.1
 --- !u!212 &2425569431380659597
 SpriteRenderer:
   m_ObjectHideFlags: 0
