@@ -175,9 +175,21 @@ public class WaveSpawner : MonoBehaviour
 
                 yield return new WaitForSeconds(timeToSpawn);
 
-                Transform enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, _spawnedEnemiesParentTransform);
+                //Transform enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, _spawnedEnemiesParentTransform);
+                Transform enemyInstance = EnemiesObjectPool.Instance.PoolEnemyObject(enemyPrefab);
+                if (enemyInstance != null)
+                {
+                    enemyInstance.position = spawnPosition;
+                    enemyInstance.gameObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogError("Failed to retrieve enemy from pool: " + enemyPrefab.name);
+                }
+
                 totalEnemiesSpawnedAtSpawnPoint++;
                 _totalEnemiesSpawnedCurrentWave++;
+
                 yield return null;
             }
         }

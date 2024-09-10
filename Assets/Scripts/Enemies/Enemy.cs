@@ -41,13 +41,20 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         _target = Player.Instance.transform;
     }
 
+    protected virtual void OnEnable()
+    {
+        _isDead = false;
+    }
+
     public virtual void TakeDamage()
     {
         if (!_isDead)
         {
             WaveSpawner.Instance.DecreaseTotalEnemiesSpawnedCurrentWave();
             OnAnyEnemyDeath?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject);
+
+            gameObject.SetActive(false);
+
             _isDead = true;
         }
     }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5740463185806801192}
+  - component: {fileID: 4373972874357732880}
   m_Layer: 0
   m_Name: SpawnedEnemiesParent
   m_TagString: Untagged
@@ -31,3 +32,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4373972874357732880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017675585203183410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084255205e333844a8b40164e919ad2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _possessedKhukhaTransform: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
+  _possessedKhukhaRangedTransform: {fileID: 7991470313257896298, guid: 1ba82c939206a714db1187be062097eb, type: 3}
+  _babaiTransform: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
+  _possessedFireKhukhaTransform: {fileID: 6924628124437768812, guid: 4aa45efe8ef27d8469708282df1668f9, type: 3}
+  _possessedKhukhaPoolSize: 18
+  _possessedKhukhaRangedPoolSize: 18
+  _babaiPoolSize: 4
+  _possessedFireKhukhaPoolSize: 0
