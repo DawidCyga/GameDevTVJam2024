@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,19 +24,28 @@ public class DifficultySelectionMenu : MonoBehaviour
         _easyButton.onClick.AddListener(() =>
         {
             SaveDifficulty(DifficultyManager.SelectedDifficulty.Easy);
+
             SetButtonsInteractivityFalse();
+            DisableButtonsEventTriggers();
+
             StartGame();
         });
         _normalButton.onClick.AddListener(() =>
         {
             SaveDifficulty(DifficultyManager.SelectedDifficulty.Normal);
+
             SetButtonsInteractivityFalse();
+            DisableButtonsEventTriggers();
+
             StartGame();
         });
         _hardButton.onClick.AddListener(() =>
         {
             SaveDifficulty(DifficultyManager.SelectedDifficulty.Hard);
+
             SetButtonsInteractivityFalse();
+            DisableButtonsEventTriggers();
+
             StartGame();
         });
     }
@@ -51,4 +61,10 @@ public class DifficultySelectionMenu : MonoBehaviour
         _backButton.interactable = false;
     }
 
+    private void DisableButtonsEventTriggers()
+    {
+        _easyButton.GetComponent<EventTrigger>().enabled = false;
+        _normalButton.GetComponent<EventTrigger>().enabled = false;
+        _hardButton.GetComponent<EventTrigger>().enabled = false;
+    }
 }
