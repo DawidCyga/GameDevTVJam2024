@@ -24,7 +24,17 @@ public class PoisonOrbsCollector : MonoBehaviour
 
     private void Start()
     {
-        PoisonOrb.OnAnyOrbCollected += (sender, args) => TryAddOrbs(_poisonUsesPerCollected);
+        PoisonOrb.OnAnyOrbCollected += PoisonOrb_OnAnyOrbCollected;
+    }
+
+    private void OnDestroy()
+    {
+        PoisonOrb.OnAnyOrbCollected -= PoisonOrb_OnAnyOrbCollected;
+    }
+
+    private void PoisonOrb_OnAnyOrbCollected(object sender, EventArgs e)
+    {
+        TryAddOrbs(_poisonUsesPerCollected);
     }
 
     private void TryAddOrbs(int usesToAdd)

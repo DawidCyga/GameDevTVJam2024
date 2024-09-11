@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class DashAbility : MonoBehaviour
 {
+    public static DashAbility Instance { get; private set; }
+
     [Header("Dash Setup")]
     [SerializeField] private float _dashSpeed;
 
@@ -15,6 +17,8 @@ public class DashAbility : MonoBehaviour
     [SerializeField] private float _timeSinceLastUsedDash;
 
     [SerializeField] private float _distanceBetweenTrailElements = 1;
+
+    [SerializeField] private float _timePlayerSafeFromPoison;
 
     [SerializeField] private LayerMask _whatIsWall;
 
@@ -28,14 +32,18 @@ public class DashAbility : MonoBehaviour
     [SerializeField] private Transform _trailParent;
     [SerializeField] private Queue<Transform> _trailElementsQueue = new Queue<Transform>();
 
-    [Header("For debugging only: state handling")]
-
-
+    public event EventHandler<OnPerformedPoisonEventArgs> OnPerformedPoisonDash;
+    public class OnPerformedPoisonEventArgs
+    {
+        public float TimePlayerSafeFromPoison { get; set; }
+    }
 
     private Rigidbody2D _rigidbody;
 
     private void Awake()
     {
+         Instance = this;
+
         _rigidbody = GetComponent<Rigidbody2D>();
 
         CheckIfShoudUsePoison();
@@ -114,12 +122,17 @@ public class DashAbility : MonoBehaviour
         int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
 
         Transform trailElementToSpawn = _regularTrailElement;
+        bool usingPoison = false;
 
         if (_shouldUsePoison && PoisonOrbsCollector.Instance.GetAvailableUses() > 0)
         {
             trailElementToSpawn = _poisonousTrailElement;
+            usingPoison = true;
+
             PoisonOrbsCollector.Instance.DecreaseOrbs();
-            Debug.Log("Used poison");
+
+            OnPerformedPoisonDash?.Invoke(this, new OnPerformedPoisonEventArgs { TimePlayerSafeFromPoison = _timePlayerSafeFromPoison });
+
         }
 
         for (int i = 1; i < numberOfSteps; i++)
@@ -127,7 +140,7 @@ public class DashAbility : MonoBehaviour
             float t = (float)i / numberOfSteps;
             Vector3 normalizedPosition = Vector3.Lerp(startPosition, targetPosition, t);
 
-            InstantiateTrailElement(trailElementToSpawn, normalizedPosition);
+            InstantiateTrailElement(trailElementToSpawn, normalizedPosition, usingPoison);
         }
 
         while (_trailElementsQueue.Count > numberOfSteps - 1)
@@ -145,9 +158,15 @@ public class DashAbility : MonoBehaviour
         finishPerformingDash();
     }
 
-    private void InstantiateTrailElement(Transform trailElement, Vector3 normalizedPosition)
+    private void InstantiateTrailElement(Transform trailElement, Vector3 normalizedPosition, bool usingPoison)
     {
         Transform trailElementInstance = Instantiate(trailElement, normalizedPosition, Quaternion.identity, _trailParent);
+
+        if (usingPoison)
+        {
+            PoisonousTrail poisonousTrail = trailElementInstance.GetComponent<PoisonousTrail>();
+            poisonousTrail.SetTrail(_timePlayerSafeFromPoison);
+        }
 
         _trailElementsQueue.Enqueue(trailElementInstance);
     }
@@ -159,4 +178,6 @@ public class DashAbility : MonoBehaviour
         _canDash = (_timeSinceLastUsedDash > _timeBetweenDashes);
         _timeSinceLastUsedDash += Time.deltaTime;
     }
+
+    public float GetTimePlayerSafeFromPoison() => _timePlayerSafeFromPoison;
 }

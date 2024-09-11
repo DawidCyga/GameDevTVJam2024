@@ -187,6 +187,7 @@ MonoBehaviour:
   _timeBetweenDashes: 0.3
   _timeSinceLastUsedDash: 0
   _distanceBetweenTrailElements: 0.9
+  _timePlayerSafeFromPoison: 1.5
   _whatIsWall:
     serializedVersion: 2
     m_Bits: 128

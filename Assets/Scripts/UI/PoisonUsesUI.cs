@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,9 +19,28 @@ public class PoisonUsesUI : MonoBehaviour
 
     private void Start()
     {
-        PoisonOrbsCollector.Instance.OnAvailablePoisonUsesIncreased += (sender, args) => UpdateAvailableUses();
-        PoisonOrbsCollector.Instance.OnAvailablePoisonUsesDecreased += (sender, args) => UpdateAvailableUses();
+
+        PoisonOrbsCollector.Instance.OnAvailablePoisonUsesIncreased += PoisonousOrbsCollector_OnAvailablePoisonUsesIncreased;
+        PoisonOrbsCollector.Instance.OnAvailablePoisonUsesDecreased += PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased;
+
     }
+
+    private void OnDestroy()
+    {
+        PoisonOrbsCollector.Instance.OnAvailablePoisonUsesIncreased -= PoisonousOrbsCollector_OnAvailablePoisonUsesIncreased;
+        PoisonOrbsCollector.Instance.OnAvailablePoisonUsesDecreased -= PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased;
+    }
+
+    private void PoisonousOrbsCollector_OnAvailablePoisonUsesIncreased(object sender, EventArgs e)
+    {
+        UpdateAvailableUses();
+    }
+
+    private void PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased(object sender, EventArgs e)
+    {
+        UpdateAvailableUses();
+    }
+
 
     private void UpdateAvailableUses()
     {

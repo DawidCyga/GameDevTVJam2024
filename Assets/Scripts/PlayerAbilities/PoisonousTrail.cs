@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PoisonousTrail : MonoBehaviour
 {
-    [SerializeField] private float _timePlayerSafe;
+   // [SerializeField] private float _timePlayerSafe;
     [SerializeField] private float _timeToSelfDestruct;
 
     [Header("For debugging only")]
@@ -13,10 +13,10 @@ public class PoisonousTrail : MonoBehaviour
     [SerializeField] private bool _canKillPlayer;
     [SerializeField] private float _timeSinceSpawned;
 
-    private void Awake()
+    public void SetTrail(float timePlayerSafeFromPoison)
     {
         _canKillPlayer = false;
-        _counterPlayerSafe = _timePlayerSafe;
+        _counterPlayerSafe = timePlayerSafeFromPoison;
         _timeSinceSpawned = 0;
     }
 
@@ -65,5 +65,7 @@ public class PoisonousTrail : MonoBehaviour
             }
         }
     }
+
+    public float GetCounterPlayerSafe() => _counterPlayerSafe;
 }
 
