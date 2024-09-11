@@ -88,12 +88,6 @@ public class PoisonOrbsSpawner : MonoBehaviour
             }
         }
 
-        //if (availableSpawnPoints.Count == 0)
-        //{
-        //    Debug.Log("No available spawn points to spawn an orb.");
-        //    return;
-        //}
-
         int randomIndex = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
         Transform selectedSpawnPoint = availableSpawnPoints[randomIndex];
 
