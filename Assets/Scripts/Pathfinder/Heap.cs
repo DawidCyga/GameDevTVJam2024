@@ -105,6 +105,7 @@ public class Heap<T> where T : IHeapItem<T>
         itemA.HeapIndex = itemB.HeapIndex;
         itemB.HeapIndex = temp;
     }
+
 }
 
 public interface IHeapItem<T> : IComparable<T>

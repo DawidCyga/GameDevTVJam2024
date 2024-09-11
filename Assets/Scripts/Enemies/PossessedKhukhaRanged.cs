@@ -54,6 +54,9 @@ public class PossessedKhukhaRanged : PathfinderEnemy
         {
             yield return new WaitForSeconds(_tryAttackRefreshRate);
 
+            UpdateInAttackRange();
+            UpdateFaceDirection();
+
             if (_isInAttackRange && CanSeePlayer())
             {
                 TryShoot();
@@ -71,8 +74,7 @@ public class PossessedKhukhaRanged : PathfinderEnemy
         _timeSinceLastUpdatedPath += Time.deltaTime;
         _timeSinceLastShot += Time.deltaTime;
 
-        UpdateInAttackRange();
-        UpdateFaceDirection();
+
 
         if (!_isShooting && NeedsPathUpdate())
         {
@@ -92,12 +94,12 @@ public class PossessedKhukhaRanged : PathfinderEnemy
 
     }
 
-    protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-    protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-    protected override bool NeedsPathUpdate() => base.NeedsPathUpdate();
-    protected override void FindPathToPlayer() => base.FindPathToPlayer();
-    protected override bool CanSeePlayer() => base.CanSeePlayer();
-    public override void UpdateSlowDown() => base.UpdateSlowDown();
+  //  protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
+  //  protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
+  //  protected override bool NeedsPathUpdate() => base.NeedsPathUpdate();
+   // protected override void FindPathToPlayer() => base.FindPathToPlayer();
+   // protected override bool CanSeePlayer() => base.CanSeePlayer();
+   // public override void UpdateSlowDown() => base.UpdateSlowDown();
 
     protected override void SetDifficultyModifiers()
     {
@@ -111,7 +113,7 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     private void TryShoot()
     {
         UpdateFirePointPosition();
-        UpdateSlowDown();
+       // UpdateSlowDown();
 
         if (_timeSinceLastShot > _timeBetweenShots)
         {

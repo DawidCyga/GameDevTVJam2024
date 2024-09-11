@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
+public abstract class PathfinderEnemy : Enemy
 {
     [SerializeField] protected float _timeSinceLastUpdatedPath;
 
@@ -90,27 +90,27 @@ public abstract class PathfinderEnemy : Enemy, ICanBeSlowedDown
         return gridPosition;
     }
 
-    public void TrySlowDown(float slowdownDuration, float slowDownMultiplier)
-    {
-        if (!IsSlowedDown)
-        {
-            IsSlowedDown = true;
-            TimeTillEndSlowDown = slowdownDuration;
-            _slowDownMultiplier = slowDownMultiplier;
-            _moveSpeed *= _slowDownMultiplier;
-        }
-    }
+    //public void TrySlowDown(float slowdownDuration, float slowDownMultiplier)
+    //{
+    //    if (!IsSlowedDown)
+    //    {
+    //        IsSlowedDown = true;
+    //        TimeTillEndSlowDown = slowdownDuration;
+    //        _slowDownMultiplier = slowDownMultiplier;
+    //        _moveSpeed *= _slowDownMultiplier;
+    //    }
+    //}
 
-    public virtual void UpdateSlowDown()
-    {
-        if (IsSlowedDown)
-        {
-            TimeTillEndSlowDown -= Time.deltaTime;
-        }
-        if (TimeTillEndSlowDown < 0)
-        {
-            IsSlowedDown = false;
-            _moveSpeed /= _slowDownMultiplier;
-        }
-    }
+    //public virtual void UpdateSlowDown()
+    //{
+    //    if (IsSlowedDown)
+    //    {
+    //        TimeTillEndSlowDown -= Time.deltaTime;
+    //    }
+    //    if (TimeTillEndSlowDown < 0)
+    //    {
+    //        IsSlowedDown = false;
+    //        _moveSpeed /= _slowDownMultiplier;
+    //    }
+    //}
 }

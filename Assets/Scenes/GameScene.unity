@@ -28667,6 +28667,10 @@ PrefabInstance:
       propertyPath: _hasPerformedFirstJump
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4531861246546860686, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5696077454691015555, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: m_Name
       value: Player

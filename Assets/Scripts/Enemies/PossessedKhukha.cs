@@ -30,7 +30,7 @@ public class PossessedKhukha : PathfinderEnemy
     {
         base.OnEnable();
 
-       _updateCanAttackCoroutine = StartCoroutine(UpdateCanAttackRoutine());     
+       _updateCanAttackCoroutine = StartCoroutine(UpdateAttackRoutine());     
     }
 
     private void OnDisable()
@@ -42,19 +42,19 @@ public class PossessedKhukha : PathfinderEnemy
         }
     }
 
-    private IEnumerator UpdateCanAttackRoutine()
+    private IEnumerator UpdateAttackRoutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(_tryAttackRefreshRate);
 
+            UpdateInAttackRange();
+            UpdateFaceDirection();
+
             if (_isInAttackRange && CanSeePlayer())
             {
                 TryAttack();
-                Debug.Log("can attack");
             }
-
-            Debug.Log("Is updating can attack");
         }
     }
 
@@ -63,11 +63,6 @@ public class PossessedKhukha : PathfinderEnemy
         _timeSinceLastUpdatedPath += Time.deltaTime;
         _timeSinceLastAttacked += Time.deltaTime;
 
-        UpdateInAttackRange();
-        UpdateFaceDirection();
-        UpdateSlowDown();
-
-
         if (NeedsPathUpdate())
         {
             _timeSinceLastUpdatedPath = 0;
@@ -75,12 +70,12 @@ public class PossessedKhukha : PathfinderEnemy
         }  
     }
 
-    protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-    protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-    protected override bool NeedsPathUpdate() =>    base.NeedsPathUpdate();
-    protected override void FindPathToPlayer() => base.FindPathToPlayer();
-    protected override bool CanSeePlayer() => base.CanSeePlayer();
-    public override void UpdateSlowDown() => base.UpdateSlowDown();
+  //  protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
+  //  protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
+   // protected override bool NeedsPathUpdate() =>    base.NeedsPathUpdate();
+   // protected override void FindPathToPlayer() => base.FindPathToPlayer();
+  //  protected override bool CanSeePlayer() => base.CanSeePlayer();
+   // public override void UpdateSlowDown() => base.UpdateSlowDown();
 
     private void TryAttack()
     {

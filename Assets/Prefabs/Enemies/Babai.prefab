@@ -236,7 +236,7 @@ MonoBehaviour:
   _playerEvadeSpeed: 3
   _followPathSpeed: 5
   _maxSpawnedHandsNumber: 5
-  _timeBetweenSpawningHands: 5
+  _timeBetweenSpawningHands: 8
   _distanceToWallBehind: 0.8
   _whatIsWall:
     serializedVersion: 2
