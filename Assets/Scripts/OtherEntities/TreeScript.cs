@@ -24,6 +24,9 @@ public class TreeScript : MonoBehaviour
 
     private const string TRAIL_NAME_REFERENCE = "RegularTrailElement";
 
+    public static event EventHandler OnAnyTreeIgnited;
+    public static event EventHandler OnAnyTreeExtinguished;
+
     public static event EventHandler OnAnyTreeBurned;
 
     private void Awake()
@@ -49,13 +52,21 @@ public class TreeScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            _isIgnited = true;
+            if (!_isIgnited)
+            {
+                _isIgnited = true;
+                OnAnyTreeIgnited?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         if (collision.gameObject.name == TRAIL_NAME_REFERENCE || collision.gameObject.layer == 12)
         {
             Debug.Log("extinguished");
-            _isIgnited = false;
+            if (_isIgnited)
+            {
+                _isIgnited = false;
+                OnAnyTreeExtinguished?.Invoke(this, EventArgs.Empty);
+            }
         }
         _animator.SetBool(_ignitedAnimHash, _isIgnited);
     }
@@ -69,7 +80,7 @@ public class TreeScript : MonoBehaviour
                 takeDamage();
                 _prevTime = Time.fixedTime;
             }
-            
+
         }
     }
 
@@ -98,4 +109,6 @@ public class TreeScript : MonoBehaviour
             healthBarImage.color = Color.red;
         }
     }
+
+    public bool IsIgnited() => _isIgnited;
 }
