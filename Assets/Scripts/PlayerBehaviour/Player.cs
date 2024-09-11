@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
-    private DropMineAbility _dropMineAbility;
+   // private DropMineAbility _dropMineAbility;
     private DashAbility _dashAbilityVer2;
     private HitsCounter _hitsCounter;
     private PlayerHitBox _playerHitBox;
@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
             {
                 _isPerformingDash = true;
                 OnStartedDash?.Invoke(this, EventArgs.Empty);
-                _hitsCounter.SetInvincible();
+             //   _hitsCounter.SetInvincible();
             }
 
             _isAttemptingDash = false;

@@ -104,6 +104,7 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         _isInAttackRange = (hitCollider != null) ? true : false;
     }
 
+
     protected virtual void UpdateFaceDirection()
     {
 

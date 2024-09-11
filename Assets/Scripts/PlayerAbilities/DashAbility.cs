@@ -111,6 +111,22 @@ public class DashAbility : MonoBehaviour
         float timeSinceStartedDash = 0f;
         float dashDuration = minDistance / _dashSpeed;
 
+        bool usingPoison = false;
+
+        Transform trailElementToSpawn = _regularTrailElement;
+
+        if (_shouldUsePoison && PoisonOrbsCollector.Instance.GetAvailableUses() > 0)
+        {
+            trailElementToSpawn = _poisonousTrailElement;
+            usingPoison = true;
+
+            HitsCounter.Instance.SetInvincible();
+
+            PoisonOrbsCollector.Instance.DecreaseOrbs();
+
+            OnPerformedPoisonDash?.Invoke(this, new OnPerformedPoisonEventArgs { TimePlayerSafeFromPoison = _timePlayerSafeFromPoison });
+
+        }
         while (timeSinceStartedDash < dashDuration)
         {
             transform.position = Vector3.Lerp(startPosition, targetPosition, timeSinceStartedDash / dashDuration);
@@ -121,19 +137,7 @@ public class DashAbility : MonoBehaviour
         float totalDistance = (targetPosition - startPosition).magnitude;
         int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
 
-        Transform trailElementToSpawn = _regularTrailElement;
-        bool usingPoison = false;
-
-        if (_shouldUsePoison && PoisonOrbsCollector.Instance.GetAvailableUses() > 0)
-        {
-            trailElementToSpawn = _poisonousTrailElement;
-            usingPoison = true;
-
-            PoisonOrbsCollector.Instance.DecreaseOrbs();
-
-            OnPerformedPoisonDash?.Invoke(this, new OnPerformedPoisonEventArgs { TimePlayerSafeFromPoison = _timePlayerSafeFromPoison });
-
-        }
+      
 
         for (int i = 1; i < numberOfSteps; i++)
         {

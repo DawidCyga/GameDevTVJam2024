@@ -11,8 +11,8 @@ public class PossessedKhukha : PathfinderEnemy
 
     [Header("Khukha: For debugging only")]
     [SerializeField] private float _timeSinceLastAttacked;
-    private Animator _animator;
-    private int _animAttackHash = Animator.StringToHash("Attack");
+  //  private Animator _animator;
+  //  private int _animAttackHash = Animator.StringToHash("Attack");
 
     [Header("Optimization Parameters")]
     [SerializeField] private float _tryAttackRefreshRate;
@@ -21,7 +21,7 @@ public class PossessedKhukha : PathfinderEnemy
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+      //  _animator = GetComponent<Animator>();
         SetDifficultyModifiers();
 
     }
@@ -99,7 +99,7 @@ public class PossessedKhukha : PathfinderEnemy
         if (HitsCounter.Instance is not null)
         {
             HitsCounter.Instance.Hit(Enemy.EnemyType.Khukha);
-            _animator.SetTrigger(_animAttackHash);
+          //  _animator.SetTrigger(_animAttackHash);
             Debug.Log("Possessed Khukha attack");
         }
     }

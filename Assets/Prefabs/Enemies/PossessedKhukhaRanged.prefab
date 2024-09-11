@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 1.2
-  _attackRange: 22
+  _attackRange: 20
   _sightLength: 19
   _enemyType: 2
   _whatIsObstacle:
@@ -98,7 +98,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 1105016488725129906, guid: 698d5b13ac97ff24794a9101f76bba9f, type: 3}
   _projectilesParent: {fileID: 0}
   _timeBetweenShots: 2
-  _fireForce: 0.7
+  _fireForce: 1.2
   _timeSinceLastShot: 0
   _isShooting: 0
   _tryAttackRefreshRate: 0.1

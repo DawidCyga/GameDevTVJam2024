@@ -88,6 +88,8 @@ public class HitsCounter : MonoBehaviour
         _currentHealth -= _hitTypeDamageDictionary[hitType];
         OnHealthDecreased?.Invoke(this, EventArgs.Empty);
 
+        Debug.Log("Got hit");
+
         if (_currentHealth <= 0)
         {
             if (!_isKilled)
@@ -102,6 +104,7 @@ public class HitsCounter : MonoBehaviour
     {
         _isInvincible = true;
         _timeSinceTurnedInvincible = 0;
+        Debug.Log("Invincibility set: " + _timeSinceTurnedInvincible + " max: " + _maxInvincibilityTime);
     }
 
     public int GetMaxHealth() => _maxHealth;
