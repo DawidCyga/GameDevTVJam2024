@@ -27,6 +27,9 @@ public class PossessedFireKhukha : PathfinderEnemy
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        _timeSinceLastAttacked = Mathf.Infinity;
+
         _updateCanAttackCoroutine = StartCoroutine(UpdateAttackRoutine());
     }
 
@@ -52,6 +55,20 @@ public class PossessedFireKhukha : PathfinderEnemy
             {
                 TryAttack();
             }
+
+            if (NeedsPathUpdate())
+            {
+                _timeSinceLastUpdatedPath = 0;
+
+                if (!aggroPlayer() && FindNearestTree() != null)
+                {
+                    FindPathToEntity(FindNearestTree());
+                }
+                else
+                {
+                    FindPathToPlayer();
+                }
+            }
         }
     }
 
@@ -59,30 +76,7 @@ public class PossessedFireKhukha : PathfinderEnemy
     {
         _timeSinceLastUpdatedPath += Time.deltaTime;
         _timeSinceLastAttacked += Time.deltaTime;
-
-        if (NeedsPathUpdate())
-        {
-            _timeSinceLastUpdatedPath = 0;
-            
-            if (!aggroPlayer() && FindNearestTree()!= null)
-            {
-                FindPathToEntity(FindNearestTree());
-            }
-            else
-            {
-                FindPathToPlayer();
-            }
-        }
-
     }
-
-   // protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-   // protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-   // protected override bool NeedsPathUpdate() =>    base.NeedsPathUpdate();
-   // protected override void FindPathToPlayer() => base.FindPathToPlayer();
-  //  protected override bool CanSeePlayer() => base.CanSeePlayer();
-   // public override void UpdateSlowDown() => base.UpdateSlowDown();
-
 
     private void TryAttack()
     {

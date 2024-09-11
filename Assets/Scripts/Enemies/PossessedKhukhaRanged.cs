@@ -66,6 +66,13 @@ public class PossessedKhukhaRanged : PathfinderEnemy
             {
                 _isShooting = false;
             }
+
+
+            if (!_isShooting && NeedsPathUpdate())
+            {
+                _timeSinceLastUpdatedPath = 0;
+                FindPathToPlayer();
+            }
         }
     }
 
@@ -73,25 +80,6 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     {
         _timeSinceLastUpdatedPath += Time.deltaTime;
         _timeSinceLastShot += Time.deltaTime;
-
-
-
-        if (!_isShooting && NeedsPathUpdate())
-        {
-            _timeSinceLastUpdatedPath = 0;
-            FindPathToPlayer();
-        }
-
-        //if (_isInAttackRange && CanSeePlayer())
-        //{
-        //    TryShoot();
-        //    _isShooting = true;
-        //}
-        //else
-        //{
-        //    _isShooting = false;
-        //}
-
     }
 
   //  protected override void UpdateInAttackRange() => base.UpdateInAttackRange();

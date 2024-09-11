@@ -30,6 +30,8 @@ public class PossessedKhukha : PathfinderEnemy
     {
         base.OnEnable();
 
+        _timeSinceLastAttacked = Mathf.Infinity;
+
        _updateCanAttackCoroutine = StartCoroutine(UpdateAttackRoutine());     
     }
 
@@ -55,6 +57,12 @@ public class PossessedKhukha : PathfinderEnemy
             {
                 TryAttack();
             }
+
+            if (NeedsPathUpdate())
+            {
+                _timeSinceLastUpdatedPath = 0;
+                FindPathToPlayer();
+            }
         }
     }
 
@@ -63,11 +71,11 @@ public class PossessedKhukha : PathfinderEnemy
         _timeSinceLastUpdatedPath += Time.deltaTime;
         _timeSinceLastAttacked += Time.deltaTime;
 
-        if (NeedsPathUpdate())
-        {
-            _timeSinceLastUpdatedPath = 0;
-            FindPathToPlayer();
-        }  
+        //if (NeedsPathUpdate())
+        //{
+        //    _timeSinceLastUpdatedPath = 0;
+        //    FindPathToPlayer();
+        //}  
     }
 
   //  protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
@@ -92,6 +100,7 @@ public class PossessedKhukha : PathfinderEnemy
         {
             HitsCounter.Instance.Hit(Enemy.EnemyType.Khukha);
             _animator.SetTrigger(_animAttackHash);
+            Debug.Log("Possessed Khukha attack");
         }
     }
 

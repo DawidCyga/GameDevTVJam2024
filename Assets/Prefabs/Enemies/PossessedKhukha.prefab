@@ -61,7 +61,7 @@ MonoBehaviour:
   _isDead: 0
   _timeSinceLastUpdatedPath: 0
   _timeBetweenPathUpdates: 1.2
-  _timeBetweenAttacks: 1
+  _timeBetweenAttacks: 0.5
   _timeSinceLastAttacked: 0
   _tryAttackRefreshRate: 0.1
 --- !u!212 &7833711066605421489
