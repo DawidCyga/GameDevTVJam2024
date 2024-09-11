@@ -21,12 +21,14 @@ public abstract class PathfinderEnemy : Enemy
 
     protected virtual void FindPathToPlayer()
     {
-        Vector2Int startPosition = GetGridPositionFromWorldPosition(transform.position);
-        Vector2Int targetPosition = GetGridPositionFromWorldPosition(_target.position);
+        //Vector2Int startPosition = GetGridPositionFromWorldPosition(transform.position);
+        //Vector2Int targetPosition = GetGridPositionFromWorldPosition(_target.position);
 
-        _pathToTarget = AStarPathfinder.Instance.BuildPath(startPosition, targetPosition);
+        //_pathToTarget = AStarPathfinder.Instance.BuildPath(startPosition, targetPosition);
 
-        FollowPath();
+        //FollowPath();
+
+        FindPathToEntity(_target);
     }
 
     protected virtual void FindPathToEntity(Transform entityTransform)

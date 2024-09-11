@@ -62,20 +62,22 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
 
     protected virtual bool CanSeePlayer()
     {
-        Vector3 direction = (_target.position - transform.position).normalized;
-        float distanceToTarget = Vector3.Distance(transform.position, _target.position);
+        //Vector3 direction = (_target.position - transform.position).normalized;
+        //float distanceToTarget = Vector3.Distance(transform.position, _target.position);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToTarget, _whatIsObstacle);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToTarget, _whatIsObstacle);
 
-        if (hit.collider is null)
-        {
-            RaycastHit2D hitPlayer = Physics2D.Raycast(transform.position, direction, _sightLength, _whatIsPlayer);
-            if (hitPlayer.collider is not null)
-            {
-                return true;
-            }
-        }
-        return false;
+        //if (hit.collider is null)
+        //{
+        //    RaycastHit2D hitPlayer = Physics2D.Raycast(transform.position, direction, _sightLength, _whatIsPlayer);
+        //    if (hitPlayer.collider is not null)
+        //    {
+        //        return true;
+        //    }
+        //}
+        //return false;
+
+       return CanSeeEntity(_target);
     }
 
     protected virtual bool CanSeeEntity(Transform entity)
