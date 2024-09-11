@@ -138,8 +138,8 @@ public class DashAbility : MonoBehaviour
         int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
 
       
-
-        for (int i = 1; i < numberOfSteps; i++)
+        //here change 
+        for (int i = 1; i <= numberOfSteps; i++)
         {
             float t = (float)i / numberOfSteps;
             Vector3 normalizedPosition = Vector3.Lerp(startPosition, targetPosition, t);
@@ -147,7 +147,7 @@ public class DashAbility : MonoBehaviour
             InstantiateTrailElement(trailElementToSpawn, normalizedPosition, usingPoison);
         }
 
-        while (_trailElementsQueue.Count > numberOfSteps - 1)
+        while (_trailElementsQueue.Count > numberOfSteps)
         {
             Transform poisonousTrailInstanceToDelete = _trailElementsQueue.Dequeue();
             if (poisonousTrailInstanceToDelete != null)

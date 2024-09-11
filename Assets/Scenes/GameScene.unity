@@ -45653,7 +45653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _maxInvincibilityTime
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 764173230220482672, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _rangedFireKhukhaDamage
@@ -45737,7 +45737,7 @@ PrefabInstance:
       objectReference: {fileID: 2061174656}
     - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _timeBetweenDashes
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8912735473506751436, guid: b3625edf9f09ac24a9f694eb175257f8, type: 3}
       propertyPath: _poisonousTrailParent
@@ -108282,9 +108282,6 @@ MonoBehaviour:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6924628124437768812, guid: 24f10d94fff5b6d48bc15761024c6e15, type: 3}
         _timeToSpawn: 1.7
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
-        _timeToSpawn: 1.8
     _timeTillStartWave: 2
   - _waveName: Fifth Wave
     _spawnPointList:
@@ -108354,12 +108351,6 @@ MonoBehaviour:
       - _enemyName: Enemy 1
         _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
         _timeToSpawn: 0.15
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
-        _timeToSpawn: 2.2
-      - _enemyName: Enemy 1
-        _enemyPrefab: {fileID: 6596285862562995762, guid: dfbdd2dff7ccca94e94f5f1c0520e4ff, type: 3}
-        _timeToSpawn: 4.7
     _timeTillStartWave: 3
   _spawnedEnemiesParentTransform: {fileID: 7776853138756651327}
   _currentWaveIndex: 0
