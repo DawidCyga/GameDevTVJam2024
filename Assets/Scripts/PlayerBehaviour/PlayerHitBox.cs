@@ -31,4 +31,6 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
 
     public void Die() => OnPlayerDeath?.Invoke(this, EventArgs.Empty);
 
+    public bool CanBeKilledByRegularTrail() => false;
+
 }

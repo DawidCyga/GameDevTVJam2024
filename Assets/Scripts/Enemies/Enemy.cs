@@ -130,6 +130,9 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
 
     public EnemyType GetEnemyType() => _enemyType;
 
+    public virtual bool CanBeKilledByRegularTrail() => false;
+    
+   
     //private void OnDrawGizmos()
     //{
     //    Gizmos.color = Color.red;

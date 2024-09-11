@@ -20,8 +20,8 @@ public class TutorialGameManager : MonoBehaviour
 
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
-    public event EventHandler OnGamePaused;
-    public event EventHandler OnGameResumed;
+   // public event EventHandler OnGamePaused;
+   // public event EventHandler OnGameResumed;
 
     private void Awake()
     {

@@ -6,8 +6,6 @@ public class CursorVisibilityHandler
 {
     public static void SwitchCursorEnabled(bool isEnabled)
     {
-        Debug.Log("Cursor switch called");
-
         switch (isEnabled)
         {
             case true:

@@ -212,6 +212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _availableUsesText: {fileID: 5913044066082841491}
+  _OrbImage: {fileID: 7688144329590112428}
+  _regularOrbImage: {fileID: 21300000, guid: 28dcb8fb9d3d7fd4c977d1047205028d, type: 3}
+  _poisonousOrbImage: {fileID: 21300000, guid: 57af10c8ca856e4438b534eb58b29847, type: 3}
 --- !u!1 &5648511064947772193
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,14 +273,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91194963, g: 0.91194963, b: 0.91194963, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 57af10c8ca856e4438b534eb58b29847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28dcb8fb9d3d7fd4c977d1047205028d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

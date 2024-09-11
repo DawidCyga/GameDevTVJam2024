@@ -22,6 +22,8 @@ public class TreeScript : MonoBehaviour
     private Animator _animator;
     private int _ignitedAnimHash = Animator.StringToHash("IsIgnited");
 
+    private const string TRAIL_NAME_REFERENCE = "RegularTrailElement";
+
     public static event EventHandler OnAnyTreeBurned;
 
     private void Awake()
@@ -29,7 +31,6 @@ public class TreeScript : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         healthBarSlider = GetComponentInChildren<Slider>();
@@ -38,7 +39,6 @@ public class TreeScript : MonoBehaviour
         _prevTime = Time.fixedTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         updateHealthBar();
@@ -52,7 +52,7 @@ public class TreeScript : MonoBehaviour
             _isIgnited = true;
         }
 
-        if (collision.gameObject.name == "PoisonousTrailElement" || collision.gameObject.layer == 12)
+        if (collision.gameObject.name == TRAIL_NAME_REFERENCE || collision.gameObject.layer == 12)
         {
             Debug.Log("extinguished");
             _isIgnited = false;

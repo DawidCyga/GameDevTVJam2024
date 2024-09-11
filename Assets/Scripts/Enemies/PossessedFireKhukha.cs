@@ -132,4 +132,6 @@ public class PossessedFireKhukha : PathfinderEnemy
         return nearestTree;
     }
 
+    public override bool CanBeKilledByRegularTrail() => true;
+
 }
