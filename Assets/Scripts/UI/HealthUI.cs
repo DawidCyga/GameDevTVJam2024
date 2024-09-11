@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] private Transform _healthIconsContainer;
+    [SerializeField] private RectTransform _healthIconsContainerRect;
+
     [SerializeField] private Transform _healthIcon;
 
     [SerializeField] private List<Transform> _healthIconsList = new List<Transform>();
@@ -29,9 +31,28 @@ public class HealthUI : MonoBehaviour
     {
         int iconNumber = HitsCounter.Instance.GetMaxHealth();
 
+        switch (iconNumber)
+        {
+            case 5:
+                _healthIconsContainerRect.sizeDelta = new Vector2(660, 158);
+                break;
+            case 3:
+                _healthIconsContainerRect.sizeDelta = new Vector2(420, 158);
+                break;
+            case 2:
+                _healthIconsContainerRect.sizeDelta = new Vector2(300, 158);
+                break;
+        }
+
+        Vector3 startPosition = new Vector3(130, 0, 0);
+        float spacing = 120f;
+
         for (int i = 0; i < iconNumber; i++)
         {
-            Transform healthIconTransform = Instantiate(_healthIcon, transform.position, Quaternion.identity, _healthIconsContainer);
+            Vector3 localPosition = startPosition + new Vector3(i * spacing, 0, 0);
+            Transform healthIconTransform = Instantiate(_healthIcon, _healthIconsContainer);
+            healthIconTransform.localPosition = localPosition;
+
             _healthIconsList.Add(healthIconTransform);
         }
     }
