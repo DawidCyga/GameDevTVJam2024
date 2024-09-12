@@ -127,6 +127,11 @@ public class DashAbility : MonoBehaviour
             OnPerformedPoisonDash?.Invoke(this, new OnPerformedPoisonEventArgs { TimePlayerSafeFromPoison = _timePlayerSafeFromPoison });
 
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            HitsCounter.Instance.SetInvincible();
+        }
+
         while (timeSinceStartedDash < dashDuration)
         {
             transform.position = Vector3.Lerp(startPosition, targetPosition, timeSinceStartedDash / dashDuration);
