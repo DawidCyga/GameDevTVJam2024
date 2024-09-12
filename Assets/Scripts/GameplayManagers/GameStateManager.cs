@@ -18,8 +18,11 @@ public class GameStateManager : MonoBehaviour
     }
 
     [SerializeField] public GameState _gameState;
-
     [SerializeField] private List<int> _clearedWavesIndexList = new List<int>();
+
+    [Header("Scripted Player Movement Parameters")]
+    [SerializeField] private float _autoMovementTimeReturnFromLevel;
+
     private int _currentDialogueIndex;
 
     private bool _isGamePaused;
@@ -218,6 +221,7 @@ public class GameStateManager : MonoBehaviour
     private void HandleBackFromWaveUnrelatedDialogue()
     {
         _isPlayingWaveUnrelatedDialogue = false;
+        Player.Instance.MovePlayerAuto(_autoMovementTimeReturnFromLevel);
         ChangeState(GameState.Playing);
     }
 

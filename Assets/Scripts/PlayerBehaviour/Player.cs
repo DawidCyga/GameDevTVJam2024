@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -139,6 +140,7 @@ public class Player : MonoBehaviour
                 HandleInAirState();
                 break;
         }
+
     }
 
     private void FixedUpdate()
@@ -418,6 +420,18 @@ public class Player : MonoBehaviour
         _isPaused = false;
     }
 
+    public void MovePlayerAuto(float autoMovementTime)
+    {
+        StartCoroutine(MovePlayerAutoRoutine(autoMovementTime));
+    }
+
+    private IEnumerator MovePlayerAutoRoutine(float autoMovementTime)
+    {
+        _moveDirection.x = 1;
+        _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirection.x) * _groundMoveSpeed, 0f);
+        yield return new WaitForSeconds(autoMovementTime);
+        _moveDirection.x = 0;
+    }
 
     public bool isPaused() => _isPaused;
 
