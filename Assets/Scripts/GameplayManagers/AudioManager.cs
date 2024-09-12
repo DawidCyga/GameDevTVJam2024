@@ -12,7 +12,9 @@ public class AudioManager : MonoBehaviour
        Dash,
        Jump,
        PlayerDeath,
-       EnemyDeath
+       EnemyDeath,
+       ButtonHover,
+       ButtonClick
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -54,6 +56,8 @@ public class AudioManager : MonoBehaviour
             PlayerHitBox.Instance.OnPlayerDying += PlayerHitBox_OnPlayerDying;
         }
         Enemy.OnAnyEnemyDeath += Enemy_OnAnyEnemyDeath;
+        ButtonSoundEmitter.OnAnyButtonSelected += ButtonSoundEmitter_OnAnyButtonSelected;
+        ButtonSoundEmitter.OnAnyButtonClicked += ButtonSoundEmitter_OnAnyButtonClicked;
     }
 
     private void Enemy_OnAnyEnemyDeath(object sender, System.EventArgs e)
@@ -76,6 +80,25 @@ public class AudioManager : MonoBehaviour
         PlaySound(AudioName.Dash);
     }
 
+    private void ButtonSoundEmitter_OnAnyButtonSelected(object sender, System.EventArgs e)
+    {
+        PlayOnlyOneSound(AudioName.ButtonHover);
+    }
+
+    private void ButtonSoundEmitter_OnAnyButtonClicked(object sender, System.EventArgs e)
+    {
+        PlayOnlyOneSound(AudioName.ButtonClick);
+    }
+
+
+    private void PlayOnlyOneSound(AudioName name)
+    {
+        if (_audioSource.isPlaying)
+        {
+            _audioSource.Stop();
+        }
+        PlaySound(name);
+    }
     private void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
 
 }

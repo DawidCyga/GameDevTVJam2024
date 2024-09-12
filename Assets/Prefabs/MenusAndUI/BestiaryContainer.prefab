@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4625169940885288528}
   - component: {fileID: 7292511659250962045}
   - component: {fileID: 6436071433729403450}
+  - component: {fileID: 3711871487112506027}
   m_Layer: 0
   m_Name: SingleBeastProfileButton
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   _button: {fileID: 6436071433729403450}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
 --- !u!114 &7292511659250962045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +144,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3711871487112506027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638481585779592806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &849170229352471112
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +292,7 @@ GameObject:
   - component: {fileID: 7224475081672230582}
   - component: {fileID: 450559404889776841}
   - component: {fileID: 5292025154598812408}
+  - component: {fileID: 1615182458454434088}
   m_Layer: 0
   m_Name: SingleBeastProfileButton (2)
   m_TagString: Untagged
@@ -407,6 +422,19 @@ MonoBehaviour:
   _button: {fileID: 450559404889776841}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
+--- !u!114 &1615182458454434088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5918132230136606214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6627488599659165731
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +448,7 @@ GameObject:
   - component: {fileID: 6823097872234959487}
   - component: {fileID: 5755096172499036344}
   - component: {fileID: 8715360068694561413}
+  - component: {fileID: 881087521090514514}
   m_Layer: 0
   m_Name: SingleBeastProfileButton (4)
   m_TagString: Untagged
@@ -474,6 +503,7 @@ MonoBehaviour:
   _button: {fileID: 8715360068694561413}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
 --- !u!114 &5755096172499036344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,6 +578,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &881087521090514514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627488599659165731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7215808667367443188
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +603,7 @@ GameObject:
   - component: {fileID: 4692218125365581072}
   - component: {fileID: 1752987245655850877}
   - component: {fileID: 605877033899077115}
+  - component: {fileID: 6756236222722549804}
   m_Layer: 0
   m_Name: SingleBeastProfileButton (6)
   m_TagString: Untagged
@@ -690,6 +733,19 @@ MonoBehaviour:
   _button: {fileID: 1752987245655850877}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
+--- !u!114 &6756236222722549804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215808667367443188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7322862190875944368
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +893,7 @@ GameObject:
   - component: {fileID: 2361176818356461685}
   - component: {fileID: 8446487667770934034}
   - component: {fileID: 5285754399867027785}
+  - component: {fileID: 2823844978262223547}
   m_Layer: 0
   m_Name: SingleBeastProfileButton (5)
   m_TagString: Untagged
@@ -892,6 +949,7 @@ MonoBehaviour:
   _button: {fileID: 5285754399867027785}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
 --- !u!114 &8446487667770934034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,6 +1024,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2823844978262223547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710620215899658296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8764949632686232151
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +1049,7 @@ GameObject:
   - component: {fileID: 7452467730388041197}
   - component: {fileID: 6135167448307416648}
   - component: {fileID: 7877002135100509095}
+  - component: {fileID: 5535976375723027207}
   m_Layer: 0
   m_Name: SingleBeastProfileButton (3)
   m_TagString: Untagged
@@ -1108,6 +1179,19 @@ MonoBehaviour:
   _button: {fileID: 6135167448307416648}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
+--- !u!114 &5535976375723027207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764949632686232151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9037236796863875446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1205,7 @@ GameObject:
   - component: {fileID: 4070050562476808226}
   - component: {fileID: 4341818540072611914}
   - component: {fileID: 3850247797440922495}
+  - component: {fileID: 3530601894331436213}
   m_Layer: 0
   m_Name: SingleBeastProfileButton (1)
   m_TagString: Untagged
@@ -1250,6 +1335,19 @@ MonoBehaviour:
   _button: {fileID: 4341818540072611914}
   _bestiaryContainer: {fileID: 849170229352471112}
   _beastProfileDisplayContainer: {fileID: 0}
+  _backFromProfileButton: {fileID: 0}
+--- !u!114 &3530601894331436213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037236796863875446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1002683084175457870
 PrefabInstance:
   m_ObjectHideFlags: 0

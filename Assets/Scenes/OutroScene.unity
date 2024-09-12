@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 1892033851}
   - component: {fileID: 1892033854}
   - component: {fileID: 1892033855}
+  - component: {fileID: 1892033856}
   m_Layer: 0
   m_Name: PlayAgainButton
   m_TagString: Untagged
@@ -1379,6 +1380,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1892033856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892033849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226941197290128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1830,7 @@ GameObject:
   - component: {fileID: 5256711195297854854}
   - component: {fileID: 6896606146823925016}
   - component: {fileID: 6896606146823925017}
+  - component: {fileID: 6896606146823925018}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -1857,6 +1871,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6896606146823925018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896606146823925015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7517832750410929205
 PrefabInstance:
   m_ObjectHideFlags: 0

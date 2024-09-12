@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 7743293095078280583}
   - component: {fileID: 6418152508605455710}
   - component: {fileID: 6971879521078168517}
+  - component: {fileID: 3852458213083121428}
   m_Layer: 0
   m_Name: PlayAgainButton
   m_TagString: Untagged
@@ -394,6 +395,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9803eb8616d1864e89de1242ffe31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3852458213083121428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771288456420752055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6439125173750724121
@@ -941,6 +954,7 @@ GameObject:
   - component: {fileID: 1558820154793929556}
   - component: {fileID: 8512432357934336827}
   - component: {fileID: 3486930920936941522}
+  - component: {fileID: 8178093293759578571}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -1060,6 +1074,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9803eb8616d1864e89de1242ffe31e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8178093293759578571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8626013305638367672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be80a981aecb8fd43bc461ca004671a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8940958104696910927
