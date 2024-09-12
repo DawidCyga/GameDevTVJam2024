@@ -164,7 +164,7 @@ public class GameStateManager : MonoBehaviour
             _clearedWavesIndexList.Add(_currentDialogueIndex);
         }
     }
-    //---------------------//
+
     private void StartExitSceneMonologue()
     {
         HandleStartWaveUnrelatedDialogue(EXIT_SCENE_MONOLOGUE_INDEX);

@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
 
     [Header("Cache References")]
     private Rigidbody2D _rigidbody;
-   // private DropMineAbility _dropMineAbility;
     private DashAbility _dashAbilityVer2;
     private HitsCounter _hitsCounter;
     private PlayerHitBox _playerHitBox;
@@ -208,7 +207,6 @@ public class Player : MonoBehaviour
             {
                 _isPerformingDash = true;
                 OnStartedDash?.Invoke(this, EventArgs.Empty);
-             //   _hitsCounter.SetInvincible();
             }
 
             _isAttemptingDash = false;
@@ -250,7 +248,11 @@ public class Player : MonoBehaviour
     private void ApplyGroundedVelocity()
     {
         _moveVelocity = new Vector2(Mathf.RoundToInt(_moveDirection.x) * _groundMoveSpeed, 0f);
-        _rigidbody.velocity = _moveVelocity;
+
+        if (!_isDetectingWall)
+        {
+            _rigidbody.velocity = _moveVelocity;
+        }
     }
 
     private void DecelerateGroundedVelocity()
@@ -314,7 +316,10 @@ public class Player : MonoBehaviour
 
     private void UpdateIsMoving()
     {
-        _isMoving = (_moveDirection.x != 0) ? true : false;
+        bool hasInput = Mathf.Abs(_moveDirection.x) > 0;
+        bool isActuallyMoving = hasInput && (Mathf.Abs(_rigidbody.velocity.x) > 0.1f || _isGrounded);
+
+        _isMoving = isActuallyMoving && !_isDetectingWall;
     }
 
     private void UpdateGrounded()
@@ -401,7 +406,7 @@ public class Player : MonoBehaviour
     {
         _moveDirection.x = 1;
 
-       // _isMoving = false;
+        // _isMoving = false;
         this.enabled = false;
         _isPaused = true;
     }
@@ -415,13 +420,5 @@ public class Player : MonoBehaviour
 
 
     public bool isPaused() => _isPaused;
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireCube(_groundCheckTransform.position, _groundCheckSize);
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawLine(_wallCheckTransform.position, new Vector3(_wallCheckTransform.position.x + _wallCheckDistance * _facingDirectionValue, _wallCheckTransform.position.y));
-    //}
 
 }
