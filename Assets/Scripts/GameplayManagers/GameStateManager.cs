@@ -23,6 +23,9 @@ public class GameStateManager : MonoBehaviour
     private int _currentDialogueIndex;
 
     private bool _isGamePaused;
+    private bool _isPlayingWaveUnrelatedDialogue;
+
+    private const int EXIT_SCENE_MONOLOGUE_INDEX = 6;
 
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
@@ -52,7 +55,7 @@ public class GameStateManager : MonoBehaviour
             ChangeState(GameState.Playing);
             _currentDialogueIndex = 0;
             SubscribeEvents();
-            TryStartDialogue();
+            TryStartWaveRelatedDialogue();
         }
         else
         {
@@ -74,6 +77,8 @@ public class GameStateManager : MonoBehaviour
             WaveSpawner.Instance.OnWaveCleared += WaveSpawner_OnWaveCleared;
         if (DialogueUI.Instance != null)
             DialogueUI.Instance.OnHide += DialogueUI_OnHide;
+        if (ExitSceneMonologueTrigger.Instance != null)
+            ExitSceneMonologueTrigger.Instance.OnPlayerAttemptsLeavingScene += ExitSceneMonologueTrigger_OnPlayerAttemptsLeavingScene;
         TreeScript.OnAnyTreeBurned += TreeScript_OnAnyTreeBurned;
     }
 
@@ -91,6 +96,8 @@ public class GameStateManager : MonoBehaviour
             WaveSpawner.Instance.OnWaveCleared -= WaveSpawner_OnWaveCleared;
         if (DialogueUI.Instance != null)
             DialogueUI.Instance.OnHide -= DialogueUI_OnHide;
+        if (ExitSceneMonologueTrigger.Instance != null)
+            ExitSceneMonologueTrigger.Instance.OnPlayerAttemptsLeavingScene -= ExitSceneMonologueTrigger_OnPlayerAttemptsLeavingScene;
         TreeScript.OnAnyTreeBurned -= TreeScript_OnAnyTreeBurned;
     }
 
@@ -124,7 +131,12 @@ public class GameStateManager : MonoBehaviour
     {
         _currentDialogueIndex = e.CurrentWaveIndex;
 
-        TryStartDialogue();
+        TryStartWaveRelatedDialogue();
+    }
+
+    private void ExitSceneMonologueTrigger_OnPlayerAttemptsLeavingScene(object sender, EventArgs e)
+    {
+        StartExitSceneMonologue();
     }
 
     private void TreeScript_OnAnyTreeBurned(object sender, EventArgs e)
@@ -132,14 +144,14 @@ public class GameStateManager : MonoBehaviour
         _gameState = GameState.GameOver;
     }
 
-    private void TryStartDialogue()
+    private void TryStartWaveRelatedDialogue()
     {
         if (_clearedWavesIndexList.Contains(_currentDialogueIndex))
         {
             if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount() - 1)
             {
                 // START WIN GAME
-                HandleStartDialogue();
+                HandleStartWaveRelatedDialogue();
             }
             else
             {
@@ -148,18 +160,26 @@ public class GameStateManager : MonoBehaviour
         }
         else
         {
-            HandleStartDialogue();
+            HandleStartWaveRelatedDialogue();
             _clearedWavesIndexList.Add(_currentDialogueIndex);
         }
     }
+    //---------------------//
+    private void StartExitSceneMonologue()
+    {
+        HandleStartWaveUnrelatedDialogue(EXIT_SCENE_MONOLOGUE_INDEX);
+        _isPlayingWaveUnrelatedDialogue = true;
+    }
 
-    private void HandleStartDialogue() => StartCoroutine(StartDialogueRoutine());
+    private void HandleStartWaveRelatedDialogue() => StartCoroutine(StartDialogueRoutine(_currentDialogueIndex));
 
-    private IEnumerator StartDialogueRoutine(float delayInSeconds = 0.1f)
+    private void HandleStartWaveUnrelatedDialogue(int dialogueIndex) => StartCoroutine(StartDialogueRoutine(dialogueIndex));
+
+    private IEnumerator StartDialogueRoutine(int dialogueIndex, float delayInSeconds = 0.1f)
     {
         yield return new WaitForSeconds(delayInSeconds);
 
-        OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
+        OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = dialogueIndex });
 
         ChangeState(GameState.Dialogue);
     }
@@ -172,7 +192,15 @@ public class GameStateManager : MonoBehaviour
             _clearedWavesIndexList.Clear();
             StartCoroutine(LoadNextSceneRoutine());
         }
-        HandleStartNextWave();
+
+        if (!_isPlayingWaveUnrelatedDialogue)
+        {
+            HandleStartNextWave();
+        }
+        else
+        {
+            HandleBackFromWaveUnrelatedDialogue();
+        }
     }
 
     private IEnumerator LoadNextSceneRoutine(float delayInSeconds = 0.3f)
@@ -184,6 +212,12 @@ public class GameStateManager : MonoBehaviour
     private void HandleStartNextWave()
     {
         WaveSpawner.Instance.StartBreakBeforeNextWave();
+        ChangeState(GameState.Playing);
+    }
+
+    private void HandleBackFromWaveUnrelatedDialogue()
+    {
+        _isPlayingWaveUnrelatedDialogue = false;
         ChangeState(GameState.Playing);
     }
 
