@@ -19910,7 +19910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.size
@@ -19972,7 +19972,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[1]._text
-      value: Yes, second wave is cleared
+      value: Oh, yes, my friend. Some of them will bite you and some of them will
+        shoot at you!
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[2]._text
@@ -20042,6 +20043,10 @@ PrefabInstance:
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[0]._textParagraphs.Array.data[7]._speakerNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
+      propertyPath: _dialogueSections.Array.data[1]._textParagraphs.Array.data[1]._speakerNumber
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206735932333279679, guid: ca219a8cb44eaba4b9d195287fae2d11, type: 3}
       propertyPath: _dialogueSections.Array.data[2]._textParagraphs.Array.data[0]._speakerNumber
