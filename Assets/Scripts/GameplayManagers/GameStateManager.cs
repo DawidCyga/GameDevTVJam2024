@@ -23,6 +23,9 @@ public class GameStateManager : MonoBehaviour
     [Header("Scripted Player Movement Parameters")]
     [SerializeField] private float _autoMovementTimeReturnFromLevel;
 
+    [Header("Fading Between Levels Parameter")]
+    [SerializeField] private float _fadeBeforeSceneChangeDuration;
+
     private int _currentDialogueIndex;
 
     private bool _isGamePaused;
@@ -209,6 +212,12 @@ public class GameStateManager : MonoBehaviour
     private IEnumerator LoadNextSceneRoutine(float delayInSeconds = 0.3f)
     {
         yield return new WaitForSeconds(delayInSeconds);
+
+        FadeTransitionHandler.Instance.FadeOut(_fadeBeforeSceneChangeDuration, LoadNextLevel);
+    }
+
+    private void LoadNextLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

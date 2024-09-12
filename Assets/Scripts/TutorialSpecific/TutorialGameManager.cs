@@ -48,7 +48,6 @@ public class TutorialGameManager : MonoBehaviour
                 ChangeState(GameState.Playing);
                 break;
             default:
-                Debug.Log("CANNOT USE PAUSE AT THIS STATE");
                 break;
         }
     }

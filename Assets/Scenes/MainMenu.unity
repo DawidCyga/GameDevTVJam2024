@@ -4765,8 +4765,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1929017159}
     m_Modifications:
     - target: {fileID: 2091568485819909070, guid: 6df54e4c5af3eba449db87a9efed5d32, type: 3}
+      propertyPath: _defaultFadeInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091568485819909070, guid: 6df54e4c5af3eba449db87a9efed5d32, type: 3}
+      propertyPath: _timeBeforeDefaultFadeIn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091568485819909070, guid: 6df54e4c5af3eba449db87a9efed5d32, type: 3}
       propertyPath: _shouldFadeInAutomatically
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3364938249758524369, guid: 6df54e4c5af3eba449db87a9efed5d32, type: 3}
       propertyPath: m_Pivot.x
