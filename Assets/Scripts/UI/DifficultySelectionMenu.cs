@@ -66,5 +66,10 @@ public class DifficultySelectionMenu : MonoBehaviour
         _easyButton.GetComponent<EventTrigger>().enabled = false;
         _normalButton.GetComponent<EventTrigger>().enabled = false;
         _hardButton.GetComponent<EventTrigger>().enabled = false;
+
+        _easyButton.GetComponent<ButtonSoundEmitter>().enabled = false;
+        _normalButton.GetComponent<ButtonSoundEmitter>().enabled = false;
+        _hardButton.GetComponent<ButtonSoundEmitter>().enabled = false;
+        _backButton.GetComponent<ButtonSoundEmitter>().enabled = false;
     }
 }

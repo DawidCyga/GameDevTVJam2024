@@ -31,6 +31,7 @@ public class PoisonImmunityUI : MonoBehaviour
     {
         if (_isShowing)
         {
+            if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue) return;
             _immunityCounter -= Time.deltaTime;
 
             UpdateCounterDisplay();

@@ -22,6 +22,8 @@ public class PoisonousTrail : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue) return;
+
         if (_counterPlayerSafe > 0 && !_canKillPlayer)
         {
             _counterPlayerSafe -= Time.deltaTime;

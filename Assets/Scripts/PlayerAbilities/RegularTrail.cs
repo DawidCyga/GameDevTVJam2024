@@ -14,6 +14,8 @@ public class RegularTrail : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue) return;
+
         _timeSinceAlive += Time.deltaTime;
 
         DestroyAfterTime();

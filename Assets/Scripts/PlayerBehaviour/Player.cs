@@ -399,6 +399,8 @@ public class Player : MonoBehaviour
     {
         _rigidbody.gravityScale = 0;
 
+
+
         _isMoving = false;
         this.enabled = false;
         _isPaused = true;
@@ -407,8 +409,6 @@ public class Player : MonoBehaviour
     public void GoToNextScene()
     {
         _moveDirection.x = 1;
-
-        // _isMoving = false;
         this.enabled = false;
         _isPaused = true;
     }
@@ -420,10 +420,7 @@ public class Player : MonoBehaviour
         _isPaused = false;
     }
 
-    public void MovePlayerAuto(float autoMovementTime)
-    {
-        StartCoroutine(MovePlayerAutoRoutine(autoMovementTime));
-    }
+    public void MovePlayerAuto(float autoMovementTime) => StartCoroutine(MovePlayerAutoRoutine(autoMovementTime));
 
     private IEnumerator MovePlayerAutoRoutine(float autoMovementTime)
     {
