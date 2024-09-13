@@ -19,17 +19,7 @@ public abstract class PathfinderEnemy : Enemy
     public bool IsSlowedDown { get; set; }
     private float _slowDownMultiplier;
 
-    protected virtual void FindPathToPlayer()
-    {
-        //Vector2Int startPosition = GetGridPositionFromWorldPosition(transform.position);
-        //Vector2Int targetPosition = GetGridPositionFromWorldPosition(_target.position);
-
-        //_pathToTarget = AStarPathfinder.Instance.BuildPath(startPosition, targetPosition);
-
-        //FollowPath();
-
-        FindPathToEntity(_target);
-    }
+    protected virtual void FindPathToPlayer() => FindPathToEntity(_target);
 
     protected virtual void FindPathToEntity(Transform entityTransform)
     {
@@ -81,7 +71,7 @@ public abstract class PathfinderEnemy : Enemy
     protected virtual bool NeedsPathUpdate()
     {
         float currentPlayerDistance = Vector3.Distance(transform.position, _target.position);
-        bool needsUpdate = _timeSinceLastUpdatedPath > _timeBetweenPathUpdates; // || currentPlayerDistance > _previousPlayerDistance * 1.1f;
+        bool needsUpdate = _timeSinceLastUpdatedPath > _timeBetweenPathUpdates;
         _previousPlayerDistance = currentPlayerDistance;
         return needsUpdate;
     }
@@ -91,28 +81,4 @@ public abstract class PathfinderEnemy : Enemy
         Vector2Int gridPosition = new Vector2Int(Mathf.FloorToInt(worldPosition.x), Mathf.FloorToInt(worldPosition.y));
         return gridPosition;
     }
-
-    //public void TrySlowDown(float slowdownDuration, float slowDownMultiplier)
-    //{
-    //    if (!IsSlowedDown)
-    //    {
-    //        IsSlowedDown = true;
-    //        TimeTillEndSlowDown = slowdownDuration;
-    //        _slowDownMultiplier = slowDownMultiplier;
-    //        _moveSpeed *= _slowDownMultiplier;
-    //    }
-    //}
-
-    //public virtual void UpdateSlowDown()
-    //{
-    //    if (IsSlowedDown)
-    //    {
-    //        TimeTillEndSlowDown -= Time.deltaTime;
-    //    }
-    //    if (TimeTillEndSlowDown < 0)
-    //    {
-    //        IsSlowedDown = false;
-    //        _moveSpeed /= _slowDownMultiplier;
-    //    }
-    //}
 }

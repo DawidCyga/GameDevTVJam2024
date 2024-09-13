@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +17,6 @@ public class FadeTransitionHandler : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
         _FadeTransitionImage = GetComponent<Image>();
     }
 
@@ -38,7 +36,6 @@ public class FadeTransitionHandler : MonoBehaviour
     }
 
     private void FadeInAutomatically() => FadeIn(_defaultFadeInTime);
-
     public void FadeIn(float duration, Action onFinishCallback = null) => StartCoroutine(FadeRoutine(1, 0, duration, onFinishCallback));
 
     public void FadeOut(float duration, Action onFinishedCallBack = null)

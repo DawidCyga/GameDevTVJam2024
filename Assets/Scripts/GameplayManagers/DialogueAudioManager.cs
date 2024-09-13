@@ -1,21 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueAudioManager : MonoBehaviour
 {
+    [Header("Cache References")]
     [SerializeField] private AudioClip _speaker1Audio;
     [SerializeField] private AudioClip _speaker2Audio;
 
+    private AudioSource _audioSource;
     private int _previousSpeaker;
 
-    [Header("Cache References")]
-    private AudioSource _audioSource;
-
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
+    private void Awake() => _audioSource = GetComponent<AudioSource>();
 
     private void Start()
     {

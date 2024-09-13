@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuStateManager : MonoBehaviour
@@ -112,5 +109,4 @@ public class MainMenuStateManager : MonoBehaviour
     private void SetCurrentState(MainMenuState newState) => _mainMenuState = newState;
     private void UpdateEventSystemCurrent() => UpdateEventSystemCurrent(_startButton.gameObject);
     private void UpdateEventSystemCurrent(GameObject selected) => EventSystem.current.SetSelectedGameObject(selected);
-
 }

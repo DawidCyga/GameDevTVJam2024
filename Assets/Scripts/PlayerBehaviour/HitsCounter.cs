@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEditor;
 using UnityEngine;
 
 public class HitsCounter : MonoBehaviour
@@ -72,10 +69,8 @@ public class HitsCounter : MonoBehaviour
         }
     }
 
-    private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)
-    {
-        RestoreLife();
-    }
+    private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e) => RestoreLife();
+
     private void RestoreLife()
     {
         _currentHealth = _maxHealth;

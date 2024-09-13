@@ -44,13 +44,13 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _isAttemptingJump;
     [SerializeField] private bool _wasInAir;
-    //wallCheck bool
+    [Space]
     [SerializeField] private bool _isDetectingWall;
-    //dash
+    [Space]
     [SerializeField] private bool _isAttemptingDash;
     [SerializeField] private bool _isPerformingDash = false;
     [SerializeField] private bool _hasPerformedDash;
-    //Pause
+    [Space]
     [SerializeField] private bool _isPaused;
 
 
@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         Grounded,
         InAir
     }
+
     [SerializeField] private PlayerState _playerState;
 
     private void Awake()
@@ -104,15 +105,9 @@ public class Player : MonoBehaviour
         PlayerInputHandler.Instance.OnDashButtonPressed -= PlayerInputHandler_OnDashButtonPressed;
     }
 
-    private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e)
-    {
-        _moveDirection = e.DirectionInput;
-    }
-
-    private void PlayerInputHandler_OnJumpButtonPressed(object sender, System.EventArgs e)
-    {
-        _isAttemptingJump = true;
-    }
+    private void PlayerInputHandler_OnRegisterMoveInputNormalized(object sender, PlayerInputHandler.OnRegisterMoveInputNormalizedEventArgs e) 
+        => _moveDirection = e.DirectionInput;
+    private void PlayerInputHandler_OnJumpButtonPressed(object sender, System.EventArgs e) => _isAttemptingJump = true;
 
     private void PlayerInputHandler_OnDashButtonPressed(object sender, EventArgs e)
     {
@@ -324,10 +319,7 @@ public class Player : MonoBehaviour
         _isMoving = isActuallyMoving && !_isDetectingWall;
     }
 
-    private void UpdateGrounded()
-    {
-        _isGrounded = Physics2D.OverlapBox(_groundCheckTransform.position, _groundCheckSize, 0f, _whatIsGround);
-    }
+    private void UpdateGrounded() => _isGrounded = Physics2D.OverlapBox(_groundCheckTransform.position, _groundCheckSize, 0f, _whatIsGround);
 
     private void UpdateWallCheckDetection()
     {
@@ -391,16 +383,9 @@ public class Player : MonoBehaviour
         _hasPerformedDash = true;
     }
 
-    public bool IsMoving() => _isMoving;
-    public bool IsGrounded() => _isGrounded;
-    public bool IsDetectingWall() => _isDetectingWall;
-
     public void Pause()
     {
         _rigidbody.gravityScale = 0;
-
-
-
         _isMoving = false;
         this.enabled = false;
         _isPaused = true;
@@ -430,6 +415,8 @@ public class Player : MonoBehaviour
         _moveDirection.x = 0;
     }
 
+    public bool IsMoving() => _isMoving;
+    public bool IsGrounded() => _isGrounded;
+    public bool IsDetectingWall() => _isDetectingWall;
     public bool isPaused() => _isPaused;
-
 }

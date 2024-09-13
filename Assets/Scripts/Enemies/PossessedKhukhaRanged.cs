@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PossessedKhukhaRanged : PathfinderEnemy
@@ -67,7 +65,6 @@ public class PossessedKhukhaRanged : PathfinderEnemy
                 _isShooting = false;
             }
 
-
             if (!_isShooting && NeedsPathUpdate())
             {
                 _timeSinceLastUpdatedPath = 0;
@@ -82,13 +79,6 @@ public class PossessedKhukhaRanged : PathfinderEnemy
         _timeSinceLastShot += Time.deltaTime;
     }
 
-  //  protected override void UpdateInAttackRange() => base.UpdateInAttackRange();
-  //  protected override void UpdateFaceDirection() => base.UpdateFaceDirection();
-  //  protected override bool NeedsPathUpdate() => base.NeedsPathUpdate();
-   // protected override void FindPathToPlayer() => base.FindPathToPlayer();
-   // protected override bool CanSeePlayer() => base.CanSeePlayer();
-   // public override void UpdateSlowDown() => base.UpdateSlowDown();
-
     protected override void SetDifficultyModifiers()
     {
         base.SetDifficultyModifiers();
@@ -101,8 +91,6 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     private void TryShoot()
     {
         UpdateFirePointPosition();
-       // UpdateSlowDown();
-
         if (_timeSinceLastShot > _timeBetweenShots)
         {
             Shoot();
@@ -128,9 +116,7 @@ public class PossessedKhukhaRanged : PathfinderEnemy
     private void UpdateFirePointPosition()
     {
         Vector3 direction = _target.position - _firePointPivot.position;
-
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
         _firePointPivot.rotation = Quaternion.Euler(0, 0, targetAngle);
     }
 }

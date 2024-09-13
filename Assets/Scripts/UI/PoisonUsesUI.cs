@@ -15,14 +15,10 @@ public class PoisonUsesUI : MonoBehaviour
     [SerializeField] private Sprite _regularOrbImage;
     [SerializeField] private Sprite _poisonousOrbImage;
 
-
-
     private void Start()
     {
-
         PoisonOrbsCollector.Instance.OnAvailablePoisonUsesIncreased += PoisonousOrbsCollector_OnAvailablePoisonUsesIncreased;
         PoisonOrbsCollector.Instance.OnAvailablePoisonUsesDecreased += PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased;
-
     }
 
     private void OnDestroy()
@@ -31,16 +27,8 @@ public class PoisonUsesUI : MonoBehaviour
         PoisonOrbsCollector.Instance.OnAvailablePoisonUsesDecreased -= PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased;
     }
 
-    private void PoisonousOrbsCollector_OnAvailablePoisonUsesIncreased(object sender, EventArgs e)
-    {
-        UpdateAvailableUses();
-    }
-
-    private void PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased(object sender, EventArgs e)
-    {
-        UpdateAvailableUses();
-    }
-
+    private void PoisonousOrbsCollector_OnAvailablePoisonUsesIncreased(object sender, EventArgs e) => UpdateAvailableUses();
+    private void PoisonousOrbsCollector_OnAvailablePoisonUsesDecreased(object sender, EventArgs e) => UpdateAvailableUses();
 
     private void UpdateAvailableUses()
     {
@@ -50,5 +38,4 @@ public class PoisonUsesUI : MonoBehaviour
 
         _OrbImage.sprite = (availableUses == 0) ? _regularOrbImage : _poisonousOrbImage;
     }
-
 }

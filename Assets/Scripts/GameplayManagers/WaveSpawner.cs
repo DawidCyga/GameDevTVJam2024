@@ -194,7 +194,6 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         _completedSpawningRoutinesNumber++;
-
     }
 
     private void ChangeStateToFighting()
@@ -235,7 +234,6 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public int GetTotalWaveCount() => _waves.Length;
-
     public int GetCurrentWaveIndex() => _currentWaveIndex;
 
     public int GetTotalEnemyCountCurrentWave()

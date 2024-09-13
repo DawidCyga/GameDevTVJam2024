@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PoisonOrbsSpawner : MonoBehaviour
@@ -117,5 +114,4 @@ public class PoisonOrbsSpawner : MonoBehaviour
 
     private bool HasReachedMaxOrbsAtTime() => _currentlySpawnedNumber >= _maxNumberSpawnedAllowed;
     private bool IsTimeToSpawnNextOrb() => _timeSinceLastSpawnedOrb >= _currentTimeBetweenSpawns;
-
 }

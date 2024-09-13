@@ -7,15 +7,11 @@ public class PlayerInputHandler : MonoBehaviour
 
     private PlayerInputActions _playerInputActions;
 
-
     public event EventHandler<OnRegisterMoveInputNormalizedEventArgs> OnRegisterMoveInputNormalized;
     public class OnRegisterMoveInputNormalizedEventArgs { public Vector2 DirectionInput { get; set; } }
 
     public event EventHandler OnJumpButtonPressed;
     public event EventHandler OnJumpButtonReleased;
-
-   // public event EventHandler OnDropBoxButtonPressed;
-  //  public event EventHandler OnDropBoxButtonReleased;
 
     public event EventHandler OnDashButtonPressed;
 
@@ -104,15 +100,11 @@ public class PlayerInputHandler : MonoBehaviour
         OnDashButtonPressed?.Invoke(this, EventArgs.Empty);
     }
 
-    private void RegisterPauseInput(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-        OnPauseButtonPressed?.Invoke(this, EventArgs.Empty);
-    }
-
+    private void RegisterPauseInput(UnityEngine.InputSystem.InputAction.CallbackContext obj) => OnPauseButtonPressed?.Invoke(this, EventArgs.Empty);
+    
     private void RegisterDialogueInteraction(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         if (IsInPausedState()) { return; }
-
         OnDialogueInteractionPressed?.Invoke(this, EventArgs.Empty);
     }
 
@@ -133,5 +125,4 @@ public class PlayerInputHandler : MonoBehaviour
             (GameStateManager.Instance != null
             && GameStateManager.Instance.GetCurrentGameState() == GameStateManager.GameState.Dialogue));
     }
-
 }

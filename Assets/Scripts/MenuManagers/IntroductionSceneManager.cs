@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class IntroductionSceneManager : MonoBehaviour
 {
@@ -42,10 +38,7 @@ public class IntroductionSceneManager : MonoBehaviour
         FadeTransitionHandler.Instance.FadeIn(_fadeInDuration, StartTypingIntroduction);
     }
 
-    private void OnDestroy()
-    {
-        _textWriter.OnAllParagraphsTyped -= TextWriter_OnAllParagraphsTyped;
-    }
+    private void OnDestroy() => _textWriter.OnAllParagraphsTyped -= TextWriter_OnAllParagraphsTyped;
 
     private void Update()
     {
@@ -63,6 +56,7 @@ public class IntroductionSceneManager : MonoBehaviour
     {
         _textInteractionButton.UpdateSelf(_startGameButtonText, StartSceneTransitionSequence);
     }
+
     private void StartTypingIntroduction() => _textWriter.StartTyping(_textParagraphs, false);
     private void StartSceneTransitionSequence() => FadeTransitionHandler.Instance.FadeOut(_fadeOutDuration, StartGame);
     private void StartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

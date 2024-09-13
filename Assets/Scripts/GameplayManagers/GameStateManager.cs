@@ -128,27 +128,16 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void PauseMenu_OnGameResumed(object sender, EventArgs e)
-    {
-        ChangeState(GameState.Playing);
-    }
+    private void PauseMenu_OnGameResumed(object sender, EventArgs e) => ChangeState(GameState.Playing);
 
     private void WaveSpawner_OnWaveCleared(object sender, WaveSpawner.OnWaveClearedEventArgs e)
     {
         _currentDialogueIndex = e.CurrentWaveIndex;
-
         TryStartWaveRelatedDialogue();
     }
 
-    private void ExitSceneMonologueTrigger_OnPlayerAttemptsLeavingScene(object sender, EventArgs e)
-    {
-        StartExitSceneMonologue();
-    }
-
-    private void TreeScript_OnAnyTreeBurned(object sender, EventArgs e)
-    {
-        _gameState = GameState.GameOver;
-    }
+    private void ExitSceneMonologueTrigger_OnPlayerAttemptsLeavingScene(object sender, EventArgs e) => StartExitSceneMonologue();
+    private void TreeScript_OnAnyTreeBurned(object sender, EventArgs e) => _gameState = GameState.GameOver;
 
     private void TryStartWaveRelatedDialogue()
     {
@@ -156,7 +145,6 @@ public class GameStateManager : MonoBehaviour
         {
             if (_currentDialogueIndex == WaveSpawner.Instance.GetTotalWaveCount() - 1)
             {
-                // START WIN GAME
                 HandleStartWaveRelatedDialogue();
             }
             else
@@ -178,15 +166,12 @@ public class GameStateManager : MonoBehaviour
     }
 
     private void HandleStartWaveRelatedDialogue() => StartCoroutine(StartDialogueRoutine(_currentDialogueIndex));
-
     private void HandleStartWaveUnrelatedDialogue(int dialogueIndex) => StartCoroutine(StartDialogueRoutine(dialogueIndex));
 
     private IEnumerator StartDialogueRoutine(int dialogueIndex, float delayInSeconds = 0.1f)
     {
         yield return new WaitForSeconds(delayInSeconds);
-
         OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = dialogueIndex });
-
         ChangeState(GameState.Dialogue);
     }
 
@@ -212,14 +197,10 @@ public class GameStateManager : MonoBehaviour
     private IEnumerator LoadNextSceneRoutine(float delayInSeconds = 0.3f)
     {
         yield return new WaitForSeconds(delayInSeconds);
-
         FadeTransitionHandler.Instance.FadeOut(_fadeBeforeSceneChangeDuration, LoadNextLevel);
     }
 
-    private void LoadNextLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    private void LoadNextLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     private void HandleStartNextWave()
     {
@@ -287,13 +268,11 @@ public class GameStateManager : MonoBehaviour
     private void ResumeGame()
     {
         CursorVisibilityHandler.SwitchCursorEnabled(false);
-
         Time.timeScale = 1;
         _isGamePaused = false;
     }
 
     private void DisplayPauseMenuScreen() => PauseMenu.Instance.Show();
-
     private void DisplayGameOverScreen() => GameOverScreen.Instance.Show();
 
     private void PauseGame()

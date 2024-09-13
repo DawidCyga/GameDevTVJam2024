@@ -1,17 +1,16 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
+    [Header("Components References")]
     [SerializeField] private Transform _healthIconsContainer;
     [SerializeField] private RectTransform _healthIconsContainerRect;
-
     [SerializeField] private Transform _healthIcon;
 
+    [Header("For Debugging Only")]
     [SerializeField] private List<Transform> _healthIconsList = new List<Transform>();
 
     private void Start()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,15 +13,11 @@ public class PoisonImmunityUI : MonoBehaviour
     [Header("State")]
     private bool _isShowing;
 
-    private void Start()
-    {
-        DashAbility.Instance.OnPerformedPoisonDash += DashAbility_OnPerformedPoisonDash;
-    }
+    private void Start() => DashAbility.Instance.OnPerformedPoisonDash += DashAbility_OnPerformedPoisonDash;
 
     private void DashAbility_OnPerformedPoisonDash(object sender, DashAbility.OnPerformedPoisonEventArgs e)
     {
         _immunityCounter = e.TimePlayerSafeFromPoison;
-
         ToggleShow(true);
     }
 
@@ -59,5 +53,4 @@ public class PoisonImmunityUI : MonoBehaviour
     }
 
     private void UpdateCounterDisplay() => _counterText.text = string.Format("{0:0.00}", _immunityCounter);
-
 }

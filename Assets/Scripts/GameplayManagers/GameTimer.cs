@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,10 +50,8 @@ public class GameTimer : MonoBehaviour
         SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
     }
 
-    private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
-    {
-        _isTimeCounting = (e.GameState == GameStateManager.GameState.Playing) ? true : false;
-    }
+    private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e) 
+        => _isTimeCounting = (e.GameState == GameStateManager.GameState.Playing) ? true : false;
 
     private void Update()
     {
@@ -65,5 +61,4 @@ public class GameTimer : MonoBehaviour
         }
     }
     public float GetTimeSinceStartedPlaying() => _timeSinceStartedPlaying;
-
 }

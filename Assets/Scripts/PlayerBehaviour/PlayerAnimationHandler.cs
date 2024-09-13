@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
@@ -18,30 +16,14 @@ public class PlayerAnimationHandler : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        PlayerHitBox.Instance.OnPlayerDying += PlayerHitBox_OnPlayerDying;
-    }
-
-    private void PlayerHitBox_OnPlayerDying(object sender, EventArgs e)
-    {
-        _animator.SetBool(_isDeadAnimHash, true);
-    }
-
-    public void TriggerDeath()
-    {
-        PlayerHitBox.Instance.Die();
-    }
-
-    private void Update()
-    {
-        UpdateAnimations();
-    }
+    private void Start() => PlayerHitBox.Instance.OnPlayerDying += PlayerHitBox_OnPlayerDying;
+    private void PlayerHitBox_OnPlayerDying(object sender, EventArgs e) => _animator.SetBool(_isDeadAnimHash, true);
+    public void TriggerDeath() => PlayerHitBox.Instance.Die();
+    private void Update() => UpdateAnimations();
 
     private void UpdateAnimations()
     {
         _animator.SetBool(_runningAnimHash, _player.IsMoving());
-
         _animator.SetBool(_jumpingAnimHash, !_player.IsGrounded());
     }
 }

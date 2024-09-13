@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +14,8 @@ public class TreeScript : MonoBehaviour
     [SerializeField] public bool _isIgnited;
     [SerializeField] private float _prevTime;
 
-    private Slider healthBarSlider;
+    private Slider _healthBarSlider;
     public Image healthBarImage;
-
     private Animator _animator;
     private int _ignitedAnimHash = Animator.StringToHash("IsIgnited");
 
@@ -26,7 +23,6 @@ public class TreeScript : MonoBehaviour
 
     public static event EventHandler OnAnyTreeIgnited;
     public static event EventHandler OnAnyTreeExtinguished;
-
     public static event EventHandler OnAnyTreeBurned;
 
     private void Awake()
@@ -36,7 +32,7 @@ public class TreeScript : MonoBehaviour
 
     void Start()
     {
-        healthBarSlider = GetComponentInChildren<Slider>();
+        _healthBarSlider = GetComponentInChildren<Slider>();
         _currentHealth = _health;
         _isIgnited = false;
         _prevTime = Time.fixedTime;
@@ -90,7 +86,6 @@ public class TreeScript : MonoBehaviour
         if (_currentHealth < 0)
         {
             OnAnyTreeBurned?.Invoke(this, EventArgs.Empty);
-            Debug.Log("Tree burned");
         }
     }
 
@@ -98,7 +93,7 @@ public class TreeScript : MonoBehaviour
     {
 
         float _healthPercentage = _currentHealth / _health;
-        healthBarSlider.value = _healthPercentage;
+        _healthBarSlider.value = _healthPercentage;
 
         if (_healthPercentage < 0.6 && _healthPercentage >= 0.3)
         {

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,17 +5,12 @@ using UnityEngine.UI;
 public class SliderHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     [Header("References")]
-   // [SerializeField] private TextMeshProUGUI _header;
     [SerializeField] private Image _fillImage;
-
 
     private Color _defaultColour;
     private Color _highlightColour;
 
-    private void Awake()
-    {
-        SetColourValues();
-    }
+    private void Awake() => SetColourValues();
 
     private void SetColourValues()
     {
@@ -30,10 +22,5 @@ public class SliderHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerExit(PointerEventData eventData) => SetColour(_defaultColour);
     public void OnSelect(BaseEventData eventData) => SetColour(_highlightColour);
     public void OnDeselect(BaseEventData eventData) => SetColour(_defaultColour);
-
-    private void SetColour(Color newColour)
-    {
-        //_header.color = newColour;
-        _fillImage.color = newColour;
-    }
+    private void SetColour(Color newColour) => _fillImage.color = newColour;
 }

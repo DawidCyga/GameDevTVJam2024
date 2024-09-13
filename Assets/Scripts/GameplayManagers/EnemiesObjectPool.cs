@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesObjectPool : MonoBehaviour
 {
-
     public static EnemiesObjectPool Instance {  get; private set; }
 
     [Header("Enemy Types to pool")]
@@ -31,7 +28,6 @@ public class EnemiesObjectPool : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
         InitializeAndPopulatePools();
     }
 
@@ -72,7 +68,6 @@ public class EnemiesObjectPool : MonoBehaviour
             }
         }
 
-        Debug.LogWarning("No inactive enemy found in the pool for: " + enemyToPool.name);
         return null;
     }
 }

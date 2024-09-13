@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 [Serializable]
@@ -54,11 +51,7 @@ public class DialogueManager : MonoBehaviour
     public event EventHandler OnSingleParagraphTyped;
     public event EventHandler OnLastParagraphTyped;
 
-    private void Awake()
-    {
-            Instance = this;
-       
-    }
+    private void Awake() => Instance = this; 
 
     private void Start()
     {
@@ -99,10 +92,7 @@ public class DialogueManager : MonoBehaviour
         StartDialogue(e.DialogueIndex);
     }
 
-    private void GameStateManager_OnTimeToStartDialogue(object sender, GameStateManager.OnTimeToStartDialogueEventArgs e)
-    {
-        StartDialogue(e.DialogueIndex);
-    }
+    private void GameStateManager_OnTimeToStartDialogue(object sender, GameStateManager.OnTimeToStartDialogueEventArgs e) => StartDialogue(e.DialogueIndex);
 
     private void TextWriter_OnStartedTypingNewParagraph(object sender, EventArgs e)
     {
@@ -111,10 +101,7 @@ public class DialogueManager : MonoBehaviour
         _currentDialogueParagraphIndex++;
     }
 
-    private void TextWriter_OnSingleDialogueParagraphTyped(object sender, EventArgs e)
-    {
-        OnSingleParagraphTyped?.Invoke(this, EventArgs.Empty);
-    }
+    private void TextWriter_OnSingleDialogueParagraphTyped(object sender, EventArgs e) => OnSingleParagraphTyped?.Invoke(this, EventArgs.Empty);
 
     private void TextWriter_OnLastDialogueParagraphTyped(object sender, EventArgs e)
     {
@@ -136,6 +123,5 @@ public class DialogueManager : MonoBehaviour
     private void UpdateCurrentDialogueSpeaker() => _currentDialogueSpeaker = _dialogueSections[_currentDialogueSectionIndex].GetTextParagraph(_currentDialogueParagraphIndex).GetSpeakerNumber();
     public void FinishTypingCurrentParagraph() => TextWriter.Instance.SetShouldFinishTypingCurrentParagraph(true);
     public void StartTypingNextParagraph() => TextWriter.Instance.SetCanType(true);
-
     public int GetCurrentDialogueParagraphIndex() => _currentDialogueParagraphIndex;
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -70,7 +67,6 @@ public class BeastKillCounter : MonoBehaviour
             case Enemy.EnemyType.FireKhukha:
                 return _fireKhukha;
             default:
-                Debug.Log("No such enemy type");
                 return 0;
         }
     }

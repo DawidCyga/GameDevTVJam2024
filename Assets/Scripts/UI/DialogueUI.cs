@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO.Pipes;
 using UnityEngine;
 
 public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance { get; private set; }
 
+    [Header("Button Text Configuration")]
     [SerializeField] private string _nextButtonText;
     [SerializeField] private string _forwardText;
     [SerializeField] private string _finishButtonText;
@@ -15,10 +13,10 @@ public class DialogueUI : MonoBehaviour
     [Header("Cache References")]
     [SerializeField] private GameObject _dialogueUIContainer;
     [SerializeField] private DialogueManager _dialogueManager;
-
+    [Space]
     [SerializeField] private GameObject _portraitFirst;
     [SerializeField] private GameObject _portraitSecond;
-
+    [Space]
     [SerializeField] private TextInteractionButton _textInteractionButton;
 
     public event EventHandler OnHide;
@@ -44,10 +42,7 @@ public class DialogueUI : MonoBehaviour
         _dialogueManager.OnLastParagraphTyped -= DialogueManager_OnLastParagraphTyped;
     }
 
-    private void DialogueManager_OnStartNewDialogue(object sender, System.EventArgs e)
-    {
-        _dialogueUIContainer?.SetActive(true);
-    }
+    private void DialogueManager_OnStartNewDialogue(object sender, System.EventArgs e) => _dialogueUIContainer?.SetActive(true);
 
     private void DialogueManager_OnStartedNewParagraph(object sender, DialogueManager.OnStartedNewParagraphEventArgs e)
     {
@@ -55,15 +50,11 @@ public class DialogueUI : MonoBehaviour
         UpdatePortraitsDisplay(e.CurrentDialogueSpeaker);
     }
 
-    private void DialogueManager_OnSingleParagraphTyped(object sender, System.EventArgs e)
-    {
-        _textInteractionButton.UpdateSelf(_nextButtonText, _dialogueManager.StartTypingNextParagraph);
-    }
+    private void DialogueManager_OnSingleParagraphTyped(object sender, System.EventArgs e) 
+        => _textInteractionButton.UpdateSelf(_nextButtonText, _dialogueManager.StartTypingNextParagraph);
 
-    private void DialogueManager_OnLastParagraphTyped(object sender, System.EventArgs e)
-    {
-        _textInteractionButton.UpdateSelf(_finishButtonText, Hide);
-    }
+    private void DialogueManager_OnLastParagraphTyped(object sender, System.EventArgs e) 
+        => _textInteractionButton.UpdateSelf(_finishButtonText, Hide);
 
     private void UpdatePortraitsDisplay(int numberPortraitToDisplay)
     {
@@ -86,7 +77,6 @@ public class DialogueUI : MonoBehaviour
     private void Hide()
     {
         _dialogueUIContainer.SetActive(false);
-
         OnHide?.Invoke(this, EventArgs.Empty);
     }
 }

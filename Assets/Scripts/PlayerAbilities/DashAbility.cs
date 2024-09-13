@@ -10,16 +10,15 @@ public class DashAbility : MonoBehaviour
 
     [Header("Dash Setup")]
     [SerializeField] private float _dashSpeed;
-
     [SerializeField] private float _dashDistance = 5;
-
+    [Space]
     [SerializeField] private float _timeBetweenDashes;
     [SerializeField] private float _timeSinceLastUsedDash;
-
+    [Space]
     [SerializeField] private float _distanceBetweenTrailElements = 1;
-
+    [Space]
     [SerializeField] private float _timePlayerSafeFromPoison;
-
+    [Space]
     [SerializeField] private LayerMask _whatIsWall;
 
     private bool _canDash;
@@ -43,9 +42,7 @@ public class DashAbility : MonoBehaviour
     private void Awake()
     {
          Instance = this;
-
         _rigidbody = GetComponent<Rigidbody2D>();
-
         CheckIfShoudUsePoison();
     }
 
@@ -76,7 +73,6 @@ public class DashAbility : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Cannot perform dash yet. You need to wait {_timeBetweenDashes - _timeSinceLastUsedDash}s");
             return false;
         }
     }

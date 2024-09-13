@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ForestManager : MonoBehaviour
@@ -8,18 +6,7 @@ public class ForestManager : MonoBehaviour
     [SerializeField] public Transform[] treeSpawnpoints;
     [SerializeField] public GameObject treePrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawnTrees();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    void Start() => spawnTrees();
     private void spawnTrees()
     {
         for (int i = 0; i < treeSpawnpoints.Length; i++)

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, ITakeDamage
@@ -36,15 +33,8 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
 
     public static event EventHandler OnAnyEnemyDeath;
 
-    protected virtual void Start()
-    {
-        _target = Player.Instance.transform;
-    }
-
-    protected virtual void OnEnable()
-    {
-        _isDead = false;
-    }
+    protected virtual void Start() => _target = Player.Instance.transform;
+    protected virtual void OnEnable() => _isDead = false;
 
     public virtual void TakeDamage()
     {
@@ -59,27 +49,8 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         }
     }
 
-
-    protected virtual bool CanSeePlayer()
-    {
-        //Vector3 direction = (_target.position - transform.position).normalized;
-        //float distanceToTarget = Vector3.Distance(transform.position, _target.position);
-
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToTarget, _whatIsObstacle);
-
-        //if (hit.collider is null)
-        //{
-        //    RaycastHit2D hitPlayer = Physics2D.Raycast(transform.position, direction, _sightLength, _whatIsPlayer);
-        //    if (hitPlayer.collider is not null)
-        //    {
-        //        return true;
-        //    }
-        //}
-        //return false;
-
-       return CanSeeEntity(_target);
-    }
-
+    protected virtual bool CanSeePlayer() => CanSeeEntity(_target);
+  
     protected virtual bool CanSeeEntity(Transform entity)
     {
         Vector3 direction = (entity.position - transform.position).normalized;
@@ -104,7 +75,6 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         _isInAttackRange = (hitCollider != null) ? true : false;
     }
 
-
     protected virtual void UpdateFaceDirection()
     {
 
@@ -120,7 +90,6 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
         }
     }
 
-    // testing difficulty system
     protected virtual void SetDifficultyModifiers()     
     {
         if (DifficultyManager.Instance != null)
@@ -130,18 +99,5 @@ public abstract class Enemy : MonoBehaviour, ITakeDamage
     }
 
     public EnemyType GetEnemyType() => _enemyType;
-
     public virtual bool CanBeKilledByRegularTrail() => false;
-    
-   
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, _attackRange);
-    //    Gizmos.color = Color.green;
-    //    if (_target != null)
-    //    {
-    //        Gizmos.DrawLine(transform.position, transform.position + (_target.position - transform.position).normalized * _sightLength);
-    //    }
-    //}
 }

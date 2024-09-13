@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PathFollower : MonoBehaviour
@@ -45,10 +43,7 @@ public class PathFollower : MonoBehaviour
         Array.Sort(_path, (a, b) => string.Compare(a.name, b.name, StringComparison.Ordinal));
     }
 
-    private void FollowAutomatically()
-    {
-        Follow(_automaticFollowSpeed);
-    }
+    private void FollowAutomatically() => Follow(_automaticFollowSpeed);
 
     public void Follow(float moveDelta)
     {

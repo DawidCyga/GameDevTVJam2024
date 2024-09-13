@@ -20,13 +20,8 @@ public class TutorialGameManager : MonoBehaviour
 
     public event EventHandler<OnTimeToStartDialogueEventArgs> OnTimeToStartDialogue;
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
-   // public event EventHandler OnGamePaused;
-   // public event EventHandler OnGameResumed;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private void Awake() => Instance = this;
 
     private void Start()
     {
@@ -52,15 +47,8 @@ public class TutorialGameManager : MonoBehaviour
         }
     }
 
-    private void PauseMenu_OnGameResumed(object sender, EventArgs e)
-    {
-        ChangeState(GameState.Playing);
-    }
-
-    private void DialogueUI_OnHide(object sender, EventArgs e)
-    {
-        ChangeState(GameState.Playing);
-    }
+    private void PauseMenu_OnGameResumed(object sender, EventArgs e) => ChangeState(GameState.Playing);
+    private void DialogueUI_OnHide(object sender, EventArgs e) => ChangeState(GameState.Playing);
 
     private void Update()
     {
@@ -96,13 +84,9 @@ public class TutorialGameManager : MonoBehaviour
 
     private void ResumeGame()
     {
-
         Time.timeScale = 1;
-
         CursorVisibilityHandler.SwitchCursorEnabled(true);
-
         Player.Instance.Resume();
-
         _isGamePaused = false;
     }
 
@@ -111,16 +95,12 @@ public class TutorialGameManager : MonoBehaviour
     private void PauseGame()
     {
         CursorVisibilityHandler.SwitchCursorEnabled(false);
-
         Time.timeScale = 0f;
-
         Player.Instance.Pause();
-
         _isGamePaused = true;
     }
 
     private void ChangeState(GameState newState) => _gameState = newState;
-
     public GameState GetCurrentState() => _gameState;
 
     public void StartDialogue(int dialogueIndex)
@@ -129,5 +109,4 @@ public class TutorialGameManager : MonoBehaviour
         ChangeState(GameState.Dialogue);
         OnTimeToStartDialogue?.Invoke(this, new OnTimeToStartDialogueEventArgs { DialogueIndex = _currentDialogueIndex });
     }
-
 }

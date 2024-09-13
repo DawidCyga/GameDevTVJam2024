@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +27,6 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private float _normalFireRateModifier;
     [SerializeField] private float _hardFireRateModifier;
 
-
     [Header("For debugging only")]
     [SerializeField] private SelectedDifficulty _currentlySelectedDifficulty;
 
@@ -43,7 +40,6 @@ public class DifficultyManager : MonoBehaviour
         }
         else
         {
-            //??
             Destroy(gameObject);
         }
     }
@@ -105,5 +101,4 @@ public class DifficultyManager : MonoBehaviour
     }
 
     public void Select(SelectedDifficulty selection) => _currentlySelectedDifficulty = selection;
-
 }

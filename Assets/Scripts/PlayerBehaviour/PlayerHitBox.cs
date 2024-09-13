@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHitBox : MonoBehaviour, ITakeDamage
@@ -30,7 +28,5 @@ public class PlayerHitBox : MonoBehaviour, ITakeDamage
     }
 
     public void Die() => OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-
     public bool CanBeKilledByRegularTrail() => false;
-
 }

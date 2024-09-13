@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioSettingsMenu : MonoBehaviour
 {
+    [Header("Component References")]
     [SerializeField] private AudioMixer _audioMixer;
-
+    [Space]
     [SerializeField] private Slider _masterVolumeSlider;
     [SerializeField] private Slider _soundVolumeSlider;
     [SerializeField] private Slider _musicVolumeSlider;
@@ -48,5 +46,4 @@ public class AudioSettingsMenu : MonoBehaviour
 
     private void SetMixerValue(string name, float volume) =>
         _audioMixer.SetFloat(name, Mathf.Log10(volume) * 20);
-
 }

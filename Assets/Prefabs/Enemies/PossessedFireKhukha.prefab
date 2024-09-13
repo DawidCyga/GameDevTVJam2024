@@ -157,7 +157,7 @@ MonoBehaviour:
   _isInAttackRange: 0
   _isDead: 0
   _timeSinceLastUpdatedPath: 0
-  _timeBetweenPathUpdates: 1.5
+  _timeBetweenPathUpdates: 2
   _aggroDistance: 6.05
   _timeBetweenAttacks: 0.5
   _timeSinceLastAttacked: 0

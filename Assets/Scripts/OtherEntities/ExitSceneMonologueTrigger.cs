@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExitSceneMonologueTrigger : MonoBehaviour
@@ -9,10 +7,7 @@ public class ExitSceneMonologueTrigger : MonoBehaviour
 
     public event EventHandler OnPlayerAttemptsLeavingScene;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private void Awake() => Instance = this;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

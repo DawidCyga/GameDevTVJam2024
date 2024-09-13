@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+
 [Serializable]
 public class PathNode : IHeapItem<PathNode>
 {
@@ -54,8 +55,7 @@ public class PathNode : IHeapItem<PathNode>
         {
             compare = _hCost.CompareTo(nodeToCompare._hCost);
         }
-        // negative, because in our case higher priority is lower cost, and by default integers when compared return higher priority for
-        // higher numbers
+
         return -compare;
     }
 }

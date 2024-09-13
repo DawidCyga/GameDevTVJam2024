@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -161,5 +160,4 @@ public class TextWriter : MonoBehaviour
     private void ClearTextField() => _textField.text = string.Empty;
     public void SetShouldFinishTypingCurrentParagraph(bool state) => _shouldFinishTypingCurrentParagraph = state;  
     public void SetCanType(bool state) => _canType = state;
-
 }

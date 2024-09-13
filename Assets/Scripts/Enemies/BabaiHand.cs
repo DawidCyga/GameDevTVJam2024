@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BabaiHand : MonoBehaviour
 {
-
+    [Header("Attack Parameters")]
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _timeBetweenAttacks;
     [SerializeField] private float _timeBeforeCanAttack;
@@ -13,12 +13,10 @@ public class BabaiHand : MonoBehaviour
     [SerializeField] private float _timeSinceSpawned;
     [SerializeField] private bool _isDead;
 
-
     private Transform _target;
     private Babai _babai;
 
     private void Start() => _target = Player.Instance.transform;
-
     private void OnDestroy() => _babai.OnDeath -= BabaiSummoner_OnDeath;
 
     private void Update()

@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AStarPathfinder : MonoBehaviour
 {
@@ -19,12 +17,6 @@ public class AStarPathfinder : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    public void ClearReserved(Vector2Int position)
-    {
-        PathNode node = _gridManager.GetNodeAtTilemapGridPosition(position);
-        node.SetOccupied(false);
     }
 
     public Stack<Vector3> BuildPath(Vector2Int startGridPosition, Vector2Int targetGridPosition)
@@ -110,7 +102,6 @@ public class AStarPathfinder : MonoBehaviour
             closedHashSet.Add(currentNode);
             EvaluateCurrentNodeNeighbours(currentNode, targetNode, gridManager, _openSet, _closedHashSet, _groundTilemap);
         }
-
         return null;
     }
 

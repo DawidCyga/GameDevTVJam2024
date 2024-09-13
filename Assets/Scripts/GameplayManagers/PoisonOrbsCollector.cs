@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PoisonOrbsCollector : MonoBehaviour
@@ -17,25 +15,10 @@ public class PoisonOrbsCollector : MonoBehaviour
     public event EventHandler OnAvailablePoisonUsesIncreased;
     public event EventHandler OnAvailablePoisonUsesDecreased;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    private void Start()
-    {
-        PoisonOrb.OnAnyOrbCollected += PoisonOrb_OnAnyOrbCollected;
-    }
-
-    private void OnDestroy()
-    {
-        PoisonOrb.OnAnyOrbCollected -= PoisonOrb_OnAnyOrbCollected;
-    }
-
-    private void PoisonOrb_OnAnyOrbCollected(object sender, EventArgs e)
-    {
-        TryAddOrbs(_poisonUsesPerCollected);
-    }
+    private void Awake() => Instance = this;
+    private void Start() => PoisonOrb.OnAnyOrbCollected += PoisonOrb_OnAnyOrbCollected;
+    private void OnDestroy() => PoisonOrb.OnAnyOrbCollected -= PoisonOrb_OnAnyOrbCollected;
+    private void PoisonOrb_OnAnyOrbCollected(object sender, EventArgs e) => TryAddOrbs(_poisonUsesPerCollected);
 
     private void TryAddOrbs(int usesToAdd)
     {

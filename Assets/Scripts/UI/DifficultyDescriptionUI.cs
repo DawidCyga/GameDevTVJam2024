@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,10 +9,7 @@ public class DifficultyDescriptionUI : MonoBehaviour
 
     private TextMeshProUGUI _descriptionText;
 
-    private void Awake()
-    {
-        _descriptionText = GetComponentInChildren<TextMeshProUGUI>();
-    }
+    private void Awake() => _descriptionText = GetComponentInChildren<TextMeshProUGUI>();
 
     public void ProcessUpdateDescription(int difficulty)
     {
@@ -33,5 +28,4 @@ public class DifficultyDescriptionUI : MonoBehaviour
     }
 
     private void SetNewDescription(string description) => _descriptionText.text = description;
-
 }

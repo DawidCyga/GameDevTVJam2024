@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,18 +15,13 @@ public class PossessedFireKhukha : PathfinderEnemy
 
     private Coroutine _updateCanAttackCoroutine;
 
-
-    private void Awake()
-    {
-        SetDifficultyModifiers();
-    }
+    private void Awake() => SetDifficultyModifiers();
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
         _timeSinceLastAttacked = Mathf.Infinity;
-
         _updateCanAttackCoroutine = StartCoroutine(UpdateAttackRoutine());
     }
 
@@ -96,7 +90,6 @@ public class PossessedFireKhukha : PathfinderEnemy
     private bool aggroPlayer()
     {
         float distanceFromPlayer = Vector3.Distance(_target.position, transform.position);
-
         return (distanceFromPlayer < _aggroDistance);
     }
 
@@ -125,5 +118,4 @@ public class PossessedFireKhukha : PathfinderEnemy
     }
 
     public override bool CanBeKilledByRegularTrail() => true;
-
 }

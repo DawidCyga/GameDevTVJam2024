@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -60,36 +59,12 @@ public class AudioManager : MonoBehaviour
         ButtonSoundEmitter.OnAnyButtonClicked += ButtonSoundEmitter_OnAnyButtonClicked;
     }
 
-    private void Enemy_OnAnyEnemyDeath(object sender, System.EventArgs e)
-    {
-        PlaySound(AudioName.EnemyDeath);
-    }
-
-    private void PlayerHitBox_OnPlayerDying(object sender, System.EventArgs e)
-    {
-        PlaySound(AudioName.PlayerDeath);
-    }
-
-    private void Player_OnStartedJump(object sender, System.EventArgs e)
-    {
-        PlaySound(AudioName.Jump);
-    }
-
-    private void Player_OnStartedDash(object sender, System.EventArgs e)
-    {
-        PlaySound(AudioName.Dash);
-    }
-
-    private void ButtonSoundEmitter_OnAnyButtonSelected(object sender, System.EventArgs e)
-    {
-        PlayOnlyOneSound(AudioName.ButtonHover);
-    }
-
-    private void ButtonSoundEmitter_OnAnyButtonClicked(object sender, System.EventArgs e)
-    {
-        PlayOnlyOneSound(AudioName.ButtonClick);
-    }
-
+    private void Enemy_OnAnyEnemyDeath(object sender, System.EventArgs e) => PlaySound(AudioName.EnemyDeath);
+    private void PlayerHitBox_OnPlayerDying(object sender, System.EventArgs e) => PlaySound(AudioName.PlayerDeath);
+    private void Player_OnStartedJump(object sender, System.EventArgs e) => PlaySound(AudioName.Jump);
+    private void Player_OnStartedDash(object sender, System.EventArgs e) => PlaySound(AudioName.Dash);
+    private void ButtonSoundEmitter_OnAnyButtonSelected(object sender, System.EventArgs e) => PlayOnlyOneSound(AudioName.ButtonHover);
+    private void ButtonSoundEmitter_OnAnyButtonClicked(object sender, System.EventArgs e) => PlayOnlyOneSound(AudioName.ButtonClick);
 
     private void PlayOnlyOneSound(AudioName name)
     {

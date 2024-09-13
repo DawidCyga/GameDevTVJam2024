@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PoisonousTrail : MonoBehaviour
 {
-   // [SerializeField] private float _timePlayerSafe;
     [SerializeField] private float _timeToSelfDestruct;
 
     [Header("For debugging only")]
