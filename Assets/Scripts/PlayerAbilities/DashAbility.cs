@@ -138,8 +138,6 @@ public class DashAbility : MonoBehaviour
         float totalDistance = (targetPosition - startPosition).magnitude;
         int numberOfSteps = Mathf.CeilToInt(totalDistance / _distanceBetweenTrailElements);
 
-      
-        //here change 
         for (int i = 1; i <= numberOfSteps; i++)
         {
             float t = (float)i / numberOfSteps;

@@ -22,12 +22,21 @@ public class TutorialGameManager : MonoBehaviour
     public class OnTimeToStartDialogueEventArgs { public int DialogueIndex { get; set; } }
 
     private void Awake() => Instance = this;
+    private void Start() => SubscribeEvents();
+    private void OnDestroy() => UnsubscribeEvents();
 
-    private void Start()
+    private void SubscribeEvents()
     {
         PlayerInputHandler.Instance.OnPauseButtonPressed += PlayerInputHandler_OnPauseButtonPressed;
         PauseMenu.Instance.OnGameResumed += PauseMenu_OnGameResumed;
         DialogueUI.Instance.OnHide += DialogueUI_OnHide;
+    }
+
+    private void UnsubscribeEvents()
+    {
+        PlayerInputHandler.Instance.OnPauseButtonPressed -= PlayerInputHandler_OnPauseButtonPressed;
+        PauseMenu.Instance.OnGameResumed -= PauseMenu_OnGameResumed;
+        DialogueUI.Instance.OnHide -= DialogueUI_OnHide;
     }
 
     private void PlayerInputHandler_OnPauseButtonPressed(object sender, EventArgs e)
@@ -35,14 +44,11 @@ public class TutorialGameManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Playing:
-
                 ChangeState(GameState.PauseMenu);
                 break;
             case GameState.PauseMenu:
                 PauseMenu.Instance.Hide();
                 ChangeState(GameState.Playing);
-                break;
-            default:
                 break;
         }
     }
@@ -55,31 +61,44 @@ public class TutorialGameManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Playing:
-                if (Player.Instance.isPaused())
-                {
-                    Player.Instance.Resume();
-                }
-                if (_isGamePaused)
-                {
-                    ResumeGame();
-                }
+                HandlePlayingState();
                 break;
             case GameState.Dialogue:
-                {
-                    if (!Player.Instance.isPaused())
-                    {
-                        Player.Instance.Pause();
-                    }
-                }
+                HandleDialogueState();
                 break;
             case GameState.PauseMenu:
-                if (!_isGamePaused)
-                {
-                    PauseGame();
-                }
-                DisplayPauseMenuScreen();
+                HandlePauseMenuState();
                 break;
         }
+    }
+
+    private void HandlePlayingState()
+    {
+        if (Player.Instance.isPaused())
+        {
+            Player.Instance.Resume();
+        }
+        if (_isGamePaused)
+        {
+            ResumeGame();
+        }
+    }
+
+    private void HandleDialogueState()
+    {
+        if (!Player.Instance.isPaused())
+        {
+            Player.Instance.Pause();
+        }
+    }
+
+    private void HandlePauseMenuState()
+    {
+        if (!_isGamePaused)
+        {
+            PauseGame();
+        }
+        DisplayPauseMenuScreen();
     }
 
     private void ResumeGame()

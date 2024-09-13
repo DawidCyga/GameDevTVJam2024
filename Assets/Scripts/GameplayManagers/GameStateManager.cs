@@ -27,7 +27,6 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private float _fadeBeforeSceneChangeDuration;
 
     private int _currentDialogueIndex;
-
     private bool _isGamePaused;
     private bool _isPlayingWaveUnrelatedDialogue;
 
@@ -53,15 +52,13 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
+    private void OnDisable() => UnsubscribeEvents();
 
-        if (arg0.buildIndex == 3 || arg0.buildIndex == 4)
+    private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 3 || scene.buildIndex == 4)
         {
-            ChangeState(GameState.Playing);
-            _currentDialogueIndex = 0;
-            SubscribeEvents();
-            TryStartWaveRelatedDialogue();
+            InitializeForNewLevel();
         }
         else
         {
@@ -69,7 +66,13 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void OnDisable() => UnsubscribeEvents();
+    private void InitializeForNewLevel()
+    {
+        ChangeState(GameState.Playing);
+        _currentDialogueIndex = 0;
+        SubscribeEvents();
+        TryStartWaveRelatedDialogue();
+    }
 
     private void SubscribeEvents()
     {
@@ -107,23 +110,18 @@ public class GameStateManager : MonoBehaviour
         TreeScript.OnAnyTreeBurned -= TreeScript_OnAnyTreeBurned;
     }
 
-    private void PlayerHitBox_OnPlayerDeath(object sender, EventArgs e)
-    {
-        ChangeState(GameState.GameOver);
-    }
+    private void PlayerHitBox_OnPlayerDeath(object sender, EventArgs e) => ChangeState(GameState.GameOver);
 
     private void PlayerInputHandler_OnPauseButtonPressed(object sender, EventArgs e)
     {
         switch (_gameState)
         {
             case GameState.Playing:
-                _gameState = GameState.PauseMenu;
+                ChangeState(GameState.PauseMenu);
                 break;
             case GameState.PauseMenu:
                 PauseMenu.Instance.Hide();
                 ChangeState(GameState.Playing);
-                break;
-            default:
                 break;
         }
     }
@@ -137,7 +135,8 @@ public class GameStateManager : MonoBehaviour
     }
 
     private void ExitSceneMonologueTrigger_OnPlayerAttemptsLeavingScene(object sender, EventArgs e) => StartExitSceneMonologue();
-    private void TreeScript_OnAnyTreeBurned(object sender, EventArgs e) => _gameState = GameState.GameOver;
+
+    private void TreeScript_OnAnyTreeBurned(object sender, EventArgs e) => ChangeState(GameState.GameOver);
 
     private void TryStartWaveRelatedDialogue()
     {
@@ -183,8 +182,7 @@ public class GameStateManager : MonoBehaviour
             _clearedWavesIndexList.Clear();
             StartCoroutine(LoadNextSceneRoutine());
         }
-
-        if (!_isPlayingWaveUnrelatedDialogue)
+        else if (!_isPlayingWaveUnrelatedDialogue)
         {
             HandleStartNextWave();
         }
@@ -220,49 +218,72 @@ public class GameStateManager : MonoBehaviour
         switch (_gameState)
         {
             case GameState.Playing:
-                if (Player.Instance.isPaused())
-                {
-                    ChangePlayerPaused(false);
-                }
-                if (_isGamePaused)
-                {
-                    ResumeGame();
-                }
+                HandlePlayingState();
                 break;
             case GameState.Dialogue:
-                {
-                    if (!Player.Instance.isPaused())
-                    {
-                        ChangePlayerPaused(true);
-                    }
-                }
+                HandleDialogueState();
                 break;
             case GameState.PauseMenu:
-                if (!_isGamePaused)
-                {
-                    if (!Player.Instance.isPaused())
-                    {
-                        ChangePlayerPaused(true);
-                    }
-                    PauseGame();
-                }
-                DisplayPauseMenuScreen();
+                HandlePauseMenuState();
                 break;
             case GameState.GameOver:
-                if (!Player.Instance.isPaused())
-                {
-                    ChangePlayerPaused(true);
-                }
-                if (!_isGamePaused)
-                {
-                    PauseGame();
-                }
-                DisplayGameOverScreen();
+                HandleGameOverState();
                 break;
             case GameState.GameWin:
-                Debug.Log("I'm winning");
+                HandleGameWinState();
                 break;
         }
+    }
+
+    private void HandlePlayingState()
+    {
+        if (Player.Instance.isPaused())
+        {
+            ChangePlayerPaused(false);
+        }
+        if (_isGamePaused)
+        {
+            ResumeGame();
+        }
+    }
+
+    private void HandleDialogueState()
+    {
+        if (!Player.Instance.isPaused())
+        {
+            ChangePlayerPaused(true);
+        }
+    }
+
+    private void HandlePauseMenuState()
+    {
+        if (!_isGamePaused)
+        {
+            if (!Player.Instance.isPaused())
+            {
+                ChangePlayerPaused(true);
+            }
+            PauseGame();
+        }
+        DisplayPauseMenuScreen();
+    }
+
+    private void HandleGameOverState()
+    {
+        if (!Player.Instance.isPaused())
+        {
+            ChangePlayerPaused(true);
+        }
+        if (!_isGamePaused)
+        {
+            PauseGame();
+        }
+        DisplayGameOverScreen();
+    }
+
+    private void HandleGameWinState()
+    {
+        Debug.Log("I'm winning");
     }
 
     private void ResumeGame()
@@ -278,7 +299,6 @@ public class GameStateManager : MonoBehaviour
     private void PauseGame()
     {
         CursorVisibilityHandler.SwitchCursorEnabled(true);
-
         Time.timeScale = 0f;
         _isGamePaused = true;
     }
@@ -288,10 +308,9 @@ public class GameStateManager : MonoBehaviour
         _gameState = newState;
         OnGameStateChanged?.Invoke(this, new OnGameStateChangedEventArgs { GameState = newState });
     }
-
     private void ChangePlayerPaused(bool state)
     {
-        if (state == true)
+        if (state)
         {
             Player.Instance.Pause();
         }
