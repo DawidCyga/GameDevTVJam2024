@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     private void PlayerHitBox_OnPlayerDying(object sender, System.EventArgs e) => PlaySound(AudioName.PlayerDeath);
     private void Player_OnStartedJump(object sender, System.EventArgs e) => PlaySound(AudioName.Jump);
     private void Player_OnStartedDash(object sender, System.EventArgs e) => PlaySound(AudioName.Dash);
-    private void ButtonSoundEmitter_OnAnyButtonSelected(object sender, System.EventArgs e) => PlayOnlyOneSound(AudioName.ButtonHover);
+    private void ButtonSoundEmitter_OnAnyButtonSelected(object sender, System.EventArgs e) => PlaySound(AudioName.ButtonHover);
     private void ButtonSoundEmitter_OnAnyButtonClicked(object sender, System.EventArgs e) => PlayOnlyOneSound(AudioName.ButtonClick);
 
     private void PlayOnlyOneSound(AudioName name)
