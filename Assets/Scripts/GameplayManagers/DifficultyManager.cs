@@ -27,6 +27,16 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private float _normalFireRateModifier;
     [SerializeField] private float _hardFireRateModifier;
 
+    [Header("Available Poisonous Sources Amount")]
+    [SerializeField] private int _easyPoisonousSources;
+    [SerializeField] private int _normalPoisonousSources;
+    [SerializeField] private int _hardPoisonousSources;
+
+    [Header("Tree Health Amount")]
+    [SerializeField] private float _easyTreeHealth;
+    [SerializeField] private float _normalTreeHealth;
+    [SerializeField] private float _hardTreeHealth;
+
     [Header("For debugging only")]
     [SerializeField] private SelectedDifficulty _currentlySelectedDifficulty;
 
@@ -95,6 +105,36 @@ public class DifficultyManager : MonoBehaviour
                 return _normalFireRateModifier;
             case SelectedDifficulty.Hard:
                 return _hardFireRateModifier;
+            default:
+                return 0;
+        }
+    }
+
+    public int GetPoisonousSourcesAmount()
+    {
+        switch (_currentlySelectedDifficulty)
+        {
+            case SelectedDifficulty.Easy:
+                return _easyPoisonousSources;
+            case SelectedDifficulty.Normal:
+                return _normalPoisonousSources;
+            case SelectedDifficulty.Hard:
+                return _hardPoisonousSources;
+            default:
+                return 0;
+        }
+    }
+
+    public float GetTreeHealth()
+    {
+        switch (_currentlySelectedDifficulty)
+        {
+            case SelectedDifficulty.Easy:
+                return _easyTreeHealth;
+            case SelectedDifficulty.Normal:
+                return _normalTreeHealth;
+            case SelectedDifficulty.Hard:
+                return _hardTreeHealth;
             default:
                 return 0;
         }

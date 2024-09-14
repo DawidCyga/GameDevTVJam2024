@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,9 +25,12 @@ public class PoisonOrbsSpawner : MonoBehaviour
 
     private void Awake()
     {
+        InitializeMaxNumberSpawnedAllowed();
         InitializeSpawnPointsDictionary();
         SpawnFirstOrbsAtLevelStart();
     }
+
+    private void InitializeMaxNumberSpawnedAllowed() => _maxNumberSpawnedAllowed = DifficultyManager.Instance.GetPoisonousSourcesAmount();
 
     private void InitializeSpawnPointsDictionary()
     {

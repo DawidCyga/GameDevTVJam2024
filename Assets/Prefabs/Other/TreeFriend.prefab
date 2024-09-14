@@ -432,7 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _burnTickRate: 1
   _burnDamage: 1
-  _health: 30
+  _health: 20
   _currentHealth: 0
   _isIgnited: 0
   _prevTime: 0

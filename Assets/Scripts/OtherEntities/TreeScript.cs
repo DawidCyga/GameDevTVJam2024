@@ -28,8 +28,10 @@ public class TreeScript : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        InitializeHealth();
     }
 
+    private void InitializeHealth() => _health = DifficultyManager.Instance.GetTreeHealth();
     void Start()
     {
         _healthBarSlider = GetComponentInChildren<Slider>();
